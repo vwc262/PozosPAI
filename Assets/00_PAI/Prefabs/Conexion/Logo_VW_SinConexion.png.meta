@@ -1,0 +1,4651 @@
+fileFormatVersion: 2
+guid: 5929599d64fc3ad49b394795f10f9be5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a068ac3d48540a4584a7fe98be6276e
+      internalID: -993729311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 646db88609a143b4f9dbf50ec46823e0
+      internalID: -488035211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_2
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866fcf6676e47c74eaac209006e976dd
+      internalID: -562384840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_3
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c532cd525f25648b8ffe8ce310b004
+      internalID: 725263046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_4
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a1b96f1485df047985858530dd2608
+      internalID: 1119456776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_5
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5233a0beceabc4642a5804967d8db4b8
+      internalID: -2055813276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_6
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265d41449f0e99540b31e031b7c78e1e
+      internalID: 990568162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_7
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a589328357bed4daf1ec3348bca25c
+      internalID: -956338975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_8
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601afeaacb179fa48a3ad5be177e7bb4
+      internalID: 1989734315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_9
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3763005acf7f41459de82b7cec288a3
+      internalID: -1423179565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_10
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f51bfed50f3214fa717a6c25b79366
+      internalID: 1999225272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_11
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e37f900caf50d049a86ceeb9baa6490
+      internalID: 186633595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_12
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35cd519a057b63643ac51e3328ebf756
+      internalID: 1338519308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_13
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1651
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb9ead54a0fe6040b900126573f2554
+      internalID: 377534396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1416e9a581668ef4ab0cd8d5933448ad
+      internalID: 144251844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_15
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad07ba3515c315479ed8504acbce694
+      internalID: 2028913829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_16
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb5c6d4395210c41acdc547b5eee8ca
+      internalID: -44937258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_17
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2cf96430716d4746afe375ea718053f
+      internalID: 2060999162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_18
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e365d93c356217448738ffa697ba14e
+      internalID: -1556425813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_19
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc645cdce84a97541886f3701b9263e3
+      internalID: -2038399890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_20
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8767e2f5b0302458316cf805032d48
+      internalID: -1622825656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_21
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d85b9ba2649b645bc7673144847288
+      internalID: -2099870408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_22
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0bce96d5e6c5a847b7d6ffa89b65277
+      internalID: -308848394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_23
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0509b80491c074cb43882d65569e2e
+      internalID: 1158570144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_24
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1eb741789de8f841acbdee5dbe6007d
+      internalID: 2691320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_25
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c850f8a4ac4f654792999f39aed7374
+      internalID: 134922212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_26
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85fc95f9701af7a4d83444be5751c516
+      internalID: 1140255220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_27
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1524
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06a00d0467e91f46b42b302902926dc
+      internalID: 569447516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256292a739f683943aa6bac705e10b94
+      internalID: -562167814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_29
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80406e49c108edc4c9fdd70e9a0dff90
+      internalID: -1234224277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_30
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62117481a6648742b9d6da91690ead2
+      internalID: -1980374198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_31
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80476b5a873a3a4c81c998589a4bc33
+      internalID: -583335673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_32
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de68e8fd2ba99e4988058d06d293cd6
+      internalID: 550160608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_33
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c84feb296f65b847bf7ca211211e043
+      internalID: 1507969283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_34
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e108b13c23cedee47bc262859a01b977
+      internalID: 2030479163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_35
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e6b99a0de10e2843b21ea412ea8b336
+      internalID: -994091992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_36
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1ca075f05ff3048bfdddb985ac0d68
+      internalID: -291070629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_37
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f075d2d4a69729440be1c664056bc93c
+      internalID: -1100206108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_38
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b252ea3ada24f4dbc296efe7bbb2ed
+      internalID: -424288445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_39
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bd64d54f6b47d4ea6cad4f25719f79
+      internalID: -200948826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_40
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9cd29e284622d34e9a0b570413beb52
+      internalID: 1510741229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_41
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1397
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d3e7b8c1cdf1d44bf16a608411018f
+      internalID: 2055261277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18948e2b6025a74d939bd0bef233745
+      internalID: -412437733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_43
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9788e79f36eff4ea1741066eef105e
+      internalID: -1370128834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_44
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0769498f9471e54886d405d50216a55
+      internalID: 1914946110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_45
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658c11b52abfd2b4788e47c5811e7a9b
+      internalID: 185496098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_46
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e738e385423c7549a88bc65f2b51a93
+      internalID: 490690173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_47
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ad242e0ea3eae44955b15ef7bb0b68
+      internalID: 2044135689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_48
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5847b48bf2ae95041b7c581da07071b1
+      internalID: -1569990443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_49
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8075da05b795cf44b82683e6b1c7694
+      internalID: 670655856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_50
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96904cc931cd0794fb75fc0f73f16520
+      internalID: 339112373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_51
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef998ed2877f9bd4c8d8376d3155cef3
+      internalID: 1007117123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_52
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0c043e608825740b4014e200f73612
+      internalID: -1664065672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_53
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33bb2ed6e6168c1498e799d4a572fd85
+      internalID: -719708908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_54
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b394de115d931cc4eb4652fb8c6cb573
+      internalID: -1522992269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_55
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1270
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eeb7a996098d4e429f07563f8c4996e
+      internalID: -764171731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c304833f2a21b64391798687e3707c1
+      internalID: -1712512269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_57
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01565f84b91974a468059975d1a6f180
+      internalID: -118135120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_58
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e668256988255d49a4284aa8cf610d6
+      internalID: -1574074711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_59
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66548f614938ec9498ecd56751eb3f53
+      internalID: 1383371747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_60
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d985f5e567e32784ea55f586e48f7dca
+      internalID: -1301852920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_61
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a263f9d3cfeaf84880f674bde21ea1c
+      internalID: 1794834967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_62
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33fb7bfbfe35e294c9efddd24329fd8d
+      internalID: 892491279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_63
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e20e54e322cf337478c0139fac7e26eb
+      internalID: -1430932541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_64
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c11d8d7a9d2e514f95720a1dc1a94c7
+      internalID: 247845291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_65
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af871c68656e4454c9d27ab2f543e574
+      internalID: 991346263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_66
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa58afe6640b43d42b1bfe6fcc35e5d3
+      internalID: 245822923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_67
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46605c33a1252214991e5546b20b7d8d
+      internalID: -363031913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_68
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26532f6449506e745b5eaf4162e7f9f3
+      internalID: -1601177104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_69
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1143
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69df4d229d3c5c348bed43d5ec68596a
+      internalID: 1411612403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ba31c2350d8d6439a7b9da29bc17a3
+      internalID: 1830178895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_71
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71177c7364831e43bd6ce7b64fa97e9
+      internalID: 522036022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_72
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb475ecae248a3428d1ae21e9fe58d6
+      internalID: 60995134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_73
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713670107497bfd498e1df199d242e51
+      internalID: -420287153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_74
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 578121083c761ae408371d9def8c9a30
+      internalID: -278997827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_75
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e416edefaede0fd46a577d2bf5cdc3ef
+      internalID: -490880972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_76
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b7c43dc302f6e43b05229c97b0565b
+      internalID: 828696283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_77
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4982bda072b38499ea6bafbf8a07cc
+      internalID: -1233252073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_78
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 926ab152710abf945a9a03bc530e92d4
+      internalID: -1952336968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_79
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ed796d2546a464c8574c92428dcc32
+      internalID: -1529027046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_80
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4467138658809914493efdfaf5bd66aa
+      internalID: -217822682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_81
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184ba7bb52ea6334b8383a028f06bf02
+      internalID: 573932203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_82
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3916daa71885c1468c4f8902ed04dac
+      internalID: 1435402637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_83
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1016
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c67d03cee16d0540b76df960b6d25d2
+      internalID: -433914790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55356570ecebf4e4d8f5377206f000b5
+      internalID: 1871765014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_85
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815494db237aa594a9c3723c864d236e
+      internalID: 515024893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_86
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217b49f1972912e4195b8661a87a2a72
+      internalID: 1675905833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_87
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c901643d4a4f249a66ff9c6f256f4b
+      internalID: -116478327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_88
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9b0b3f683fd1d449b74eeceb2cb8394
+      internalID: -942872974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_89
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: face18d513f4846469e9057c66e1b12c
+      internalID: -1566965012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_90
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a930908d5635e04fb492ca4d15850a9
+      internalID: -800628222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_91
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477a79825e68f074ca829b70380c325b
+      internalID: -1078277040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_92
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abe2fe0e8391754282f65bf7e7a7a13
+      internalID: -319144536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_93
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b66d1e64d9e014082e43abf8f1bcf7
+      internalID: -402614946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_94
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f595eadc50569d4793aeaa6f337205d
+      internalID: 881492096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_95
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b875f00312c7aaf4a9d91d39cc992d60
+      internalID: -303926517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_96
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b7413d3a656dcb4285cc8b90adf8f14
+      internalID: -1466737401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_97
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 889
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da54f985175f5b42bcd84403fe029e3
+      internalID: -569372781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6985695642978f84589baad68ba957dc
+      internalID: -703070478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_99
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8078d1d8b361d8e49b8b2eec519d0719
+      internalID: 828520674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_100
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037197759cf6b344b8a2a2d4ff2334d1
+      internalID: 1019946681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_101
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f10f6db6052fae4f8cd055f8bc9506c
+      internalID: 2099309580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_102
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686e2117a802ea440bfb9a6a43f87a1d
+      internalID: -240235436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_103
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5ca4768f533864ab6d703e6adf3169
+      internalID: -1812295029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_104
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5faf199e95748eb40992010d9be7b74f
+      internalID: 654430432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_105
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e8256a31a497f4fb50d28e9b3726ad
+      internalID: -141926572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_106
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c5bc00993e5cc4fbc9e5c701c427e9
+      internalID: 1882428652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_107
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80718ac8fbdbbe49b828ef300ccbf8f
+      internalID: 618464946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_108
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9efb8d35eaadc04f95378257b6fc024
+      internalID: 1584699270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_109
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7faad809c03984e44bd8e1928f5b9ce9
+      internalID: -1989240792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_110
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65afc53b7a735384bb5fdbbc1ff7c14a
+      internalID: -798160669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_111
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 762
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871c343069a56ac4ebeaa99cdbb491bd
+      internalID: 89603853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3164abcc6888bce4b920532099cd57da
+      internalID: -1738326071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_113
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7252150808bb2a459b09c295732ee70
+      internalID: 1520518702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_114
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad093e3ca2c1644bb9c62b7a2fbb164
+      internalID: 2042127337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_115
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640c4c6a16028ef4ea356b60abda7798
+      internalID: 1846993788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_116
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 661bf885ff615644fae7e548aefcf1df
+      internalID: 1217012678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_117
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e6d86c9e0e8374c9a459ef806e0802
+      internalID: -1515637741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_118
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9085b385cebeb9f41b2c52aa9d04273e
+      internalID: -1423704980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_119
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55a5653914acbe43beb083f6d710bc5
+      internalID: 1129473131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_120
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9639ed27a218866449d153b68601f6fe
+      internalID: -1584698252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_121
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d61acffcd0cec7478622bf1828e7a5c
+      internalID: 165780602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_122
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afcf54cdcad544a498efb4af241ca761
+      internalID: -1299023597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_123
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69469c7c1cbdd3544bec514a8a0e99bd
+      internalID: -1025568144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_124
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e9b5d50d8a0e7498bb0fb0dc27ce21
+      internalID: -646759178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_125
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 635
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ae4cad42f313647b9cae664135da1c
+      internalID: 250952957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d44085266b43b488b4db514202f318
+      internalID: -288020163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_127
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df15645a3bd62bb44a3d2b0ed1351205
+      internalID: -1333971486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_128
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc31c9eb462bca74cbb900408c41bb14
+      internalID: -247617930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_129
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93139cd9e3a14cc4ba2a3edbbbdb0cad
+      internalID: 1401456827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_130
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719431f4ebc831c4aa63495b28e361f4
+      internalID: 1059165719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_131
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe29549f49bbf9841b26c9671261e05b
+      internalID: -19644537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_132
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e53f3d47a62a4d46b598feebd0ed33f
+      internalID: -654597841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_133
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0521df94d32bd4348a061cc662b4d54f
+      internalID: -724352102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_134
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e23c531245cd49a4cb442431333dca31
+      internalID: 146285916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_135
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a78b7133c01a3944a6ca72598ba033a
+      internalID: 1970382231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_136
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb53ebb9a174c374bb28cb5377073cf7
+      internalID: 1052250986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_137
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57cecd22e48e224d8a49b3bf6f1f619
+      internalID: 679213959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_138
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056bab72b7d180e48bcb832590aecfbb
+      internalID: 791046250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_139
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 508
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c346b532211da458b5ac35936d7690
+      internalID: -1028096198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b62e7d932b92c34e86474dee6d821df
+      internalID: 1530407309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_141
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206779bb5fd0e614d87be6bd568c8143
+      internalID: 2092244523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_142
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd41b0c5a4de3e4bb991c3fafbe22ca
+      internalID: 1363230965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_143
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542218d969f95bf45ada49ff2c86501c
+      internalID: 1501942257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_144
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008396d751c8ec543b31c3335499c972
+      internalID: -5340259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_145
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c506485d667ac1418db1a8919a93352
+      internalID: -260100034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_146
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eed4e7d56ca5ee4e8c8680c72eecfac
+      internalID: 2146509140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_147
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ac7484c99d25e40802bc4e51c4b698
+      internalID: 492965550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_148
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1643836814a9d1d45bbc06fe087d4767
+      internalID: 276331932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_149
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d6c4945621c8d4fabb2afcbc93c0eb
+      internalID: -56636302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_150
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f5b6410525e054c913cb1ac88f9a6d
+      internalID: 1130895106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_151
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c95fdf6e1947c4f95eac42811dfb49
+      internalID: -1251079681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_152
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c0c016252aa9c459bf655dbfa1fcb0
+      internalID: -220209419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_153
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 381
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d565b3d37a9d8042848bc69cbfef839
+      internalID: 2096722316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 881dc5f53e87c8b42a4d3cb5e22f647b
+      internalID: 396792148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_155
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911a2ebc6e21ac3438a7218bf5ba63f1
+      internalID: 209158322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_156
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1733f4fe8cf0d154fbce7f01a70e6b97
+      internalID: 1031357671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_157
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72f84b8559e16fa4488906b9982e770f
+      internalID: 2060432626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_158
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2f630db91a31f42884903e14563536
+      internalID: 2056989028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_159
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82efa6def470b534d995f7193d587e38
+      internalID: -1530406496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_160
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5259145595bf9848a4663b7219c2ac5
+      internalID: -654177540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_161
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637d9b257f9799c478f6cab732de1f3d
+      internalID: -1228578279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_162
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03bea1e9d0807a449a4b23f6f8b08f84
+      internalID: 1936086714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_163
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c86bf2c01218f2499f9ca7290eb61f8
+      internalID: -1197593733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_164
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1f905168f3ebb4b817a7a2def2a1a9
+      internalID: -879630029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_165
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b6136fbcaec7a44ab9dfa4c04c5890
+      internalID: -519453937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_166
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228ab7299292acf4d970b393266a3184
+      internalID: 1939011531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_167
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 254
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34bb53b63f7606d45a3a2a742b4f6d18
+      internalID: -544816675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457e94c332094894798b746c173ed281
+      internalID: 1534824291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_169
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4fc30e5a6b5c841848cc986c1db9ac
+      internalID: -2104596793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_170
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cd82900afa2d54ba4a72614f9e41c3
+      internalID: 21817209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_171
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e3a44aa35a6cf40b41890de644df40
+      internalID: -2070191829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_172
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc1361614d6df14b82583d36d8f61a9
+      internalID: 1103204959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_173
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f045e05b1761ac458284e8d0fa113f3
+      internalID: -199775914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_174
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8b55f623a33e14d8880df12d8ca4ea
+      internalID: -1135902130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_175
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c987252586051464590c0c302a7c7839
+      internalID: 1279601841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_176
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77fffb62232709d4a86014e84e4010d2
+      internalID: -1138522305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_177
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645c67f98b63e2d448487cdd6aca5972
+      internalID: -919551705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_178
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67db02663cec3f4fa2d674576836904
+      internalID: -1747508678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_179
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ddcf4cb8c4afe44582df10d6e119452
+      internalID: -2043242670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_180
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21da279fe50371a478ce0fdba1cee86a
+      internalID: -30120470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_181
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 127
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 395a881e27d6df24ba201d72fce8c732
+      internalID: 353517135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97081b4e0aca3804c8e53f71ddeeeb6b
+      internalID: 663475072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_183
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531a65552fc910a43848e35972fa2f12
+      internalID: 337058891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_184
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78188e4aef576141920dfb4c25829aa
+      internalID: 1981178970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_185
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7334cd1121f1c24daf79758ff8ed0be
+      internalID: -1735409403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_186
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb40e751aa5e6340b27f4f60fad1385
+      internalID: 1234307256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_187
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398e7673930ee1544bb07d32c44dc200
+      internalID: -1040150125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_188
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2aec7caf4f7b4e4d884d373cf5706e9
+      internalID: -731168260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_189
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249e03084e5405847adc7430588bd157
+      internalID: -935082869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_190
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c2d86574abfd14abc33a0cdc40a5c9
+      internalID: -125488519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_191
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77dd7428edd1eea4e9ec8e2d0046e9e2
+      internalID: 1843777370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_192
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62c0f76242161944910c0e6e23fcfad
+      internalID: -1321084267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_193
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2a934ffb7123243aa6fbe2eab0a7be
+      internalID: -1175885307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_194
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe26b21d82ea3b4bb6e8bd7b0c23e57
+      internalID: 1456194059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_VW_SinConexion_195
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 0
+        width: 147
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c82210bb5aee6428fea9e9ccfde33b
+      internalID: 312431610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Logo_VW_SinConexion_0: -993729311
+      Logo_VW_SinConexion_1: -488035211
+      Logo_VW_SinConexion_10: 1999225272
+      Logo_VW_SinConexion_100: 1019946681
+      Logo_VW_SinConexion_101: 2099309580
+      Logo_VW_SinConexion_102: -240235436
+      Logo_VW_SinConexion_103: -1812295029
+      Logo_VW_SinConexion_104: 654430432
+      Logo_VW_SinConexion_105: -141926572
+      Logo_VW_SinConexion_106: 1882428652
+      Logo_VW_SinConexion_107: 618464946
+      Logo_VW_SinConexion_108: 1584699270
+      Logo_VW_SinConexion_109: -1989240792
+      Logo_VW_SinConexion_11: 186633595
+      Logo_VW_SinConexion_110: -798160669
+      Logo_VW_SinConexion_111: 89603853
+      Logo_VW_SinConexion_112: -1738326071
+      Logo_VW_SinConexion_113: 1520518702
+      Logo_VW_SinConexion_114: 2042127337
+      Logo_VW_SinConexion_115: 1846993788
+      Logo_VW_SinConexion_116: 1217012678
+      Logo_VW_SinConexion_117: -1515637741
+      Logo_VW_SinConexion_118: -1423704980
+      Logo_VW_SinConexion_119: 1129473131
+      Logo_VW_SinConexion_12: 1338519308
+      Logo_VW_SinConexion_120: -1584698252
+      Logo_VW_SinConexion_121: 165780602
+      Logo_VW_SinConexion_122: -1299023597
+      Logo_VW_SinConexion_123: -1025568144
+      Logo_VW_SinConexion_124: -646759178
+      Logo_VW_SinConexion_125: 250952957
+      Logo_VW_SinConexion_126: -288020163
+      Logo_VW_SinConexion_127: -1333971486
+      Logo_VW_SinConexion_128: -247617930
+      Logo_VW_SinConexion_129: 1401456827
+      Logo_VW_SinConexion_13: 377534396
+      Logo_VW_SinConexion_130: 1059165719
+      Logo_VW_SinConexion_131: -19644537
+      Logo_VW_SinConexion_132: -654597841
+      Logo_VW_SinConexion_133: -724352102
+      Logo_VW_SinConexion_134: 146285916
+      Logo_VW_SinConexion_135: 1970382231
+      Logo_VW_SinConexion_136: 1052250986
+      Logo_VW_SinConexion_137: 679213959
+      Logo_VW_SinConexion_138: 791046250
+      Logo_VW_SinConexion_139: -1028096198
+      Logo_VW_SinConexion_14: 144251844
+      Logo_VW_SinConexion_140: 1530407309
+      Logo_VW_SinConexion_141: 2092244523
+      Logo_VW_SinConexion_142: 1363230965
+      Logo_VW_SinConexion_143: 1501942257
+      Logo_VW_SinConexion_144: -5340259
+      Logo_VW_SinConexion_145: -260100034
+      Logo_VW_SinConexion_146: 2146509140
+      Logo_VW_SinConexion_147: 492965550
+      Logo_VW_SinConexion_148: 276331932
+      Logo_VW_SinConexion_149: -56636302
+      Logo_VW_SinConexion_15: 2028913829
+      Logo_VW_SinConexion_150: 1130895106
+      Logo_VW_SinConexion_151: -1251079681
+      Logo_VW_SinConexion_152: -220209419
+      Logo_VW_SinConexion_153: 2096722316
+      Logo_VW_SinConexion_154: 396792148
+      Logo_VW_SinConexion_155: 209158322
+      Logo_VW_SinConexion_156: 1031357671
+      Logo_VW_SinConexion_157: 2060432626
+      Logo_VW_SinConexion_158: 2056989028
+      Logo_VW_SinConexion_159: -1530406496
+      Logo_VW_SinConexion_16: -44937258
+      Logo_VW_SinConexion_160: -654177540
+      Logo_VW_SinConexion_161: -1228578279
+      Logo_VW_SinConexion_162: 1936086714
+      Logo_VW_SinConexion_163: -1197593733
+      Logo_VW_SinConexion_164: -879630029
+      Logo_VW_SinConexion_165: -519453937
+      Logo_VW_SinConexion_166: 1939011531
+      Logo_VW_SinConexion_167: -544816675
+      Logo_VW_SinConexion_168: 1534824291
+      Logo_VW_SinConexion_169: -2104596793
+      Logo_VW_SinConexion_17: 2060999162
+      Logo_VW_SinConexion_170: 21817209
+      Logo_VW_SinConexion_171: -2070191829
+      Logo_VW_SinConexion_172: 1103204959
+      Logo_VW_SinConexion_173: -199775914
+      Logo_VW_SinConexion_174: -1135902130
+      Logo_VW_SinConexion_175: 1279601841
+      Logo_VW_SinConexion_176: -1138522305
+      Logo_VW_SinConexion_177: -919551705
+      Logo_VW_SinConexion_178: -1747508678
+      Logo_VW_SinConexion_179: -2043242670
+      Logo_VW_SinConexion_18: -1556425813
+      Logo_VW_SinConexion_180: -30120470
+      Logo_VW_SinConexion_181: 353517135
+      Logo_VW_SinConexion_182: 663475072
+      Logo_VW_SinConexion_183: 337058891
+      Logo_VW_SinConexion_184: 1981178970
+      Logo_VW_SinConexion_185: -1735409403
+      Logo_VW_SinConexion_186: 1234307256
+      Logo_VW_SinConexion_187: -1040150125
+      Logo_VW_SinConexion_188: -731168260
+      Logo_VW_SinConexion_189: -935082869
+      Logo_VW_SinConexion_19: -2038399890
+      Logo_VW_SinConexion_190: -125488519
+      Logo_VW_SinConexion_191: 1843777370
+      Logo_VW_SinConexion_192: -1321084267
+      Logo_VW_SinConexion_193: -1175885307
+      Logo_VW_SinConexion_194: 1456194059
+      Logo_VW_SinConexion_195: 312431610
+      Logo_VW_SinConexion_2: -562384840
+      Logo_VW_SinConexion_20: -1622825656
+      Logo_VW_SinConexion_21: -2099870408
+      Logo_VW_SinConexion_22: -308848394
+      Logo_VW_SinConexion_23: 1158570144
+      Logo_VW_SinConexion_24: 2691320
+      Logo_VW_SinConexion_25: 134922212
+      Logo_VW_SinConexion_26: 1140255220
+      Logo_VW_SinConexion_27: 569447516
+      Logo_VW_SinConexion_28: -562167814
+      Logo_VW_SinConexion_29: -1234224277
+      Logo_VW_SinConexion_3: 725263046
+      Logo_VW_SinConexion_30: -1980374198
+      Logo_VW_SinConexion_31: -583335673
+      Logo_VW_SinConexion_32: 550160608
+      Logo_VW_SinConexion_33: 1507969283
+      Logo_VW_SinConexion_34: 2030479163
+      Logo_VW_SinConexion_35: -994091992
+      Logo_VW_SinConexion_36: -291070629
+      Logo_VW_SinConexion_37: -1100206108
+      Logo_VW_SinConexion_38: -424288445
+      Logo_VW_SinConexion_39: -200948826
+      Logo_VW_SinConexion_4: 1119456776
+      Logo_VW_SinConexion_40: 1510741229
+      Logo_VW_SinConexion_41: 2055261277
+      Logo_VW_SinConexion_42: -412437733
+      Logo_VW_SinConexion_43: -1370128834
+      Logo_VW_SinConexion_44: 1914946110
+      Logo_VW_SinConexion_45: 185496098
+      Logo_VW_SinConexion_46: 490690173
+      Logo_VW_SinConexion_47: 2044135689
+      Logo_VW_SinConexion_48: -1569990443
+      Logo_VW_SinConexion_49: 670655856
+      Logo_VW_SinConexion_5: -2055813276
+      Logo_VW_SinConexion_50: 339112373
+      Logo_VW_SinConexion_51: 1007117123
+      Logo_VW_SinConexion_52: -1664065672
+      Logo_VW_SinConexion_53: -719708908
+      Logo_VW_SinConexion_54: -1522992269
+      Logo_VW_SinConexion_55: -764171731
+      Logo_VW_SinConexion_56: -1712512269
+      Logo_VW_SinConexion_57: -118135120
+      Logo_VW_SinConexion_58: -1574074711
+      Logo_VW_SinConexion_59: 1383371747
+      Logo_VW_SinConexion_6: 990568162
+      Logo_VW_SinConexion_60: -1301852920
+      Logo_VW_SinConexion_61: 1794834967
+      Logo_VW_SinConexion_62: 892491279
+      Logo_VW_SinConexion_63: -1430932541
+      Logo_VW_SinConexion_64: 247845291
+      Logo_VW_SinConexion_65: 991346263
+      Logo_VW_SinConexion_66: 245822923
+      Logo_VW_SinConexion_67: -363031913
+      Logo_VW_SinConexion_68: -1601177104
+      Logo_VW_SinConexion_69: 1411612403
+      Logo_VW_SinConexion_7: -956338975
+      Logo_VW_SinConexion_70: 1830178895
+      Logo_VW_SinConexion_71: 522036022
+      Logo_VW_SinConexion_72: 60995134
+      Logo_VW_SinConexion_73: -420287153
+      Logo_VW_SinConexion_74: -278997827
+      Logo_VW_SinConexion_75: -490880972
+      Logo_VW_SinConexion_76: 828696283
+      Logo_VW_SinConexion_77: -1233252073
+      Logo_VW_SinConexion_78: -1952336968
+      Logo_VW_SinConexion_79: -1529027046
+      Logo_VW_SinConexion_8: 1989734315
+      Logo_VW_SinConexion_80: -217822682
+      Logo_VW_SinConexion_81: 573932203
+      Logo_VW_SinConexion_82: 1435402637
+      Logo_VW_SinConexion_83: -433914790
+      Logo_VW_SinConexion_84: 1871765014
+      Logo_VW_SinConexion_85: 515024893
+      Logo_VW_SinConexion_86: 1675905833
+      Logo_VW_SinConexion_87: -116478327
+      Logo_VW_SinConexion_88: -942872974
+      Logo_VW_SinConexion_89: -1566965012
+      Logo_VW_SinConexion_9: -1423179565
+      Logo_VW_SinConexion_90: -800628222
+      Logo_VW_SinConexion_91: -1078277040
+      Logo_VW_SinConexion_92: -319144536
+      Logo_VW_SinConexion_93: -402614946
+      Logo_VW_SinConexion_94: 881492096
+      Logo_VW_SinConexion_95: -303926517
+      Logo_VW_SinConexion_96: -1466737401
+      Logo_VW_SinConexion_97: -569372781
+      Logo_VW_SinConexion_98: -703070478
+      Logo_VW_SinConexion_99: 828520674
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
