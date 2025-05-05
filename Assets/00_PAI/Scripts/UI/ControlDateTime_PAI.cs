@@ -41,4 +41,16 @@ public class ControlDateTime_PAI : MonoBehaviour
             yield return new WaitForSeconds(chargeRate);
         }
     }
+    
+    public static string GetDateFormat_DMAH(string dateString)
+    {
+        DateTime parsedDate;
+
+        if (DateTime.TryParse(dateString, out parsedDate))
+        {
+            return parsedDate.ToString("dd/MM/yyyy  hh:mm") + " hrs";
+        }
+
+        return "00/00/0000  00:00 hrs";
+    }
 }

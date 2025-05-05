@@ -70,24 +70,24 @@ public class ControlMap : Singleton<ControlMap>
         }
     }
 
-    public void SetActiveColliderMap(bool _active)
-    {
-        if (normaMap != null)
-        {
-            DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
-
-            if (controlCollider != null)
-                controlCollider.SetEnableMeshColliders(_active);
-        }
-    }
-    
-    public void ChangeActiveColliderMap()
-    {
-        DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
-        
-        if (controlCollider != null)
-            controlCollider.ChangeEnabledMeshCollider();
-    }
+    // public void SetActiveColliderMap(bool _active)
+    // {
+    //     if (normaMap != null)
+    //     {
+    //         DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
+    //
+    //         if (controlCollider != null)
+    //             controlCollider.SetEnableMeshColliders(_active);
+    //     }
+    // }
+    //
+    // public void ChangeActiveColliderMap()
+    // {
+    //     DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
+    //     
+    //     if (controlCollider != null)
+    //         controlCollider.ChangeEnabledMeshCollider();
+    // }
 
     public void LoadMaps()
     {

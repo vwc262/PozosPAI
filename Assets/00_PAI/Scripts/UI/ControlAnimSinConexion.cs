@@ -1,10 +1,9 @@
 using System;
-#if UNITY_EDITOR
-using AmplifyShaderEditor;
-#endif
+// #if UNITY_EDITOR
+// using AmplifyShaderEditor;
+// #endif
 using Unity.VisualScripting;
 using UnityEngine;
-//using VTabs.Libs;
 using Random = UnityEngine.Random;
 
 public class ControlAnimSinConexion : Singleton<ControlAnimSinConexion>

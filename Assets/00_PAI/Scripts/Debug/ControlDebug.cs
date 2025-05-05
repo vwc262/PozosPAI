@@ -74,11 +74,11 @@ public class ControlDebug : MonoBehaviour
     }
 
     [Button]
-    public void ChangeActiveTerrainColliders()
-    {
-        if (ControlMap._singletonExists)
-            ControlMap.singleton.ChangeActiveColliderMap();
-    }
+    // public void ChangeActiveTerrainColliders()
+    // {
+    //     if (ControlMap._singletonExists)
+    //         ControlMap.singleton.ChangeActiveColliderMap();
+    // }
 
     public void ToggleRenderMap()
     {

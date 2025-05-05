@@ -6,14 +6,14 @@ public class ControlSitiosUI_Lista : MonoBehaviour
     
     public void SendGUIFSMEvent(string eventName)
     {
-        if (BoyRoboticsAnimationManager._singletonExists)
-            BoyRoboticsAnimationManager.singleton.SendGUIFSMEvent(eventName);
+        // if (BoyRoboticsAnimationManager._singletonExists)
+        //     BoyRoboticsAnimationManager.singleton.SendGUIFSMEvent(eventName);
     }
     
     public void SendCameraFSMEvent(string eventName)
     {
-        if (BoyRoboticsAnimationManager._singletonExists)
-            BoyRoboticsAnimationManager.singleton.SendCameraFSMEvent(eventName);
+        // if (BoyRoboticsAnimationManager._singletonExists)
+        //     BoyRoboticsAnimationManager.singleton.SendCameraFSMEvent(eventName);
     }
 
     public void ToggleListSitios()

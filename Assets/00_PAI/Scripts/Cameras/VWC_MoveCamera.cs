@@ -12,7 +12,7 @@ public class VWC_MoveCamera : MonoBehaviour
 {
     [TabGroup("Cameras")] public FlyCamera flyCamera;
     [FormerlySerializedAs("cameraMap")] [TabGroup("Cameras")] public CameraZoomMapa cameraZoomMap;
-    [TabGroup("Cameras")] public CameraLupa cameraLupa;
+    //[TabGroup("Cameras")] public CameraLupa cameraLupa;
     [TabGroup("Cameras")] public GameObject cameraRoot;
     [TabGroup("Cameras")] public GameObject zoomUpPivot;
     [TabGroup("Cameras")] public GameObject CameraGimbal;
@@ -156,7 +156,7 @@ public class VWC_MoveCamera : MonoBehaviour
         
         cameraZoomMap.SetZoom(zoomHome);
         
-        cameraLupa.GoHomeLupa();
+        //cameraLupa.GoHomeLupa();
     }
     
     public void MoveHome()

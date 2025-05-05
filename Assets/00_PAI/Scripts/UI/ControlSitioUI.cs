@@ -89,20 +89,20 @@ public class ControlSitioUI : Singleton<ControlSitioUI>
         }
     }*/
 
-    public void AddSignalPanel(string _type, SignalBase _signal)
-    {
-        GameObject instance = Instantiate(prefabSignal, Vector3.zero, Quaternion.identity,
-            contentSignalList.transform);
-        instance.transform.localEulerAngles = Vector3.zero;
-        
-        RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
-        m_RectTransform.anchoredPosition = new Vector2(0,0);
-        
-        ControlSignalUI controlSignal = instance.GetComponent<ControlSignalUI>();
-        controlSignal.SetSignal(_type, _signal);
-
-        signals.Add(instance);
-    }
+    // public void AddSignalPanel(string _type, SignalBase _signal)
+    // {
+    //     GameObject instance = Instantiate(prefabSignal, Vector3.zero, Quaternion.identity,
+    //         contentSignalList.transform);
+    //     instance.transform.localEulerAngles = Vector3.zero;
+    //     
+    //     RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
+    //     m_RectTransform.anchoredPosition = new Vector2(0,0);
+    //     
+    //     ControlSignalUI controlSignal = instance.GetComponent<ControlSignalUI>();
+    //     controlSignal.SetSignal(_type, _signal);
+    //
+    //     signals.Add(instance);
+    // }
     
     public void ClearSignals()
     {
