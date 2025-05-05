@@ -138,8 +138,8 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         
         GetDataPozos();
 
-        if (ControlMap._singletonExists)
-            ControlMap.singleton.SetActiveColliderMap(true);
+        // if (ControlMap._singletonExists)
+        //     ControlMap.singleton.SetActiveColliderMap(true);
         
         DeleteSitiosGPS();
         
@@ -156,8 +156,8 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         if (useOverlapingDesp)
             RecalculateOverlaping();
 
-        if (ControlMap._singletonExists)
-            ControlMap.singleton.SetActiveColliderMap(false);
+        // if (ControlMap._singletonExists)
+        //     ControlMap.singleton.SetActiveColliderMap(false);
         
         if (sitiosOrdenados != null)
             sitiosOrdenados.updateListSitios();

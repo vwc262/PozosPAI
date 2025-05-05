@@ -46,7 +46,7 @@ public class ControlUIPanelTitleSitio : MonoBehaviour
             Nombre.text = _Sitio.MyDataSitio.nombre;
         
         if (Fecha != null)
-            Fecha.text = ControlDateTime.GetDateFormat_DMAH(_Sitio.MyDataSitio.fecha);
+            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_Sitio.MyDataSitio.fecha);
 
         if (statusImage != null)
         {

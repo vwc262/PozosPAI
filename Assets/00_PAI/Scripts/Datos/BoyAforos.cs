@@ -95,8 +95,8 @@ public class BoyAforos : MonoBehaviour
 
                 if (uiSitio != null)
                 {
-                    if (uiSitio.TooltipOverride != null)
-                        uiSitio.TooltipOverride.enabled = false;
+                    // if (uiSitio.TooltipOverride != null)
+                    //     uiSitio.TooltipOverride.enabled = false;
                         
                     if (uiSitio.toggleOverride != null)
                         uiSitio.toggleOverride.isOn = false;
@@ -106,11 +106,11 @@ public class BoyAforos : MonoBehaviour
                         dataPozoAforo dataAforo =
                             aforoPozos.First(item => item.Abreviacion == uiSitio.sitio.MyDataSitio.abreviacion);
                         
-                        if (dataAforo.Observaciones != "" && uiSitio.TooltipOverride != null)
-                        {
-                            uiSitio.TooltipOverride.infoLeft = dataAforo.Observaciones;
-                            uiSitio.TooltipOverride.enabled = true;
-                        }
+                        // if (dataAforo.Observaciones != "" && uiSitio.TooltipOverride != null)
+                        // {
+                        //     uiSitio.TooltipOverride.infoLeft = dataAforo.Observaciones;
+                        //     uiSitio.TooltipOverride.enabled = true;
+                        // }
                         
                         float valor;
                         
@@ -149,8 +149,8 @@ public class BoyAforos : MonoBehaviour
 
                 if (uiSitio != null)
                 {
-                    if (uiSitio.TooltipOverride != null)
-                        uiSitio.TooltipOverride.enabled = false;
+                    // if (uiSitio.TooltipOverride != null)
+                    //     uiSitio.TooltipOverride.enabled = false;
                         
                     if (uiSitio.toggleOverride != null)
                         uiSitio.toggleOverride.isOn = false;

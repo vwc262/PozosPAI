@@ -50,7 +50,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte
     public override void InitListasUI()
     {
         CreateUIRegiones();
-        CreateUIAcciones();
+        //CreateUIAcciones();
     }
 
     public override void updateListSitios()
@@ -203,13 +203,13 @@ public class SitiosOrdenadosRegionesPozosPAINorte
         }
     }
 
-    public void CreateUIAcciones()
-    {
-        if (ControlAccionesRegiones._singletonExists)
-        {
-            ControlAccionesRegiones.singleton.SetEditorsAccionesRegiones(totalRegiones);
-        }
-    }
+    // public void CreateUIAcciones()
+    // {
+    //     if (ControlAccionesRegiones._singletonExists)
+    //     {
+    //         ControlAccionesRegiones.singleton.SetEditorsAccionesRegiones(totalRegiones);
+    //     }
+    // }
 
     public void SetEnableZonaByID(int ID_zona, bool enable)
     {
