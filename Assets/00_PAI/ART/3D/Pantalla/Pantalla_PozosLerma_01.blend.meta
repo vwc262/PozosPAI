@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 82b3c26e68d3bdd4585a22059f812b0d
+guid: bd2aadd296e4e8d428aca50caa9b5d93
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_paneles
+    second: {fileID: 2100000, guid: 9ecf211680780b74292f6d5e5ca1f170, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: fd055a094f8a103498f343599e6002cf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,6 +26,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -41,8 +53,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
