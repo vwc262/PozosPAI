@@ -2314,6 +2314,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bd2aadd296e4e8d428aca50caa9b5d93, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fd055a094f8a103498f343599e6002cf, type: 2}
+    - target: {fileID: -7511558181221131132, guid: bd2aadd296e4e8d428aca50caa9b5d93, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ecf211680780b74292f6d5e5ca1f170, type: 2}
     - target: {fileID: 919132149155446097, guid: bd2aadd296e4e8d428aca50caa9b5d93, type: 3}
       propertyPath: m_Name
       value: Pantalla_PozosLerma_01
