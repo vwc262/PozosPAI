@@ -803,7 +803,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 370955431}
   m_HandleRect: {fileID: 370955430}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 21015142}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38371,14 +38371,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 3122824192537161953, guid: 97345e555d3eab24f91efb9d5ce1febd, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: fd055a094f8a103498f343599e6002cf, type: 2}
-    - target: {fileID: 3122824192537161953, guid: 97345e555d3eab24f91efb9d5ce1febd, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9ecf211680780b74292f6d5e5ca1f170, type: 2}
     - target: {fileID: 3147953040855062320, guid: 97345e555d3eab24f91efb9d5ce1febd, type: 3}
       propertyPath: m_Layer
       value: 20
@@ -46181,6 +46173,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1485092, guid: f61de300440be864f8cc66b498da3ec7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62426e5140d14aa4b9b06d4954fb8df6, type: 2}
     - target: {fileID: 106683672, guid: f61de300440be864f8cc66b498da3ec7, type: 3}
       propertyPath: m_Layer
       value: 20
@@ -49909,7 +49905,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 589525405}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -55091,7 +55087,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1231329887}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
