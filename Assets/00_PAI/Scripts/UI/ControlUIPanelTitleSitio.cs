@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlUIPanelTitleSitio : MonoBehaviour
 {
-    public SitioGPS sitioSeleccionado;
+    public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
     
     public TMPro.TMP_Text Nombre;
     public TMPro.TMP_Text Fecha;
@@ -28,29 +29,29 @@ public class ControlUIPanelTitleSitio : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            if (sitioSeleccionado != null)
-                UpdateStatusSitio(sitioSeleccionado);
+            if (controlMarcadorSitioSeleccionado != null)
+                UpdateStatusSitio(controlMarcadorSitioSeleccionado);
             countdown = updateRate;
         }
     }
 
-    public void UpdateInfoSitio(SitioGPS _Sitio)
+    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        sitioSeleccionado = _Sitio;
-        UpdateStatusSitio(sitioSeleccionado);
+        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
+        UpdateStatusSitio(controlMarcadorSitioSeleccionado);
     }
     
-    public void UpdateStatusSitio(SitioGPS _Sitio)
+    public void UpdateStatusSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
         if (Nombre != null)
-            Nombre.text = _Sitio.MyDataSitio.nombre;
+            Nombre.text = controlMarcadorSitio.sitio.dataSitio.nombre;
         
         if (Fecha != null)
-            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_Sitio.MyDataSitio.fecha);
+            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(controlMarcadorSitio.sitio.dataSitio.fecha);
 
         if (statusImage != null)
         {
-            if (_Sitio.statusDataInTime == 1)
+            if (controlMarcadorSitio.statusDataInTime == 1)
                 statusImage.sprite = imageStatusConectado;
             else
                 statusImage.sprite = imageStatusNoConectado;

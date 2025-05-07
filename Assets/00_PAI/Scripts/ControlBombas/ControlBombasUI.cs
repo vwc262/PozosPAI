@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlBombasUI : MonoBehaviour
 {
     public float updateRate = 5;
-    public SitioGPS SelectedSitio;
+    public ControlSitio selectedControlSitio;
     
     private float countdown;
     
@@ -21,18 +22,18 @@ public class ControlBombasUI : MonoBehaviour
         countdown -= Time.deltaTime;
         if(countdown <= 0)
         {
-            UpdateUISitio(SelectedSitio);
+            UpdateUISitio(selectedControlSitio);
             countdown = updateRate;
         }            
     }
 
-    public void UpdateInfoSitio(SitioGPS _sitio)
+    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        SelectedSitio = _sitio;
-        UpdateUISitio(SelectedSitio);
+        selectedControlSitio = controlMarcadorSitio.sitio;
+        UpdateUISitio(selectedControlSitio);
     }
     
-    public virtual void UpdateUISitio(SitioGPS _sitio)
+    public virtual void UpdateUISitio(ControlSitio controlMarcadorSitio)
     {
         
     }

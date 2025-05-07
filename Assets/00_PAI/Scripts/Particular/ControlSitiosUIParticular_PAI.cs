@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlSitiosUIParticular_PAI : MonoBehaviour
 {
-    public SitioGPS sitioSeleccionado;
+    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
     public float updateRate = 5;
     private float countdown;
 
@@ -34,21 +35,21 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            if (sitioSeleccionado != null)
-                UpdateStatusSitio(sitioSeleccionado);
+            if (controlMarcadorSitioSeleccionado != null)
+                UpdateStatusSitio(controlMarcadorSitioSeleccionado);
             countdown = updateRate;
         }
     }
     
-    public void UpdateInfoSitio(SitioGPS _Sitio)
+    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        sitioSeleccionado = _Sitio;
-        UpdateStatusSitio(sitioSeleccionado);
+        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
+        UpdateStatusSitio(controlMarcadorSitioSeleccionado);
 
         SetRegional();
     }
 
-    public void UpdateStatusSitio(SitioGPS _Sitio)
+    public void UpdateStatusSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
         contEnLinea =
             sitiosUIParticular.Count(item => item.GetComponent<ControlSelectSitio>().sitio.dataInTime);
@@ -65,14 +66,14 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
 
     public void SetRegional()
     {
-        regional = sitioSeleccionado.MyDataSitio.Estructura;
+        regional = controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura;
 
         if (regional != regionalAnt)
         {
             regionalAnt = regional;
             
             if (TextRegionalNombre != null)
-                TextRegionalNombre.text = ControlDatosAux.singleton.GetNameRegionByID(regional);
+                TextRegionalNombre.text = ControlDatos.singleton.GetNameRegionByID(regional);
 
             foreach (var uiSitio in sitiosUIParticular)
             {
@@ -81,25 +82,25 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
             
             sitiosUIParticular.Clear();
 
-            if (ControlDatosAux._singletonExists)
+            if (ControlDatos._singletonExists)
             {
-                foreach (var sitio in ControlDatosAux.singleton.listMarcadoresSitios)
+                foreach (var sitio in ControlDatos.singleton.listSitios)
                 {
-                    SitioGPS sitioGPS = sitio.GetComponent<SitioGPS>();
+                    //ControlMarcadorSitio controlMarcadorSitio = sitio.controlMarcadorMap;
 
-                    if (sitioGPS != null)
+                    // if (controlMarcadorSitio != null)
+                    // {
+                    if (sitio.dataSitio.Estructura == regional)
                     {
-                        if (sitioGPS.MyDataSitio.Estructura == regional)
-                        {
-                            GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
-                            
-                            ControlSelectSitio controlSitioUI = instance.GetComponent<ControlSelectSitio>();
-                            if (controlSitioUI != null)
-                                controlSitioUI.SetSitio(sitioGPS);
-                            
-                            sitiosUIParticular.Add(instance);
-                        }
+                        GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
+                        
+                        ControlSelectSitio controlSitioUI = instance.GetComponent<ControlSelectSitio>();
+                        if (controlSitioUI != null)
+                            controlSitioUI.SetSitio(sitio);
+                        
+                        sitiosUIParticular.Add(instance);
                     }
+                    // }
                 }
             }
         }

@@ -1,9 +1,10 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlObservaciones : MonoBehaviour
 {
-    public SitioGPS sitioSeleccionado;
+    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
     
     public float updateRate = 5;
     private float countdown;
@@ -39,29 +40,29 @@ public class ControlObservaciones : MonoBehaviour
         }
     }
     
-    public void UpdateInfoSitio(SitioGPS sitio)
+    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
         DisableEditObservaciones();
         
-        sitioSeleccionado = sitio;
+        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
         UpdateUIObservaciones();
     }
 
-    public void DeseleccionarSitioGPS(SitioGPS sitio)
+    public void DeseleccionarSitioGPS(ControlSitio sitio)
     {
-        sitioSeleccionado = null;
+        controlMarcadorSitioSeleccionado = null;
     }
 
     public void UpdateUIObservaciones()
     {
-        if (sitioSeleccionado != null)
+        if (controlMarcadorSitioSeleccionado != null)
         {
             if (textObservaciones != null)
             {
                 if (useLocalData)
                 {
                     Observacion observacion = observaciones.ListObservaciones.Find(
-                        item => item.id == sitioSeleccionado.MyDataSitio.idSitio);
+                        item => item.id == controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio);
                     
                     if (textObservaciones != null && observacion != null)
                         textObservaciones.text = observacion.observacion;
@@ -70,7 +71,7 @@ public class ControlObservaciones : MonoBehaviour
                 }
                 else
                 {
-                    textObservaciones.text = sitioSeleccionado.MyDataSitio.observaciones;
+                    textObservaciones.text = controlMarcadorSitioSeleccionado.sitio.dataSitio.observaciones;
                 }
             }
         }
@@ -85,7 +86,7 @@ public class ControlObservaciones : MonoBehaviour
 
     public void EditarObservacion()
     {
-        if (sitioSeleccionado != null)
+        if (controlMarcadorSitioSeleccionado != null)
         {
             EnableEditObservaciones();
 
@@ -95,17 +96,17 @@ public class ControlObservaciones : MonoBehaviour
     
     public void SaveObservacion()
     {
-        if (sitioSeleccionado != null)
+        if (controlMarcadorSitioSeleccionado != null)
         {
             DisableEditObservaciones();
             
             Observacion observacionAux = new Observacion();
 
-            observacionAux.id = sitioSeleccionado.MyDataSitio.idSitio;
+            observacionAux.id = controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio;
             observacionAux.observacion = inputFieldObservaciones.text;
             
             int observacion = observaciones.ListObservaciones.FindIndex(
-                item => item.id == sitioSeleccionado.MyDataSitio.idSitio);
+                item => item.id == controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio);
             
             if (observacion >= 0)
                 observaciones.ListObservaciones[observacion] = observacionAux;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlMarcadorUI : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class ControlMarcadorUI : MonoBehaviour
     public GameObject bombaOFF;
     public GameObject bombaFAIL;
 
-    public SitioGPS sitio;
+    [FormerlySerializedAs("sitio")] public ControlMarcadorSitio controlMarcadorSitio;
 
-    public void SetSitio(SitioGPS _sitio)
+    public void SetSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        sitio = _sitio;
+        this.controlMarcadorSitio = controlMarcadorSitio;
 
-        sitio.controlMarcadorUI = this;
+        this.controlMarcadorSitio.controlMarcadorUI = this;
     }
 
     public void SetColorBomba(int _color)
@@ -44,7 +45,7 @@ public class ControlMarcadorUI : MonoBehaviour
 
     public void SelectSitio()
     {
-        if (sitio != null)
-            sitio.SetSelectedSitio();
+        if (controlMarcadorSitio != null)
+            controlMarcadorSitio.SetSelectedSitio();
     }
 }

@@ -14,28 +14,28 @@ namespace Raskulls.ScriptableSystem
     [CreateAssetMenu(fileName = "SE_SelectSitio_Name", menuName = "Raskulls/Scriptable System/Events/SelectSitio Event")]
     public class SE_SelectSitio : GameEventBase
     {
-        public SitioGPS sitioGPS;
+        [FormerlySerializedAs("sitioGPS")] public ControlMarcadorSitio controlMarcadorSitio;
         private readonly List<SE_SelectSitioListener> eventListeners = new List<SE_SelectSitioListener>();
-        public void Raise(SitioGPS sitioGPS, OnEventComplete onEventComplete = null)
+        public void Raise(ControlMarcadorSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
         {
-            this.sitioGPS = sitioGPS;
-            if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(sitioGPS, onEventComplete));
+            this.controlMarcadorSitio = controlMarcadorSitio;
+            if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(controlMarcadorSitio, onEventComplete));
         }
-        public void Raise(SitioGPS sitioGPS)
+        public void Raise(ControlMarcadorSitio controlMarcadorSitio)
         {
-            this.sitioGPS = sitioGPS;
-            if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(sitioGPS));
+            this.controlMarcadorSitio = controlMarcadorSitio;
+            if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(controlMarcadorSitio));
         }
-        private IEnumerator RaiseEvent(SitioGPS sitioGPS, OnEventComplete onEventComplete = null)
+        private IEnumerator RaiseEvent(ControlMarcadorSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
         {
             for (int i = eventListeners.Count - 1; i >= 0; i--)
-                eventListeners[i].OnPreEventRaised(sitioGPS);
+                eventListeners[i].OnPreEventRaised(controlMarcadorSitio);
             yield return null;
             for (int i = eventListeners.Count - 1; i >= 0; i--)
-                eventListeners[i].OnEventRaised(sitioGPS);
+                eventListeners[i].OnEventRaised(controlMarcadorSitio);
             yield return null;
             for (int i = eventListeners.Count - 1; i >= 0; i--)
-                eventListeners[i].OnPostEventRaised(sitioGPS);
+                eventListeners[i].OnPostEventRaised(controlMarcadorSitio);
             yield return null;
             if (onEventComplete != null) onEventComplete();
         }

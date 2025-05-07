@@ -14,7 +14,7 @@ public class ControlMap : Singleton<ControlMap>
     public GameObject prefab_roadsMap;
     public GameObject prefab_props;
     
-    public GameObject zonasRegiones;
+    //public GameObject zonasRegiones;
     public GameObject normaMap;
     public GameObject roadsMap;
     public GameObject props;
@@ -27,6 +27,11 @@ public class ControlMap : Singleton<ControlMap>
     public Vector3 mapaMaxScaleMarcador = new Vector3(0.3f,0.3f,0.3f);
 
     public void Start()
+    {
+        
+    }
+    
+    public void IniciarMap()
     {
         if (createMapOnStart)
         {
@@ -44,49 +49,30 @@ public class ControlMap : Singleton<ControlMap>
         }
     }
 
-    public void ToggleMap()
-    {
-        showNormalMap = !showNormalMap;
-        
-        if (normaMap != null) normaMap.SetActive(showNormalMap);
-        if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
-        if (roadsMap != null) roadsMap.SetActive(!showNormalMap);
-
-        if (moveCamera != null)
-        {
-            if (showNormalMap)
-                moveCamera.zoomDownPivot.transform.localPosition += Vector3.up * DespZoomPivot;
-            else
-                moveCamera.zoomDownPivot.transform.localPosition += Vector3.down * DespZoomPivot;
-        }
-        
-        if (showNormalMap)
-        {
-            VWCBillboardSitio.maxScale = normalMaxScaleMarcador;
-        }
-        else
-        {
-            VWCBillboardSitio.maxScale = mapaMaxScaleMarcador;
-        }
-    }
-
-    // public void SetActiveColliderMap(bool _active)
+    // public void ToggleMap()
     // {
-    //     if (normaMap != null)
-    //     {
-    //         DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
-    //
-    //         if (controlCollider != null)
-    //             controlCollider.SetEnableMeshColliders(_active);
-    //     }
-    // }
-    //
-    // public void ChangeActiveColliderMap()
-    // {
-    //     DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
+    //     showNormalMap = !showNormalMap;
     //     
-    //     if (controlCollider != null)
-    //         controlCollider.ChangeEnabledMeshCollider();
+    //     if (normaMap != null) normaMap.SetActive(showNormalMap);
+    //     if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
+    //     if (roadsMap != null) roadsMap.SetActive(!showNormalMap);
+    //
+    //     if (moveCamera != null)
+    //     {
+    //         if (showNormalMap)
+    //             moveCamera.zoomDownPivot.transform.localPosition += Vector3.up * DespZoomPivot;
+    //         else
+    //             moveCamera.zoomDownPivot.transform.localPosition += Vector3.down * DespZoomPivot;
+    //     }
+    //     
+    //     if (showNormalMap)
+    //     {
+    //         VWCBillboardSitio.maxScale = normalMaxScaleMarcador;
+    //     }
+    //     else
+    //     {
+    //         VWCBillboardSitio.maxScale = mapaMaxScaleMarcador;
+    //     }
     // }
 
     public void LoadMaps()
@@ -94,7 +80,6 @@ public class ControlMap : Singleton<ControlMap>
         if (prefab_normaMap != null)
         {
             normaMap = Instantiate(prefab_normaMap, this.transform);
-            
         }
 
         if (prefab_roadsMap != null)
@@ -103,7 +88,7 @@ public class ControlMap : Singleton<ControlMap>
         }
         
         if (normaMap != null) normaMap.SetActive(showNormalMap);
-        if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
+        // if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
         if (roadsMap != null) roadsMap.SetActive(!showNormalMap);
     }
     

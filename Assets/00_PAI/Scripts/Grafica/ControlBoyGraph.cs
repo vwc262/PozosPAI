@@ -13,7 +13,7 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
             ControlUpdateUI.singleton.SitioSeleccionado.AddListener(UpdateInfoSitio);
     }
 
-    public void UpdateInfoSitio(DataSitio _DataSitio)
+    public void UpdateInfoSitio(ControlSitio sitio)
     {
         if (ListGraph.Count > 0)
         {
@@ -24,11 +24,11 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
 
             if (RequestAPI.Instance.sistema == RequestAPI.Proyectos.PozosPAI)
             {
-                BoyGraph.idSitio = _DataSitio.idSitio % 100;
-                BoyGraph.EstructuraSitio = (int)_DataSitio.Estructura;
+                BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
+                BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
             
                 RequestAPI.Instance.GetHistricosByDates(
-                    BoyGraph.idSitio,(int)_DataSitio.Estructura,
+                    BoyGraph.idSitio,(int)sitio.dataSitio.Estructura,
                     BoyGraph.minDate,
                     BoyGraph.maxDate,
                     BoyGraph.tipoPromedio,
@@ -36,8 +36,8 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
             }
             else
             {
-                BoyGraph.idSitio = _DataSitio.idSitio;
-                BoyGraph.EstructuraSitio = (int)_DataSitio.Estructura;
+                BoyGraph.idSitio = sitio.dataSitio.idSitio;
+                BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
             
                 RequestAPI.Instance.GetHistricosByDates(
                     BoyGraph.idSitio,

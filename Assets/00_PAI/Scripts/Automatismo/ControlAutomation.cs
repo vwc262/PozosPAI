@@ -87,19 +87,19 @@ public class ControlAutomation : Singleton<ControlAutomation>
 
             Sub_Teoloyucan.ClearLists();
 
-            foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
-                         item => item.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
+            foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
+                         item => item.dataSitio.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
             {
                 if (contentTeoloyucan != null && prefabControlAutomatismo != null)
                 {
                     GameObject obj = Instantiate(prefabControlAutomatismo, contentTeoloyucan.transform);
 
-                    obj.name = "Automation sitio: " + sitioT.nombre;
+                    obj.name = "Automation sitio: " + sitioT.dataSitio.nombre;
                     ControlAutomationSitio ASitio = obj.GetComponent<ControlAutomationSitio>();
 
                     if (ASitio != null)
                     {
-                        ASitio.SetDataSitio(sitioT, Sub_Teoloyucan);
+                        ASitio.SetDataSitio(sitioT.dataSitio, Sub_Teoloyucan);
                         Sub_Teoloyucan.controlAutomatismoList.Add(ASitio);
                     }
                 }
@@ -128,19 +128,19 @@ public class ControlAutomation : Singleton<ControlAutomation>
 
             Sub_FFCC.ClearLists();
 
-            foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
-                         item => item.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
+            foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
+                         item => item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
             {
                 if (contentFFCC != null && prefabControlAutomatismo != null)
                 {
                     GameObject obj = Instantiate(prefabControlAutomatismo, contentFFCC.transform);
 
-                    obj.name = "Automation sitio: " + sitioT.nombre;
+                    obj.name = "Automation sitio: " + sitioT.dataSitio.nombre;
                     ControlAutomationSitio ASitio = obj.GetComponent<ControlAutomationSitio>();
 
                     if (ASitio != null)
                     {
-                        ASitio.SetDataSitio(sitioT, Sub_FFCC);
+                        ASitio.SetDataSitio(sitioT.dataSitio, Sub_FFCC);
                         Sub_FFCC.controlAutomatismoList.Add(ASitio);
                     }
                 }
@@ -169,23 +169,23 @@ public class ControlAutomation : Singleton<ControlAutomation>
 
             Sub_Zumpango1.ClearLists();
 
-            foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
+            foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                          item =>
                          {
-                             return item.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
-                                    item.automationData.idSubestacion == 3;
+                             return item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
+                                    item.dataSitio.automationData.idSubestacion == 3;
                          }))
             {
                 if (contentZumpango1 != null && prefabControlAutomatismo != null)
                 {
                     GameObject obj = Instantiate(prefabControlAutomatismo, contentZumpango1.transform);
 
-                    obj.name = "Automation sitio: " + sitioT.nombre;
+                    obj.name = "Automation sitio: " + sitioT.dataSitio.nombre;
                     ControlAutomationSitio ASitio = obj.GetComponent<ControlAutomationSitio>();
 
                     if (ASitio != null)
                     {
-                        ASitio.SetDataSitio(sitioT, Sub_Zumpango1);
+                        ASitio.SetDataSitio(sitioT.dataSitio, Sub_Zumpango1);
                         Sub_Zumpango1.controlAutomatismoList.Add(ASitio);
                     }
                 }
@@ -198,23 +198,23 @@ public class ControlAutomation : Singleton<ControlAutomation>
 
             Sub_Zumpango2.ClearLists();
 
-            foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
+            foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                          item =>
                          {
-                             return (item.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
-                                    item.automationData.idSubestacion == 4;
+                             return (item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
+                                    item.dataSitio.automationData.idSubestacion == 4;
                          }))
             {
                 if (contentZumpango2 != null && prefabControlAutomatismo != null)
                 {
                     GameObject obj = Instantiate(prefabControlAutomatismo, contentZumpango2.transform);
 
-                    obj.name = "Automation sitio: " + sitioT.nombre;
+                    obj.name = "Automation sitio: " + sitioT.dataSitio.nombre;
                     ControlAutomationSitio ASitio = obj.GetComponent<ControlAutomationSitio>();
 
                     if (ASitio != null)
                     {
-                        ASitio.SetDataSitio(sitioT, Sub_Zumpango2);
+                        ASitio.SetDataSitio(sitioT.dataSitio, Sub_Zumpango2);
                         Sub_Zumpango2.controlAutomatismoList.Add(ASitio);
                     }
                 }
@@ -268,67 +268,63 @@ public class ControlAutomation : Singleton<ControlAutomation>
         Sub_Zumpango2.windowTime = Random.Range(30,100);
         
         int cont = 0;
-        foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
-                     item=>item.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
+        foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
+                     item=>item.dataSitio.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
         {
             cont++;
-            sitioT.automationData.index = cont;
-            sitioT.automationData.isActiveAutomation = Random.value < 0.5f;
-            //sitioT.automationData.nominalVoltage = Sub_Teoloyucan.nominalVoltage;
-            sitioT.automationData.toleranceVoltage = Sub_Teoloyucan.toleranceVoltage;
-            sitioT.automationData.starupTime = Sub_Teoloyucan.startupTime;
-            sitioT.automationData.stabilitationTime = Sub_Teoloyucan.stabilitationTime;
-            sitioT.automationData.windowTime = Sub_Teoloyucan.windowTime;
+            sitioT.dataSitio.automationData.index = cont;
+            sitioT.dataSitio.automationData.isActiveAutomation = Random.value < 0.5f;
+            sitioT.dataSitio.automationData.toleranceVoltage = Sub_Teoloyucan.toleranceVoltage;
+            sitioT.dataSitio.automationData.starupTime = Sub_Teoloyucan.startupTime;
+            sitioT.dataSitio.automationData.stabilitationTime = Sub_Teoloyucan.stabilitationTime;
+            sitioT.dataSitio.automationData.windowTime = Sub_Teoloyucan.windowTime;
         }
         
         cont = 0;
-        foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
-                     item=>item.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
+        foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
+                     item=>item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
         {
             cont++;
-            sitioT.automationData.index = cont;
-            sitioT.automationData.isActiveAutomation = Random.value < 0.5f;
-            //sitioT.automationData.nominalVoltage = Sub_FFCC.nominalVoltage;
-            sitioT.automationData.toleranceVoltage = Sub_FFCC.toleranceVoltage;
-            sitioT.automationData.starupTime = Sub_FFCC.startupTime;
-            sitioT.automationData.stabilitationTime = Sub_FFCC.stabilitationTime;
-            sitioT.automationData.windowTime = Sub_FFCC.windowTime;
+            sitioT.dataSitio.automationData.index = cont;
+            sitioT.dataSitio.automationData.isActiveAutomation = Random.value < 0.5f;
+            sitioT.dataSitio.automationData.toleranceVoltage = Sub_FFCC.toleranceVoltage;
+            sitioT.dataSitio.automationData.starupTime = Sub_FFCC.startupTime;
+            sitioT.dataSitio.automationData.stabilitationTime = Sub_FFCC.stabilitationTime;
+            sitioT.dataSitio.automationData.windowTime = Sub_FFCC.windowTime;
         }
         
         cont = 0;
-        foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
+        foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                      item=>
                      {
-                         return item.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
-                                item.idSitio <= 1813;
+                         return item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
+                                item.dataSitio.idSitio <= 1813;
                      }))
         {
             cont++;
-            sitioT.automationData.index = cont;
-            sitioT.automationData.isActiveAutomation = Random.value < 0.5f;
-            //sitioT.automationData.nominalVoltage = Sub_Zumpango1.nominalVoltage;
-            sitioT.automationData.toleranceVoltage = Sub_Zumpango1.toleranceVoltage;
-            sitioT.automationData.starupTime = Sub_Zumpango1.startupTime;
-            sitioT.automationData.stabilitationTime = Sub_Zumpango1.stabilitationTime;
-            sitioT.automationData.windowTime = Sub_Zumpango1.windowTime;
+            sitioT.dataSitio.automationData.index = cont;
+            sitioT.dataSitio.automationData.isActiveAutomation = Random.value < 0.5f;
+            sitioT.dataSitio.automationData.toleranceVoltage = Sub_Zumpango1.toleranceVoltage;
+            sitioT.dataSitio.automationData.starupTime = Sub_Zumpango1.startupTime;
+            sitioT.dataSitio.automationData.stabilitationTime = Sub_Zumpango1.stabilitationTime;
+            sitioT.dataSitio.automationData.windowTime = Sub_Zumpango1.windowTime;
         }
         
         cont = 0;
-        foreach (var sitioT in ControlDatosAux.singleton.listSitios.Where(
+        foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                      item=>
                      {
-                         return (item.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
-                                item.idSitio > 1813;
+                         return (item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
+                                item.dataSitio.idSitio > 1813;
                      }))
         {
             cont++;
-            sitioT.automationData.index = cont;
-            sitioT.automationData.isActiveAutomation = Random.value < 0.5f;
-            //sitioT.automationData.nominalVoltage = Sub_Zumpango2.nominalVoltage;
-            sitioT.automationData.toleranceVoltage = Sub_Zumpango2.toleranceVoltage;
-            sitioT.automationData.starupTime = Sub_Zumpango2.startupTime;
-            sitioT.automationData.stabilitationTime = Sub_Zumpango2.stabilitationTime;
-            sitioT.automationData.windowTime = Sub_Zumpango2.windowTime;
+            sitioT.dataSitio.automationData.index = cont;
+            sitioT.dataSitio.automationData.isActiveAutomation = Random.value < 0.5f;
+            sitioT.dataSitio.automationData.toleranceVoltage = Sub_Zumpango2.toleranceVoltage;
+            sitioT.dataSitio.automationData.starupTime = Sub_Zumpango2.startupTime;
+            sitioT.dataSitio.automationData.stabilitationTime = Sub_Zumpango2.stabilitationTime;
+            sitioT.dataSitio.automationData.windowTime = Sub_Zumpango2.windowTime;
         }
     }
 

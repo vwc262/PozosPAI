@@ -11,23 +11,20 @@ using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 //#if UNITY_EDITOR
-public class ControlDatosAux : Singleton<ControlDatosAux>
+public class ControlDatos : Singleton<ControlDatos>
 {
-    [TabGroup("Sitios")] public RequestAPI requestAPI;
+    //[TabGroup("Sitios")] public RequestAPI requestAPI;
     [TabGroup("Sitios")] public float updateDataTime = 10;
     [TabGroup("Sitios")] public bool UpdateLoop = true;
 
-    //[TabGroup("Sitios")][ShowInInspector]
-    //public IDictionary<string, int> signals = new Dictionary<string, int>();
-
     [SerializeField][TabGroup("Sitios")]
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "smallDescription")]
-    public List<DataSitio> listSitios = new List<DataSitio>();
+    public List<ControlSitio> listSitios = new List<ControlSitio>();
     [TabGroup("Sitios")] public List<int> listIdRegionales = new List<int>();
 
     [TabGroup("Sitios")] public int regionales;
 
-    [TabGroup("Marcadores")]public List<GameObject> listMarcadoresSitios = new List<GameObject>();
+    //[TabGroup("Marcadores")]public List<GameObject> listMarcadoresSitios = new List<GameObject>();
 
     [TabGroup("Marcadores")]public float longitud0;
     [TabGroup("Marcadores")]public float latitud0;
@@ -66,83 +63,49 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     
     //public DisableTerrainMeshCollider colliderMapa;
     public SitiosOrdenados sitiosOrdenados;
-    public bool ActInfraestructuraCoroutine;
+    //public bool ActInfraestructuraCoroutine;
 
     public UnityEvent DatosInicializados;
-    
-    // private void OnValidate()
-    // {
-    //     InitDictionary();
-    // }
-    //
-    // protected override void Awake()
-    // {
-    //     base.Awake();
-    //     InitDictionary();
-    // }
 
-    // private void InitDictionary()
-    // {
-    //     // -- UNREAL no soporta enums arriba de 1 byte
-    //     // --Nada = 0,
-    //     // --Level = 1,
-    //     // --Pressure = 2,
-    //     // --FlowRate = 3,
-    //     // --FlowRateWithTotal = 4,
-    //     // --Communication = 6,
-    //     // --Gate = 7,
-    //     // --Timestamp = 8,	
-    //     // --Bomba = 9,
-    //     // --Bateria = 10
-    //     // --PerillaBomba = 11
-    //     // --PerillaGeneral = 12
-    //     
-    //     if (!signals.Keys.Contains("Nada"))  signals.Add("Nada", 0);
-    //     if (!signals.Keys.Contains("Level"))  signals.Add("Level", 1);
-    //     if (!signals.Keys.Contains("Pressure"))  signals.Add("Pressure", 2);
-    //     if (!signals.Keys.Contains("FlowRate"))  signals.Add("FlowRate", 3);
-    //     if (!signals.Keys.Contains("FlowRateWithTotal"))  signals.Add("FlowRateWithTotal", 5);
-    //     if (!signals.Keys.Contains("Communication"))  signals.Add("Communication", 6);
-    //     if (!signals.Keys.Contains("Gate"))  signals.Add("Gate", 7);
-    //     if (!signals.Keys.Contains("Timestamp"))  signals.Add("Timestamp", 8);
-    //     if (!signals.Keys.Contains("Bomba"))  signals.Add("Bomba", 9);
-    //     if (!signals.Keys.Contains("Bateria"))  signals.Add("Bateria", 10);
-    //     if (!signals.Keys.Contains("PerillaBomba"))  signals.Add("PerillaBomba", 11);
-    //     if (!signals.Keys.Contains("PerillaGeneral"))  signals.Add("PerillaGeneral", 12);
-    // }
+    public Coroutine UpdateDataCoroutine;
+    public Coroutine UpdateDataGPSCoroutine;
+    public Coroutine ActualizarInfraestructuraCoroutine;
 
     public virtual void Start()
     {
+        // if (requestAPI != null)
+        // {
+        //     requestAPI.infraestructuraActualizada.AddListener(ActualizarInfraestructura);
+        // }
+    }
+
+    public void IniciarUpdateData()
+    {
         //Coroutine update data
-        StartCoroutine(UpdateData());
-        StartCoroutine(UpdateDataSitiosGPS());
+        if (UpdateDataCoroutine != null) StopCoroutine(UpdateDataCoroutine);
+        UpdateDataCoroutine = StartCoroutine(UpdateData());
         
-        if (requestAPI != null)
-        {
-            requestAPI.infraestructuraActualizada.AddListener(ActualizarInfraestructura);
-        }
+        if (UpdateDataGPSCoroutine != null) StopCoroutine(UpdateDataGPSCoroutine);
+        UpdateDataGPSCoroutine = StartCoroutine(UpdateDataSitiosGPS());
     }
     
     [Button]
     public void ActualizarInfraestructura()
     {
-        StartCoroutine(CoroutineActInfraestructura());
+        if (sitiosOrdenados != null)
+            sitiosOrdenados.clearListas();
+
+        DeleteSitiosGPS();
+        
+        InitDataPozos();
+
+        if (ActualizarInfraestructuraCoroutine != null) StopCoroutine(ActualizarInfraestructuraCoroutine);
+        ActualizarInfraestructuraCoroutine = StartCoroutine(CoroutineActInfraestructura());
     }
     
     public IEnumerator CoroutineActInfraestructura()
     {
-        ActInfraestructuraCoroutine = true;
-
-        if (sitiosOrdenados != null)
-            sitiosOrdenados.clearListas();
-        
-        GetDataPozos();
-
-        // if (ControlMap._singletonExists)
-        //     ControlMap.singleton.SetActiveColliderMap(true);
-        
-        DeleteSitiosGPS();
-        
+        //ActInfraestructuraCoroutine = true;
         CreateSitiosGPS_GO();
         
         if (sitiosOrdenados != null)
@@ -162,7 +125,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         if (sitiosOrdenados != null)
             sitiosOrdenados.updateListSitios();
         
-        ActInfraestructuraCoroutine = false;
+        //ActInfraestructuraCoroutine = false;
 
         DatosInicializados.Invoke();
 
@@ -173,26 +136,26 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     }
 
     [Button]
-    [TabGroup("Sitios")]public void GetDataPozos()
+    [TabGroup("Sitios")]public void InitDataPozos()
     {
         listSitios.Clear();
 
         var cont = 0;
         
-        foreach (SiteDescription sitio in requestAPI.dataRequestAPI.infraestructura.Sites)
+        foreach (SiteDescription sitio in RequestAPI.Instance.dataRequestAPI.infraestructura.Sites)
         {
-            DataSitio newDataSitio = GetDataSitioFromSiteDescription(sitio);
+            ControlSitio newSitio = new ControlSitio();
+            newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio);
+            newSitio.dataSitio.idSitioUnity = cont++;
 
-            newDataSitio.idSitioUnity = cont++;
-
-            listSitios.Add(newDataSitio);
+            listSitios.Add(newSitio);
         }
 
         listIdRegionales.Clear();
         
-        foreach (var sitio in listSitios.DistinctBy(item => item.Estructura))
+        foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
         {
-            listIdRegionales.Add(sitio.Estructura);
+            listIdRegionales.Add(sitio.dataSitio.Estructura);
         }
 
         regionales = listIdRegionales.Count();
@@ -231,20 +194,19 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     public void DeleteSitiosGPS()
     {
         int i = 0;
-        foreach (var sitio in listMarcadoresSitios)
+        foreach (var sitio in listSitios)
         {
             print($"Deleting {i++} {sitio}");
+            
             if (Application.isEditor)
             {
-                DestroyImmediate(sitio.gameObject);
+                DestroyImmediate(sitio.controlMarcadorMap.gameObject);
             }
             else
             {
-                Destroy(sitio.gameObject);
+                Destroy(sitio.controlMarcadorMap.gameObject);
             }
         }
-        
-        listMarcadoresSitios.Clear();
     }
     
     [TabGroup("Marcadores")]
@@ -263,7 +225,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
             //            (Vector3.forward * (sitio.latitud - latitud0)) * spanLatitud +
             //            (Vector3.up * maxAltitude);
             
-            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.latitud, sitio.longitud);
+            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
             
             // Bit shift the index of the layer (3) to get a bit mask
             //int layerMask = -1;
@@ -277,7 +239,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
 
 
             GameObject instancePrefab = null;
-            switch (sitio.tipoSitioPozo)
+            switch (sitio.dataSitio.tipoSitioPozo)
             {
                 case TipoSitioPozo.PozoLerma1:
                     instancePrefab = prefabMarcadorSitioLerma1;
@@ -301,18 +263,18 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
             GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, this.transform);
             instance.transform.position = position;
             
-            instance.name = $"Sitio_{sitio.nombre}_{sitio.Estructura}";
+            instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
             
-            SitioGPS mySitio = instance.GetComponent<SitioGPS>();
-            if (mySitio != null)
+            ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
+            if (myControlMarcadorSitio != null)
             {
-                mySitio.SetDataSitio(sitio);
-                mySitio.controlSitioUI = controlSitioUI;
+                myControlMarcadorSitio.SetDataSitio(sitio.dataSitio);
+                myControlMarcadorSitio.controlSitioUI = controlSitioUI;
             }
 
             //CreateGUISitios(mySitio);
             
-            listMarcadoresSitios.Add(instance);
+            sitio.controlMarcadorMap = myControlMarcadorSitio;
             
             PrefabUtility.RecordPrefabInstancePropertyModifications(instance);
         }
@@ -330,7 +292,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
 
         foreach (var sitio in listSitios)
         {
-            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.latitud, sitio.longitud);
+            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
 
             // Bit shift the index of the layer (3) to get a bit mask
             //int layerMask = -1;
@@ -344,7 +306,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
             }
             
             GameObject instancePrefab = null;
-            switch (sitio.tipoSitioPozo)
+            switch (sitio.dataSitio.tipoSitioPozo)
             {
                 case TipoSitioPozo.PozoLerma1:
                     instancePrefab = prefabMarcadorSitioLerma1;
@@ -369,18 +331,16 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
             GameObject instance = Instantiate(instancePrefab, this.transform);
             
             instance.transform.position = position;
-            instance.name = $"Sitio_{sitio.nombre}_{sitio.Estructura}";
+            instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
 
-            SitioGPS mySitio = instance.GetComponent<SitioGPS>();
-            if (mySitio != null)
+            ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
+            if (myControlMarcadorSitio != null)
             {
-                mySitio.SetDataSitio(sitio);
-                mySitio.controlSitioUI = controlSitioUI;
+                myControlMarcadorSitio.SetDataSitio(sitio.dataSitio);
+                myControlMarcadorSitio.controlSitioUI = controlSitioUI;
             }
 
-            listMarcadoresSitios.Add(instance);
-
-            //PrefabUtility.RecordPrefabInstancePropertyModifications(instance);
+            sitio.controlMarcadorMap = myControlMarcadorSitio;
         }
     }
     
@@ -390,12 +350,10 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     {
         DeleteSitiosSelectUI();
 
-        foreach (var marcador in listMarcadoresSitios)
+        foreach (var sitio in listSitios)
         {
-            SitioGPS mySitio = marcador.GetComponent<SitioGPS>();
-            
-            if (mySitio != null) 
-                CreateGUISitios(mySitio);
+            if (sitio.controlMarcadorMap != null) 
+                CreateGUISitios(sitio);
         }
     }
     
@@ -405,13 +363,11 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     {
         DeleteSitiosSelectUI();
 
-        foreach (var marcador in listMarcadoresSitios)
+        foreach (var sitio in listSitios)
         {
-            SitioGPS mySitio = marcador.GetComponent<SitioGPS>();
-            
-            if (mySitio != null)
+            if (sitio.controlMarcadorMap != null)
             {
-                controlSitioUI.SetSitioSelectUI_GO(mySitio);
+                controlSitioUI.SetSitioSelectUI_GO(sitio);
             }
         }
         
@@ -426,9 +382,9 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     }
     
     [TabGroup("Marcadores")]
-    public void CreateGUISitios(SitioGPS mySitio)
+    public void CreateGUISitios(ControlSitio sitio)
     {
-        controlSitioUI.SetSitioSelectUI_Prefab(mySitio);
+        controlSitioUI.SetSitioSelectUI_Prefab(sitio);
     }
     
     [TabGroup("Marcadores")]
@@ -524,7 +480,7 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         newDataSitio.longitud = sitio.Longitud;
         newDataSitio.latitud = sitio.Latitud;
 
-        SiteBase sitebase = requestAPI.dataRequestAPI.updateUnitySites.Sites.Find(
+        SiteBase sitebase = RequestAPI.Instance.dataRequestAPI.updateUnitySites.Sites.Find(
             item => item.Id == sitio.Id);
 
         if (sitebase != null)
@@ -620,16 +576,17 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     public virtual void UpdateDataPozos()
     {
         var cont = 0;
-        foreach (DataSitio dataSitio in listSitios)
+        foreach (ControlSitio controlSitio in listSitios)
         {
             //DataSitio newDataSitio = new DataSitio();
-            SiteDescription sitio = requestAPI.dataRequestAPI.infraestructura.Sites.Find(
-                item => item.Id == dataSitio.idSitio);
+            SiteDescription sitio = RequestAPI.Instance.dataRequestAPI.infraestructura.Sites.Find(
+                item => item.Id == controlSitio.dataSitio.idSitio);
 
             if (sitio != null)
             {
-                dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
-                dataSitio.idSitioUnity = cont;
+                controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
+                controlSitio.dataSitio.idSitioUnity = cont;
+                controlSitio.GetStatusConexionSitio();
             }
 
             cont++;
@@ -640,17 +597,17 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     [TabGroup("Sitios")]
     public virtual void UpdateDataSitios_Marcadores()
     {
-        foreach (var marcador in listMarcadoresSitios)
+        foreach (var sitio in listSitios)
         {
-            SitioGPS sitioGPS = marcador.GetComponent<SitioGPS>();
+            //SitioGPS sitioGPS = sitio.GetComponent<SitioGPS>();
 
-            if (sitioGPS != null)
+            if (sitio.controlMarcadorMap != null)
             {
-                DataSitio dataSitio = listSitios.Find(item => item.idSitio == sitioGPS.MyDataSitio.idSitio);
+                ControlSitio dataSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
 
                 if (dataSitio != null)
                 {
-                    sitioGPS.MyDataSitio.SetDataSitio(dataSitio);
+                    sitio.dataSitio.SetDataSitio(dataSitio.dataSitio);
                 }
             }
         }
@@ -678,9 +635,9 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     [Button]
     public void SetSitioInterpolationValue(float val)
     {
-        for (int i = 0; i < listMarcadoresSitios.Count; i++)
+        for (int i = 0; i < listSitios.Count; i++)
         {
-            VWCBillboardSitio UIBilboard = listMarcadoresSitios[i].GetComponentInChildren<VWCBillboardSitio>();
+            VWCBillboardSitio UIBilboard = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
             UIBilboard.RecalculateTilt(val);
             UIBilboard.RecalculateZoom(val);
         }
@@ -694,11 +651,10 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     [GUIColor(1, 0, 1)]
     private void GetOriginalPos()
     {
-        
-        originalPos = new Vector3[listMarcadoresSitios.Count];
-        for (int i = 0; i < listMarcadoresSitios.Count; i++)
+        originalPos = new Vector3[listSitios.Count];
+        for (int i = 0; i < listSitios.Count; i++)
         {
-            var billboard = listMarcadoresSitios[i].GetComponentInChildren<VWCBillboardSitio>();
+            var billboard = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
             originalPos[i] = billboard.transform.localPosition;
             billboard.positionGPSOriginal = originalPos[i];
 #if UNITY_EDITOR
@@ -712,9 +668,9 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     [GUIColor(1, 0, 0.5f)]
     private void RevertToOriginalPos()
     {
-        for (int i = 0; i < listMarcadoresSitios.Count; i++)
+        for (int i = 0; i < listSitios.Count; i++)
         {
-            var sitio1 = listMarcadoresSitios[i].GetComponentInChildren<VWCBillboardSitio>();
+            var sitio1 = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
             sitio1.transform.localPosition = originalPos[i];
             sitio1.circleID.color = Color.cyan;
         }
@@ -730,15 +686,15 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         while(!finishOverlap)
         {
             finishOverlap = true;
-            for (int i = 0; i < listMarcadoresSitios.Count; i++)
+            for (int i = 0; i < listSitios.Count; i++)
             {
-                var sitio1 = listMarcadoresSitios[i].GetComponentInChildren<VWCBillboardSitio>();
+                var sitio1 = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
 
                 sitio1.circleID.color = Color.cyan;
 
-                for (int j = 0; j < listMarcadoresSitios.Count; j++)
+                for (int j = 0; j < listSitios.Count; j++)
                 {
-                    var sitio2 = listMarcadoresSitios[j].GetComponentInChildren<VWCBillboardSitio>();
+                    var sitio2 = listSitios[j].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
                     if (sitio1 != sitio2)
                         if (Vector3.Distance(sitio1.transform.position.with(y:0), sitio2.transform.position.with(y:0)) < overlapingDistance)
                         {
@@ -766,9 +722,9 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
     
     public string GetNameRegionByID(int idRegion)
     {
-        if (requestAPI != null)
+        if (RequestAPI.Instance != null)
         {
-            Region regionAux = (requestAPI.dataRequestAPI.regiones.Find(item => item.idRegion == idRegion));
+            Region regionAux = (RequestAPI.Instance.dataRequestAPI.regiones.Find(item => item.idRegion == idRegion));
             if (regionAux != null)    
                 return regionAux.nombre;
         }
@@ -784,22 +740,13 @@ public class ControlDatosAux : Singleton<ControlDatosAux>
         Gps2UnityConverter.spanLongitud = spanLongitud;
         Gps2UnityConverter.spanLatitud = spanLatitud;
 
-        foreach (var instance in listMarcadoresSitios)
+        foreach (var instance in listSitios)
         {
-            SitioGPS sitio = instance.GetComponent<SitioGPS>();
+            position = instance.controlMarcadorMap.transform.position + 
+                       Gps2UnityConverter.GPS2Unity(instance.dataSitio.latitud, instance.dataSitio.longitud);
             
-            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.MyDataSitio.latitud, sitio.MyDataSitio.longitud);
-            
-            // RaycastHit hit;
-            //
-            // if (Physics.Raycast(position, transform.TransformDirection(Vector3.down), out hit, maxAltitude,
-            //         groundedLayerMaskayer))
-            // {
-            //     position.y = hit.point.y + alturaMarcador;
-            // }
-            
-            position.y = instance.transform.position.y;
-            instance.transform.position = position;
+            position.y = instance.controlMarcadorMap.transform.position.y;
+            instance.controlMarcadorMap.transform.position = position;
         }
     }
 }

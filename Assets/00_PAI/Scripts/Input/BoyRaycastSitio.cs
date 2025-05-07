@@ -72,10 +72,10 @@ public class BoyRaycastSitio : MonoBehaviour
 	    {
 		    proxy.transform.position = hit.point;
 
-		    if (hit.collider.GetComponentInParent<SitioGPS>() != null)
+		    if (hit.collider.GetComponentInParent<ControlMarcadorSitio>() != null)
 		    {
-			    hit.collider.GetComponentInParent<SitioGPS>().SetSelectedSitio();
-			    hit.collider.GetComponentInParent<SitioGPS>().CreateSphere();
+			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().SetSelectedSitio();
+			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().CreateSphere();
 		    }
 	    }
     }

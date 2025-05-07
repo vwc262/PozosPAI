@@ -20,11 +20,11 @@ public class BoyQRPozo : MonoBehaviour
 
 	}
 
-	private void UpdateGPS(SitioGPS _sitio)
+	private void UpdateGPS(ControlMarcadorSitio marcador)
 	{
-		gpsQR = $"{_sitio.MyDataSitio.latitud},{_sitio.MyDataSitio.longitud}";
+		gpsQR = $"{marcador.sitio.dataSitio.latitud},{marcador.sitio.dataSitio.longitud}";
 
-		gpsText.text = $"{ConvertDecimelToGrades(_sitio.MyDataSitio.latitud)}, {ConvertDecimelToGrades(_sitio.MyDataSitio.longitud)}";
+		gpsText.text = $"{ConvertDecimelToGrades(marcador.sitio.dataSitio.latitud)}, {ConvertDecimelToGrades(marcador.sitio.dataSitio.longitud)}";
 		
 		Texture2D qrTexture = QRGenerator.EncodeString(baseQR+gpsQR, darkColor, lightColor);
 		

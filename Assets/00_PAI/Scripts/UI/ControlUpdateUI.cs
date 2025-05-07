@@ -2,38 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class ControlUpdateUI : Singleton<ControlUpdateUI>
 {
-    public UnityEvent<DataSitio> SitioSeleccionado;
-    public UnityEvent<SitioGPS> SitioSeleccionadoSitioGPS;
+    public UnityEvent<ControlSitio> SitioSeleccionado;
     
-    public UnityEvent<SitioGPS> SitioDeseleccionado;
+    public UnityEvent<ControlMarcadorSitio> SitioSeleccionadoSitioGPS;
     
-    public UnityEvent<SitioGPS> ChangeIndexBomba;
+    public UnityEvent<ControlSitio> SitioDeseleccionado;
     
-    public SitioGPS sitioSeleccionado;
+    public UnityEvent<ControlSitio> ChangeIndexBomba;
     
-    public void SetSelectedSitio(DataSitio _DataSitio)
+    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
+    
+    public void SetSelectedSitio(ControlSitio _DataSitio)
     {
         SitioSeleccionado.Invoke(_DataSitio);
     }
     
-    public void SetSitioSeleccionado(SitioGPS _sitio)
+    public void SetSitioSeleccionado(ControlMarcadorSitio controlMarcadorSitio)
     {
-        sitioSeleccionado = _sitio;
-        SitioSeleccionadoSitioGPS.Invoke(sitioSeleccionado);
+        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
+        //SitioSeleccionadoSitioGPS.Invoke(controlMarcadorSitioSeleccionado);
     }
 
     public void deseleccionarSitio()
     {
-        if (sitioSeleccionado != null)
+        if (controlMarcadorSitioSeleccionado != null)
         {
-            sitioSeleccionado.DeselectMe();
+            controlMarcadorSitioSeleccionado.DeselectMe();
             
-            SitioDeseleccionado.Invoke(sitioSeleccionado);
+            //SitioDeseleccionado.Invoke(controlMarcadorSitioSeleccionado);
             
-            sitioSeleccionado = null;
+            controlMarcadorSitioSeleccionado = null;
         }
     }
 }

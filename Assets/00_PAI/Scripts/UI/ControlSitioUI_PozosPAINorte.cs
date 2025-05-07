@@ -31,15 +31,15 @@ public class ControlSitioUIPozosPaiNorte  : ControlSitioUI
             {
                 if (controlSitio.gameObject.activeSelf)
                 {
-                    if (controlSitio.sitio.statusDataInTime == 1)
+                    if (controlSitio.sitio.dataInTime)
                     {
-                        sitiosOrdenados.RegionesLabelUILabel[controlDatosAux.GetIndexRegionByID(controlSitio.sitio.MyDataSitio.Estructura)]
+                        sitiosOrdenados.RegionesLabelUILabel[controlDatos.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
                             .coutActRegional++;
                         coutActTotal++;
                     }
                     else
                     {
-                        sitiosOrdenados.RegionesLabelUILabel[controlDatosAux.GetIndexRegionByID(controlSitio.sitio.MyDataSitio.Estructura)]
+                        sitiosOrdenados.RegionesLabelUILabel[controlDatos.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
                             .coutNoActRegional++;
                         coutNoActTotal++;
                     }
@@ -53,23 +53,23 @@ public class ControlSitioUIPozosPaiNorte  : ControlSitioUI
         sitiosOrdenados.SetTextTotales();
     }
     
-    public override void SetSitioSelectUI_Prefab(SitioGPS _sitio)
+    public override void SetSitioSelectUI_Prefab(ControlSitio sitio)
     {
         #if UNITY_EDITOR
         GameObject instancePrefab = null;
-        switch (_sitio.MyDataSitio.tipoSitioPozo)
+        switch (sitio.dataSitio.tipoSitioPozo)
         {
             case TipoSitioPozo.PozoLerma1:
-                instancePrefab = controlDatosAux.prefabPanelSitioLerma1;
+                instancePrefab = controlDatos.prefabPanelSitioLerma1;
                 break;
             case TipoSitioPozo.PozoLerma2:
-                instancePrefab = controlDatosAux.prefabPanelSitioLerma1;
+                instancePrefab = controlDatos.prefabPanelSitioLerma1;
                 break;
             case TipoSitioPozo.Repetidor:
-                instancePrefab = controlDatosAux.prefabPanelRepetidor;
+                instancePrefab = controlDatos.prefabPanelRepetidor;
                 break;
             case TipoSitioPozo.EnConstruccion:
-                instancePrefab = controlDatosAux.prefabPanelSitioEnConstruccion;
+                instancePrefab = controlDatos.prefabPanelSitioEnConstruccion;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -77,58 +77,54 @@ public class ControlSitioUIPozosPaiNorte  : ControlSitioUI
         string prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(instancePrefab);
         Object prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(Object));
 
-        // GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, 
-        //     panelGrupoSitios[(int)_sitio.MyDataSitio.Estructura].transform);
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, 
-            sitiosOrdenados.RegionesLabelUIList[(int)_sitio.MyDataSitio.Estructura - 1].
+            sitiosOrdenados.RegionesLabelUIList[(int)sitio.dataSitio.Estructura - 1].
                 rootRegion.transform);
 
         RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
         m_RectTransform.anchoredPosition = new Vector2(0,0);
         
         ControlSelectSitio controlSignal = instance.GetComponent<ControlSelectSitio>();
-        controlSignal.SetSitio(_sitio);
-        instance.name = $"PanelSitio_{_sitio.MyDataSitio.nombre}_{_sitio.MyDataSitio.Estructura}";
+        controlSignal.SetSitio(sitio);
+        instance.name = $"PanelSitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
         sitios.Add(instance);
 
         PrefabUtility.RecordPrefabInstancePropertyModifications(instance);
         #endif
     }
     
-    public override void SetSitioSelectUI_GO(SitioGPS _sitio)
+    public override void SetSitioSelectUI_GO(ControlSitio sitio)
     {
         GameObject instancePrefab = null;
         
-        switch (_sitio.MyDataSitio.tipoSitioPozo)
+        switch (sitio.dataSitio.tipoSitioPozo)
         {
             case TipoSitioPozo.PozoLerma1:
-                instancePrefab = controlDatosAux.prefabPanelSitioLerma1;
+                instancePrefab = controlDatos.prefabPanelSitioLerma1;
                 break;
             case TipoSitioPozo.PozoLerma2:
-                instancePrefab = controlDatosAux.prefabPanelSitioLerma1;
+                instancePrefab = controlDatos.prefabPanelSitioLerma1;
                 break;
             case TipoSitioPozo.Repetidor:
-                instancePrefab = controlDatosAux.prefabPanelRepetidor;
+                instancePrefab = controlDatos.prefabPanelRepetidor;
                 break;
             case TipoSitioPozo.EnConstruccion:
-                instancePrefab = controlDatosAux.prefabPanelSitioEnConstruccion;
+                instancePrefab = controlDatos.prefabPanelSitioEnConstruccion;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
 
-        // GameObject instance = Instantiate(instancePrefab, 
-        //     panelGrupoSitios[(int)_sitio.MyDataSitio.Estructura].transform);
         GameObject instance = Instantiate(instancePrefab, 
-            sitiosOrdenados.RegionesLabelUIList[controlDatosAux.GetIndexRegionByID(_sitio.MyDataSitio.Estructura)].
+            sitiosOrdenados.RegionesLabelUIList[controlDatos.GetIndexRegionByID(sitio.dataSitio.Estructura)].
                 rootRegion.transform);
 
         RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
         m_RectTransform.anchoredPosition = new Vector2(0,0);
         
         ControlSelectSitio controlSignal = instance.GetComponent<ControlSelectSitio>();
-        controlSignal.SetSitio(_sitio);
-        instance.name = $"PanelSitio_{_sitio.MyDataSitio.nombre}_{_sitio.MyDataSitio.Estructura}";
+        controlSignal.SetSitio(sitio);
+        instance.name = $"PanelSitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
         sitios.Add(instance);
     }
 
@@ -144,7 +140,6 @@ public class ControlSitioUIPozosPaiNorte  : ControlSitioUI
                     if (sitio.toggleSelectForAnalitics != null)
                     {
                         sitio.toggleSelectForAnalitics.isOn = false;
-                        //sitio.toggleSelectForAnalitics.onValueChanged.Invoke();
                     }
                 }
             }

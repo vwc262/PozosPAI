@@ -16,7 +16,7 @@ public class ControlSitioUI : Singleton<ControlSitioUI>
     [TabGroup("Signals")] public List<GameObject> signals = new List<GameObject>();
 
     [TabGroup("Sitios")] public List<GameObject> sitios = new List<GameObject>();
-    [TabGroup("Sitios")] public ControlDatosAux controlDatosAux;
+    [FormerlySerializedAs("controlDatosAux")] [TabGroup("Sitios")] public ControlDatos controlDatos;
     
     public float updateRate = 5;
     private float countdown;
@@ -121,9 +121,9 @@ public class ControlSitioUI : Singleton<ControlSitioUI>
         signals.Clear();
     }
     
-    public virtual void SetSitioSelectUI_Prefab(SitioGPS _sitio) { }
+    public virtual void SetSitioSelectUI_Prefab(ControlSitio sitio) { }
     
-    public virtual void SetSitioSelectUI_GO(SitioGPS _sitio) { }
+    public virtual void SetSitioSelectUI_GO(ControlSitio sitio) { }
     
     public void DeleteSitios()
     {

@@ -29,8 +29,8 @@ public class SitiosOrdenadosRegionesPozosPAINorte
             {
                 //SelectRegion(i1, val);
                 
-                if (ControlDatosAux._singletonExists)
-                    SetEnableZonaByID(ControlDatosAux.singleton.GetIDRegionByIndex(i1), val);
+                if (ControlDatos._singletonExists)
+                    SetEnableZonaByID(ControlDatos.singleton.GetIDRegionByIndex(i1), val);
             });
         }
     }
@@ -136,23 +136,23 @@ public class SitiosOrdenadosRegionesPozosPAINorte
 
     public void CreateUIRegiones()
     {
-        if (ControlDatosAux._singletonExists)
+        if (ControlDatos._singletonExists)
         {
             for (int i = 0; i < totalRegiones; i++)
             {
-                ControlRegionUILabel instanceLabel = Instantiate(ControlDatosAux.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
+                ControlRegionUILabel instanceLabel = Instantiate(ControlDatos.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
                     GetComponent<ControlRegionUILabel>();
                 
                 instanceLabel.sitiosOrdenados = this;
                 instanceLabel.region = (i + 1);
-                instanceLabel.regionID = ControlDatosAux.singleton.GetIDRegionByIndex(i);
-                string nameRegion = ControlDatosAux.singleton.GetNameRegionByID(ControlDatosAux.singleton.GetIDRegionByIndex(i));
+                instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
+                string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i));
                 instanceLabel.SetNameRegional(nameRegion);
                 instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
                 instanceLabel.gameObject.name = "Label " + nameRegion;
                 RegionesLabelUILabel.Add(instanceLabel);
                 
-                ControlRegionUIList instanceList = Instantiate(ControlDatosAux.singleton.prefabUIRegionaList, contentSitiosList.transform).
+                ControlRegionUIList instanceList = Instantiate(ControlDatos.singleton.prefabUIRegionaList, contentSitiosList.transform).
                     GetComponent<ControlRegionUIList>();
                 
                 instanceList.gameObject.name = "List " + instanceLabel.region.ToString();

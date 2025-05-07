@@ -5,10 +5,11 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class ParticularManager : Singleton<ParticularManager>
 {
-    public SitioGPS sitioSeleccionado;
+    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
 
     public GameObject loadedScreen;
     public float loadTime;
@@ -67,9 +68,9 @@ public class ParticularManager : Singleton<ParticularManager>
         }            
     }
     
-    public void UpdateInfoSitio(SitioGPS sitio)
+    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        sitioSeleccionado = sitio;
+        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
         
         if (isParticularOpen)
             ChangeParticularScene();
@@ -186,7 +187,7 @@ public class ParticularManager : Singleton<ParticularManager>
         string sceneName = "";
 
         sceneParticularInfo aux = sceneParticularInfos
-            .Find(item => item.id_sitio == sitioSeleccionado.MyDataSitio.idSitio);
+            .Find(item => item.id_sitio == controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio);
 
         if (aux != null)
             sceneName = aux.nombreScene;
@@ -203,7 +204,7 @@ public class ParticularManager : Singleton<ParticularManager>
         string sceneName = "";
 
         sceneParticularInfo aux = sceneParticularInfos
-            .Find(item => item.id_sitio == sitioSeleccionado.MyDataSitio.idSitio);
+            .Find(item => item.id_sitio == controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio);
 
         if (aux != null)
             sceneName = aux.nombreScene;
@@ -226,7 +227,7 @@ public class ParticularManager : Singleton<ParticularManager>
     public void SetUIParticular()
     {
         if (textParticularNombre != null)
-            textParticularNombre.text = sitioSeleccionado.MyDataSitio.nombre;
+            textParticularNombre.text = controlMarcadorSitioSeleccionado.sitio.dataSitio.nombre;
 
         SetUIControlBomba();
 
@@ -237,7 +238,7 @@ public class ParticularManager : Singleton<ParticularManager>
     {
         bool ControlBombaSitio = false;
         
-        switch ((RequestAPI.Proyectos)sitioSeleccionado.MyDataSitio.Estructura)
+        switch ((RequestAPI.Proyectos)controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura)
         {
             case RequestAPI.Proyectos.Teoloyucan:
                 ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
@@ -268,9 +269,9 @@ public class ParticularManager : Singleton<ParticularManager>
 
     public void UpdateUIParticular()
     {
-        if (sitioSeleccionado != null)
+        if (controlMarcadorSitioSeleccionado != null)
         {
-            if (sitioSeleccionado.dataInTime)
+            if (controlMarcadorSitioSeleccionado.dataInTime)
             {
                 if (EstadoEnLinea != null)
                     EstadoEnLinea.gameObject.SetActive(true);
@@ -288,7 +289,7 @@ public class ParticularManager : Singleton<ParticularManager>
             }
 
             if (textUltimaActualizacion != null)
-                textUltimaActualizacion.text = "Última actualización: " + sitioSeleccionado.MyDataSitio.fecha;
+                textUltimaActualizacion.text = "Última actualización: " + controlMarcadorSitioSeleccionado.sitio.dataSitio.fecha;
         }
         
         

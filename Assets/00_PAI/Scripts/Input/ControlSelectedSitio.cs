@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlSelectedSitio : MonoBehaviour
 {
-    public SitioGPS sitioSelected;
+    [FormerlySerializedAs("sitioSelected")] public ControlMarcadorSitio controlMarcadorSitioSelected;
 
-    public void SetSelectedSitio(SitioGPS _sitio)
+    public void SetSelectedSitio(ControlMarcadorSitio controlMarcadorSitio)
     {
-        if (sitioSelected != null)
-            sitioSelected.DeselectMe();
+        if (controlMarcadorSitioSelected != null)
+            controlMarcadorSitioSelected.DeselectMe();
         
-        sitioSelected = _sitio;
+        controlMarcadorSitioSelected = controlMarcadorSitio;
         
-        sitioSelected.SelectMe();
+        controlMarcadorSitioSelected.SelectMe();
         
         if (ControlBombas_PAI._singletonExists)
             ((ControlBombas_PAI)ControlBombas_PAI.singleton).SendEventFSM("hide");

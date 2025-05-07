@@ -260,9 +260,9 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputDragEvent.Raise(tiltValue);
     }
     
-    public void SetSelectedSitio(SitioGPS dataSitio)
+    public void SetSelectedSitio(ControlMarcadorSitio dataControlMarcadorSitio)
     {
-        SetSelectedSitioPosition(dataSitio.transform.position);
+        SetSelectedSitioPosition(dataControlMarcadorSitio.transform.position);
     }
     
     public void SetSelectedSitioPosition(Vector3 _position)
