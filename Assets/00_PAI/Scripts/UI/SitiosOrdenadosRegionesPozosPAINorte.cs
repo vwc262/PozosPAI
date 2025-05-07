@@ -181,10 +181,10 @@ public class SitiosOrdenadosRegionesPozosPAINorte
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                         break;
 
-                    case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                        RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                            ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
-                        break;
+                    //case RequestAPI.Proyectos.PozosReyesFerrocarril:
+                    //    RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
+                    //        ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
+                    //    break;
 
                     case RequestAPI.Proyectos.PozosAIFA:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(

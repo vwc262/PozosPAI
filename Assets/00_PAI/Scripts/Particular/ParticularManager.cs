@@ -249,10 +249,10 @@ public class ParticularManager : Singleton<ParticularManager>
                     ControlAccesoPozosPAI.Proyectos.PozosZumpango);
                 break;
 
-            case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                    ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
-                break;
+            // case RequestAPI.Proyectos.PozosReyesFerrocarril:
+            //     ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
+            //         ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
+            //     break;
 
             case RequestAPI.Proyectos.PozosAIFA:
                 ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(

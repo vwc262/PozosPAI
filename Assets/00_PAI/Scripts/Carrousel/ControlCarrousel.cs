@@ -33,11 +33,11 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                         ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                 break;
-            case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                if (ControlBombaButton != null)
-                    ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                        ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
-                break;
+            // case RequestAPI.Proyectos.PozosReyesFerrocarril:
+            //     if (ControlBombaButton != null)
+            //         ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
+            //             ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
+            //     break;
             case RequestAPI.Proyectos.PozosAIFA:
                 if (ControlBombaButton != null)
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(

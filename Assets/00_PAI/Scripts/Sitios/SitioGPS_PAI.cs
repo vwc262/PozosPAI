@@ -176,9 +176,9 @@ public class SitioGPS_PAI : SitioGPS
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosZumpango);
                     break;
                 
-                case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                    ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
-                    break;
+                // case RequestAPI.Proyectos.PozosReyesFerrocarril:
+                //     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
+                //     break;
                 
                 case RequestAPI.Proyectos.PozosAIFA:
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosAIFA);

@@ -292,10 +292,10 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango);
                         break;
 
-                    case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                        ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                            ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
-                        break;
+                    // case RequestAPI.Proyectos.PozosReyesFerrocarril:
+                    //     ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
+                    //         ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
+                    //     break;
 
                     case RequestAPI.Proyectos.PozosAIFA:
                         ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
