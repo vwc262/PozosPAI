@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 
 public class ControlBombas : Singleton<ControlBombas>
 {
@@ -17,7 +18,7 @@ public class ControlBombas : Singleton<ControlBombas>
     // public string address = $"/api24/VWC/Unreal/Chiconautla2024/InsertComando";
     public bool errorControlBombaHTML;
     
-    public SitioGPS sitioSeleccionado;
+    public ControlSitio sitio;
 
     public bool simulaSendCommand;
     
@@ -29,14 +30,13 @@ public class ControlBombas : Singleton<ControlBombas>
     
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
 
-    public void UpdateInfoSitio(SitioGPS _sitio)
+    public void UpdateInfoSitio(ControlSitio sitio)
     {
-        //idSitio = _DataSitio.idSitio;
-        sitioSeleccionado = _sitio;
+        this.sitio = sitio;
     }
     
     [Button]
@@ -72,7 +72,7 @@ public class ControlBombas : Singleton<ControlBombas>
     {
         if (ControlLogin._singletonExists)
         {
-            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, sitioSeleccionado.MyDataSitio.idSitio, sitioSeleccionado.indexBomba, action);
+            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, sitio.dataSitio.idSitio, sitio.indexBomba, action);
             StartCoroutine(DoRequest());
         }
     }

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControlSelectSitio_PAI : ControlSelectSitio
+public class ControlUISitio_Pai : ControlUISitio
 {
     private RectTransform rt;
     private RectTransform rt_button;
@@ -40,15 +40,15 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
     {
         if (sitio != null)
         {
-            textID.text = $"{SitioGPS_PAI.GetIDSitiosPAI(sitio.MyDataSitio.abreviacion)}";
-            textAlias.text = sitio.MyDataSitio.abreviacion;
-            textNombre.text = sitio.MyDataSitio.nombre;
+            textID.text = $"{ControlMarcadorSitioPai.GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
+            textAlias.text = sitio.dataSitio.abreviacion;
+            textNombre.text = sitio.dataSitio.nombre;
             DataInTime = sitio.dataInTime;
             onlineStatusImage.sprite = DataInTime ? onlineSprite : offlineSprite;
-            statusColor = sitio.statusColor;
+            if (sitio.controlMarcadorMap != null) statusColor = sitio.controlMarcadorMap.statusColor;
             statusColor.a = 1;
 
-            if (sitio.MyDataSitio.bomba.Count == 1)
+            if (sitio.dataSitio.bomba.Count == 1)
             {
                 if (UIStatus != 1)
                 {
@@ -58,7 +58,7 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
 
                 SetStatusBomba(statusBomba, 0);
             }
-            else if (sitio.MyDataSitio.bomba.Count > 1)
+            else if (sitio.dataSitio.bomba.Count > 1)
             {
                 UpdateNumBombas();
             }
@@ -71,23 +71,23 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
                 }
             }
 
-            textFecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(sitio.MyDataSitio.fecha);
+            textFecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(sitio.dataSitio.fecha);
 
             if (textoVoltaje != null)
-                textoVoltaje.text = $"{sitio.MyDataSitio.voltaje:F2} V";
+                textoVoltaje.text = $"{sitio.dataSitio.voltaje:F2} V";
 
             if (!dataOverwrited)
             {
-                if (sitio.MyDataSitio.gasto.Count > 0)
+                if (sitio.dataSitio.gasto.Count > 0)
                 {
-                    if (sitio.MyDataSitio.gasto[0].DentroRango)
+                    if (sitio.dataSitio.gasto[0].DentroRango)
                     {
-                        textGasto.text = $"{sitio.MyDataSitio.gasto[0].Valor:F2}";
+                        textGasto.text = $"{sitio.dataSitio.gasto[0].Valor:F2}";
 
                         if (progressBarGasto != null)
                         {
                             progressBarGasto.transform.parent.gameObject.SetActive(true);
-                            progressBarGasto.fillAmount = sitio.MyDataSitio.gasto[0].Valor / MaxGasto;
+                            progressBarGasto.fillAmount = sitio.dataSitio.gasto[0].Valor / MaxGasto;
                         }
                     }
                     else
@@ -112,16 +112,16 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
                     }
                 }
 
-                if (sitio.MyDataSitio.presion.Count > 0)
+                if (sitio.dataSitio.presion.Count > 0)
                 {
-                    if (sitio.MyDataSitio.presion[0].DentroRango)
+                    if (sitio.dataSitio.presion[0].DentroRango)
                     {
-                        textPresion.text = $"{sitio.MyDataSitio.presion[0].Valor:F2}";
+                        textPresion.text = $"{sitio.dataSitio.presion[0].Valor:F2}";
 
                         if (progressBarPresion != null)
                         {
                             progressBarPresion.transform.parent.gameObject.SetActive(true);
-                            progressBarPresion.fillAmount = sitio.MyDataSitio.presion[0].Valor / MaxPresion;
+                            progressBarPresion.fillAmount = sitio.dataSitio.presion[0].Valor / MaxPresion;
                         }
                     }
                     else
@@ -162,10 +162,10 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
 
             }
 
-            if (sitio.MyDataSitio.totalizado.Count > 0)
+            if (sitio.dataSitio.totalizado.Count > 0)
             {
-                textTotalizado.text = sitio.MyDataSitio.totalizado[0].DentroRango
-                    ? $"{sitio.MyDataSitio.totalizado[0].Valor:F0}"
+                textTotalizado.text = sitio.dataSitio.totalizado[0].DentroRango
+                    ? $"{sitio.dataSitio.totalizado[0].Valor:F0}"
                     : "-";
             }
             else
@@ -175,11 +175,11 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
 
             if (textNivel != null)
             {
-                if (sitio.MyDataSitio.nivel.Count > 0)
+                if (sitio.dataSitio.nivel.Count > 0)
                 {
-                    if (sitio.MyDataSitio.nivel[0].DentroRango)
+                    if (sitio.dataSitio.nivel[0].DentroRango)
                     {
-                        textNivel.text = $"Nivel: {sitio.MyDataSitio.nivel[0].Valor} m";
+                        textNivel.text = $"Nivel: {sitio.dataSitio.nivel[0].Valor} m";
                     }
                     else
                     {
@@ -244,25 +244,25 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
             rt_button = buttonSeleccion.GetComponent<RectTransform>();
     }
     
-    public override void SetSitio(SitioGPS _sitio)
+    public override void SetSitio(ControlSitio _sitio)
     {
-        sitio = _sitio;
+        base.sitio = _sitio;
 
-        if (_sitio != null)
+        if (sitio != null)
         {
             if (textID != null)
             {
-                textID.text = $"{_sitio.MyDataSitio.idSitioUnity}";
+                textID.text = $"{sitio.dataSitio.idSitioUnity}";
             }
             
             if (textAlias != null)
             {
-                textAlias.text = _sitio.MyDataSitio.abreviacion;
+                textAlias.text = sitio.dataSitio.abreviacion;
             }
             
             if (textNombre != null)
             {
-                textNombre.text = _sitio.MyDataSitio.nombre;
+                textNombre.text = sitio.dataSitio.nombre;
             }
 
             SetControlAccesoUI();
@@ -280,7 +280,7 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
             }
             else
             {
-                switch ((RequestAPI.Proyectos)sitio.MyDataSitio.Estructura)
+                switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
                 {
                     case RequestAPI.Proyectos.Teoloyucan:
                         ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
@@ -313,9 +313,9 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
 
     public void UpdatePerilla()
     {
-        if (sitio.MyDataSitio.PerillaBomba.Count > 0)
+        if (sitio.dataSitio.PerillaBomba.Count > 0)
         {
-            switch (sitio.MyDataSitio.PerillaBomba[0].Valor)
+            switch (sitio.dataSitio.PerillaBomba[0].Valor)
             {
                 case 0://OFF
                     if (perillaOff != null) perillaOff.SetActive(true);
@@ -338,13 +338,13 @@ public class ControlSelectSitio_PAI : ControlSelectSitio
 
     public void UpdateAutomatismo()
     {
-        if (sitio.MyDataSitio.automationData.AutomationError)
+        if (sitio.dataSitio.automationData.AutomationError)
         {
             if (automatismoError != null) automatismoError.SetActive(true);
             if (automatismoOn != null) automatismoOn.SetActive(false);
             if (automatismoOff != null) automatismoOff.SetActive(false);
         }
-        else if (sitio.MyDataSitio.automationData.isActiveAutomation)
+        else if (sitio.dataSitio.automationData.isActiveAutomation)
         {
             if (automatismoError != null) automatismoError.SetActive(false);
             if (automatismoOn != null) automatismoOn.SetActive(true);

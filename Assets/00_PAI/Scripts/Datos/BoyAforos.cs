@@ -91,7 +91,7 @@ public class BoyAforos : MonoBehaviour
         {
             foreach (var sitio in controlSitioUI.sitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {
@@ -101,10 +101,10 @@ public class BoyAforos : MonoBehaviour
                     if (uiSitio.toggleOverride != null)
                         uiSitio.toggleOverride.isOn = false;
                     
-                    if (aforoPozos.Any(item => item.Abreviacion == uiSitio.sitio.MyDataSitio.abreviacion))
+                    if (aforoPozos.Any(item => item.Abreviacion == uiSitio.sitio.dataSitio.abreviacion))
                     {
                         dataPozoAforo dataAforo =
-                            aforoPozos.First(item => item.Abreviacion == uiSitio.sitio.MyDataSitio.abreviacion);
+                            aforoPozos.First(item => item.Abreviacion == uiSitio.sitio.dataSitio.abreviacion);
                         
                         // if (dataAforo.Observaciones != "" && uiSitio.TooltipOverride != null)
                         // {
@@ -145,7 +145,7 @@ public class BoyAforos : MonoBehaviour
         {
             foreach (var sitio in controlSitioUI.sitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {

@@ -73,7 +73,7 @@ public class ControlDebug : MonoBehaviour
             proxy.SetActive(!proxy.activeSelf);
     }
 
-    [Button]
+    // [Button]
     // public void ChangeActiveTerrainColliders()
     // {
     //     if (ControlMap._singletonExists)
@@ -94,16 +94,16 @@ public class ControlDebug : MonoBehaviour
         if (RenderLupa != null) RenderLupa.SetActive(isActiveRenderLupa);
     }
 
-    public void SetActiveProps(bool val)
-    {
-        if (ControlMap._singletonExists)
-        {
-            if (val)
-                ControlMap.singleton.LoadProps();
-            else
-                ControlMap.singleton.DestroyProps();
-        }
-    }
+    // public void SetActiveProps(bool val)
+    // {
+    //     if (ControlMap._singletonExists)
+    //     {
+    //         if (val)
+    //             ControlMap.singleton.LoadProps();
+    //         else
+    //             ControlMap.singleton.DestroyProps();
+    //     }
+    // }
     
     public void ToggleLermaChiconautla()
     {

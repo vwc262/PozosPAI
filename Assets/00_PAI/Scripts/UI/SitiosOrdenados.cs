@@ -22,11 +22,11 @@ public class SitiosOrdenados : MonoBehaviour
     [TabGroup("UI")] public float AlphaNoSelected = 0.5f;
     [TabGroup("UI")] public Color[] selectedColors;
     
-    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatosAux._singletonExists? ControlDatosAux.singleton.regionales : 0;
+    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatos._singletonExists? ControlDatos.singleton.regionales : 0;
     [TabGroup("Sitios")] public SpriteRenderer[] colorRegiones;
     
     [ShowInInspector]
-    public Dictionary<int, List<ControlSelectSitio>> dictionaryListSitios = new Dictionary<int, List<ControlSelectSitio>>();
+    public Dictionary<int, List<ControlUISitio>> dictionaryListSitios = new Dictionary<int, List<ControlUISitio>>();
     
     [Button]
     private void Start()
@@ -115,16 +115,16 @@ public class SitiosOrdenados : MonoBehaviour
 	    for(int i =0; i < dictionaryListSitios.Values.Count; i++)
 	    {
 		    if (currentOrderIndex == 0)
-			    dictionaryListSitios[i] = dictionaryListSitios[i].OrderBy(x => x.sitio.MyDataSitio.idSitioUnity).ToList();
+			    dictionaryListSitios[i] = dictionaryListSitios[i].OrderBy(x => x.sitio.dataSitio.idSitioUnity).ToList();
 		    if (currentOrderIndex == 1)
 				dictionaryListSitios[i] = dictionaryListSitios[i].OrderByDescending(x => 
-					x.sitio.controlSelectSitio!= null ? x.sitio.GetGastoSitio() : x.sitio.MyDataSitio.idSitioUnity).ToList();
+					x.sitio != null ? x.sitio.GetGasto() : x.sitio.dataSitio.idSitioUnity).ToList();
 		    if (currentOrderIndex == 2)
 			    dictionaryListSitios[i] = dictionaryListSitios[i].OrderByDescending(x => 
-				    x.sitio.controlSelectSitio!= null ? x.sitio.GetPresionSitio() : x.sitio.MyDataSitio.idSitioUnity).ToList();
+				    x.sitio != null ? x.sitio.GetPresion() : x.sitio.dataSitio.idSitioUnity).ToList();
 		    if (currentOrderIndex == 3)
 			    dictionaryListSitios[i] = dictionaryListSitios[i].OrderByDescending(x =>
-				    x.sitio.controlSelectSitio!= null ? x.sitio.GetTotalizadoSitio() : x.sitio.MyDataSitio.idSitioUnity).ToList();
+				    x.sitio != null ? x.sitio.GetTotalizado() : x.sitio.dataSitio.idSitioUnity).ToList();
 
 		    foreach (var sitio in dictionaryListSitios[i])
 			    sitio.GetComponent<Transform>().SetSiblingIndex(dictionaryListSitios[i].IndexOf(sitio));

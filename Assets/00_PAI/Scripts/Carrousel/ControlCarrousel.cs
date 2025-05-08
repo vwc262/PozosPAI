@@ -19,9 +19,9 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
             FSMControlCarrousel.SendEvent(eventName);
     }
 
-    public void SetSelectedSitioGPS(SitioGPS sitioGPS)
+    public void SetSelectedSitioGPS(ControlMarcadorSitio controlMarcadorSitio)
     {
-        switch ((RequestAPI.Proyectos)sitioGPS.MyDataSitio.Estructura)
+        switch ((RequestAPI.Proyectos)controlMarcadorSitio.sitio.dataSitio.Estructura)
         {
             case RequestAPI.Proyectos.Teoloyucan:
                 if (ControlBombaButton != null)

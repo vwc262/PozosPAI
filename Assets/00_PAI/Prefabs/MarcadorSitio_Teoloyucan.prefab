@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2834501790833432943}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: ModelWindows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875170433330548408}
   - component: {fileID: 1723075039820637864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FallaAC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7685600689078535057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GUI_Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4039492248236014043}
   - component: {fileID: 2555276648512942132}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: LOD0_3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1867685542373630070}
   - component: {fileID: 5807357578300906161}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BombaPozos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2432286184233892361}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: LOD1_3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 5522679757534104840}
   - component: {fileID: 8786641188541296807}
   - component: {fileID: 339663760467995985}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: Bomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 778173477546851859}
   - component: {fileID: 1213439516133966421}
   - component: {fileID: 5932424535120424017}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BaseBomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 49433574300493590}
   - component: {fileID: 3171399477295735145}
   - component: {fileID: 5920500501224641703}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -719,7 +719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3396286285867629957}
   - component: {fileID: 5580502672439195612}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ SpriteRenderer:
   m_Size: {x: 0.84, y: 0.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2706114622740204209
@@ -806,7 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5898272483852565945}
   - component: {fileID: 3244006143758411566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +880,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2770108365935379594
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 5210900744101278787}
   - component: {fileID: 6188368831759090892}
   - component: {fileID: 2879042691250013970}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BaseBombaCurva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5177425072254238881}
   - component: {fileID: 7483051282507913021}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 0.48, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1066,7 +1066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5234608905173284479}
   - component: {fileID: 8891328683076067286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,7 +1140,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3993679843793125173
@@ -1153,7 +1153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456283193462171488}
   - component: {fileID: 1534222358297180163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frame_Conexion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1227,7 @@ SpriteRenderer:
   m_Size: {x: 0.84, y: 0.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4054589078919785683
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 8883380260113851256}
   - component: {fileID: 1068797420424179823}
   - component: {fileID: 7399817720425425823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BillBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db546a60c783e6a4491db3e2b7c0d261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sitioGPS: {fileID: 2152991575690397163}
+  controlMarcadorSitio: {fileID: 2152991575690397163}
   useDistance_X_Z: 0
   frameDark: {fileID: 8001642688201678951}
   circleID: {fileID: 7528874751140813385}
@@ -1453,7 +1453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5907231970336973364}
   - component: {fileID: 8001642688201678951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frame_Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,7 +1527,7 @@ SpriteRenderer:
   m_Size: {x: 0.84, y: 0.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4181587062325160078
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 7908759723376928421}
   - component: {fileID: 1681167233452211978}
   - component: {fileID: 86175237169954375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +1615,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &86175237169954375
@@ -1816,7 +1816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 768249523750029350}
   - component: {fileID: 8333933771504874793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1887,7 +1887,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 0.48, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1902,7 +1902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3342876079363125444}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GUI_Obj2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,10 +1935,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2936620698588247966}
-  - component: {fileID: 3281604653367802700}
   - component: {fileID: 2152991575690397163}
   - component: {fileID: 9219929739773004310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MarcadorSitio_Teoloyucan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1962,62 +1961,6 @@ Transform:
   - {fileID: 7037826776053125136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3281604653367802700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4617454687772707406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dcd8dace8b7fe449d796b980cb121d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selfSelected: 0
-  onSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2152991575690397163}
-        m_TargetAssemblyTypeName: SitioGPS, Assembly-CSharp
-        m_MethodName: SetSelectedSitio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2152991575690397163}
-        m_TargetAssemblyTypeName: SitioGPS, Assembly-CSharp
-        m_MethodName: DeselectMe
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  use: 0
-  onSelectedFinger:
-    m_PersistentCalls:
-      m_Calls: []
-  onSelectedFingerUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onSelectedSelectFinger:
-    m_PersistentCalls:
-      m_Calls: []
-  onSelectedSelectFingerUp:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2152991575690397163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2030,46 +1973,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d802efce60e64e84fade0059366ffa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyDataSitio:
-    idSitioUnity: 0
-    idSitio: 0
-    nombre: 
-    abreviacion: 
-    fecha: 
-    enlace: 0
-    fallaAC: 0
-    voltaje: 0
-    tipoSitioPozo: 0
-    Estructura: 0
-    longitud: 0
-    latitud: 0
-    nivel: []
-    bomba: []
-    presion: []
-    gasto: []
-    totalizado: []
-    Baterias: []
-    PerillaBomba: []
-    PerillaGeneral: []
-    Voltajes_Motor: []
-    Corrientes_Motor: []
-    observaciones: 
-    automationData:
-      idSubestacion: 0
-      isActiveAutomation: 0
-      AutomationError: 0
-      index: 0
-      starupTime: 0
-      stabilitationTime: 0
-      windowTime: 0
-      nominalVoltage: 0
-      toleranceVoltage: 0
-      ConfIsActiveAutomation: 0
-      ConfIndex: 0
-      ConfStarupTime: 0
-      ConfWindowTime: 0
-      ConfNominalVoltage: 0
-      ConfToleranceVoltage: 0
+  sitio:
+    diferencia: 0
+    dataInTime: 0
+    dataSitio:
+      idSitioUnity: 0
+      idSitio: 0
+      nombre: 
+      abreviacion: 
+      fecha: 
+      enlace: 0
+      fallaAC: 0
+      voltaje: 0
+      tipoSitioPozo: 0
+      Estructura: 0
+      longitud: 0
+      latitud: 0
+      nivel: []
+      bomba: []
+      presion: []
+      gasto: []
+      totalizado: []
+      Baterias: []
+      PerillaBomba: []
+      PerillaGeneral: []
+      Voltajes_Motor: []
+      Corrientes_Motor: []
+      observaciones: 
+      automationData:
+        idSubestacion: 0
+        isActiveAutomation: 0
+        AutomationError: 0
+        index: 0
+        starupTime: 0
+        stabilitationTime: 0
+        windowTime: 0
+        nominalVoltage: 0
+        toleranceVoltage: 0
+        ConfIsActiveAutomation: 0
+        ConfIndex: 0
+        ConfStarupTime: 0
+        ConfWindowTime: 0
+        ConfNominalVoltage: 0
+        ConfToleranceVoltage: 0
+    dataAforo:
+      isAforado: 0
+      fecha: ---
+      gasto: 0
+      presion: 0
+      totalizado: 0
+    controlMarcadorMap: {fileID: 0}
+    controlUIsitio: {fileID: 0}
+    indexBomba: 0
+    SelectedForAnalitics: 0
+    timeLastCommand: 0
   eventSelectSitio: {fileID: 11400000, guid: 682fc4a7d4d34754b8d30b51de0273dd, type: 2}
   controlSitioUI: {fileID: 0}
   textoNombre: {fileID: 4979291014181173207}
@@ -2105,15 +2062,12 @@ MonoBehaviour:
   - {fileID: 5780806654705804517}
   - {fileID: 493992755775317477}
   - {fileID: 339663760467995985}
-  controlSelectSitio: {fileID: 0}
   billboardObj: {fileID: 0}
   billboardSelectedPos: {x: 0, y: 0, z: 0}
   billboardUnSelectedPos: {x: 0, y: 0, z: 0}
   controlMarcadorUI: {fileID: 0}
   dataInTime: 0
-  indexBomba: 0
   timeToDobleClick: 0
-  timeLastCommand: 0
   listFallaAC_GO:
   - {fileID: 704086517842709166}
   - {fileID: 9024737292375527294}
@@ -2154,7 +2108,7 @@ GameObject:
   - component: {fileID: 1725858268249975622}
   - component: {fileID: 6197207969557437108}
   - component: {fileID: 2201488112001244976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_Sel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2225,7 +2179,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2689,7 +2643,7 @@ GameObject:
   - component: {fileID: 3264003106902639207}
   - component: {fileID: 2748362553502274428}
   - component: {fileID: 1823578874397407065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_Sel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2760,7 +2714,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3223,7 +3177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5576702631899867586}
   - component: {fileID: 2884445077272915853}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BombaPozos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3278,7 +3232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772275349304930059}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LOD0_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3317,7 +3271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7037826776053125136}
   - component: {fileID: 1861303400624212748}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3457,7 +3411,7 @@ GameObject:
   - component: {fileID: 1741565529136497852}
   - component: {fileID: 3278441303010015507}
   - component: {fileID: 5780806654705804517}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: Bomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3543,7 +3497,7 @@ GameObject:
   - component: {fileID: 6792439523021158311}
   - component: {fileID: 4924747396529179617}
   - component: {fileID: 493992755775317477}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BaseBomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3628,7 +3582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7632179600455363126}
   - component: {fileID: 8014749187267110968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3702,7 +3656,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5664004591990409060
@@ -3714,7 +3668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9086230707441301382}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: ModelWindows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3747,7 +3701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8137566976692467389}
   - component: {fileID: 2596223080250642600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3801,7 +3755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947447571878149139}
   - component: {fileID: 7993297049206699075}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3875,7 +3829,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6175173896531030884
@@ -3888,7 +3842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5150541975243134133}
   - component: {fileID: 5242683567266948827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3968,7 +3922,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6255062113005702332
@@ -3982,7 +3936,7 @@ GameObject:
   - component: {fileID: 2881103413158460612}
   - component: {fileID: 9128814670944102501}
   - component: {fileID: 848558124218160616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text Alias
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4157,7 +4111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8739367276839680577}
   - component: {fileID: 7528874751140813385}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4237,7 +4191,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6467381400207259066
@@ -4251,7 +4205,7 @@ GameObject:
   - component: {fileID: 3624625788357027779}
   - component: {fileID: 6032184017073524858}
   - component: {fileID: 1509938841529880017}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4335,7 +4289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8003624084090821515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LOD1_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4372,7 +4326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2282689241074006884}
   - component: {fileID: 3396435105668249064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4446,7 +4400,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6746228221472882096
@@ -4459,7 +4413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953018928065300286}
   - component: {fileID: 646455194272480787}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4530,7 +4484,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4547,7 +4501,7 @@ GameObject:
   - component: {fileID: 6644788855968597790}
   - component: {fileID: 2282942406682830998}
   - component: {fileID: 8646946598231870328}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text Fecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4724,7 +4678,7 @@ GameObject:
   - component: {fileID: 5355644084672571083}
   - component: {fileID: 4918277712876827402}
   - component: {fileID: 4979291014181173207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text Nombre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436912948859898975}
   - component: {fileID: 3693408712845175074}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4973,7 +4927,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4990,7 +4944,7 @@ GameObject:
   - component: {fileID: 2193834483645530063}
   - component: {fileID: 2442293465956603636}
   - component: {fileID: 21080199557442053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text IdUnity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5166,7 +5120,7 @@ GameObject:
   - component: {fileID: 1416588242198217162}
   - component: {fileID: 7053109269101125032}
   - component: {fileID: 8333617606081054152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5237,7 +5191,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.63, y: 1.59}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5442,7 +5396,7 @@ GameObject:
   - component: {fileID: 6385270683492551600}
   - component: {fileID: 1475336393010233764}
   - component: {fileID: 3358737309688294103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5516,7 +5470,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3358737309688294103
@@ -5717,7 +5671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592876299783701110}
   - component: {fileID: 3633005372252909003}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5791,7 +5745,7 @@ SpriteRenderer:
   m_Size: {x: 0.84, y: 0.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7867432779192815669
@@ -5805,7 +5759,7 @@ GameObject:
   - component: {fileID: 932751981681324626}
   - component: {fileID: 6962285127058226131}
   - component: {fileID: 1207167949490215118}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5891,7 +5845,7 @@ GameObject:
   - component: {fileID: 2080630025228991991}
   - component: {fileID: 103221945409539448}
   - component: {fileID: 8321347503523155622}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: BaseBombaCurva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5976,7 +5930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5217629917446631203}
   - component: {fileID: 5851974142577683700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pozo_Fuera de linea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6031,7 +5985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5823901332419126236}
   - component: {fileID: 482907538851548568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleID_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6105,7 +6059,7 @@ SpriteRenderer:
   m_Size: {x: 1.63, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8939032032444422466
@@ -6118,7 +6072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6416338880727880889}
   - component: {fileID: 1359349370258325532}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pozo_Fuera de linea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6173,7 +6127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2780698618498270877}
   - component: {fileID: 2937830142991800042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FallaAC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6228,7 +6182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1199888601828679554}
   - component: {fileID: 5031991120398722604}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Lean.Touch;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
+using UnityEngine.EventSystems;
 
-public class BoyRaycastSitio : MonoBehaviour
+public class RayCastSelectSitio : MonoBehaviour
 {
     // Hola Boy
 
@@ -27,39 +32,6 @@ public class BoyRaycastSitio : MonoBehaviour
     public float screenHeight = 1080;
     public float screenHeightFactor = 1;
     
-    /*private void Update()
-    {
-	    if(drawGizmos)
-		    Debug.DrawLine(camera.transform.position, camera.transform.position + rayDistance *camera.transform.forward, Color.red);
-	    mousePos = Input.mousePosition;
-	    mousePos.x /= Screen.width;
-	    mousePos.y /= Screen.height;
-	    
-	    if (Input.GetMouseButton(0))
-	    {
-		    RaycastHit hit;
-		    Ray ray =  GetRay();
-
-		    if (Physics.Raycast(ray, out hit))
-		    {
-			    proxy.transform.position = hit.point;
-			    if (Input.GetMouseButtonDown(0))
-			    {
-					if (!InteractionOverUILerma.GetInteractionOverUI())
-					{
-						if (hit.collider.GetComponentInParent<SitioGPS>() != null)
-						{
-							hit.collider.GetComponentInParent<SitioGPS>().SetSelectedSitio();
-							hit.collider.GetComponentInParent<SitioGPS>().CreateSphere();
-						}
-					}
-                    else
-                        Debug.Log("touch over ui");
-                }
-		    }
-	    }
-    }*/
-    
     public void DoClickOverMap(Vector2 _dirRay)
     {
 	    mousePos.x = _dirRay.x;
@@ -72,10 +44,10 @@ public class BoyRaycastSitio : MonoBehaviour
 	    {
 		    proxy.transform.position = hit.point;
 
-		    if (hit.collider.GetComponentInParent<SitioGPS>() != null)
+		    if (hit.collider.GetComponentInParent<ControlMarcadorSitio>() != null)
 		    {
-			    hit.collider.GetComponentInParent<SitioGPS>().SetSelectedSitio();
-			    hit.collider.GetComponentInParent<SitioGPS>().CreateSphere();
+			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().SetSelectedSitio();
+			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().CreateSphere();
 		    }
 	    }
     }
@@ -129,4 +101,20 @@ public class BoyRaycastSitio : MonoBehaviour
 			Gizmos.DrawSphere(pos, gizmosSphereRadius);
 	    }
     }
+	
+	void OnEnable()
+	{
+		LeanTouch.OnFingerTap += HandleFingerTap;
+	}
+
+	void OnDisable()
+	{
+		LeanTouch.OnFingerTap -= HandleFingerTap;
+	}
+
+	void HandleFingerTap(Lean.Touch.LeanFinger finger)
+	{
+		//Debug.Log("You just tapped the screen with finger " + finger.Index + " at " + finger.ScreenPosition);
+		DoClickOverMap(finger.ScreenPosition);
+	}
 }

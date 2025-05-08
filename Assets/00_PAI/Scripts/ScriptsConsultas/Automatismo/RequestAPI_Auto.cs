@@ -49,7 +49,12 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // void Start()
+    // {
+    //     IniciarPoleo();
+    // }
+    
+    public void IniciarPoleo()
     {
         LanzarPoleo();
     }

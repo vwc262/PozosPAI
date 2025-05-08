@@ -14,8 +14,8 @@ public class BoyBalanceGastoGUI_Teoloyucan : BoyBalanceGastoGUI
 
     private void Start()
     {
-        if (ControlDatosAux._singletonExists)
-            ControlDatosAux.singleton.DatosInicializados.AddListener(ChangeUIText);
+        if (ControlDatos._singletonExists)
+            ControlDatos.singleton.DatosInicializados.AddListener(ChangeUIText);
     }
     
     public void ChangeUIText()
@@ -25,7 +25,7 @@ public class BoyBalanceGastoGUI_Teoloyucan : BoyBalanceGastoGUI
             for (int i = 0; i < ListBalances.Count; i++)
             {
                 if (RequestAPI.Instance.dataRequestAPI.regiones.Count > i)
-                    ListBalances[i].SetLabel("Balance gasto " + ControlDatosAux.singleton.GetNameRegionByIndex(i));
+                    ListBalances[i].SetLabel("Balance gasto " + ControlDatos.singleton.GetNameRegionByIndex(i));
             }
         }
         
@@ -42,7 +42,7 @@ public class BoyBalanceGastoGUI_Teoloyucan : BoyBalanceGastoGUI
         {
             if (sitiosOrdenados.dictionaryListSitios.ContainsKey(i))
                 ListBalances[i].Balance = sitiosOrdenados.dictionaryListSitios[i]
-                    .Select(x => x.sitio.GetGastoSitio()).Sum();
+                    .Select(x => x.sitio.GetGasto()).Sum();
 
             ListBalances[i].SetValue(ListBalances[i].Balance.ToString());
         }
@@ -58,8 +58,8 @@ public class BoyBalanceGastoGUI_Teoloyucan : BoyBalanceGastoGUI
         {
             if (sitiosOrdenados.dictionaryListSitios.ContainsKey(i))
                 BalanceSelected += sitiosOrdenados.dictionaryListSitios[i]
-                    .Where(x => x.sitio.GetSitioSelectedForAnalitics())
-                    .Select(x => x.sitio.GetGastoSitio()).Sum();
+                    .Where(x => x.sitio.SelectedForAnalitics)
+                    .Select(x => x.sitio.GetGasto()).Sum();
         }
 
         if (ControlBalanceSelected != null)

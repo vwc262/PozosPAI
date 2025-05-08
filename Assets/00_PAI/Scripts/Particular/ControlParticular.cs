@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlParticular : Singleton<ControlParticular>
 {
     public bool isActiveParticular;
-    public SitioGPS sitioSeleccionado;
+    public ControlSitio sitio;
 
     public GameObject CameraParticular;
     public GameObject PanelUIParticular;
@@ -26,43 +27,41 @@ public class ControlParticular : Singleton<ControlParticular>
     
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-        {
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
-        }
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
 
         DeactivateParticular();
 
         StartCoroutine(UpdateUIPozo());
     }
     
-    public void UpdateInfoSitio(SitioGPS sitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        sitioSeleccionado = sitio;
+        sitio = _sitio;
 
         if (nombrePozo != null)
-            nombrePozo.text = sitioSeleccionado.MyDataSitio.nombre;
+            nombrePozo.text = sitio.dataSitio.nombre;
     }
 
     public IEnumerator UpdateUIPozo()
     {
         while (UpdateLoop)
         {
-            if (sitioSeleccionado != null && datosPozo != null)
+            if (sitio != null && datosPozo != null)
             {
-                datosPozo.text = "Abreviatura: " + sitioSeleccionado.MyDataSitio.abreviacion + "\n";
+                datosPozo.text = "Abreviatura: " + sitio.dataSitio.abreviacion + "\n";
 
-                if (sitioSeleccionado.MyDataSitio.gasto.Count>0)
-                    if (sitioSeleccionado.MyDataSitio.gasto[0].DentroRango)
-                        datosPozo.text += "\nGasto: " + sitioSeleccionado.MyDataSitio.gasto[0].Valor + "  l/s";
+                if (sitio.dataSitio.gasto.Count>0)
+                    if (sitio.dataSitio.gasto[0].DentroRango)
+                        datosPozo.text += "\nGasto: " + sitio.dataSitio.gasto[0].Valor + "  l/s";
 
-                if (sitioSeleccionado.MyDataSitio.presion.Count > 0)
-                    if (sitioSeleccionado.MyDataSitio.presion[0].DentroRango)
-                        datosPozo.text += "\nPresion: " + sitioSeleccionado.MyDataSitio.presion[0].Valor + " km/cm2";
+                if (sitio.dataSitio.presion.Count > 0)
+                    if (sitio.dataSitio.presion[0].DentroRango)
+                        datosPozo.text += "\nPresion: " + sitio.dataSitio.presion[0].Valor + " km/cm2";
 
-                if (sitioSeleccionado.MyDataSitio.totalizado.Count > 0)
-                    if (sitioSeleccionado.MyDataSitio.totalizado[0].DentroRango)
-                        datosPozo.text += "\nTotalizado: " + sitioSeleccionado.MyDataSitio.totalizado[0].Valor + " m3";
+                if (sitio.dataSitio.totalizado.Count > 0)
+                    if (sitio.dataSitio.totalizado[0].DentroRango)
+                        datosPozo.text += "\nTotalizado: " + sitio.dataSitio.totalizado[0].Valor + " m3";
             }
 
             yield return new WaitForSeconds(waitUpdateUITime);
@@ -95,8 +94,8 @@ public class ControlParticular : Singleton<ControlParticular>
         CameraParticular.SetActive(_active);
         PanelUIParticular.SetActive(_active);
         
-        if (controlParticualres != null && sitioSeleccionado != null)
-            controlParticualres.SetActiveParticularByID(sitioSeleccionado.MyDataSitio.idSitio);
+        if (controlParticualres != null && sitio != null)
+            controlParticualres.SetActiveParticularByID(sitio.dataSitio.idSitio);
         
         foreach(var coustomKeyboard in coustomKeyboardList_particular)
         {

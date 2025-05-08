@@ -55,35 +55,6 @@ public class RequestAPI : MonoBehaviour
     public bool useDataFile;
     public bool enableHistoricos = true;
     public bool simulaCallBackHistoricos;
-        
-    /*
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    */
     
     public enum Proyectos
     {
@@ -139,8 +110,13 @@ public class RequestAPI : MonoBehaviour
         
         MyConectionData.ReadConnectionData();
     }
+
+    // private void Start()
+    // {
+    //     IniciarPoleo()
+    // }
     
-    private void Start()
+    public void IniciarPoleo()
     {
         if (usePoleo)
             IniciarPeticionDatos();

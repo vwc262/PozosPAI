@@ -10,7 +10,7 @@ public class VWCBillboardSitio : MonoBehaviour
     // Hola Boy
     private GameObject cameraMove;
     private VWC_MoveCamera cameraMoveVWC;
-    public SitioGPS sitioGPS;
+    [FormerlySerializedAs("sitioGPS")] public ControlMarcadorSitio controlMarcadorSitio;
 
     public bool useDistance_X_Z;
     
@@ -139,7 +139,7 @@ public class VWCBillboardSitio : MonoBehaviour
     {
         var pos1 = posGuiOriginal + guiObjPosTilt;
         
-        if (sitioGPS.selectedSitio) 
+        if (controlMarcadorSitio.selectedSitio) 
             //guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, interpolationValueAngle);
             guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, 1);
         else

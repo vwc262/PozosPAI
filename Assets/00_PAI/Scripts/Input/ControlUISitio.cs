@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class ControlSelectSitio : MonoBehaviour
+public class ControlUISitio : MonoBehaviour
 {
     public Text textID;
     public Text textAlias;
@@ -23,7 +24,7 @@ public class ControlSelectSitio : MonoBehaviour
     public Image selectedImage;
     public GameObject selectedBarsImage;
     
-    public SitioGPS sitio;
+    public ControlSitio sitio;
     
     public Color statusColor;
     public bool DataInTime;
@@ -69,14 +70,8 @@ public class ControlSelectSitio : MonoBehaviour
     
     public virtual void Start()
     {
-        sitio.sitioSeleccionadoEvent += SitioOnSitioSeleccionadoEvent;
-        sitio.controlSelectSitio = this;
-        
         inputFieldGasto.onValueChanged.AddListener(SetAforoGasto);
         inputFieldPresion.onValueChanged.AddListener(SetAforoPresion);
-        
-        // if (TooltipOverride != null)
-        //     TooltipOverride.enabled = false;
         
         if (panelNivel != null)
             panelNivel.SetActive(false);
@@ -85,11 +80,6 @@ public class ControlSelectSitio : MonoBehaviour
     }
 
     public virtual void StartReset(){}
-
-    private void OnDestroy()
-    {
-        sitio.sitioSeleccionadoEvent -= SitioOnSitioSeleccionadoEvent;
-    }
 
     public void SetSelectedForAnalitics(bool val)
     {
@@ -130,20 +120,6 @@ public class ControlSelectSitio : MonoBehaviour
         dataAforo.presion = float.Parse(val);
     }
      
-    private void SitioOnSitioSeleccionadoEvent(bool value)
-    {
-        selectedBarsImage.SetActive(value);
-        
-        if (value && ControlSitioUI.moveScrollBarOnSelect)
-        {
-            float scrollPos = 1 - transform.GetSiblingIndex() / (float)(transform.parent.childCount - 1);
-
-            Scrollbar scrollbar = transform.parent.parent.parent.GetComponentInChildren<Scrollbar>();
-            if (scrollbar != null)
-                scrollbar.value = scrollPos;
-        }
-    }
-
     private void OnEnable()
     {
         UpdateData();
@@ -201,25 +177,25 @@ public class ControlSelectSitio : MonoBehaviour
 
     public virtual void UpdateData(){ }
 
-    public virtual void SetSitio(SitioGPS _sitio)
+    public virtual void SetSitio(ControlSitio _controlMarcadorSitio)
     {
-        sitio = _sitio;
+        this.sitio = _controlMarcadorSitio;
 
-        if (_sitio != null)
+        if (sitio != null)
         {
             if (textID != null)
             {
-                textID.text = $"{_sitio.MyDataSitio.idSitioUnity}";
+                textID.text = $"{sitio.dataSitio.idSitioUnity}";
             }
             
             if (textAlias != null)
             {
-                textAlias.text = _sitio.MyDataSitio.abreviacion;
+                textAlias.text = sitio.dataSitio.abreviacion;
             }
             
             if (textNombre != null)
             {
-                textNombre.text = _sitio.MyDataSitio.nombre;
+                textNombre.text = sitio.dataSitio.nombre;
             }
         }
     }
@@ -232,17 +208,36 @@ public class ControlSelectSitio : MonoBehaviour
         selectedImage.color = color;
     }
 
+    public void SeleccionarSitio()
+    {
+        selectedBarsImage.SetActive(true);
+        
+        if (ControlSitioUI.moveScrollBarOnSelect)
+        {
+            float scrollPos = 1 - transform.GetSiblingIndex() / (float)(transform.parent.childCount - 1);
+
+            Scrollbar scrollbar = transform.parent.parent.parent.GetComponentInChildren<Scrollbar>();
+            if (scrollbar != null)
+                scrollbar.value = scrollPos;
+        }
+    }
+    
+    public void DeseleccionarSitio()
+    {
+        selectedBarsImage.SetActive(false);
+    }
+
     public void SelectSitio()
     {
-        sitio.SetSelectedSitio();
-        sitio.AddToSelectanbles();
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.SetSelectedSitio(sitio);
     }
     
     public void SetStatusBomba(Image _statusBomba, int indexBomba)
     {
         var bombaSprite = statusBombaGrey;
 
-        if (sitio.MyDataSitio.bomba.Count > indexBomba)
+        if (sitio.dataSitio.bomba.Count > indexBomba)
         {
             bombaSprite = statusBombaGrey;
 
@@ -250,7 +245,7 @@ public class ControlSelectSitio : MonoBehaviour
             //{
             // if (sitio.MyDataSitio.bomba[0].DentroRango)
             // {
-            switch (sitio.MyDataSitio.bomba[indexBomba].Valor)
+            switch (sitio.dataSitio.bomba[indexBomba].Valor)
             {
                 case 1:
                     bombaSprite = statusBombaGreen;

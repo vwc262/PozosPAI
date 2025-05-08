@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
-public class SitioGPS_PAI : SitioGPS
+public class ControlMarcadorSitioPai : ControlMarcadorSitio
 {
     public List<GameObject> listFallaAC_GO;
     public List<GameObject> listFallaBomba;
@@ -17,7 +17,7 @@ public class SitioGPS_PAI : SitioGPS
             {
                 DateTime parsedDate;
 
-                if (DateTime.TryParse(MyDataSitio.fecha, out parsedDate))
+                if (DateTime.TryParse(sitio.dataSitio.fecha, out parsedDate))
                 {
                     diferencia = (float)(DateTime.Now - parsedDate).TotalMinutes;
 
@@ -40,11 +40,11 @@ public class SitioGPS_PAI : SitioGPS
                         statusDataInTime = 3;
                     }
 
-                    if (MyDataSitio.bomba.Count > 0)
+                    if (sitio.dataSitio.bomba.Count > 0)
                     {
                         // if (MyDataSitio.bomba[indexBomba].DentroRango)
                         // {
-                            switch (MyDataSitio.bomba[indexBomba].Valor)
+                            switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
                             {
                                 case 0:
                                     SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
@@ -110,7 +110,7 @@ public class SitioGPS_PAI : SitioGPS
 
                 foreach (var go in listFallaAC_GO)
                 {
-                    go.SetActive(MyDataSitio.fallaAC);
+                    go.SetActive(sitio.dataSitio.fallaAC);
                 }
 
                 yield return new WaitForSeconds(updateRate);
@@ -120,12 +120,12 @@ public class SitioGPS_PAI : SitioGPS
     
     public override void SetDataSitio(DataSitio _DataSitio)
     {
-        MyDataSitio.SetDataSitio(_DataSitio);
+        sitio.dataSitio.SetDataSitio(_DataSitio);
         
-        textoNombre.text = MyDataSitio.nombre;
-        textoFecha.text = MyDataSitio.fecha;
-        textoIdSitioUnity.text = $"{GetIDSitiosPAI(MyDataSitio.abreviacion)}";
-        textoAlias.text = $"{MyDataSitio.abreviacion}";
+        textoNombre.text = sitio.dataSitio.nombre;
+        textoFecha.text = sitio.dataSitio.fecha;
+        textoIdSitioUnity.text = $"{GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
+        textoAlias.text = $"{sitio.dataSitio.abreviacion}";
         
         foreach (var mesh in Bombas)
         {
@@ -164,9 +164,9 @@ public class SitioGPS_PAI : SitioGPS
     
     public void SetSelectedSitioValida()
     {
-        if (MyDataSitio != null)
+        if (sitio.dataSitio != null)
         {
-            switch ((RequestAPI.Proyectos)MyDataSitio.Estructura)
+            switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
             {
                 case RequestAPI.Proyectos.Teoloyucan:
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.Teoloyucan);
