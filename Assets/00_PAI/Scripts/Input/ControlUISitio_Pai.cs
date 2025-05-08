@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControlSelectSitio_PAI : ControlSelectSitio
+public class ControlUISitio_Pai : ControlUISitio
 {
     private RectTransform rt;
     private RectTransform rt_button;

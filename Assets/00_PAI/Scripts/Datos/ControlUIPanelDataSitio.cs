@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class ControlUIPanelDataSitio : MonoBehaviour
 {
-    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
+    public ControlSitio sitio;
     
     public List<GameObject> points = new List<GameObject>();
     
@@ -33,10 +33,10 @@ public class ControlUIPanelDataSitio : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if (ControlUpdateUI._singletonExists)
+        if (ControlSelectedSitio._singletonExists)
         {
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
-            ControlUpdateUI.singleton.ChangeIndexBomba.AddListener(UpdateUIIndexBomba);
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
+            ControlSelectedSitio.singleton.ChangeIndexBomba.AddListener(UpdateUIIndexBomba);
         }
     }
 
@@ -45,26 +45,26 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            if (controlMarcadorSitioSeleccionado != null)
-                UpdateInfoUISitio(controlMarcadorSitioSeleccionado);
+            if (sitio != null)
+                UpdateInfoUISitio(sitio);
             countdown = updateRate;
         }
     }
 
-    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
-        UpdateInfoUISitio(controlMarcadorSitioSeleccionado);
+        sitio = _sitio;
+        UpdateInfoUISitio(sitio);
     }
 
-    public virtual void UpdateInfoUISitio(ControlMarcadorSitio controlMarcadorSitio)
+    public virtual void UpdateInfoUISitio(ControlSitio _sitio)
     {
         if (textPresion != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.presion.Count > 0)
+            if (_sitio.dataSitio.presion.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.presion[0].DentroRango)
-                    textPresion.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
+                if (_sitio.dataSitio.presion[0].DentroRango)
+                    textPresion.text = GetString2decimals(_sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
                 else
                     textPresion.text = "-";
             }
@@ -72,19 +72,19 @@ public class ControlUIPanelDataSitio : MonoBehaviour
                 textPresion.text = "N/A";
         }
 
-        if (controlMarcadorSitio.statusDataInTime == 1)
+        if (_sitio.dataInTime)
             SetPointsColor(Color.green);
         else
             SetPointsColor(Color.red);
         
-        UpdateUIBomba(controlMarcadorSitio.sitio);
+        UpdateUIBomba(_sitio);
         
         if (textGasto != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.gasto.Count > 0)
+            if (_sitio.dataSitio.gasto.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.gasto[0].DentroRango)
-                    textGasto.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.gasto[0].Valor) + " L/s";
+                if (_sitio.dataSitio.gasto[0].DentroRango)
+                    textGasto.text = GetString2decimals(_sitio.dataSitio.gasto[0].Valor) + " L/s";
                 else
                     textGasto.text = "-";
             }
@@ -94,10 +94,10 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textTotalizado != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.totalizado.Count > 0)
+            if (_sitio.dataSitio.totalizado.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.gasto[0].DentroRango)
-                    textTotalizado.text = $"{controlMarcadorSitio.sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
+                if (_sitio.dataSitio.gasto[0].DentroRango)
+                    textTotalizado.text = $"{_sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
                 else
                     textTotalizado.text = "-";
             }
@@ -107,11 +107,11 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textBateria != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Baterias.Count > 0)
+            if (_sitio.dataSitio.Baterias.Count > 0)
             {
                 textBateria.text = "";
                 
-                foreach (var bateria in controlMarcadorSitio.sitio.dataSitio.Baterias)
+                foreach (var bateria in _sitio.dataSitio.Baterias)
                 {
                     if (textBateria.text != "")
                         textBateria.text += "\n";
@@ -124,18 +124,18 @@ public class ControlUIPanelDataSitio : MonoBehaviour
             }
             else
             {
-                textBateria.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.voltaje) + " V";
+                textBateria.text = GetString2decimals(_sitio.dataSitio.voltaje) + " V";
             }
         }
         
         if (textNivel != null && GO_Nivel != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.nivel.Count > 0)
+            if (_sitio.dataSitio.nivel.Count > 0)
             {
                 GO_Nivel.SetActive(true);
                 
-                if (controlMarcadorSitio.sitio.dataSitio.nivel[0].DentroRango)
-                    textNivel.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.nivel[0].Valor) + " m";
+                if (_sitio.dataSitio.nivel[0].DentroRango)
+                    textNivel.text = GetString2decimals(_sitio.dataSitio.nivel[0].Valor) + " m";
                 else
                     textNivel.text = "-\n";
             }
@@ -200,7 +200,7 @@ public class ControlUIPanelDataSitio : MonoBehaviour
     [Button]
     public void incrementIndexBomba()
     {
-        controlMarcadorSitioSeleccionado.sitio.incrementIndexBomba();
+        sitio.incrementIndexBomba();
     }
 
     public void UpdateUIIndexBomba(ControlSitio sitio)

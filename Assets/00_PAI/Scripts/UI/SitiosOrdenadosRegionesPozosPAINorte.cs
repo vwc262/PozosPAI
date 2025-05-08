@@ -7,8 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SitiosOrdenadosRegionesPozosPAINorte
-    : SitiosOrdenados
+public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
 { 
     [TabGroup("Regiones")] public List<ControlRegionUILabel> RegionesLabelUILabel;
     [TabGroup("Regiones")] public List<ControlRegionUIList> RegionesLabelUIList;
@@ -58,7 +57,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
             if (RegionesLabelUIList[i].rootRegion != null) 
-                RegionesLabelUIList[i].sitiosRegion = RegionesLabelUIList[i].rootRegion.GetComponentsInChildren<ControlSelectSitio>().ToList();
+                RegionesLabelUIList[i].sitiosRegion = RegionesLabelUIList[i].rootRegion.GetComponentsInChildren<ControlUISitio>().ToList();
             
             dictionaryListSitios.Add(i,RegionesLabelUIList[i].sitiosRegion);
         }

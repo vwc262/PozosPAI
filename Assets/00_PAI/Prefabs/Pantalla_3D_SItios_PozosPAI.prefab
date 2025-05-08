@@ -859,11 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d440ea0b7939d0b46919d6cccce26c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSignal: {fileID: 2405441145962870810, guid: 7762b7d250c5d514485496ef7bbb3091, type: 3}
-  contentSignalList: {fileID: 0}
-  signals: []
   sitios: []
-  controlDatosAux: {fileID: 0}
   updateRate: 2
   TextNoActTotal: {fileID: 0}
   TextActTotal: {fileID: 0}
@@ -1945,7 +1941,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 03000000
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1
@@ -2416,7 +2412,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1

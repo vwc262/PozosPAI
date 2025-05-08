@@ -13,14 +13,14 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
     
     [TabGroup("UI")] public Text textNivel_estatico;
     
-    public override void UpdateInfoUISitio(ControlMarcadorSitio controlMarcadorSitio)
+    public override void UpdateInfoUISitio(ControlSitio _sitio)
     {
         if (textPresion != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.presion.Count > 0)
+            if (_sitio.dataSitio.presion.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.presion[0].DentroRango)
-                    textPresion.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
+                if (_sitio.dataSitio.presion[0].DentroRango)
+                    textPresion.text = GetString2decimals(_sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
                 else
                     textPresion.text = "-";
             }
@@ -28,19 +28,19 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 textPresion.text = "N/A";
         }
 
-        if (controlMarcadorSitio.statusDataInTime == 1)
+        if (_sitio.dataInTime)
             SetPointsColor(Color.green);
         else
             SetPointsColor(Color.red);
         
-        UpdateUIBomba(controlMarcadorSitio.sitio);
+        UpdateUIBomba(_sitio);
         
         if (textGasto != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.gasto.Count > 0)
+            if (_sitio.dataSitio.gasto.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.gasto[0].DentroRango)
-                    textGasto.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.gasto[0].Valor) + " L/s";
+                if (_sitio.dataSitio.gasto[0].DentroRango)
+                    textGasto.text = GetString2decimals(_sitio.dataSitio.gasto[0].Valor) + " L/s";
                 else
                     textGasto.text = "-";
             }
@@ -50,10 +50,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (textTotalizado != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.totalizado.Count > 0)
+            if (_sitio.dataSitio.totalizado.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.gasto[0].DentroRango)
-                    textTotalizado.text = $"{controlMarcadorSitio.sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
+                if (_sitio.dataSitio.gasto[0].DentroRango)
+                    textTotalizado.text = $"{_sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
                 else
                     textTotalizado.text = "-";
             }
@@ -63,11 +63,11 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (textBateria != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Baterias.Count > 0)
+            if (_sitio.dataSitio.Baterias.Count > 0)
             {
                 textBateria.text = "";
                 
-                foreach (var bateria in controlMarcadorSitio.sitio.dataSitio.Baterias)
+                foreach (var bateria in _sitio.dataSitio.Baterias)
                 {
                     if (textBateria.text != "")
                         textBateria.text += "\n";
@@ -80,30 +80,30 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
             }
             else
             {
-                textBateria.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.voltaje) + " V";
+                textBateria.text = GetString2decimals(_sitio.dataSitio.voltaje) + " V";
             }
         }
         
         if (GO_Nivel != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.nivel.Count > 0)
+            if (_sitio.dataSitio.nivel.Count > 0)
             {
                 GO_Nivel.SetActive(true);
                 
                 if (textNivel != null)
                 {
-                    if (controlMarcadorSitio.sitio.dataSitio.nivel[0].DentroRango)
-                        textNivel.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.nivel[0].Valor) + " m";
+                    if (_sitio.dataSitio.nivel[0].DentroRango)
+                        textNivel.text = GetString2decimals(_sitio.dataSitio.nivel[0].Valor) + " m";
                     else
                         textNivel.text = "-\n";
                 }
                 
-                if (controlMarcadorSitio.sitio.dataSitio.nivel.Count > 1)
+                if (_sitio.dataSitio.nivel.Count > 1)
                 {
                     if (textNivel_estatico != null)
                     {
-                        if (controlMarcadorSitio.sitio.dataSitio.nivel[1].DentroRango)
-                            textNivel_estatico.text = GetString2decimals(controlMarcadorSitio.sitio.dataSitio.nivel[1].Valor) + " m";
+                        if (_sitio.dataSitio.nivel[1].DentroRango)
+                            textNivel_estatico.text = GetString2decimals(_sitio.dataSitio.nivel[1].Valor) + " m";
                         else
                             textNivel_estatico.text = "-\n";
                     }
@@ -117,10 +117,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
         if (text_voltage_L1 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor.Count > 0)
+            if (_sitio.dataSitio.Voltajes_Motor.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[0].DentroRango)
-                    text_voltage_L1.text = $"{controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[0].Valor:F0}" + " V";
+                if (_sitio.dataSitio.Voltajes_Motor[0].DentroRango)
+                    text_voltage_L1.text = $"{_sitio.dataSitio.Voltajes_Motor[0].Valor:F0}" + " V";
                 else
                     text_voltage_L1.text = "-";
             }
@@ -130,10 +130,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (text_voltage_L2 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor.Count > 1)
+            if (_sitio.dataSitio.Voltajes_Motor.Count > 1)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[1].DentroRango)
-                    text_voltage_L2.text = $"{controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[1].Valor:F0}" + " V";
+                if (_sitio.dataSitio.Voltajes_Motor[1].DentroRango)
+                    text_voltage_L2.text = $"{_sitio.dataSitio.Voltajes_Motor[1].Valor:F0}" + " V";
                 else
                     text_voltage_L2.text = "-";
             }
@@ -143,10 +143,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (text_voltage_L3 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor.Count > 2)
+            if (_sitio.dataSitio.Voltajes_Motor.Count > 2)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[2].DentroRango)
-                    text_voltage_L3.text = $"{controlMarcadorSitio.sitio.dataSitio.Voltajes_Motor[2].Valor:F0}" + " V";
+                if (_sitio.dataSitio.Voltajes_Motor[2].DentroRango)
+                    text_voltage_L3.text = $"{_sitio.dataSitio.Voltajes_Motor[2].Valor:F0}" + " V";
                 else
                     text_voltage_L3.text = "-";
             }
@@ -156,10 +156,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (text_corriente_L1 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor.Count > 0)
+            if (_sitio.dataSitio.Corrientes_Motor.Count > 0)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[0].DentroRango)
-                    text_corriente_L1.text = $"{controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[0].Valor:F0}" + " Amp";
+                if (_sitio.dataSitio.Corrientes_Motor[0].DentroRango)
+                    text_corriente_L1.text = $"{_sitio.dataSitio.Corrientes_Motor[0].Valor:F0}" + " Amp";
                 else
                     text_corriente_L1.text = "-";
             }
@@ -169,10 +169,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (text_corriente_L2 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor.Count > 1)
+            if (_sitio.dataSitio.Corrientes_Motor.Count > 1)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[1].DentroRango)
-                    text_corriente_L2.text = $"{controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[1].Valor:F0}" + " Amp";
+                if (_sitio.dataSitio.Corrientes_Motor[1].DentroRango)
+                    text_corriente_L2.text = $"{_sitio.dataSitio.Corrientes_Motor[1].Valor:F0}" + " Amp";
                 else
                     text_corriente_L2.text = "-";
             }
@@ -182,10 +182,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         
         if (text_corriente_L3 != null)
         {
-            if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor.Count > 2)
+            if (_sitio.dataSitio.Corrientes_Motor.Count > 2)
             {
-                if (controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[2].DentroRango)
-                    text_corriente_L3.text = $"{controlMarcadorSitio.sitio.dataSitio.Corrientes_Motor[2].Valor:F0}" + " Amp";
+                if (_sitio.dataSitio.Corrientes_Motor[2].DentroRango)
+                    text_corriente_L3.text = $"{_sitio.dataSitio.Corrientes_Motor[2].Valor:F0}" + " Amp";
                 else
                     text_corriente_L3.text = "-";
             }

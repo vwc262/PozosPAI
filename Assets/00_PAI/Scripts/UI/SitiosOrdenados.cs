@@ -26,7 +26,7 @@ public class SitiosOrdenados : MonoBehaviour
     [TabGroup("Sitios")] public SpriteRenderer[] colorRegiones;
     
     [ShowInInspector]
-    public Dictionary<int, List<ControlSelectSitio>> dictionaryListSitios = new Dictionary<int, List<ControlSelectSitio>>();
+    public Dictionary<int, List<ControlUISitio>> dictionaryListSitios = new Dictionary<int, List<ControlUISitio>>();
     
     [Button]
     private void Start()

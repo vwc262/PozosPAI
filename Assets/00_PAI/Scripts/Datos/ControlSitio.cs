@@ -13,7 +13,7 @@ public class ControlSitio
     public DataSitio dataSitio;
     public DataSitioAforo dataAforo = new DataSitioAforo();
     public ControlMarcadorSitio controlMarcadorMap;
-    // public ControlUISitio controlUIsitio;
+    public ControlUISitio controlUIsitio;
     public int indexBomba;
 
     public bool SelectedForAnalitics;
@@ -40,20 +40,20 @@ public class ControlSitio
 
     public void SeleccionarSitio()
     {
-        // if (controlUIsitio != null)
-        //     controlUIsitio.SeleccionEtiquetaSitio();
-        //
-        // if (controlMarcadorMap != null)
-        //     controlMarcadorMap.SeleccionarSitio();
+        if (controlUIsitio != null)
+            controlUIsitio.SeleccionarSitio();
+        
+        if (controlMarcadorMap != null)
+            controlMarcadorMap.SeleccionarSitio();
     }
 
     public void DeseleccionarSitio()
     {
-        // if (controlUIsitio != null)
-        //     controlUIsitio.DeseleccionEtiquetaSitio();
-        //
-        // if (controlMarcadorMap != null)
-        //     controlMarcadorMap.DeseleccionarSitio();
+        if (controlUIsitio != null)
+            controlUIsitio.DeseleccionarSitio();
+        
+        if (controlMarcadorMap != null)
+            controlMarcadorMap.DeseleccionarSitio();
     }
 
     public float GetGasto()
@@ -107,8 +107,8 @@ public class ControlSitio
         if (indexBomba >= dataSitio.bomba.Count)
             indexBomba = 0;
         
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.ChangeIndexBomba.Invoke(this);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeIndexBomba.Invoke(this);
     }
     
     public void SetIndexBomba(int index)
@@ -118,8 +118,8 @@ public class ControlSitio
         if (indexBomba >= dataSitio.bomba.Count)
             indexBomba = 0;
         
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.ChangeIndexBomba.Invoke(this);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeIndexBomba.Invoke(this);
     }
     
     public string smallDescription

@@ -55,9 +55,9 @@ public class ControlMarcadorSitio : MonoBehaviour
 
     public List<MeshRenderer> Bombas;
 
-    public event Action<bool> sitioSeleccionadoEvent;
+    //public event Action<bool> sitioSeleccionadoEvent;
     
-    public ControlSelectSitio controlSelectSitio;
+    //public ControlUISitio controlUISitio;
     public GameObject billboardObj;
     public Vector3 billboardSelectedPos;
     public Vector3 billboardUnSelectedPos;
@@ -73,9 +73,7 @@ public class ControlMarcadorSitio : MonoBehaviour
     {
         this.corrutinaTime = StartCoroutine(StatusUI());
         
-        DeselectMe();
-
-        //textoIdSitioUnity.text = $"{MyDataSitio.idSitioUnity}";
+        DeseleccionarSitio();
     }
 
     public virtual IEnumerator StatusUI()
@@ -120,11 +118,9 @@ public class ControlMarcadorSitio : MonoBehaviour
 
     public virtual void SetSelectedSitio()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SetSelectedSitio(sitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.SetSelectedSitio(sitio);
         
-        eventSelectSitio.Raise(this);
-
         if (timeToDobleClick > 0)
         {
             Debug.Log("DobleClick");
@@ -137,8 +133,11 @@ public class ControlMarcadorSitio : MonoBehaviour
             StartCoroutine(CountDownDobleClick());
         }
     }
-    public void SelectMe()
+    
+    public void SeleccionarSitio()
     {
+        eventSelectSitio.Raise(this);
+
         foreach (var go in MarcaSeleccionado)
         {
             go.SetActive(true);
@@ -150,18 +149,10 @@ public class ControlMarcadorSitio : MonoBehaviour
         }
 
         selectedSitio = true;
-        sitioSeleccionadoEvent?.Invoke(selectedSitio);
-        // if(billboardObj != null)
-        //     billboardObj.transform.localPosition = billboardSelectedPos;
     }
     
-    public void DeselectMe()
+    public void DeseleccionarSitio()
     {
-        // foreach (var selectable in GetComponentsInChildren<ChangeVisualSelectable>())
-        // {
-        //     selectable.SetDefaultColor();
-        // }
-        
         foreach (var go in MarcaSeleccionado)
         {
             go.SetActive(false);
@@ -173,10 +164,6 @@ public class ControlMarcadorSitio : MonoBehaviour
         }
         
         selectedSitio = false;
-        sitioSeleccionadoEvent?.Invoke(selectedSitio);
-        // if(billboardObj != null)
-        //     billboardObj.transform.localPosition = billboardUnSelectedPos;
-
     }
 
     public virtual void SetDataSitio(DataSitio _DataSitio) { }
@@ -189,55 +176,6 @@ public class ControlMarcadorSitio : MonoBehaviour
         var go = Instantiate(sphereDebug,colliderDebug.transform.position, Quaternion.identity);
         go.SetActive(true);
     }
-    
-    // public void SetActiveMarcadaorSitio(bool _val)
-    // {
-    //     if (cantrolMarcadorUI != null)
-    //         cantrolMarcadorUI.gameObject.SetActive(_val);
-    //     
-    //     this.gameObject.SetActive(_val);
-    // }
-    
-    public bool GetSitioSelectedForAnalitics()
-    {
-        if (controlSelectSitio != null)
-            return controlSelectSitio.selectedForAnalitics;
-
-        return false;
-    }
-
-    // public float GetGastoSitio()
-    // {
-    //     if (MyDataSitio.gasto.Count > 0)
-    //     {
-    //         if (MyDataSitio.gasto[0].DentroRango)
-    //             return MyDataSitio.gasto[0].Valor;
-    //     }
-    //
-    //     return 0;
-    // }
-    
-    // public float GetPresionSitio()
-    // {
-    //     if (MyDataSitio.presion.Count > 0)
-    //     {
-    //         if (MyDataSitio.presion[0].DentroRango)
-    //             return MyDataSitio.presion[0].Valor;
-    //     }
-    //
-    //     return 0;
-    // }
-    
-    // public float GetTotalizadoSitio()
-    // {
-    //     if (MyDataSitio.totalizado.Count > 0)
-    //     {
-    //         if (MyDataSitio.totalizado[0].DentroRango)
-    //             return MyDataSitio.totalizado[0].Valor;
-    //     }
-    //
-    //     return 0;
-    // }
     
     public IEnumerator CountDownDobleClick()
     {

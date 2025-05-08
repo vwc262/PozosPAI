@@ -11,8 +11,8 @@ public class ControlBombas_PAI : ControlBombas
     
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
     
     [Button]
@@ -20,7 +20,7 @@ public class ControlBombas_PAI : ControlBombas
     {
         if (ControlLogin._singletonExists)
         {
-            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio % 100, controlMarcadorSitioSeleccionado.sitio.indexBomba, action);
+            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, sitio.dataSitio.idSitio % 100, sitio.indexBomba, action);
             StartCoroutine(DoRequest());
         }
     }
@@ -32,8 +32,8 @@ public class ControlBombas_PAI : ControlBombas
             if (RequestAPI.Instance != null)
             {
                 UnityWebRequest unityWebRequest = null;
-                Debug.Log(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura));
-                unityWebRequest = UnityWebRequest.Post(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura),
+                Debug.Log(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
+                unityWebRequest = UnityWebRequest.Post(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura),
                     JsonUtility.ToJson(commandVWC), "application/json");
 
                 yield return unityWebRequest.SendWebRequest();
@@ -45,7 +45,7 @@ public class ControlBombas_PAI : ControlBombas
         {
             CommandResponse.ResponseBln = true;
             CommandResponse.ResponseText = "Simulated command send";
-            Debug.Log(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura));
+            Debug.Log(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
             Debug.Log(CommandResponse);
         }
     }

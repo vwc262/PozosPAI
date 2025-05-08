@@ -9,8 +9,8 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
 
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionado.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
 
     public void UpdateInfoSitio(ControlSitio sitio)

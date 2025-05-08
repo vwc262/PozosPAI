@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class ControlSelectSitio : MonoBehaviour
+public class ControlUISitio : MonoBehaviour
 {
     public Text textID;
     public Text textAlias;
@@ -70,14 +70,8 @@ public class ControlSelectSitio : MonoBehaviour
     
     public virtual void Start()
     {
-        sitio.controlMarcadorMap.sitioSeleccionadoEvent += ControlMarcadorSitioOnControlMarcadorSitioSeleccionadoEvent;
-        sitio.controlMarcadorMap.controlSelectSitio = this;
-        
         inputFieldGasto.onValueChanged.AddListener(SetAforoGasto);
         inputFieldPresion.onValueChanged.AddListener(SetAforoPresion);
-        
-        // if (TooltipOverride != null)
-        //     TooltipOverride.enabled = false;
         
         if (panelNivel != null)
             panelNivel.SetActive(false);
@@ -86,11 +80,6 @@ public class ControlSelectSitio : MonoBehaviour
     }
 
     public virtual void StartReset(){}
-
-    private void OnDestroy()
-    {
-        sitio.controlMarcadorMap.sitioSeleccionadoEvent -= ControlMarcadorSitioOnControlMarcadorSitioSeleccionadoEvent;
-    }
 
     public void SetSelectedForAnalitics(bool val)
     {
@@ -131,20 +120,6 @@ public class ControlSelectSitio : MonoBehaviour
         dataAforo.presion = float.Parse(val);
     }
      
-    private void ControlMarcadorSitioOnControlMarcadorSitioSeleccionadoEvent(bool value)
-    {
-        selectedBarsImage.SetActive(value);
-        
-        if (value && ControlSitioUI.moveScrollBarOnSelect)
-        {
-            float scrollPos = 1 - transform.GetSiblingIndex() / (float)(transform.parent.childCount - 1);
-
-            Scrollbar scrollbar = transform.parent.parent.parent.GetComponentInChildren<Scrollbar>();
-            if (scrollbar != null)
-                scrollbar.value = scrollPos;
-        }
-    }
-
     private void OnEnable()
     {
         UpdateData();
@@ -233,10 +208,29 @@ public class ControlSelectSitio : MonoBehaviour
         selectedImage.color = color;
     }
 
+    public void SeleccionarSitio()
+    {
+        selectedBarsImage.SetActive(true);
+        
+        if (ControlSitioUI.moveScrollBarOnSelect)
+        {
+            float scrollPos = 1 - transform.GetSiblingIndex() / (float)(transform.parent.childCount - 1);
+
+            Scrollbar scrollbar = transform.parent.parent.parent.GetComponentInChildren<Scrollbar>();
+            if (scrollbar != null)
+                scrollbar.value = scrollPos;
+        }
+    }
+    
+    public void DeseleccionarSitio()
+    {
+        selectedBarsImage.SetActive(false);
+    }
+
     public void SelectSitio()
     {
-        sitio.controlMarcadorMap.SetSelectedSitio();
-        sitio.controlMarcadorMap.AddToSelectanbles();
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.SetSelectedSitio(sitio);
     }
     
     public void SetStatusBomba(Image _statusBomba, int indexBomba)

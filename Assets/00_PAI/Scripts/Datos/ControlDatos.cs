@@ -68,7 +68,7 @@ public class ControlDatos : Singleton<ControlDatos>
     public UnityEvent DatosInicializados;
 
     public Coroutine UpdateDataCoroutine;
-    public Coroutine UpdateDataGPSCoroutine;
+    //public Coroutine UpdateDataGPSCoroutine;
     public Coroutine ActualizarInfraestructuraCoroutine;
 
     public virtual void Start()
@@ -85,10 +85,10 @@ public class ControlDatos : Singleton<ControlDatos>
         if (UpdateDataCoroutine != null) StopCoroutine(UpdateDataCoroutine);
         UpdateDataCoroutine = StartCoroutine(UpdateData());
         
-        if (UpdateDataGPSCoroutine != null) StopCoroutine(UpdateDataGPSCoroutine);
-        UpdateDataGPSCoroutine = StartCoroutine(UpdateDataSitiosGPS());
+        // if (UpdateDataGPSCoroutine != null) StopCoroutine(UpdateDataGPSCoroutine);
+        // UpdateDataGPSCoroutine = StartCoroutine(UpdateDataSitiosGPS());
     }
-    
+
     [Button]
     public void ActualizarInfraestructura()
     {
@@ -96,43 +96,53 @@ public class ControlDatos : Singleton<ControlDatos>
             sitiosOrdenados.clearListas();
 
         DeleteSitiosGPS();
-        
+
         InitDataPozos();
-
-        if (ActualizarInfraestructuraCoroutine != null) StopCoroutine(ActualizarInfraestructuraCoroutine);
-        ActualizarInfraestructuraCoroutine = StartCoroutine(CoroutineActInfraestructura());
     }
-    
-    public IEnumerator CoroutineActInfraestructura()
+
+    public void InfraestructuraActualizada()
     {
-        //ActInfraestructuraCoroutine = true;
-        CreateSitiosGPS_GO();
+        DatosInicializados.Invoke();
         
-        if (sitiosOrdenados != null)
-            sitiosOrdenados.InitListasUI();
+        Canvas.ForceUpdateCanvases();
+    }
 
-        yield return new WaitForSeconds(0.1f);
-        ReCreateSitiosUI_GO();
-
+    public void CreateMaracadoresSitioMap()
+    {
+        CreateMarcadoresSitios_GO();
+        
         GetOriginalPos();
 
         if (useOverlapingDesp)
             RecalculateOverlaping();
+    }
 
-        // if (ControlMap._singletonExists)
-        //     ControlMap.singleton.SetActiveColliderMap(false);
+    public void ClearListUISitios()
+    {
+        if (sitiosOrdenados != null)
+            sitiosOrdenados.InitListasUI();
+    }
+
+    public void CreateListUISitios()
+    {
+        ReCreateSitiosUI_GO();
         
         if (sitiosOrdenados != null)
             sitiosOrdenados.updateListSitios();
-        
-        //ActInfraestructuraCoroutine = false;
+    }
 
-        DatosInicializados.Invoke();
+    public void RecreateUISitios()
+    {
+        StartCoroutine(RecreateUISitiosCoroutine());
+    }
 
-        yield return new WaitForSeconds(1);
-        Canvas.ForceUpdateCanvases();
+    public IEnumerator RecreateUISitiosCoroutine()
+    {
+        ClearListUISitios();
         
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
+        CreateListUISitios();
     }
 
     [Button]
@@ -281,7 +291,7 @@ public class ControlDatos : Singleton<ControlDatos>
     #endif
     }
     
-    public void CreateSitiosGPS_GO()
+    public void CreateMarcadoresSitios_GO()
     {
         var cont = 1;
         
@@ -293,9 +303,6 @@ public class ControlDatos : Singleton<ControlDatos>
         foreach (var sitio in listSitios)
         {
             position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
-
-            // Bit shift the index of the layer (3) to get a bit mask
-            //int layerMask = -1;
 
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
@@ -324,11 +331,12 @@ public class ControlDatos : Singleton<ControlDatos>
                     throw new ArgumentOutOfRangeException();
             }
 
-            // string prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(instancePrefab);
-            // Object prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(Object));
-            // GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, this.transform);
-            
-            GameObject instance = Instantiate(instancePrefab, this.transform);
+            GameObject instance;
+                
+            if (ControlMap._singletonExists && ControlMap.singleton.contenedorMarcadores != null)
+                instance = Instantiate(instancePrefab, ControlMap.singleton.contenedorMarcadores.transform);
+            else
+                instance = Instantiate(instancePrefab, this.transform);
             
             instance.transform.position = position;
             instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
@@ -456,14 +464,14 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    IEnumerator UpdateDataSitiosGPS()
-    {
-        while (UpdateLoop)
-        {
-            UpdateDataSitios_Marcadores();
-            yield return new WaitForSeconds(updateDataTime);
-        }
-    }
+    // IEnumerator UpdateDataSitiosGPS()
+    // {
+    //     while (UpdateLoop)
+    //     {
+    //         UpdateDataSitios_Marcadores();
+    //         yield return new WaitForSeconds(updateDataTime);
+    //     }
+    // }
     
     public DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio)
     {
@@ -593,25 +601,25 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    [Button][GUIColor(0.25f,0.25f,1)]
-    [TabGroup("Sitios")]
-    public virtual void UpdateDataSitios_Marcadores()
-    {
-        foreach (var sitio in listSitios)
-        {
-            //SitioGPS sitioGPS = sitio.GetComponent<SitioGPS>();
-
-            if (sitio.controlMarcadorMap != null)
-            {
-                ControlSitio dataSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
-
-                if (dataSitio != null)
-                {
-                    sitio.dataSitio.SetDataSitio(dataSitio.dataSitio);
-                }
-            }
-        }
-    }
+    // [Button][GUIColor(0.25f,0.25f,1)]
+    // [TabGroup("Sitios")]
+    // public virtual void UpdateDataSitios_Marcadores()
+    // {
+    //     foreach (var sitio in listSitios)
+    //     {
+    //         //SitioGPS sitioGPS = sitio.GetComponent<SitioGPS>();
+    //
+    //         if (sitio.controlMarcadorMap != null)
+    //         {
+    //             ControlSitio dataSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
+    //
+    //             if (dataSitio != null)
+    //             {
+    //                 sitio.dataSitio.SetDataSitio(dataSitio.dataSitio);
+    //             }
+    //         }
+    //     }
+    // }
 
     [TabGroup("Totalizados")]
     [Button]

@@ -10,10 +10,10 @@ public class ControlBombasUI : MonoBehaviour
     
     public void Start()
     {
-        if (ControlUpdateUI._singletonExists)
+        if (ControlSelectedSitio._singletonExists)
         {
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
-            ControlUpdateUI.singleton.ChangeIndexBomba.AddListener(UpdateUISitio);
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
+            ControlSelectedSitio.singleton.ChangeIndexBomba.AddListener(UpdateUISitio);
         }
     }
     
@@ -27,9 +27,9 @@ public class ControlBombasUI : MonoBehaviour
         }            
     }
 
-    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateInfoSitio(ControlSitio sitio)
     {
-        selectedControlSitio = controlMarcadorSitio.sitio;
+        selectedControlSitio = sitio;
         UpdateUISitio(selectedControlSitio);
     }
     

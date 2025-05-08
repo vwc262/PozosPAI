@@ -17,7 +17,7 @@ public class ControlDatos_PAI : ControlDatos
     {
         print("FORZAR UPDATE");
         UpdateDataPozos();
-        UpdateDataSitios_Marcadores();
+        //UpdateDataSitios_Marcadores();
     }
 
     [Button][GUIColor(0.25f,0.25f,1)]
@@ -109,23 +109,23 @@ public class ControlDatos_PAI : ControlDatos
         }
     }
     
-    public override void UpdateDataSitios_Marcadores()
-    {
-        foreach (var sitio in listSitios)
-        {
-            //SitioGPS sitioGPS = marcador.GetComponent<SitioGPS>();
-
-            if (sitio.controlMarcadorMap != null)
-            {
-                ControlSitio controlSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
-
-                if (controlSitio != null)
-                {
-                    sitio.dataSitio.SetDataSitio(controlSitio.dataSitio);
-                    
-                    sitio.dataSitio.automationData.SetDataAutomation(controlSitio.dataSitio.automationData);
-                }
-            }
-        }
-    }
+    // public override void UpdateDataSitios_Marcadores()
+    // {
+    //     foreach (var sitio in listSitios)
+    //     {
+    //         //SitioGPS sitioGPS = marcador.GetComponent<SitioGPS>();
+    //
+    //         if (sitio.controlMarcadorMap != null)
+    //         {
+    //             ControlSitio controlSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
+    //
+    //             if (controlSitio != null)
+    //             {
+    //                 sitio.dataSitio.SetDataSitio(controlSitio.dataSitio);
+    //                 
+    //                 sitio.dataSitio.automationData.SetDataAutomation(controlSitio.dataSitio.automationData);
+    //             }
+    //         }
+    //     }
+    // }
 }

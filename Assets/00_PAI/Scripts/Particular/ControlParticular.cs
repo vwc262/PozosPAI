@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class ControlParticular : Singleton<ControlParticular>
 {
     public bool isActiveParticular;
-    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
+    public ControlSitio sitio;
 
     public GameObject CameraParticular;
     public GameObject PanelUIParticular;
@@ -27,43 +27,41 @@ public class ControlParticular : Singleton<ControlParticular>
     
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-        {
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
-        }
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
 
         DeactivateParticular();
 
         StartCoroutine(UpdateUIPozo());
     }
     
-    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
+        sitio = _sitio;
 
         if (nombrePozo != null)
-            nombrePozo.text = controlMarcadorSitioSeleccionado.sitio.dataSitio.nombre;
+            nombrePozo.text = sitio.dataSitio.nombre;
     }
 
     public IEnumerator UpdateUIPozo()
     {
         while (UpdateLoop)
         {
-            if (controlMarcadorSitioSeleccionado != null && datosPozo != null)
+            if (sitio != null && datosPozo != null)
             {
-                datosPozo.text = "Abreviatura: " + controlMarcadorSitioSeleccionado.sitio.dataSitio.abreviacion + "\n";
+                datosPozo.text = "Abreviatura: " + sitio.dataSitio.abreviacion + "\n";
 
-                if (controlMarcadorSitioSeleccionado.sitio.dataSitio.gasto.Count>0)
-                    if (controlMarcadorSitioSeleccionado.sitio.dataSitio.gasto[0].DentroRango)
-                        datosPozo.text += "\nGasto: " + controlMarcadorSitioSeleccionado.sitio.dataSitio.gasto[0].Valor + "  l/s";
+                if (sitio.dataSitio.gasto.Count>0)
+                    if (sitio.dataSitio.gasto[0].DentroRango)
+                        datosPozo.text += "\nGasto: " + sitio.dataSitio.gasto[0].Valor + "  l/s";
 
-                if (controlMarcadorSitioSeleccionado.sitio.dataSitio.presion.Count > 0)
-                    if (controlMarcadorSitioSeleccionado.sitio.dataSitio.presion[0].DentroRango)
-                        datosPozo.text += "\nPresion: " + controlMarcadorSitioSeleccionado.sitio.dataSitio.presion[0].Valor + " km/cm2";
+                if (sitio.dataSitio.presion.Count > 0)
+                    if (sitio.dataSitio.presion[0].DentroRango)
+                        datosPozo.text += "\nPresion: " + sitio.dataSitio.presion[0].Valor + " km/cm2";
 
-                if (controlMarcadorSitioSeleccionado.sitio.dataSitio.totalizado.Count > 0)
-                    if (controlMarcadorSitioSeleccionado.sitio.dataSitio.totalizado[0].DentroRango)
-                        datosPozo.text += "\nTotalizado: " + controlMarcadorSitioSeleccionado.sitio.dataSitio.totalizado[0].Valor + " m3";
+                if (sitio.dataSitio.totalizado.Count > 0)
+                    if (sitio.dataSitio.totalizado[0].DentroRango)
+                        datosPozo.text += "\nTotalizado: " + sitio.dataSitio.totalizado[0].Valor + " m3";
             }
 
             yield return new WaitForSeconds(waitUpdateUITime);
@@ -96,8 +94,8 @@ public class ControlParticular : Singleton<ControlParticular>
         CameraParticular.SetActive(_active);
         PanelUIParticular.SetActive(_active);
         
-        if (controlParticualres != null && controlMarcadorSitioSeleccionado != null)
-            controlParticualres.SetActiveParticularByID(controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio);
+        if (controlParticualres != null && sitio != null)
+            controlParticualres.SetActiveParticularByID(sitio.dataSitio.idSitio);
         
         foreach(var coustomKeyboard in coustomKeyboardList_particular)
         {

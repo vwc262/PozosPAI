@@ -35,7 +35,7 @@ public class ControlManager : Singleton<ControlManager>
         if (ControlDatos._singletonExists)
             ControlDatos.singleton.ActualizarInfraestructura();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         
         SendEventMainFSM("infraestructuraActualizada");
     }
@@ -58,6 +58,16 @@ public class ControlManager : Singleton<ControlManager>
     }
     public void InicioParticulares() {}
     public void InicioMapa() {}
-    public void InicioMarcadores3D() {}
-    public void InicioLista() {}
+
+    public void InicioMarcadores3D()
+    {
+        if (ControlDatos._singletonExists)
+            ControlDatos.singleton.CreateMaracadoresSitioMap();
+    }
+
+    public void InicioLista()
+    {
+        if (ControlDatos._singletonExists)
+            ControlDatos.singleton.RecreateUISitios();
+    }
 }

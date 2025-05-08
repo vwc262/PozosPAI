@@ -18,7 +18,7 @@ public class ControlBombas : Singleton<ControlBombas>
     // public string address = $"/api24/VWC/Unreal/Chiconautla2024/InsertComando";
     public bool errorControlBombaHTML;
     
-    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
+    public ControlSitio sitio;
 
     public bool simulaSendCommand;
     
@@ -30,14 +30,13 @@ public class ControlBombas : Singleton<ControlBombas>
     
     private void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
 
-    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateInfoSitio(ControlSitio sitio)
     {
-        //idSitio = _DataSitio.idSitio;
-        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
+        this.sitio = sitio;
     }
     
     [Button]
@@ -73,7 +72,7 @@ public class ControlBombas : Singleton<ControlBombas>
     {
         if (ControlLogin._singletonExists)
         {
-            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, controlMarcadorSitioSeleccionado.sitio.dataSitio.idSitio, controlMarcadorSitioSeleccionado.sitio.indexBomba, action);
+            SetCommandValues(ControlLogin.singleton.login.Credencials.usuario, sitio.dataSitio.idSitio, sitio.indexBomba, action);
             StartCoroutine(DoRequest());
         }
     }

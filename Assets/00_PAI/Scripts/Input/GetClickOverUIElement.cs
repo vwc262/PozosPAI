@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 public class GetClickOverUIElement : MonoBehaviour, IPointerClickHandler
 {
@@ -12,7 +9,7 @@ public class GetClickOverUIElement : MonoBehaviour, IPointerClickHandler
 
     public Canvas MyCanvas;
     
-    public BoyRaycastSitio RaycastSitio;
+    public RayCastSelectSitio RaycastSitio;
 
     public bool isCircularElement;
 

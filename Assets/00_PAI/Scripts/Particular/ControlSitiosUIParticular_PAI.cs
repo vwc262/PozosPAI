@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class ControlSitiosUIParticular_PAI : MonoBehaviour
 {
-    [FormerlySerializedAs("sitioSeleccionado")] public ControlMarcadorSitio controlMarcadorSitioSeleccionado;
+    public ControlSitio sitio;
     public float updateRate = 5;
     private float countdown;
 
@@ -26,8 +26,8 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
     
     void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
     
     private void Update()
@@ -35,27 +35,28 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            if (controlMarcadorSitioSeleccionado != null)
-                UpdateStatusSitio(controlMarcadorSitioSeleccionado);
+            if (sitio != null)
+                UpdateStatusSitio();
             countdown = updateRate;
         }
     }
     
-    public void UpdateInfoSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        controlMarcadorSitioSeleccionado = controlMarcadorSitio;
-        UpdateStatusSitio(controlMarcadorSitioSeleccionado);
+        sitio = _sitio;
+        
+        UpdateStatusSitio();
 
         SetRegional();
     }
 
-    public void UpdateStatusSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void UpdateStatusSitio()
     {
         contEnLinea =
-            sitiosUIParticular.Count(item => item.GetComponent<ControlSelectSitio>().sitio.dataInTime);
+            sitiosUIParticular.Count(item => item.GetComponent<ControlUISitio>().sitio.dataInTime);
         
         contFueraDeLinea =
-            sitiosUIParticular.Count(item => item.GetComponent<ControlSelectSitio>().sitio.dataInTime == false);
+            sitiosUIParticular.Count(item => item.GetComponent<ControlUISitio>().sitio.dataInTime == false);
         
         if (TextEnLinea != null)
             TextEnLinea.text = contEnLinea.ToString();
@@ -66,7 +67,7 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
 
     public void SetRegional()
     {
-        regional = controlMarcadorSitioSeleccionado.sitio.dataSitio.Estructura;
+        regional = sitio.dataSitio.Estructura;
 
         if (regional != regionalAnt)
         {
@@ -94,7 +95,7 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
                     {
                         GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
                         
-                        ControlSelectSitio controlSitioUI = instance.GetComponent<ControlSelectSitio>();
+                        ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
                         if (controlSitioUI != null)
                             controlSitioUI.SetSitio(sitio);
                         

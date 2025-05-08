@@ -1,25 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-public class ControlSelectedSitio : MonoBehaviour
+public class ControlSelectedSitio : Singleton<ControlSelectedSitio>
 {
-    [FormerlySerializedAs("sitioSelected")] public ControlMarcadorSitio controlMarcadorSitioSelected;
+    public ControlSitio SitioSeleccionado;
+    public ControlSitio SitioSeleccionadoDobleClick;
+    
+    public UnityEvent<ControlSitio> ChangeSitioSeleccionado;
+    public UnityEvent<ControlSitio> ChangeSitioSeleccionadoDobleClick;
+    
+    public UnityEvent<ControlSitio> ChangeIndexBomba;
 
-    public void SetSelectedSitio(ControlMarcadorSitio controlMarcadorSitio)
+    public void SetSelectedSitio(ControlSitio sitio)
     {
-        if (controlMarcadorSitioSelected != null)
-            controlMarcadorSitioSelected.DeselectMe();
+        //Deseleccionar sitio
+        if (SitioSeleccionado != null)
+            SitioSeleccionado.DeseleccionarSitio();
         
-        controlMarcadorSitioSelected = controlMarcadorSitio;
+        //Seleccionar sitio
+        this.SitioSeleccionado = sitio;
         
-        controlMarcadorSitioSelected.SelectMe();
+        SitioSeleccionado.SeleccionarSitio();
         
-        if (ControlBombas_PAI._singletonExists)
-            ((ControlBombas_PAI)ControlBombas_PAI.singleton).SendEventFSM("hide");
+        ChangeSitioSeleccionado.Invoke(SitioSeleccionado);
+    }
+    
+    public void SetSelectedSitioDobleClick(ControlSitio sitio)
+    {
+        this.SitioSeleccionadoDobleClick = sitio;
+        ChangeSitioSeleccionadoDobleClick.Invoke(SitioSeleccionadoDobleClick);
+    }
+    
+    public void DeseleccionarSitio()
+    {
+        //Deseleccionar sitio
+        if (SitioSeleccionado != null)
+            SitioSeleccionado.DeseleccionarSitio();
         
-        if (ControlLogin._singletonExists)
-            ControlLogin.singleton.CloseLoginPanel();
+        SitioSeleccionado = null;
+        
+        ChangeSitioSeleccionado.Invoke(null);
     }
 }

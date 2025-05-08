@@ -15,28 +15,24 @@ public class BoyQRPozo : MonoBehaviour
 	
 	void Start()
 	{
-		if (ControlUpdateUI._singletonExists)
-			ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateGPS);
-
+		if (ControlSelectedSitio._singletonExists)
+			ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
 	}
 
-	private void UpdateGPS(ControlMarcadorSitio marcador)
+	private void UpdateInfoSitio(ControlSitio _sitio)
 	{
-		gpsQR = $"{marcador.sitio.dataSitio.latitud},{marcador.sitio.dataSitio.longitud}";
+		gpsQR = $"{_sitio.dataSitio.latitud},{_sitio.dataSitio.longitud}";
 
-		gpsText.text = $"{ConvertDecimelToGrades(marcador.sitio.dataSitio.latitud)}, {ConvertDecimelToGrades(marcador.sitio.dataSitio.longitud)}";
+		gpsText.text = $"{ConvertDecimelToGrades(_sitio.dataSitio.latitud)}, {ConvertDecimelToGrades(_sitio.dataSitio.longitud)}";
 		
 		Texture2D qrTexture = QRGenerator.EncodeString(baseQR+gpsQR, darkColor, lightColor);
 		
 		GetComponent<Renderer>().material.mainTexture = qrTexture;
-		
 	}
 
 
 	public string ConvertDecimelToGrades(float _angle)
 	{
-		
-
 		int angle = (int)_angle;
 		int minutes = (int)((_angle - angle)*60);
 		float seconds = ((_angle - angle)*60 - minutes)*60;

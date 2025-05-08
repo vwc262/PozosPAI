@@ -91,7 +91,7 @@ public class BoyAforos : MonoBehaviour
         {
             foreach (var sitio in controlSitioUI.sitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {
@@ -145,7 +145,7 @@ public class BoyAforos : MonoBehaviour
         {
             foreach (var sitio in controlSitioUI.sitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {
