@@ -5,11 +5,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BoyBalanceGastoGUI : MonoBehaviour
+public class BalanceGastoGUI : MonoBehaviour
 {
-    // Hola Boy
-    public SitiosOrdenados sitiosOrdenados;
-
     private void Update()
     {
         UpdateUI();

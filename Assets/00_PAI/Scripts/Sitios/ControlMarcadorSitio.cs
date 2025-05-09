@@ -9,7 +9,6 @@ using UnityEngine.Serialization;
 
 public class ControlMarcadorSitio : MonoBehaviour
 {
-    //public DataSitio MyDataSitio;
     public ControlSitio sitio;
     
     public SE_SelectSitio eventSelectSitio;
@@ -17,7 +16,7 @@ public class ControlMarcadorSitio : MonoBehaviour
     public static LeanSelectByFinger leanSelectByFinger;
     private LeanSelectable selectable;
 
-    public ControlSitioUI controlSitioUI;
+    //public ControlSitioUI controlSitioUI;
 
     public TMPro.TMP_Text textoNombre;
     public TMPro.TMP_Text textoFecha;
@@ -33,16 +32,12 @@ public class ControlMarcadorSitio : MonoBehaviour
     public List<SpriteRenderer> rendererUIStatus = new List<SpriteRenderer>();
     public List<TMPro.TMP_Text> textUIStatus = new List<TMPro.TMP_Text>();
     public float updateRate = 60;
-    private Coroutine corrutinaTime;
+    private Coroutine UpateMarcadorCoroutine;
     public float diferencia;
     public float umbralGreen;
     public float umbralYellow;
 
     public Color statusColor;
-    //-- 1 - green
-    //-- 2 - yellow
-    //-- 3 - red
-    public int statusDataInTime;
     
     public Color statusColor1;
     public Color statusColor2;
@@ -54,24 +49,18 @@ public class ControlMarcadorSitio : MonoBehaviour
     public bool selectedSitio;
 
     public List<MeshRenderer> Bombas;
-
-    //public event Action<bool> sitioSeleccionadoEvent;
     
-    //public ControlUISitio controlUISitio;
     public GameObject billboardObj;
     public Vector3 billboardSelectedPos;
     public Vector3 billboardUnSelectedPos;
     
-    public ControlMarcadorUI controlMarcadorUI;
-    
     public bool dataInTime = false;
-    //public int indexBomba = 0;
 
     public float timeToDobleClick;
     
-    private void Start()
+    public void Start()
     {
-        this.corrutinaTime = StartCoroutine(StatusUI());
+        UpateMarcadorCoroutine = StartCoroutine(StatusUI());
         
         DeseleccionarSitio();
     }
@@ -79,16 +68,6 @@ public class ControlMarcadorSitio : MonoBehaviour
     public virtual IEnumerator StatusUI()
     {
         yield return new WaitForSeconds(updateRate);
-    }
-    
-    public void SetColorBombaMap2D(int color)
-    {
-        // 0 - gris
-        // 1 - verde
-        // 2 - rojo
-        // 3 - Azul
-        if (controlMarcadorUI != null)
-            controlMarcadorUI.SetColorBomba(color);
     }
     
     public void AddToSelectanbles()
@@ -166,7 +145,7 @@ public class ControlMarcadorSitio : MonoBehaviour
         selectedSitio = false;
     }
 
-    public virtual void SetDataSitio(DataSitio _DataSitio) { }
+    public virtual void SetDataSitio(ControlSitio _Sitio) { }
 
     public void CreateSphere()
     {

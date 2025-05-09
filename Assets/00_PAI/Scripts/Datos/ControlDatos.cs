@@ -38,18 +38,7 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Marcadores")]public Vector3 position;
 
     [TabGroup("Marcadores")]public LayerMask groundedLayerMaskayer;
-    [TabGroup("Marcadores")]public ControlSitioUI controlSitioUI;
-    
-    [TabGroup("Prefabs")]public GameObject prefabMarcadorSitioLerma1;
-    [TabGroup("Prefabs")]public GameObject prefabMarcadorSitioLerma2;
-    [TabGroup("Prefabs")]public GameObject prefabMarcadorRepetidor;
-    [TabGroup("Prefabs")]public GameObject prefabMarcadorSitioEnConstruccion;
-    [TabGroup("Prefabs")]public GameObject prefabPanelSitioLerma1;
-    [TabGroup("Prefabs")]public GameObject prefabPanelSitioLerma2;
-    [TabGroup("Prefabs")]public GameObject prefabPanelRepetidor;
-    [TabGroup("Prefabs")]public GameObject prefabPanelSitioEnConstruccion;
-    [TabGroup("Prefabs")]public GameObject prefabUIRegionaLabel;
-    [TabGroup("Prefabs")]public GameObject prefabUIRegionaList;
+    //[TabGroup("Marcadores")]public ControlSitioUI controlSitioUI;
     
     [TabGroup("Overlap")]public bool useOverlapingDesp = true;
     [TabGroup("Overlap")]public float overlapMoveDistance = 100;
@@ -62,7 +51,7 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Totalizados")] public List<TotalizadoPorSitio> totalizadosPorFecha;
     
     //public DisableTerrainMeshCollider colliderMapa;
-    public SitiosOrdenados sitiosOrdenados;
+    //public SitiosOrdenados sitiosOrdenados;
     //public bool ActInfraestructuraCoroutine;
 
     public UnityEvent DatosInicializados;
@@ -92,8 +81,8 @@ public class ControlDatos : Singleton<ControlDatos>
     [Button]
     public void ActualizarInfraestructura()
     {
-        if (sitiosOrdenados != null)
-            sitiosOrdenados.clearListas();
+        if (ControlSitiosUI_Lista._singletonExists)
+            ControlSitiosUI_Lista.singleton.sitiosOrdenados.clearListas();
 
         DeleteSitiosGPS();
 
@@ -119,16 +108,16 @@ public class ControlDatos : Singleton<ControlDatos>
 
     public void ClearListUISitios()
     {
-        if (sitiosOrdenados != null)
-            sitiosOrdenados.InitListasUI();
+        if (ControlSitiosUI_Lista._singletonExists)
+            ControlSitiosUI_Lista.singleton.sitiosOrdenados.InitListasUI();
     }
 
     public void CreateListUISitios()
     {
         ReCreateSitiosUI_GO();
         
-        if (sitiosOrdenados != null)
-            sitiosOrdenados.updateListSitios();
+        if (ControlSitiosUI_Lista._singletonExists)
+            ControlSitiosUI_Lista.singleton.sitiosOrdenados.updateListSitios();
     }
 
     public void RecreateUISitios()
@@ -230,11 +219,6 @@ public class ControlDatos : Singleton<ControlDatos>
         
         foreach (var sitio in listSitios)
         {
-            // position = this.transform.position + 
-            //            (Vector3.right * (sitio.longitud - longitud0)) * spanLongitud +
-            //            (Vector3.forward * (sitio.latitud - latitud0)) * spanLatitud +
-            //            (Vector3.up * maxAltitude);
-            
             position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
             
             // Bit shift the index of the layer (3) to get a bit mask
@@ -251,17 +235,14 @@ public class ControlDatos : Singleton<ControlDatos>
             GameObject instancePrefab = null;
             switch (sitio.dataSitio.tipoSitioPozo)
             {
-                case TipoSitioPozo.PozoLerma1:
-                    instancePrefab = prefabMarcadorSitioLerma1;
-                    break;
-                case TipoSitioPozo.PozoLerma2:
-                    instancePrefab = prefabMarcadorSitioLerma2;
+                case TipoSitioPozo.Pozo:
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitio;
                     break;
                 case TipoSitioPozo.Repetidor:
-                    instancePrefab = prefabMarcadorRepetidor;
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorRepetidor;
                     break;
                 case TipoSitioPozo.EnConstruccion:
-                    instancePrefab = prefabMarcadorSitioEnConstruccion;
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -278,8 +259,8 @@ public class ControlDatos : Singleton<ControlDatos>
             ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
             if (myControlMarcadorSitio != null)
             {
-                myControlMarcadorSitio.SetDataSitio(sitio.dataSitio);
-                myControlMarcadorSitio.controlSitioUI = controlSitioUI;
+                myControlMarcadorSitio.SetDataSitio(sitio);
+                //myControlMarcadorSitio.controlSitioUI = controlSitioUI;
             }
 
             //CreateGUISitios(mySitio);
@@ -315,17 +296,14 @@ public class ControlDatos : Singleton<ControlDatos>
             GameObject instancePrefab = null;
             switch (sitio.dataSitio.tipoSitioPozo)
             {
-                case TipoSitioPozo.PozoLerma1:
-                    instancePrefab = prefabMarcadorSitioLerma1;
-                    break;
-                case TipoSitioPozo.PozoLerma2:
-                    instancePrefab = prefabMarcadorSitioLerma2;
+                case TipoSitioPozo.Pozo:
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitio;
                     break;
                 case TipoSitioPozo.Repetidor:
-                    instancePrefab = prefabMarcadorRepetidor;
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorRepetidor;
                     break;
                 case TipoSitioPozo.EnConstruccion:
-                    instancePrefab = prefabMarcadorSitioEnConstruccion;
+                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -344,8 +322,8 @@ public class ControlDatos : Singleton<ControlDatos>
             ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
             if (myControlMarcadorSitio != null)
             {
-                myControlMarcadorSitio.SetDataSitio(sitio.dataSitio);
-                myControlMarcadorSitio.controlSitioUI = controlSitioUI;
+                myControlMarcadorSitio.SetDataSitio(sitio);
+                //myControlMarcadorSitio.controlSitioUI = controlSitioUI;
             }
 
             sitio.controlMarcadorMap = myControlMarcadorSitio;
@@ -371,28 +349,30 @@ public class ControlDatos : Singleton<ControlDatos>
     {
         DeleteSitiosSelectUI();
 
-        foreach (var sitio in listSitios)
+        if (ControlSitiosUI_Lista._singletonExists)
         {
-            if (sitio.controlMarcadorMap != null)
+            foreach (var sitio in listSitios)
             {
-                controlSitioUI.SetSitioSelectUI_GO(sitio);
+                ControlSitiosUI_Lista.singleton.SetSitioSelectUI_GO(sitio);
             }
+
+            ControlSitiosUI_Lista.singleton.SetSitiosEnd();
         }
-        
-        controlSitioUI.SetSitiosEnd();
     }
     
     [TabGroup("Marcadores")]
     [Button]
     public void DeleteSitiosSelectUI()
     {
-        controlSitioUI.DeleteSitios();
+        if (ControlSitiosUI_Lista._singletonExists)
+            ControlSitiosUI_Lista.singleton.DeleteSitios();
     }
     
     [TabGroup("Marcadores")]
     public void CreateGUISitios(ControlSitio sitio)
     {
-        controlSitioUI.SetSitioSelectUI_Prefab(sitio);
+        if (ControlSitiosUI_Lista._singletonExists)
+            ControlSitiosUI_Lista.singleton.SetSitioSelectUI_Prefab(sitio);
     }
     
     [TabGroup("Marcadores")]
@@ -401,37 +381,35 @@ public class ControlDatos : Singleton<ControlDatos>
     private void UnpackPrefabs()
     {
 #if UNITY_EDITOR
-        if (prefabMarcadorSitioLerma1 != null)
+        if (ControlPrefabs.singleton.prefabMarcadorSitio != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabMarcadorSitioLerma1, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorSitio, 
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
-        if (prefabMarcadorSitioLerma2 != null)
+        if (ControlPrefabs.singleton.prefabMarcadorRepetidor != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabMarcadorSitioLerma2, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorRepetidor, 
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
-        if (prefabMarcadorRepetidor != null)
+        if (ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabMarcadorRepetidor, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion, 
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
-        if (prefabMarcadorSitioEnConstruccion != null)
+        if (ControlPrefabs.singleton.prefabPanelUISitio != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabMarcadorSitioEnConstruccion, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUISitio, 
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
-        if (prefabPanelSitioLerma1 != null)
+        if (ControlPrefabs.singleton.prefabPanelUIRepetidor != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabPanelSitioLerma1, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUIRepetidor, 
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
-        if (prefabPanelSitioLerma2 != null)
+        if (ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion != null)
         {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabPanelSitioLerma2, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (prefabPanelRepetidor != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabPanelRepetidor, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (prefabPanelSitioEnConstruccion != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(prefabPanelSitioEnConstruccion, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion,
+                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
         }
         #endif
     }
@@ -463,15 +441,6 @@ public class ControlDatos : Singleton<ControlDatos>
             yield return new WaitForSeconds(updateDataTime);
         }
     }
-    
-    // IEnumerator UpdateDataSitiosGPS()
-    // {
-    //     while (UpdateLoop)
-    //     {
-    //         UpdateDataSitios_Marcadores();
-    //         yield return new WaitForSeconds(updateDataTime);
-    //     }
-    // }
     
     public DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio)
     {
@@ -600,26 +569,6 @@ public class ControlDatos : Singleton<ControlDatos>
             cont++;
         }
     }
-    
-    // [Button][GUIColor(0.25f,0.25f,1)]
-    // [TabGroup("Sitios")]
-    // public virtual void UpdateDataSitios_Marcadores()
-    // {
-    //     foreach (var sitio in listSitios)
-    //     {
-    //         //SitioGPS sitioGPS = sitio.GetComponent<SitioGPS>();
-    //
-    //         if (sitio.controlMarcadorMap != null)
-    //         {
-    //             ControlSitio dataSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
-    //
-    //             if (dataSitio != null)
-    //             {
-    //                 sitio.dataSitio.SetDataSitio(dataSitio.dataSitio);
-    //             }
-    //         }
-    //     }
-    // }
 
     [TabGroup("Totalizados")]
     [Button]

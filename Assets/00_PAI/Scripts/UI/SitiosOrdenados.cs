@@ -9,8 +9,6 @@ using UnityEngine.UI;
 
 public class SitiosOrdenados : MonoBehaviour
 {
-    // Hola Boy
-    
     [TabGroup("UI")] public Sprite foldInRegion;
     [TabGroup("UI")] public Sprite foldOutRegion;
     [TabGroup("UI")] public Image ordenGastoImage;
