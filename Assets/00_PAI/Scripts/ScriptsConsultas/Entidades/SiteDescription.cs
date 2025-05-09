@@ -32,8 +32,8 @@ public class SiteDescription : SiteBase
 
 public enum TipoSitioPozo
 {
-    PozoLerma1,
-    PozoLerma2,
+    none = 0,
+    Pozo,
     Repetidor,
     EnConstruccion
 }

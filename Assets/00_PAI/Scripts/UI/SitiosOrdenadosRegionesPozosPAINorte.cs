@@ -139,7 +139,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
         {
             for (int i = 0; i < totalRegiones; i++)
             {
-                ControlRegionUILabel instanceLabel = Instantiate(ControlDatos.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
+                ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
                     GetComponent<ControlRegionUILabel>();
                 
                 instanceLabel.sitiosOrdenados = this;
@@ -151,7 +151,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
                 instanceLabel.gameObject.name = "Label " + nameRegion;
                 RegionesLabelUILabel.Add(instanceLabel);
                 
-                ControlRegionUIList instanceList = Instantiate(ControlDatos.singleton.prefabUIRegionaList, contentSitiosList.transform).
+                ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentSitiosList.transform).
                     GetComponent<ControlRegionUIList>();
                 
                 instanceList.gameObject.name = "List " + instanceLabel.region.ToString();

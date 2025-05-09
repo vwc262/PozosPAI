@@ -25,7 +25,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                     {
                         dataInTime = true;
                         statusColor = statusColor1;
-                        statusDataInTime = 1;
                     }
                     // else if (diferencia < umbralYellow)
                     // {
@@ -37,7 +36,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                     {
                         dataInTime = false;
                         statusColor = statusColor3;
-                        statusDataInTime = 3;
                     }
 
                     if (sitio.dataSitio.bomba.Count > 0)
@@ -48,7 +46,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                             {
                                 case 0:
                                     SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                                    SetColorBombaMap2D(0);
                                     foreach (var falloBomba in listFallaBomba)
                                     {
                                         falloBomba.gameObject.SetActive(true);
@@ -56,7 +53,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                                     break;
                                 case 1:
                                     SetColorMeshBombas(Color.green);
-                                    SetColorBombaMap2D(1);
                                     foreach (var falloBomba in listFallaBomba)
                                     {
                                         falloBomba.gameObject.SetActive(false);
@@ -64,7 +60,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                                     break;
                                 case 2:
                                     SetColorMeshBombas(Color.red);
-                                    SetColorBombaMap2D(2);
                                     foreach (var falloBomba in listFallaBomba)
                                     {
                                         falloBomba.gameObject.SetActive(false);
@@ -72,7 +67,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                                     break;
                                 case 3:
                                     SetColorMeshBombas(Color.blue);
-                                    SetColorBombaMap2D(3);
                                     foreach (var falloBomba in listFallaBomba)
                                     {
                                         falloBomba.gameObject.SetActive(false);
@@ -83,13 +77,11 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                         // else
                         // {
                         //     SetColorMeshBombas(Color.gray);
-                        //     SetColorBombaMap2D(0);
                         // }
                     }
                     else
                     {
                         SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                        SetColorBombaMap2D(0);
                     }
                     
                     rendererUIStatus.ForEach(item =>
@@ -100,8 +92,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                         HDMaterial.ValidateMaterial(item.material);
 
                     });
-                    
-                    //textUIStatus.ForEach(item => item.color = statusColor);
                 }
                 else
                 {
@@ -118,9 +108,9 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
         }
     }
     
-    public override void SetDataSitio(DataSitio _DataSitio)
+    public override void SetDataSitio(ControlSitio _Sitio)
     {
-        sitio.dataSitio.SetDataSitio(_DataSitio);
+        sitio = _Sitio;
         
         textoNombre.text = sitio.dataSitio.nombre;
         textoFecha.text = sitio.dataSitio.fecha;
@@ -149,7 +139,10 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                 var renderer = mesh.GetComponent<Renderer>();
 
                 if (renderer != null)
+                {
                     renderer.material.color = _color;
+                    
+                }
             }
         }
     }

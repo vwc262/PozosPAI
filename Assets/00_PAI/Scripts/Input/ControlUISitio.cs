@@ -212,7 +212,7 @@ public class ControlUISitio : MonoBehaviour
     {
         selectedBarsImage.SetActive(true);
         
-        if (ControlSitioUI.moveScrollBarOnSelect)
+        if (ControlSitiosUI_Lista.moveScrollBarOnSelect)
         {
             float scrollPos = 1 - transform.GetSiblingIndex() / (float)(transform.parent.childCount - 1);
 

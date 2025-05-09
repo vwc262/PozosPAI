@@ -1,21 +1,30 @@
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class ControlSitiosUI_Lista : MonoBehaviour
+public class ControlSitiosUI_Lista : Singleton<ControlSitiosUI_Lista>
 {
-    public PlayMakerFSM controlPanelSitios;
-    
-    public void SendGUIFSMEvent(string eventName)
-    {
-        // if (BoyRoboticsAnimationManager._singletonExists)
-        //     BoyRoboticsAnimationManager.singleton.SendGUIFSMEvent(eventName);
-    }
-    
-    public void SendCameraFSMEvent(string eventName)
-    {
-        // if (BoyRoboticsAnimationManager._singletonExists)
-        //     BoyRoboticsAnimationManager.singleton.SendCameraFSMEvent(eventName);
-    }
+    [TabGroup("SitiosUI")] public List<ControlUISitio> sitios = new List<ControlUISitio>();
 
+    public float updateRate = 5;
+    private float countdown;
+    
+    public PlayMakerFSM controlPanelSitios;
+    public SitiosOrdenados sitiosOrdenados;
+
+    [ShowInInspector]
+    public static bool moveScrollBarOnSelect = true;
+    
+    private void Update()
+    {
+        countdown -= Time.deltaTime;
+        if(countdown <= 0)
+        {
+            UpdateData();
+            countdown = updateRate;
+        }            
+    }
+    
     public void ToggleListSitios()
     {
         if (controlPanelSitios != null)
@@ -31,5 +40,33 @@ public class ControlSitiosUI_Lista : MonoBehaviour
                 controlPanelSitios.SendEvent("show");
             }
         }
+    }
+    
+    public virtual void UpdateData() { }
+    
+    public virtual void SetSitioSelectUI_Prefab(ControlSitio sitio) { }
+
+    public virtual void SetSitioSelectUI_GO(ControlSitio sitio) { }
+
+    public void DeleteSitios()
+    {
+        foreach (var sitio in sitios)
+        {
+            if (Application.isEditor)
+            {
+                DestroyImmediate(sitio.gameObject);
+            }
+            else
+            {
+                Destroy(sitio.gameObject);
+            }
+        }
+        
+        sitios.Clear();
+    }
+    
+    public virtual void SetSitiosEnd()
+    {
+        
     }
 }
