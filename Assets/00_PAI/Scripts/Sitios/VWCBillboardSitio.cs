@@ -10,7 +10,7 @@ public class VWCBillboardSitio : MonoBehaviour
     // Hola Boy
     private GameObject cameraMove;
     private VWC_MoveCamera cameraMoveVWC;
-    [FormerlySerializedAs("sitioGPS")] public ControlMarcadorSitio controlMarcadorSitio;
+    public ControlSitio sitio;
 
     public bool useDistance_X_Z;
     
@@ -130,7 +130,8 @@ public class VWCBillboardSitio : MonoBehaviour
             transform.localPosition = newPos;
         }
         
-        frameDark.material.color = new Color(0, 0, 0, interpolationValuePos * 2);
+        if (frameDark != null)
+            frameDark.material.color = new Color(0, 0, 0, interpolationValuePos * 2);
         
         RecalculatePerspectiveDeformation();
     }
@@ -139,7 +140,7 @@ public class VWCBillboardSitio : MonoBehaviour
     {
         var pos1 = posGuiOriginal + guiObjPosTilt;
         
-        if (controlMarcadorSitio.selectedSitio) 
+        if (sitio.isSelected) 
             //guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, interpolationValueAngle);
             guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, 1);
         else

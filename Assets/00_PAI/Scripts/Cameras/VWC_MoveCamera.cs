@@ -76,6 +76,11 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputDragEvent.Raise(tiltValue);
         
         UpdateOrigen();
+        
+        if (ControlSelectedSitio._singletonExists)
+        {
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(SetSelectedSitio);
+        }
     }
 
     [Button]
@@ -260,9 +265,10 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputDragEvent.Raise(tiltValue);
     }
     
-    public void SetSelectedSitio(ControlMarcadorSitio dataControlMarcadorSitio)
+    public void SetSelectedSitio(ControlSitio sitio)
     {
-        SetSelectedSitioPosition(dataControlMarcadorSitio.transform.position);
+        if (sitio != null)
+            SetSelectedSitioPosition(sitio.controlMarcadorMap.transform.position);
     }
     
     public void SetSelectedSitioPosition(Vector3 _position)
