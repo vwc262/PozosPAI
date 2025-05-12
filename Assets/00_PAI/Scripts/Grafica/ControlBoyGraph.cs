@@ -22,12 +22,12 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
                 graph.InitPanelsActuallizacion();
             }
 
-            if (RequestAPI.Instance.sistema == RequestAPI.Proyectos.PozosPAI)
+            if (RequestAPI.singleton.sistema == RequestAPI.Proyectos.PozosPAI)
             {
                 BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
                 BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
             
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     BoyGraph.idSitio,(int)sitio.dataSitio.Estructura,
                     BoyGraph.minDate,
                     BoyGraph.maxDate,
@@ -39,7 +39,7 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
                 BoyGraph.idSitio = sitio.dataSitio.idSitio;
                 BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
             
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     BoyGraph.idSitio,
                     BoyGraph.minDate,
                     BoyGraph.maxDate,

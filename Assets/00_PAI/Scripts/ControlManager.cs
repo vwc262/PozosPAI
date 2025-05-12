@@ -8,9 +8,9 @@ public class ControlManager : Singleton<ControlManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (RequestAPI.Instance != null)
+        if (RequestAPI._singletonExists)
         {
-            RequestAPI.Instance.infraestructuraActualizada.AddListener(() =>
+            RequestAPI.singleton.infraestructuraActualizada.AddListener(() =>
             {
                 SendEventMainFSM("actualizarInfraestructura");
                 StartCoroutine(ActualizarInfraestructura());
@@ -44,8 +44,8 @@ public class ControlManager : Singleton<ControlManager>
 
     public void InicioRequest()
     {
-        if (RequestAPI.Instance != null)
-            RequestAPI.Instance.IniciarPoleo();
+        if (RequestAPI._singletonExists)
+            RequestAPI.singleton.IniciarPoleo();
         
         if (RequestAPI_Auto._singletonExists)
             RequestAPI_Auto.singleton.IniciarPoleo();

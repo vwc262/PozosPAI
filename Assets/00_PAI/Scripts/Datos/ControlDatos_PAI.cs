@@ -28,7 +28,7 @@ public class ControlDatos_PAI : ControlDatos
         
         foreach (ControlSitio controlSitio in listSitios)
         {
-            SiteDescription sitio = RequestAPI.Instance.dataRequestAPI.infraestructura.Sites.Find(
+            SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
                 item => item.Id == controlSitio.dataSitio.idSitio);
 
             if (sitio != null)

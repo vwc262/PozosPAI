@@ -104,11 +104,11 @@ public class ControlBombas : Singleton<ControlBombas>
     {
         if (!simulaSendCommand)
         {
-            if (RequestAPI.Instance != null)
+            if (RequestAPI._singletonExists)
             {
                 UnityWebRequest unityWebRequest = null;
 
-                unityWebRequest = UnityWebRequest.Post(RequestAPI.Instance.GetAddressByMethod(Metodos.SendCommand),
+                unityWebRequest = UnityWebRequest.Post(RequestAPI.singleton.GetAddressByMethod(Metodos.SendCommand),
                     JsonUtility.ToJson(commandVWC), "application/json");
 
                 yield return unityWebRequest.SendWebRequest();

@@ -141,7 +141,7 @@ public class ControlDatos : Singleton<ControlDatos>
 
         var cont = 0;
         
-        foreach (SiteDescription sitio in RequestAPI.Instance.dataRequestAPI.infraestructura.Sites)
+        foreach (SiteDescription sitio in RequestAPI.singleton.dataRequestAPI.infraestructura.Sites)
         {
             ControlSitio newSitio = new ControlSitio();
             newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio);
@@ -356,7 +356,7 @@ public class ControlDatos : Singleton<ControlDatos>
                 ControlSitiosUI_Lista.singleton.SetSitioSelectUI_GO(sitio);
             }
 
-            ControlSitiosUI_Lista.singleton.SetSitiosEnd();
+            ControlSitiosUI_Lista.singleton.SetSitiosUIEnd();
         }
     }
     
@@ -457,7 +457,7 @@ public class ControlDatos : Singleton<ControlDatos>
         newDataSitio.longitud = sitio.Longitud;
         newDataSitio.latitud = sitio.Latitud;
 
-        SiteBase sitebase = RequestAPI.Instance.dataRequestAPI.updateUnitySites.Sites.Find(
+        SiteBase sitebase = RequestAPI.singleton.dataRequestAPI.updateUnitySites.Sites.Find(
             item => item.Id == sitio.Id);
 
         if (sitebase != null)
@@ -556,7 +556,7 @@ public class ControlDatos : Singleton<ControlDatos>
         foreach (ControlSitio controlSitio in listSitios)
         {
             //DataSitio newDataSitio = new DataSitio();
-            SiteDescription sitio = RequestAPI.Instance.dataRequestAPI.infraestructura.Sites.Find(
+            SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
                 item => item.Id == controlSitio.dataSitio.idSitio);
 
             if (sitio != null)
@@ -574,7 +574,7 @@ public class ControlDatos : Singleton<ControlDatos>
     [Button]
     public void GetTotalizadosByDates()
     {
-        RequestAPI.Instance.GetTotalizadosByDates(
+        RequestAPI.singleton.GetTotalizadosByDates(
             totalizadosTime1.dateTime, 
             totalizadosTime2.dateTime,
             ReadTotalizados);
@@ -582,7 +582,7 @@ public class ControlDatos : Singleton<ControlDatos>
     
     private void ReadTotalizados()
     {
-        totalizadosPorFecha = RequestAPI.Instance.dataRequestAPI.totalizadosPorFecha.ListaTotalizadoPorSitio;
+        totalizadosPorFecha = RequestAPI.singleton.dataRequestAPI.totalizadosPorFecha.ListaTotalizadoPorSitio;
 
         totalizadosPorFecha = totalizadosPorFecha.OrderByDescending(
             x => x.Diferencia).ToList();
@@ -679,9 +679,9 @@ public class ControlDatos : Singleton<ControlDatos>
     
     public string GetNameRegionByID(int idRegion)
     {
-        if (RequestAPI.Instance != null)
+        if (RequestAPI._singletonExists)
         {
-            Region regionAux = (RequestAPI.Instance.dataRequestAPI.regiones.Find(item => item.idRegion == idRegion));
+            Region regionAux = (RequestAPI.singleton.dataRequestAPI.regiones.Find(item => item.idRegion == idRegion));
             if (regionAux != null)    
                 return regionAux.nombre;
         }

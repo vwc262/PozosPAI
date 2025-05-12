@@ -65,7 +65,7 @@ public class ControlSitiosUI_Lista : Singleton<ControlSitiosUI_Lista>
         sitios.Clear();
     }
     
-    public virtual void SetSitiosEnd()
+    public virtual void SetSitiosUIEnd()
     {
         
     }
