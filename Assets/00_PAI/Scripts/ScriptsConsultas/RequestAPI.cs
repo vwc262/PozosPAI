@@ -8,13 +8,8 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
-public class RequestAPI : MonoBehaviour
+public class RequestAPI : Singleton<RequestAPI>
 {
-    #region Singleton
-    private static RequestAPI _instance;
-    public static RequestAPI Instance { get { return _instance; } }
-    #endregion
-
     public int delay = 10;
     
     private float _ServiceVersion;
@@ -103,18 +98,10 @@ public class RequestAPI : MonoBehaviour
     
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-            Destroy(this.gameObject);
-        else
-            _instance = this;
+        base.Awake();
         
         MyConectionData.ReadConnectionData();
     }
-
-    // private void Start()
-    // {
-    //     IniciarPoleo()
-    // }
     
     public void IniciarPoleo()
     {
@@ -358,7 +345,7 @@ public class RequestAPI : MonoBehaviour
                 if (enableHistoricos)
                 {
                     SiteDescription sitio =
-                        RequestAPI._instance.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio);
+                        RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio);
                     List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
                     dataRequestAPI.historicosBySitio.Gasto.Clear();
@@ -477,7 +464,7 @@ public class RequestAPI : MonoBehaviour
         if (enableHistoricos)
         {
             SiteDescription sitio =
-                RequestAPI._instance.dataRequestAPI.infraestructura.Sites.Find(item => item.Id % 100 == idSitio);
+                RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id % 100 == idSitio);
             List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
             dataRequestAPI.historicosBySitio.Gasto.Clear();
