@@ -29740,8 +29740,8 @@ MonoBehaviour:
   camera: {fileID: 787004777}
   hitLayer:
     serializedVersion: 2
-    m_Bits: 128
-  rayDistance: 60000
+    m_Bits: 512
+  rayDistance: 40000
   proxy: {fileID: 567758583}
   mousePos: {x: 0, y: 0}
   rayOrigin: {x: 0, y: 40000, z: 0}
@@ -29801,7 +29801,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 896
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 70213c3e752e5bf429e265f4919a6b91, type: 2}
   m_TargetDisplay: 0
