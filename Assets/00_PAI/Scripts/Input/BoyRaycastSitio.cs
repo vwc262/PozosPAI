@@ -40,7 +40,7 @@ public class RayCastSelectSitio : MonoBehaviour
 	    RaycastHit hit;
 	    Ray ray =  GetRay();
 
-	    if (Physics.Raycast(ray, out hit,hitLayer))
+	    if (Physics.Raycast(ray, out hit, rayDistance,hitLayer))
 	    {
 		    proxy.transform.position = hit.point;
 
@@ -75,6 +75,8 @@ public class RayCastSelectSitio : MonoBehaviour
 		    rayOrigin = camera.transform.position;
 		    
 		    ray = new Ray(rayOrigin, rayDir);
+		    
+		    proxy.transform.position = ray.origin + rayDistance * ray.direction;
 	    }
 	    
 	    if(drawGizmos)
@@ -102,19 +104,19 @@ public class RayCastSelectSitio : MonoBehaviour
 	    }
     }
 	
-	void OnEnable()
-	{
-		LeanTouch.OnFingerTap += HandleFingerTap;
-	}
-
-	void OnDisable()
-	{
-		LeanTouch.OnFingerTap -= HandleFingerTap;
-	}
-
-	void HandleFingerTap(Lean.Touch.LeanFinger finger)
-	{
-		//Debug.Log("You just tapped the screen with finger " + finger.Index + " at " + finger.ScreenPosition);
-		DoClickOverMap(finger.ScreenPosition);
-	}
+	// void OnEnable()
+	// {
+	// 	LeanTouch.OnFingerTap += HandleFingerTap;
+	// }
+	//
+	// void OnDisable()
+	// {
+	// 	LeanTouch.OnFingerTap -= HandleFingerTap;
+	// }
+	//
+	// void HandleFingerTap(Lean.Touch.LeanFinger finger)
+	// {
+	// 	//Debug.Log("You just tapped the screen with finger " + finger.Index + " at " + finger.ScreenPosition);
+	// 	DoClickOverMap(finger.ScreenPosition);
+	// }
 }
