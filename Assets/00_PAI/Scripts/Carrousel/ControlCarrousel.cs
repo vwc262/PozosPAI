@@ -11,6 +11,20 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
     private void Start()
     {
         FSMControlCarrousel = GetComponent<PlayMakerFSM>();
+
+        if (ControlSelectedSitio._singletonExists)
+        {
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
+        }
+    }
+
+    public void UpdateInfoSitio(ControlSitio sitio)
+    {
+        if (sitio != null)
+        {
+            SendEventFSM("show");
+            SetSelectedSitioGPS(sitio);
+        }
     }
 
     public void SendEventFSM(string eventName)
@@ -19,9 +33,9 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
             FSMControlCarrousel.SendEvent(eventName);
     }
 
-    public void SetSelectedSitioGPS(ControlMarcadorSitio controlMarcadorSitio)
+    public void SetSelectedSitioGPS(ControlSitio sitio)
     {
-        switch ((RequestAPI.Proyectos)controlMarcadorSitio.sitio.dataSitio.Estructura)
+        switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
         {
             case RequestAPI.Proyectos.Teoloyucan:
                 if (ControlBombaButton != null)
@@ -33,11 +47,6 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                         ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                 break;
-            // case RequestAPI.Proyectos.PozosReyesFerrocarril:
-            //     if (ControlBombaButton != null)
-            //         ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-            //             ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
-            //     break;
             case RequestAPI.Proyectos.PozosAIFA:
                 if (ControlBombaButton != null)
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(

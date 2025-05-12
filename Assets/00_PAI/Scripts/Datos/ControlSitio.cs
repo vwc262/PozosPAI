@@ -16,6 +16,7 @@ public class ControlSitio
     public ControlUISitio controlUIsitio;
     public int indexBomba;
 
+    public bool isSelected;
     public bool SelectedForAnalitics;
     public float timeLastCommand;
 
@@ -45,6 +46,8 @@ public class ControlSitio
         
         if (controlMarcadorMap != null)
             controlMarcadorMap.SeleccionarSitio();
+        
+        isSelected = true;
     }
 
     public void DeseleccionarSitio()
@@ -54,6 +57,8 @@ public class ControlSitio
         
         if (controlMarcadorMap != null)
             controlMarcadorMap.DeseleccionarSitio();
+        
+        isSelected = false;
     }
 
     public float GetGasto()
