@@ -21,9 +21,7 @@ public class ParticularManager : Singleton<ParticularManager>
     
     [TabGroup("Particular")] public bool isParticularOpen;
     [TabGroup("Particular")] public string currentParticularSceneName;
-    [TabGroup("Particular")] public GameObject[] disableObjects;
-    [TabGroup("Particular")] public GameObject[] enableObjects;
-    [TabGroup("Particular")] public bool[] previousStates;
+    [TabGroup("Particular")] public string currentParticularSceneUnload;
     [TabGroup("Particular")] public List<sceneParticularInfo> sceneParticularInfos = new List<sceneParticularInfo>();
 
     [TabGroup("UI")] public TMPro.TMP_Text textParticularNombre;
@@ -44,16 +42,6 @@ public class ParticularManager : Singleton<ParticularManager>
     {
         if (ControlSelectedSitio._singletonExists)
             ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
-        
-        StartCoroutine(InitParticular());
-    }
-
-    public IEnumerator InitParticular()
-    {
-        yield return new WaitForSeconds(0.1f);
-        
-        for (int i = 0; i < enableObjects.Length; i++)
-            enableObjects[i].SetActive(false);
     }
     
     private void Update()
@@ -86,15 +74,6 @@ public class ParticularManager : Singleton<ParticularManager>
             currentParticularSceneName = sceneName;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             
-            previousStates = new bool[disableObjects.Length];
-            for (int i = 0; i < disableObjects.Length; i++)
-            {
-                previousStates[i] = disableObjects[i].activeSelf;
-                disableObjects[i].SetActive(false);
-            }
-            for (int i = 0; i < enableObjects.Length; i++)
-                enableObjects[i].SetActive(true);
-
             isParticularOpen = true;
         }
     }
@@ -126,14 +105,33 @@ public class ParticularManager : Singleton<ParticularManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
-        loading = true;
+        
+        if (currentParticularSceneName == scene.name)
+        {
+            Debug.Log("OnSceneParticularLoaded: " + scene.name);
+            loading = true;
+
+            if (ControlManager._singletonExists)
+            {
+                ControlManager.singleton.SendEventMainFSM("particular");
+            }
+        }
     }
 
     void OnSceneUnloaded(Scene scene)
     {
         Debug.Log("OnSceneUnoaded: " + scene.name);
-        unloading = true;
+        
+        if (currentParticularSceneUnload == scene.name)
+        {
+            Debug.Log("OnSceneParticularUnoaded: " + scene.name);
+            unloading = true;
+
+            if (ControlManager._singletonExists)
+            {
+                ControlManager.singleton.SendEventMainFSM("mapa");
+            }
+        }
     }
     
     void OnDisable()
@@ -152,14 +150,8 @@ public class ParticularManager : Singleton<ParticularManager>
         CloseBombaControl();
             
         SceneManager.UnloadSceneAsync(currentParticularSceneName);
+        currentParticularSceneUnload = currentParticularSceneName;
         currentParticularSceneName = "";
-
-        for (int i = 0; i < disableObjects.Length; i++)
-        {
-            disableObjects[i].SetActive(previousStates[i]);
-        }
-        for (int i = 0; i < enableObjects.Length; i++)
-            enableObjects[i].SetActive(false);
         
         isParticularOpen = false;
         
@@ -216,6 +208,7 @@ public class ParticularManager : Singleton<ParticularManager>
             SceneManager.UnloadSceneAsync(currentParticularSceneName);
             
             currentParticularSceneName = sceneName;
+            
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             
             SetUIParticular();

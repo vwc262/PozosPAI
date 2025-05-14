@@ -22,19 +22,17 @@ public class ControlMap : Singleton<ControlMap>
     public float longitudMapa;
     public float latitudMapa;
     
-    public void SetGlobalDataMapa(bool moveMapa)
+    public void SetGlobalDataMapa(bool moveMap)
     {
         longitudCenterPozos = ControlDatos.singleton.minLongitud +
                               ((ControlDatos.singleton.maxLongitud - ControlDatos.singleton.minLongitud) / 2f);
         latitudCenterPozos = ControlDatos.singleton.minLatitud +
                              ((ControlDatos.singleton.maxLatitud - ControlDatos.singleton.minLatitud) / 2f);
             
-        if (moveMapa)
+        if (moveMap)
         {
-            longitud0 = longitudCenterPozos;
-            latitud0 = latitudCenterPozos;
-            longitud0 += longitudOffset;
-            latitud0 += latitudOffset;
+            longitud0 = longitudCenterPozos + longitudOffset;
+            latitud0 = latitudCenterPozos + latitudOffset;
         }
         else
         {
