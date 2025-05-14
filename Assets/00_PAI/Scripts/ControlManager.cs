@@ -57,7 +57,24 @@ public class ControlManager : Singleton<ControlManager>
             ControlDatos.singleton.IniciarUpdateData();
     }
     public void InicioParticulares() {}
-    public void InicioMapa() {}
+
+    public void InicioMapa()
+    {
+        if (ControlDatos._singletonExists)
+            ControlDatos.singleton.SetGlobalDataSitios();
+
+        if (ControlMap._singletonExists)
+        {
+            ControlMap.singleton.SetGlobalDataMapa();
+            ControlMap.singleton.SetPositionMapa();
+        }
+        
+        if (ControlPipes._singletonExists)
+            ControlPipes.singleton.SetPositionPipes();
+        
+        if (VWC_MoveCamera_PAI._singletonExists)
+            VWC_MoveCamera_PAI.singleton.SetLimitsCameraMovement();
+    }
 
     public void InicioMarcadores3D()
     {
@@ -68,6 +85,6 @@ public class ControlManager : Singleton<ControlManager>
     public void InicioLista()
     {
         if (ControlDatos._singletonExists)
-            ControlDatos.singleton.RecreateUISitios();
+            ControlDatos.singleton.RecreateUIListSitios();
     }
 }

@@ -76,7 +76,11 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
         
         ControlUISitio controlUI_Sitio = instance.GetComponent<ControlUISitio>();
         controlUI_Sitio.SetSitio(sitio);
+        
+        if (sitio.controlUIsitio != null)
+            Destroy(sitio.controlUIsitio.gameObject);
         sitio.controlUIsitio = controlUI_Sitio;
+        
         instance.name = $"PanelSitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
         sitios.Add(controlUI_Sitio);
     }

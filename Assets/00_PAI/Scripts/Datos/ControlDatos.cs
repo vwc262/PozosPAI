@@ -50,15 +50,17 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Totalizados")] public UDateTime totalizadosTime2;
     [TabGroup("Totalizados")] public List<TotalizadoPorSitio> totalizadosPorFecha;
     
-    //public DisableTerrainMeshCollider colliderMapa;
-    //public SitiosOrdenados sitiosOrdenados;
-    //public bool ActInfraestructuraCoroutine;
-
     public UnityEvent DatosInicializados;
 
     public Coroutine UpdateDataCoroutine;
     //public Coroutine UpdateDataGPSCoroutine;
     public Coroutine ActualizarInfraestructuraCoroutine;
+    
+    public float maxLatitud;
+    public float minLatitud;
+    
+    public float maxLongitud;
+    public float minLongitud;
 
     public virtual void Start()
     {
@@ -73,18 +75,15 @@ public class ControlDatos : Singleton<ControlDatos>
         //Coroutine update data
         if (UpdateDataCoroutine != null) StopCoroutine(UpdateDataCoroutine);
         UpdateDataCoroutine = StartCoroutine(UpdateData());
-        
-        // if (UpdateDataGPSCoroutine != null) StopCoroutine(UpdateDataGPSCoroutine);
-        // UpdateDataGPSCoroutine = StartCoroutine(UpdateDataSitiosGPS());
     }
 
     [Button]
     public void ActualizarInfraestructura()
     {
-        if (ControlSitiosUI_Lista._singletonExists)
-            ControlSitiosUI_Lista.singleton.sitiosOrdenados.clearListas();
-
-        DeleteSitiosGPS();
+        // if (ControlSitiosUI_Lista._singletonExists)
+        //     ControlSitiosUI_Lista.singleton.sitiosOrdenados.clearListasRegiones();
+        //
+        // DeleteSitiosGPS();
 
         InitDataPozos();
     }
@@ -106,10 +105,10 @@ public class ControlDatos : Singleton<ControlDatos>
             RecalculateOverlaping();
     }
 
-    public void ClearListUISitios()
+    public void ClearListUIRegiones()
     {
         if (ControlSitiosUI_Lista._singletonExists)
-            ControlSitiosUI_Lista.singleton.sitiosOrdenados.InitListasUI();
+            ControlSitiosUI_Lista.singleton.sitiosOrdenados.InitListasUIRegiones();
     }
 
     public void CreateListUISitios()
@@ -120,14 +119,14 @@ public class ControlDatos : Singleton<ControlDatos>
             ControlSitiosUI_Lista.singleton.sitiosOrdenados.updateListSitios();
     }
 
-    public void RecreateUISitios()
+    public void RecreateUIListSitios()
     {
         StartCoroutine(RecreateUISitiosCoroutine());
     }
 
     public IEnumerator RecreateUISitiosCoroutine()
     {
-        ClearListUISitios();
+        ClearListUIRegiones();
         
         yield return new WaitForSeconds(0.1f);
 
@@ -275,11 +274,6 @@ public class ControlDatos : Singleton<ControlDatos>
     public void CreateMarcadoresSitios_GO()
     {
         var cont = 1;
-        
-        Gps2UnityConverter.longitud0 = longitud0;
-        Gps2UnityConverter.latitud0 = latitud0;
-        Gps2UnityConverter.spanLongitud = spanLongitud;
-        Gps2UnityConverter.spanLatitud = spanLatitud;
 
         foreach (var sitio in listSitios)
         {
@@ -323,9 +317,11 @@ public class ControlDatos : Singleton<ControlDatos>
             if (myControlMarcadorSitio != null)
             {
                 myControlMarcadorSitio.SetDataSitio(sitio);
-                //myControlMarcadorSitio.controlSitioUI = controlSitioUI;
             }
 
+            if (sitio.controlMarcadorMap != null) 
+                Destroy(sitio.controlMarcadorMap.gameObject);
+            
             sitio.controlMarcadorMap = myControlMarcadorSitio;
         }
     }
@@ -347,8 +343,6 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Marcadores")]
     public void ReCreateSitiosUI_GO()
     {
-        DeleteSitiosSelectUI();
-
         if (ControlSitiosUI_Lista._singletonExists)
         {
             foreach (var sitio in listSitios)
@@ -705,5 +699,15 @@ public class ControlDatos : Singleton<ControlDatos>
             position.y = instance.controlMarcadorMap.transform.position.y;
             instance.controlMarcadorMap.transform.position = position;
         }
+    }
+
+    public virtual void SetGlobalDataSitios()
+    {
+        maxLongitud = listSitios.Max(item => item.dataSitio.longitud);
+        minLongitud = listSitios.Min(item => item.dataSitio.longitud);
+
+        maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
+        minLatitud = listSitios.Min(item => item.dataSitio.latitud);
+
     }
 }

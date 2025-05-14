@@ -34,22 +34,17 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
         }
     }
     
-    public override void clearListas()
+    public override void clearListasRegiones()
     {
-        // foreach (var _region in RegionsLabelUIList)
-        // {
-        //     _region.sitiosRegion.Clear();
-        // }
-
         ResetUIRegiones();
         
         dictionaryListSitios.Clear();
     }
 
-    public override void InitListasUI()
+    public override void InitListasUIRegiones()
     {
+        clearListasRegiones();
         CreateUIRegiones();
-        //CreateUIAcciones();
     }
 
     public override void updateListSitios()
@@ -201,14 +196,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
             RegionesLabelUILabel[0].RegionButtonCollapse.SetActive(false);
         }
     }
-
-    // public void CreateUIAcciones()
-    // {
-    //     if (ControlAccionesRegiones._singletonExists)
-    //     {
-    //         ControlAccionesRegiones.singleton.SetEditorsAccionesRegiones(totalRegiones);
-    //     }
-    // }
 
     public void SetEnableZonaByID(int ID_zona, bool enable)
     {

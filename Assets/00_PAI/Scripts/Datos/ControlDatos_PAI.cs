@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Windows.Forms.VisualStyles;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
@@ -108,24 +109,4 @@ public class ControlDatos_PAI : ControlDatos
             }
         }
     }
-    
-    // public override void UpdateDataSitios_Marcadores()
-    // {
-    //     foreach (var sitio in listSitios)
-    //     {
-    //         //SitioGPS sitioGPS = marcador.GetComponent<SitioGPS>();
-    //
-    //         if (sitio.controlMarcadorMap != null)
-    //         {
-    //             ControlSitio controlSitio = listSitios.Find(item => item.dataSitio.idSitio == sitio.dataSitio.idSitio);
-    //
-    //             if (controlSitio != null)
-    //             {
-    //                 sitio.dataSitio.SetDataSitio(controlSitio.dataSitio);
-    //                 
-    //                 sitio.dataSitio.automationData.SetDataAutomation(controlSitio.dataSitio.automationData);
-    //             }
-    //         }
-    //     }
-    // }
 }
