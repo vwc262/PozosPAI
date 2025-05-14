@@ -9,6 +9,8 @@ public class ControlMap : Singleton<ControlMap>
 {
     [TabGroup("Map")]public float longitud0;
     [TabGroup("Map")]public float latitud0;
+    [TabGroup("Map")]public float longitudCenterPozos;
+    [TabGroup("Map")]public float latitudCenterPozos;
     [TabGroup("Map")]public float longitudOffset;
     [TabGroup("Map")]public float latitudOffset;
     [TabGroup("Map")]public float spanLongitud;
@@ -20,15 +22,25 @@ public class ControlMap : Singleton<ControlMap>
     public float longitudMapa;
     public float latitudMapa;
     
-    //public GameObject marcado1, marcado2;
-    
-    public void SetGlobalDataMapa()
+    public void SetGlobalDataMapa(bool moveMapa)
     {
-        longitud0 = ControlDatos.singleton.minLongitud + ((ControlDatos.singleton.maxLongitud - ControlDatos.singleton.minLongitud) / 2f);
-        latitud0 = ControlDatos.singleton.minLatitud + ((ControlDatos.singleton.maxLatitud - ControlDatos.singleton.minLatitud) / 2f);
-        
-        longitud0 += longitudOffset;
-        latitud0 += latitudOffset;
+        longitudCenterPozos = ControlDatos.singleton.minLongitud +
+                              ((ControlDatos.singleton.maxLongitud - ControlDatos.singleton.minLongitud) / 2f);
+        latitudCenterPozos = ControlDatos.singleton.minLatitud +
+                             ((ControlDatos.singleton.maxLatitud - ControlDatos.singleton.minLatitud) / 2f);
+            
+        if (moveMapa)
+        {
+            longitud0 = longitudCenterPozos;
+            latitud0 = latitudCenterPozos;
+            longitud0 += longitudOffset;
+            latitud0 += latitudOffset;
+        }
+        else
+        {
+            longitud0 = longitudMapa;
+            latitud0 = latitudMapa;
+        }
         
         Gps2UnityConverter.longitud0 = longitud0;
         Gps2UnityConverter.latitud0 = latitud0;

@@ -29,13 +29,30 @@ public class VWC_MoveCamera_PAI : Singleton<VWC_MoveCamera_PAI>
     {
         if (ControlDatos._singletonExists && moveCamera != null)
         {
-            moveCamera.flyCamera.positionMax = Gps2UnityConverter.GPS2Unity(ControlDatos.singleton.maxLatitud,
+            moveCamera.flyCamera.positionMax = Gps2UnityConverter.GPS2Unity(
+                ControlDatos.singleton.maxLatitud,
                 ControlDatos.singleton.maxLongitud);
-            moveCamera.flyCamera.positionMin  = Gps2UnityConverter.GPS2Unity(ControlDatos.singleton.minLatitud,
+            moveCamera.flyCamera.positionMin  = Gps2UnityConverter.GPS2Unity(
+                ControlDatos.singleton.minLatitud,
                 ControlDatos.singleton.minLongitud);
 
             moveCamera.flyCamera.positionMax += OffsetMov;
             moveCamera.flyCamera.positionMin -= OffsetMov;
         }
+    }
+
+    public void ResetCenterCamera()
+    {
+        if (ControlMap._singletonExists)
+        {
+            moveCamera.ResetHomeXZ(Gps2UnityConverter.GPS2Unity(
+                ControlMap.singleton.latitudCenterPozos + ControlMap.singleton.latitudOffset, 
+                ControlMap.singleton.longitudCenterPozos + ControlMap.singleton.longitudOffset));
+        }
+    }
+
+    public void ResetCamera()
+    {
+        moveCamera.ResetHomeXZ(new Vector3(0,0,0));
     }
 }

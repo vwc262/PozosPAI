@@ -4,6 +4,8 @@ using UnityEngine;
 public class ControlManager : Singleton<ControlManager>
 {
     public PlayMakerFSM mainFSM;
+
+    public bool moveMap;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,15 +67,24 @@ public class ControlManager : Singleton<ControlManager>
 
         if (ControlMap._singletonExists)
         {
-            ControlMap.singleton.SetGlobalDataMapa();
-            ControlMap.singleton.SetPositionMapa();
+            ControlMap.singleton.SetGlobalDataMapa(moveMap);
+            
+            if (moveMap)
+                ControlMap.singleton.SetPositionMapa();
         }
         
         if (ControlPipes._singletonExists)
             ControlPipes.singleton.SetPositionPipes();
-        
+
         if (VWC_MoveCamera_PAI._singletonExists)
+        {
             VWC_MoveCamera_PAI.singleton.SetLimitsCameraMovement();
+
+            if (!moveMap)
+                VWC_MoveCamera_PAI.singleton.ResetCenterCamera();
+            else
+                VWC_MoveCamera_PAI.singleton.ResetCamera();
+        }
     }
 
     public void InicioMarcadores3D()

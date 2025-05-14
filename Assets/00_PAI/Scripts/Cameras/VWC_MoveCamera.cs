@@ -152,6 +152,13 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputTiltEvent.Raise(tiltValue);
     }
 
+    public void ResetHomeXZ(Vector3 _origen)
+    {
+        OrigenPos.x = _origen.x;
+        OrigenPos.z = _origen.z;
+        MoveHome();
+    }
+
     public void GoHome()
     {
         ResetTilt();
