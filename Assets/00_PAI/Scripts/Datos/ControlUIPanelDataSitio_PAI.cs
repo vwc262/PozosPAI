@@ -17,7 +17,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
     {
         if (textPresion != null)
         {
-            if (_sitio.dataSitio.presion.Count > 0)
+            if (_sitio.dataSitio.presion != null && _sitio.dataSitio.presion.Count > 0)
             {
                 if (_sitio.dataSitio.presion[0].DentroRango)
                     textPresion.text = GetString2decimals(_sitio.dataSitio.presion[0].Valor) + " Kg/cm2";

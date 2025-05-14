@@ -1,10 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ControlMap : Singleton<ControlMap>
 {
-    public GameObject contenedorMapa;
-    public GameObject contenedorMarcadores;
+    [TabGroup("Map")]public float longitud0;
+    [TabGroup("Map")]public float latitud0;
+    [TabGroup("Map")]public float longitudOffset;
+    [TabGroup("Map")]public float latitudOffset;
+    [TabGroup("Map")]public float spanLongitud;
+    [TabGroup("Map")]public float spanLatitud;
+    
+    [TabGroup("Contenedores")]public GameObject contenedorMapa;
+    [TabGroup("Contenedores")]public GameObject contenedorMarcadores;
+    
+    public float longitudMapa;
+    public float latitudMapa;
+    
+    //public GameObject marcado1, marcado2;
+    
+    public void SetGlobalDataMapa()
+    {
+        longitud0 = ControlDatos.singleton.minLongitud + ((ControlDatos.singleton.maxLongitud - ControlDatos.singleton.minLongitud) / 2f);
+        latitud0 = ControlDatos.singleton.minLatitud + ((ControlDatos.singleton.maxLatitud - ControlDatos.singleton.minLatitud) / 2f);
+        
+        longitud0 += longitudOffset;
+        latitud0 += latitudOffset;
+        
+        Gps2UnityConverter.longitud0 = longitud0;
+        Gps2UnityConverter.latitud0 = latitud0;
+        Gps2UnityConverter.Altitude = 0;
+        Gps2UnityConverter.spanLongitud = spanLongitud;
+        Gps2UnityConverter.spanLatitud = spanLatitud;
+    }
+    
+    [Button]
+    public void SetPositionMapa()
+    {
+        contenedorMapa.transform.position = transform.position + Gps2UnityConverter.GPS2Unity(latitudMapa, longitudMapa);
+    }
 }

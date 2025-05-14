@@ -34,9 +34,9 @@ public class SitiosOrdenados : MonoBehaviour
 
     public virtual void Init() { }
     
-    public virtual void clearListas() { }
+    public virtual void clearListasRegiones() { }
     
-    public virtual void InitListasUI() { }
+    public virtual void InitListasUIRegiones() { }
 
     public virtual void updateListSitios() { }
 

@@ -7,6 +7,8 @@ public class VWC_MoveCamera_PAI : Singleton<VWC_MoveCamera_PAI>
 
     public List<Vector3> positions;
     
+    public Vector3 OffsetMov;
+    
     public void SetMoveCameraByRigionID(int zone)
     {
         switch (zone)
@@ -20,6 +22,20 @@ public class VWC_MoveCamera_PAI : Singleton<VWC_MoveCamera_PAI>
             case 18:
                 moveCamera.SetPointZoom(positions[2].x, positions[2].y, positions[2].z);
                 break;
+        }
+    }
+
+    public void SetLimitsCameraMovement()
+    {
+        if (ControlDatos._singletonExists && moveCamera != null)
+        {
+            moveCamera.flyCamera.positionMax = Gps2UnityConverter.GPS2Unity(ControlDatos.singleton.maxLatitud,
+                ControlDatos.singleton.maxLongitud);
+            moveCamera.flyCamera.positionMin  = Gps2UnityConverter.GPS2Unity(ControlDatos.singleton.minLatitud,
+                ControlDatos.singleton.minLongitud);
+
+            moveCamera.flyCamera.positionMax += OffsetMov;
+            moveCamera.flyCamera.positionMin -= OffsetMov;
         }
     }
 }
