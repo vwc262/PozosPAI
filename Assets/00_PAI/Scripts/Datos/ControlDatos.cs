@@ -708,6 +708,5 @@ public class ControlDatos : Singleton<ControlDatos>
 
         maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
         minLatitud = listSitios.Min(item => item.dataSitio.latitud);
-
     }
 }

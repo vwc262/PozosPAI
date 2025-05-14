@@ -27,7 +27,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
             RegionesLabelUILabel[i].onValueIsOnChange.AddListener((bool val) =>
             {
                 //SelectRegion(i1, val);
-                
                 if (ControlDatos._singletonExists)
                     SetEnableZonaByID(ControlDatos.singleton.GetIDRegionByIndex(i1), val);
             });
@@ -56,8 +55,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
             
             dictionaryListSitios.Add(i,RegionesLabelUIList[i].sitiosRegion);
         }
-	    
-        //SetSelectedColor();
 	    
         OrdenGastoPresionTotalizado(0);
     }
@@ -160,8 +157,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
         {
             for (int i = 0; i < RegionesLabelUILabel.Count; i++)
             {
-                //Debug.Log("Region: " + RegionesLabelUILabel[i].region);
-
                 switch ((RequestAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegionales[
                             RegionesLabelUILabel[i].region - 1])
                 {
@@ -174,12 +169,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                         break;
-
-                    //case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                    //    RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                    //        ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
-                    //    break;
-
+                    
                     case RequestAPI.Proyectos.PozosAIFA:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosAIFA));
