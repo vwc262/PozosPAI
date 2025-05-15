@@ -159,21 +159,17 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
     {
         if (sitio.dataSitio != null)
         {
-            switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
+            switch ((EstructurasAPI.Proyectos)sitio.dataSitio.Estructura)
             {
-                case RequestAPI.Proyectos.Teoloyucan:
+                case EstructurasAPI.Proyectos.Teoloyucan:
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.Teoloyucan);
                     break;
                 
-                case RequestAPI.Proyectos.PozosZumpango:
+                case EstructurasAPI.Proyectos.PozosZumpango:
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosZumpango);
                     break;
                 
-                // case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                //     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
-                //     break;
-                
-                case RequestAPI.Proyectos.PozosAIFA:
+                case EstructurasAPI.Proyectos.PozosAIFA:
                     ValidaSelectSitio(ControlAccesoPozosPAI.Proyectos.PozosAIFA);
                     break;
             }

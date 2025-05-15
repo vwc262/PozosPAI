@@ -129,7 +129,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
         corrutinaDatosSegmentosConf = StartCoroutine(DoRequest(Metodos.ConfiguracionAutomatismoSegmentos, url));
    
         EstacionesSistema estacion = estacionesSistemaAutomatismo.Find(
-            x => x.sistema == (RequestAPI.Proyectos)sistema);
+            x => x.sistema == (EstructurasAPI.Proyectos)sistema);
         
         if (estacion.corrutinaEstaciones != null) StopCoroutine(estacion.corrutinaEstaciones);
             
@@ -137,7 +137,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
         estacion.corrutinaEstaciones = StartCoroutine(DoRequestActualizacion(Metodos.AutomatismoEstaciones, (int)estacion.sistema, url));
         
         EstacionesSistema estacionConf = ConfEstacionesSistemaAutomatismo.Find(
-            x => x.sistema == (RequestAPI.Proyectos)sistema);
+            x => x.sistema == (EstructurasAPI.Proyectos)sistema);
         
         if (estacionConf.corrutinaEstaciones != null) StopCoroutine(estacionConf.corrutinaEstaciones);
             
@@ -351,7 +351,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
                         errorAutomatismoEstacionesHTML = false;
                         respAutomatismoEstacionesHTML = true;
                         estacionesSistemaAutomatismo.Find(
-                                item => item.sistema == (RequestAPI.Proyectos)sistema).
+                                item => item.sistema == (EstructurasAPI.Proyectos)sistema).
                                 estacionesAutomatismo = JsonUtility.FromJson<EstacionesAutomatismo>(unityWebRequest.downloadHandler.text);
                         AutomatismoEstacionesCout++;
                         break;
@@ -359,7 +359,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
                         errorConfAutomatismoEstacionesHTML = false;
                         respConfAutomatismoEstacionesHTML = true;
                         ConfEstacionesSistemaAutomatismo.Find(
-                                item => item.sistema == (RequestAPI.Proyectos)sistema).
+                                item => item.sistema == (EstructurasAPI.Proyectos)sistema).
                             estacionesAutomatismo = JsonUtility.FromJson<EstacionesAutomatismo>(unityWebRequest.downloadHandler.text);
                         ConfAutomatismoEstacionesCout++;
                         break;
@@ -396,7 +396,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
                         errorAutomatismoEstacionesHTML = false;
                         respAutomatismoEstacionesHTML = true;
                         estacionesSistemaAutomatismo.Find(
-                                item => item.sistema == (RequestAPI.Proyectos)sistema).
+                                item => item.sistema == (EstructurasAPI.Proyectos)sistema).
                             estacionesAutomatismo = JsonUtility.FromJson<EstacionesAutomatismo>(unityWebRequest.downloadHandler.text);
                         datosAutomatismoActualizados.Invoke();
                         AutomatismoEstacionesCout++;
@@ -405,7 +405,7 @@ public class RequestAPI_Auto : Singleton<RequestAPI_Auto>
                         errorConfAutomatismoEstacionesHTML = false;
                         respConfAutomatismoEstacionesHTML = true;
                         ConfEstacionesSistemaAutomatismo.Find(
-                                item => item.sistema == (RequestAPI.Proyectos)sistema).
+                                item => item.sistema == (EstructurasAPI.Proyectos)sistema).
                             estacionesAutomatismo = JsonUtility.FromJson<EstacionesAutomatismo>(unityWebRequest.downloadHandler.text);
                         datosAutomatismoActualizados.Invoke();
                         ConfAutomatismoEstacionesCout++;
