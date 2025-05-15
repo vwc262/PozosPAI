@@ -129,12 +129,12 @@ public class BoyGraph : MonoBehaviour
     //Select sitio
     public void UpdateInfoSitio(DataSitio _DataSitio)
     {
-        if (RequestAPI.Instance.sistema == RequestAPI.Proyectos.PozosPAI)
+        if (RequestAPI.singleton.sistema == RequestAPI.Proyectos.PozosPAI)
         {
             idSitio = _DataSitio.idSitio % 100;
             EstructuraSitio = (int)_DataSitio.Estructura;
             
-            RequestAPI.Instance.GetHistricosByDates(
+            RequestAPI.singleton.GetHistricosByDates(
                 idSitio,(int)_DataSitio.Estructura,
                 minDate,
                 maxDate,
@@ -146,7 +146,7 @@ public class BoyGraph : MonoBehaviour
             idSitio = _DataSitio.idSitio;
             EstructuraSitio = (int)_DataSitio.Estructura;
             
-            RequestAPI.Instance.GetHistricosByDates(
+            RequestAPI.singleton.GetHistricosByDates(
                 idSitio,
                 minDate,
                 maxDate,
@@ -413,9 +413,9 @@ public class BoyGraph : MonoBehaviour
         {
             setFechas(datePicker.SelectedDates[0], datePicker.SelectedDates[0]);
             
-            if (RequestAPI.Instance.sistema == RequestAPI.Proyectos.PozosPAI)
+            if (RequestAPI.singleton.sistema == RequestAPI.Proyectos.PozosPAI)
             {
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
                     minDate,
                     maxDate,
@@ -424,7 +424,7 @@ public class BoyGraph : MonoBehaviour
             }
             else
             {
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     idSitio,
                     minDate,
                     maxDate,
@@ -436,9 +436,9 @@ public class BoyGraph : MonoBehaviour
         {
             setFechas(datePicker.SelectedDates[0], datePicker.SelectedDates[1]);
             
-            if (RequestAPI.Instance.sistema == RequestAPI.Proyectos.PozosPAI)
+            if (RequestAPI.singleton.sistema == RequestAPI.Proyectos.PozosPAI)
             {
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
                     minDate,
                     maxDate,
@@ -447,7 +447,7 @@ public class BoyGraph : MonoBehaviour
             }
             else
             {
-                RequestAPI.Instance.GetHistricosByDates(
+                RequestAPI.singleton.GetHistricosByDates(
                     idSitio,
                     minDate,
                     maxDate,
@@ -495,13 +495,13 @@ public class BoyGraph : MonoBehaviour
     
     public void HistoricosCallBack()
     {
-        if (RequestAPI.Instance != null)
+        if (RequestAPI._singletonExists)
         {
-            SerieDataGasto = RequestAPI.Instance.dataRequestAPI.historicosBySitio.Gasto;
-            SerieDataPresion = RequestAPI.Instance.dataRequestAPI.historicosBySitio.Presion;
-            SerieDataTotalizado = RequestAPI.Instance.dataRequestAPI.historicosBySitio.Totalizado;
-            SerieDataBomba = RequestAPI.Instance.dataRequestAPI.historicosBySitio.Bomba;
-            SerieDataNivel = RequestAPI.Instance.dataRequestAPI.historicosBySitio.Nivel;
+            SerieDataGasto = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto;
+            SerieDataPresion = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Presion;
+            SerieDataTotalizado = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado;
+            SerieDataBomba = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba;
+            SerieDataNivel = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel;
             
             UpdateSerieData();
             

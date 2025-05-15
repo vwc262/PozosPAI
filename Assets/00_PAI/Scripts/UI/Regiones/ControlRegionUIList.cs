@@ -5,5 +5,5 @@ public class ControlRegionUIList : MonoBehaviour
 {
     public GameObject rootRegion;
     
-    public List<ControlSelectSitio> sitiosRegion;
+    public List<ControlUISitio> sitiosRegion;
 }

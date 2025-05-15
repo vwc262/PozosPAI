@@ -1,122 +1,55 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ControlMap : Singleton<ControlMap>
 {
-    // Hola Boy
-	public bool showNormalMap = true;
-
-    public bool createMapOnStart;
-    public bool createPropsOnStart;
-    public GameObject prefab_normaMap;
-    public GameObject prefab_roadsMap;
-    public GameObject prefab_props;
+    [TabGroup("Map")]public float longitud0;
+    [TabGroup("Map")]public float latitud0;
+    [TabGroup("Map")]public float longitudCenterPozos;
+    [TabGroup("Map")]public float latitudCenterPozos;
+    [TabGroup("Map")]public float longitudOffset;
+    [TabGroup("Map")]public float latitudOffset;
+    [TabGroup("Map")]public float spanLongitud;
+    [TabGroup("Map")]public float spanLatitud;
     
-    public GameObject zonasRegiones;
-    public GameObject normaMap;
-    public GameObject roadsMap;
-    public GameObject props;
-
-    public VWC_MoveCamera moveCamera;
-
-    public float DespZoomPivot = 1000;
+    [TabGroup("Contenedores")]public GameObject contenedorMapa;
+    [TabGroup("Contenedores")]public GameObject contenedorMarcadores;
     
-    public Vector3 normalMaxScaleMarcador = new Vector3(1,1,1);
-    public Vector3 mapaMaxScaleMarcador = new Vector3(0.3f,0.3f,0.3f);
-
-    public void Start()
+    public float longitudMapa;
+    public float latitudMapa;
+    
+    public void SetGlobalDataMapa(bool moveMap)
     {
-        if (createMapOnStart)
+        longitudCenterPozos = ControlDatos.singleton.minLongitud +
+                              ((ControlDatos.singleton.maxLongitud - ControlDatos.singleton.minLongitud) / 2f);
+        latitudCenterPozos = ControlDatos.singleton.minLatitud +
+                             ((ControlDatos.singleton.maxLatitud - ControlDatos.singleton.minLatitud) / 2f);
+            
+        if (moveMap)
         {
-            if (normaMap != null) Destroy(normaMap);
-            if (roadsMap != null) Destroy(roadsMap);
-
-            LoadMaps();
-        }
-
-        if (createPropsOnStart)
-        {
-            DestroyProps();
-
-            LoadProps();
-        }
-    }
-
-    public void ToggleMap()
-    {
-        showNormalMap = !showNormalMap;
-        
-        if (normaMap != null) normaMap.SetActive(showNormalMap);
-        if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
-        if (roadsMap != null) roadsMap.SetActive(!showNormalMap);
-
-        if (moveCamera != null)
-        {
-            if (showNormalMap)
-                moveCamera.zoomDownPivot.transform.localPosition += Vector3.up * DespZoomPivot;
-            else
-                moveCamera.zoomDownPivot.transform.localPosition += Vector3.down * DespZoomPivot;
-        }
-        
-        if (showNormalMap)
-        {
-            VWCBillboardSitio.maxScale = normalMaxScaleMarcador;
+            longitud0 = longitudCenterPozos + longitudOffset;
+            latitud0 = latitudCenterPozos + latitudOffset;
         }
         else
         {
-            VWCBillboardSitio.maxScale = mapaMaxScaleMarcador;
-        }
-    }
-
-    // public void SetActiveColliderMap(bool _active)
-    // {
-    //     if (normaMap != null)
-    //     {
-    //         DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
-    //
-    //         if (controlCollider != null)
-    //             controlCollider.SetEnableMeshColliders(_active);
-    //     }
-    // }
-    //
-    // public void ChangeActiveColliderMap()
-    // {
-    //     DisableTerrainMeshCollider controlCollider = normaMap.GetComponentInChildren<DisableTerrainMeshCollider>();
-    //     
-    //     if (controlCollider != null)
-    //         controlCollider.ChangeEnabledMeshCollider();
-    // }
-
-    public void LoadMaps()
-    {
-        if (prefab_normaMap != null)
-        {
-            normaMap = Instantiate(prefab_normaMap, this.transform);
-            
-        }
-
-        if (prefab_roadsMap != null)
-        {
-            roadsMap = Instantiate(prefab_roadsMap, this.transform);
+            longitud0 = longitudMapa;
+            latitud0 = latitudMapa;
         }
         
-        if (normaMap != null) normaMap.SetActive(showNormalMap);
-        if (zonasRegiones != null) zonasRegiones.SetActive(showNormalMap);
-        if (roadsMap != null) roadsMap.SetActive(!showNormalMap);
+        Gps2UnityConverter.longitud0 = longitud0;
+        Gps2UnityConverter.latitud0 = latitud0;
+        Gps2UnityConverter.Altitude = 0;
+        Gps2UnityConverter.spanLongitud = spanLongitud;
+        Gps2UnityConverter.spanLatitud = spanLatitud;
     }
     
-    public void LoadProps()
+    [Button]
+    public void SetPositionMapa()
     {
-        if (prefab_props != null)
-        {
-            props = Instantiate(prefab_props, this.transform);
-        }
-    }
-
-    public void DestroyProps()
-    {
-        if (props != null) Destroy(props);
+        contenedorMapa.transform.position = transform.position + Gps2UnityConverter.GPS2Unity(latitudMapa, longitudMapa);
     }
 }

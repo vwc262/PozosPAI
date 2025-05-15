@@ -5,10 +5,11 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class ParticularManager : Singleton<ParticularManager>
 {
-    public SitioGPS sitioSeleccionado;
+    public ControlSitio sitio;
 
     public GameObject loadedScreen;
     public float loadTime;
@@ -20,9 +21,7 @@ public class ParticularManager : Singleton<ParticularManager>
     
     [TabGroup("Particular")] public bool isParticularOpen;
     [TabGroup("Particular")] public string currentParticularSceneName;
-    [TabGroup("Particular")] public GameObject[] disableObjects;
-    [TabGroup("Particular")] public GameObject[] enableObjects;
-    [TabGroup("Particular")] public bool[] previousStates;
+    [TabGroup("Particular")] public string currentParticularSceneUnload;
     [TabGroup("Particular")] public List<sceneParticularInfo> sceneParticularInfos = new List<sceneParticularInfo>();
 
     [TabGroup("UI")] public TMPro.TMP_Text textParticularNombre;
@@ -41,20 +40,8 @@ public class ParticularManager : Singleton<ParticularManager>
     
     public void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-        {
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
-        }
-
-        StartCoroutine(InitParticular());
-    }
-
-    public IEnumerator InitParticular()
-    {
-        yield return new WaitForSeconds(0.1f);
-        
-        for (int i = 0; i < enableObjects.Length; i++)
-            enableObjects[i].SetActive(false);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
     
     private void Update()
@@ -67,9 +54,9 @@ public class ParticularManager : Singleton<ParticularManager>
         }            
     }
     
-    public void UpdateInfoSitio(SitioGPS sitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        sitioSeleccionado = sitio;
+        sitio = _sitio;
         
         if (isParticularOpen)
             ChangeParticularScene();
@@ -87,15 +74,6 @@ public class ParticularManager : Singleton<ParticularManager>
             currentParticularSceneName = sceneName;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             
-            previousStates = new bool[disableObjects.Length];
-            for (int i = 0; i < disableObjects.Length; i++)
-            {
-                previousStates[i] = disableObjects[i].activeSelf;
-                disableObjects[i].SetActive(false);
-            }
-            for (int i = 0; i < enableObjects.Length; i++)
-                enableObjects[i].SetActive(true);
-
             isParticularOpen = true;
         }
     }
@@ -127,14 +105,33 @@ public class ParticularManager : Singleton<ParticularManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
-        loading = true;
+        
+        if (currentParticularSceneName == scene.name)
+        {
+            Debug.Log("OnSceneParticularLoaded: " + scene.name);
+            loading = true;
+
+            if (ControlManager._singletonExists)
+            {
+                ControlManager.singleton.SendEventMainFSM("particular");
+            }
+        }
     }
 
     void OnSceneUnloaded(Scene scene)
     {
         Debug.Log("OnSceneUnoaded: " + scene.name);
-        unloading = true;
+        
+        if (currentParticularSceneUnload == scene.name)
+        {
+            Debug.Log("OnSceneParticularUnoaded: " + scene.name);
+            unloading = true;
+
+            if (ControlManager._singletonExists)
+            {
+                ControlManager.singleton.SendEventMainFSM("mapa");
+            }
+        }
     }
     
     void OnDisable()
@@ -153,14 +150,8 @@ public class ParticularManager : Singleton<ParticularManager>
         CloseBombaControl();
             
         SceneManager.UnloadSceneAsync(currentParticularSceneName);
+        currentParticularSceneUnload = currentParticularSceneName;
         currentParticularSceneName = "";
-
-        for (int i = 0; i < disableObjects.Length; i++)
-        {
-            disableObjects[i].SetActive(previousStates[i]);
-        }
-        for (int i = 0; i < enableObjects.Length; i++)
-            enableObjects[i].SetActive(false);
         
         isParticularOpen = false;
         
@@ -186,7 +177,7 @@ public class ParticularManager : Singleton<ParticularManager>
         string sceneName = "";
 
         sceneParticularInfo aux = sceneParticularInfos
-            .Find(item => item.id_sitio == sitioSeleccionado.MyDataSitio.idSitio);
+            .Find(item => item.id_sitio == sitio.dataSitio.idSitio);
 
         if (aux != null)
             sceneName = aux.nombreScene;
@@ -203,7 +194,7 @@ public class ParticularManager : Singleton<ParticularManager>
         string sceneName = "";
 
         sceneParticularInfo aux = sceneParticularInfos
-            .Find(item => item.id_sitio == sitioSeleccionado.MyDataSitio.idSitio);
+            .Find(item => item.id_sitio == sitio.dataSitio.idSitio);
 
         if (aux != null)
             sceneName = aux.nombreScene;
@@ -217,6 +208,7 @@ public class ParticularManager : Singleton<ParticularManager>
             SceneManager.UnloadSceneAsync(currentParticularSceneName);
             
             currentParticularSceneName = sceneName;
+            
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             
             SetUIParticular();
@@ -226,7 +218,7 @@ public class ParticularManager : Singleton<ParticularManager>
     public void SetUIParticular()
     {
         if (textParticularNombre != null)
-            textParticularNombre.text = sitioSeleccionado.MyDataSitio.nombre;
+            textParticularNombre.text = sitio.dataSitio.nombre;
 
         SetUIControlBomba();
 
@@ -237,7 +229,7 @@ public class ParticularManager : Singleton<ParticularManager>
     {
         bool ControlBombaSitio = false;
         
-        switch ((RequestAPI.Proyectos)sitioSeleccionado.MyDataSitio.Estructura)
+        switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
         {
             case RequestAPI.Proyectos.Teoloyucan:
                 ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
@@ -247,11 +239,6 @@ public class ParticularManager : Singleton<ParticularManager>
             case RequestAPI.Proyectos.PozosZumpango:
                 ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                     ControlAccesoPozosPAI.Proyectos.PozosZumpango);
-                break;
-
-            case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                ControlBombaSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                    ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
                 break;
 
             case RequestAPI.Proyectos.PozosAIFA:
@@ -268,9 +255,9 @@ public class ParticularManager : Singleton<ParticularManager>
 
     public void UpdateUIParticular()
     {
-        if (sitioSeleccionado != null)
+        if (sitio != null)
         {
-            if (sitioSeleccionado.dataInTime)
+            if (sitio.dataInTime)
             {
                 if (EstadoEnLinea != null)
                     EstadoEnLinea.gameObject.SetActive(true);
@@ -288,7 +275,7 @@ public class ParticularManager : Singleton<ParticularManager>
             }
 
             if (textUltimaActualizacion != null)
-                textUltimaActualizacion.text = "Última actualización: " + sitioSeleccionado.MyDataSitio.fecha;
+                textUltimaActualizacion.text = "Última actualización: " + sitio.dataSitio.fecha;
         }
         
         

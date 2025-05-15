@@ -9,8 +9,8 @@ public class ControlBrujula : MonoBehaviour
         if (MoveCamera != null)
             MoveCamera.GoHome();
         
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.deseleccionarSitio();
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.DeseleccionarSitio();
         
         if (ControlCarrousel._singletonExists)
             ControlCarrousel.singleton.SendEventFSM("hide");

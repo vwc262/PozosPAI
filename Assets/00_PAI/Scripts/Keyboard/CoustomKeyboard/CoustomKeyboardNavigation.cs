@@ -148,8 +148,8 @@ public class CoustomKeyboardNavigation : CoustomKeyboard
 
 	public void GoHome()
 	{
-		if (ControlUpdateUI._singletonExists)
-			ControlUpdateUI.singleton.deseleccionarSitio();
+		if (ControlSelectedSitio._singletonExists)
+			ControlSelectedSitio.singleton.DeseleccionarSitio();
 		cameraControl.GoHome();
 	}
 

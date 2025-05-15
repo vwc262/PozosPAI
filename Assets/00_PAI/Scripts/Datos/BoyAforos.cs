@@ -17,7 +17,7 @@ public class BoyAforos : MonoBehaviour
     
     public string csvPathIn = Application.dataPath + "/AFOROS LERMA SUR RODRIGUEZ 7 NOV 23 TODOS.csv";
 
-    public ControlSitioUI controlSitioUI;
+    //public ControlSitioUI controlSitioUI;
     
     [Button]
     public void ReadUpdateAforos()
@@ -87,11 +87,11 @@ public class BoyAforos : MonoBehaviour
 
     public void UpdateAforos()
     {
-        if (controlSitioUI != null)
+        /*if (ControlDatos._singletonExists)
         {
-            foreach (var sitio in controlSitioUI.sitios)
+            foreach (var sitio in ControlDatos.singleton.listSitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                //var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {
@@ -101,10 +101,10 @@ public class BoyAforos : MonoBehaviour
                     if (uiSitio.toggleOverride != null)
                         uiSitio.toggleOverride.isOn = false;
                     
-                    if (aforoPozos.Any(item => item.Abreviacion == uiSitio.sitio.MyDataSitio.abreviacion))
+                    if (aforoPozos.Any(item => item.Abreviacion == uiSitio.sitio.dataSitio.abreviacion))
                     {
                         dataPozoAforo dataAforo =
-                            aforoPozos.First(item => item.Abreviacion == uiSitio.sitio.MyDataSitio.abreviacion);
+                            aforoPozos.First(item => item.Abreviacion == uiSitio.sitio.dataSitio.abreviacion);
                         
                         // if (dataAforo.Observaciones != "" && uiSitio.TooltipOverride != null)
                         // {
@@ -136,16 +136,16 @@ public class BoyAforos : MonoBehaviour
                     
                 }
             }
-        }
+        }*/
     }
 
     public void ClearAforos()
     {
-        if (controlSitioUI != null)
+        /*if (controlSitioUI != null)
         {
             foreach (var sitio in controlSitioUI.sitios)
             {
-                var uiSitio = sitio.GetComponent<ControlSelectSitio>();
+                var uiSitio = sitio.GetComponent<ControlUISitio>();
 
                 if (uiSitio != null)
                 {
@@ -159,7 +159,7 @@ public class BoyAforos : MonoBehaviour
                         uiSitio.toggleOverride.onValueChanged.Invoke(uiSitio.toggleOverride.isOn);
                 }
             }
-        }
+        }*/
     }
 
     public float GetParseStringToFloat(string _valor)

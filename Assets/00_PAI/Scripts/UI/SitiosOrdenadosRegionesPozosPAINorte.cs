@@ -7,8 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SitiosOrdenadosRegionesPozosPAINorte
-    : SitiosOrdenados
+public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
 { 
     [TabGroup("Regiones")] public List<ControlRegionUILabel> RegionesLabelUILabel;
     [TabGroup("Regiones")] public List<ControlRegionUIList> RegionesLabelUIList;
@@ -28,29 +27,23 @@ public class SitiosOrdenadosRegionesPozosPAINorte
             RegionesLabelUILabel[i].onValueIsOnChange.AddListener((bool val) =>
             {
                 //SelectRegion(i1, val);
-                
-                if (ControlDatosAux._singletonExists)
-                    SetEnableZonaByID(ControlDatosAux.singleton.GetIDRegionByIndex(i1), val);
+                if (ControlDatos._singletonExists)
+                    SetEnableZonaByID(ControlDatos.singleton.GetIDRegionByIndex(i1), val);
             });
         }
     }
     
-    public override void clearListas()
+    public override void clearListasRegiones()
     {
-        // foreach (var _region in RegionsLabelUIList)
-        // {
-        //     _region.sitiosRegion.Clear();
-        // }
-
         ResetUIRegiones();
         
         dictionaryListSitios.Clear();
     }
 
-    public override void InitListasUI()
+    public override void InitListasUIRegiones()
     {
+        clearListasRegiones();
         CreateUIRegiones();
-        //CreateUIAcciones();
     }
 
     public override void updateListSitios()
@@ -58,12 +51,10 @@ public class SitiosOrdenadosRegionesPozosPAINorte
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
             if (RegionesLabelUIList[i].rootRegion != null) 
-                RegionesLabelUIList[i].sitiosRegion = RegionesLabelUIList[i].rootRegion.GetComponentsInChildren<ControlSelectSitio>().ToList();
+                RegionesLabelUIList[i].sitiosRegion = RegionesLabelUIList[i].rootRegion.GetComponentsInChildren<ControlUISitio>().ToList();
             
             dictionaryListSitios.Add(i,RegionesLabelUIList[i].sitiosRegion);
         }
-	    
-        //SetSelectedColor();
 	    
         OrdenGastoPresionTotalizado(0);
     }
@@ -136,23 +127,23 @@ public class SitiosOrdenadosRegionesPozosPAINorte
 
     public void CreateUIRegiones()
     {
-        if (ControlDatosAux._singletonExists)
+        if (ControlDatos._singletonExists)
         {
             for (int i = 0; i < totalRegiones; i++)
             {
-                ControlRegionUILabel instanceLabel = Instantiate(ControlDatosAux.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
+                ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
                     GetComponent<ControlRegionUILabel>();
                 
                 instanceLabel.sitiosOrdenados = this;
                 instanceLabel.region = (i + 1);
-                instanceLabel.regionID = ControlDatosAux.singleton.GetIDRegionByIndex(i);
-                string nameRegion = ControlDatosAux.singleton.GetNameRegionByID(ControlDatosAux.singleton.GetIDRegionByIndex(i));
+                instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
+                string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i));
                 instanceLabel.SetNameRegional(nameRegion);
                 instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
                 instanceLabel.gameObject.name = "Label " + nameRegion;
                 RegionesLabelUILabel.Add(instanceLabel);
                 
-                ControlRegionUIList instanceList = Instantiate(ControlDatosAux.singleton.prefabUIRegionaList, contentSitiosList.transform).
+                ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentSitiosList.transform).
                     GetComponent<ControlRegionUIList>();
                 
                 instanceList.gameObject.name = "List " + instanceLabel.region.ToString();
@@ -166,8 +157,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte
         {
             for (int i = 0; i < RegionesLabelUILabel.Count; i++)
             {
-                //Debug.Log("Region: " + RegionesLabelUILabel[i].region);
-
                 switch ((RequestAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegionales[
                             RegionesLabelUILabel[i].region - 1])
                 {
@@ -180,12 +169,7 @@ public class SitiosOrdenadosRegionesPozosPAINorte
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                         break;
-
-                    case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                        RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                            ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril));
-                        break;
-
+                    
                     case RequestAPI.Proyectos.PozosAIFA:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosAIFA));
@@ -202,14 +186,6 @@ public class SitiosOrdenadosRegionesPozosPAINorte
             RegionesLabelUILabel[0].RegionButtonCollapse.SetActive(false);
         }
     }
-
-    // public void CreateUIAcciones()
-    // {
-    //     if (ControlAccionesRegiones._singletonExists)
-    //     {
-    //         ControlAccionesRegiones.singleton.SetEditorsAccionesRegiones(totalRegiones);
-    //     }
-    // }
 
     public void SetEnableZonaByID(int ID_zona, bool enable)
     {

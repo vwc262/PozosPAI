@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlUIPanelTitleSitio : MonoBehaviour
 {
-    public SitioGPS sitioSeleccionado;
+    public ControlSitio sitio;
     
     public TMPro.TMP_Text Nombre;
     public TMPro.TMP_Text Fecha;
@@ -19,8 +20,8 @@ public class ControlUIPanelTitleSitio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ControlUpdateUI._singletonExists)
-            ControlUpdateUI.singleton.SitioSeleccionadoSitioGPS.AddListener(UpdateInfoSitio);
+        if (ControlSelectedSitio._singletonExists)
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(UpdateInfoSitio);
     }
     
     private void Update()
@@ -28,29 +29,29 @@ public class ControlUIPanelTitleSitio : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            if (sitioSeleccionado != null)
-                UpdateStatusSitio(sitioSeleccionado);
+            if (sitio != null)
+                UpdateStatusSitio(sitio);
             countdown = updateRate;
         }
     }
 
-    public void UpdateInfoSitio(SitioGPS _Sitio)
+    public void UpdateInfoSitio(ControlSitio _sitio)
     {
-        sitioSeleccionado = _Sitio;
-        UpdateStatusSitio(sitioSeleccionado);
+        sitio = _sitio;
+        UpdateStatusSitio(sitio);
     }
     
-    public void UpdateStatusSitio(SitioGPS _Sitio)
+    public void UpdateStatusSitio(ControlSitio _sitio)
     {
         if (Nombre != null)
-            Nombre.text = _Sitio.MyDataSitio.nombre;
+            Nombre.text = _sitio.dataSitio.nombre;
         
         if (Fecha != null)
-            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_Sitio.MyDataSitio.fecha);
+            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_sitio.dataSitio.fecha);
 
         if (statusImage != null)
         {
-            if (_Sitio.statusDataInTime == 1)
+            if (_sitio.dataInTime)
                 statusImage.sprite = imageStatusConectado;
             else
                 statusImage.sprite = imageStatusNoConectado;

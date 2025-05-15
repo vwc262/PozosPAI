@@ -10,13 +10,13 @@ public class Gps2UnityConverter
     public static float latitud0 = 19.4272f;
     public static float spanLongitud = 105100;
     public static float spanLatitud = 111300;
-    public static float maxAltitude = 1000;
+    public static float Altitude = 1000;
 
     public static Vector3 GPS2Unity(float latitud, float longitud)
     {
 	    var pos = (Vector3.right * (longitud - longitud0)) * spanLongitud +
 						(Vector3.forward * (latitud - latitud0)) * spanLatitud +
-						(Vector3.up * maxAltitude);
+						(Vector3.up * Altitude);
 
 	    return pos;
     }

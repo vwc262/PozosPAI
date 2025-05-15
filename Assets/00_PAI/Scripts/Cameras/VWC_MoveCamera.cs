@@ -11,8 +11,7 @@ using UnityEngine.Serialization;
 public class VWC_MoveCamera : MonoBehaviour
 {
     [TabGroup("Cameras")] public FlyCamera flyCamera;
-    [FormerlySerializedAs("cameraMap")] [TabGroup("Cameras")] public CameraZoomMapa cameraZoomMap;
-    //[TabGroup("Cameras")] public CameraLupa cameraLupa;
+    [TabGroup("Cameras")] public CameraZoomMapa cameraZoomMap;
     [TabGroup("Cameras")] public GameObject cameraRoot;
     [TabGroup("Cameras")] public GameObject zoomUpPivot;
     [TabGroup("Cameras")] public GameObject CameraGimbal;
@@ -20,7 +19,7 @@ public class VWC_MoveCamera : MonoBehaviour
     [TabGroup("Cameras")] public GameObject zoomDownPivot;
     
     [TabGroup("Zoom Tilt")] [PropertyRange(0, 1)] public float tiltValue;
-    [TabGroup("Zoom Tilt")][ShowInInspector][PropertyRange(0, 1)] public float zoomValue => cameraZoomMap.zoomVal;
+    [TabGroup("Zoom Tilt")] [PropertyRange(0, 1)] [ShowInInspector] public float zoomValue => cameraZoomMap.zoomVal;
     [TabGroup("Zoom Tilt")] public float displacementSpeed = 0.02f;
     [TabGroup("Zoom Tilt")] public float displacementSpeedTouch = 0.002f;
     [TabGroup("Zoom Tilt")] public Vector3 offsetZoom;
@@ -31,7 +30,6 @@ public class VWC_MoveCamera : MonoBehaviour
     [TabGroup("Zoom Tilt")] public bool UseZoom;
     [TabGroup("Zoom Tilt")] public float zoomHome = 0.125f;
     
-    //[TabGroup("Touch")] private bool isTouchDrag;
     [TabGroup("Touch")] public Vector3 inputTouch;
     [TabGroup("Touch")] public float minTouchSpeed = 1;
     [TabGroup("Touch")] public float maxTouchSpeed = 3;
@@ -76,6 +74,11 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputDragEvent.Raise(tiltValue);
         
         UpdateOrigen();
+        
+        if (ControlSelectedSitio._singletonExists)
+        {
+            ControlSelectedSitio.singleton.ChangeSitioSeleccionado.AddListener(SetSelectedSitio);
+        }
     }
 
     [Button]
@@ -149,20 +152,24 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputTiltEvent.Raise(tiltValue);
     }
 
+    public void ResetHomeXZ(Vector3 _origen)
+    {
+        OrigenPos.x = _origen.x;
+        OrigenPos.z = _origen.z;
+        MoveHome();
+    }
+
     public void GoHome()
     {
         ResetTilt();
         MoveHome();
         
         cameraZoomMap.SetZoom(zoomHome);
-        
-        //cameraLupa.GoHomeLupa();
     }
     
     public void MoveHome()
     {
         flyCamera.SetPosition(OrigenPos);
-        //transform.localPosition = OrigenPos;
     }
     
     public void SetTouchInputZoom(Vector2 _input)
@@ -260,9 +267,10 @@ public class VWC_MoveCamera : MonoBehaviour
         SetTouchInputDragEvent.Raise(tiltValue);
     }
     
-    public void SetSelectedSitio(SitioGPS dataSitio)
+    public void SetSelectedSitio(ControlSitio sitio)
     {
-        SetSelectedSitioPosition(dataSitio.transform.position);
+        if (sitio != null)
+            SetSelectedSitioPosition(sitio.controlMarcadorMap.transform.position);
     }
     
     public void SetSelectedSitioPosition(Vector3 _position)

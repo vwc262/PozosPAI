@@ -21,10 +21,10 @@ public class ControlStatusConexion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (RequestAPI.Instance != null)
+        if (RequestAPI.singleton != null)
         {
-            if (RequestAPI.Instance.errorInfraestructuraHTML ||
-                RequestAPI.Instance.errorUpdateHTML)
+            if (RequestAPI.singleton.errorInfraestructuraHTML ||
+                RequestAPI.singleton.errorUpdateHTML)
             {
                 //Error en las comunicaciones
                 if (statusConectado != null) statusConectado.SetActive(false);
@@ -34,9 +34,9 @@ public class ControlStatusConexion : MonoBehaviour
                 if (ControlAnimSinConexion._singletonExists)
                     ControlAnimSinConexion.singleton.SetEnableAnimSinConexion(true);
             }
-            else if (RequestAPI.Instance.respInfraestructura)
+            else if (RequestAPI.singleton.respInfraestructura)
             {
-                if (RequestAPI.Instance.respUpdateSites)
+                if (RequestAPI.singleton.respUpdateSites)
                 {
                     //Datos actualizados
                     if (statusConectado != null) statusConectado.SetActive(true);
@@ -55,7 +55,7 @@ public class ControlStatusConexion : MonoBehaviour
                     ControlAnimSinConexion.singleton.SetEnableAnimSinConexion(false);
             }
 
-            if (RequestAPI.Instance.MyConectionData.useLocalHost)
+            if (RequestAPI.singleton.MyConectionData.useLocalHost)
             {
                 if (connectioLocal != null) connectioLocal.SetActive(true);
                 if (connectioInternet != null) connectioInternet.SetActive(false);

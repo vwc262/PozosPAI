@@ -20,7 +20,7 @@ public class ControlBombasUI_PAI : ControlBombasUI
     
     public TMPro.TMP_Text textStatusPerilla;
     
-    public override void UpdateUISitio(SitioGPS _sitio)
+    public override void UpdateUISitio(ControlSitio sitio)
     {
         bombaGreen.SetActive(false);
         bombaRed.SetActive(false);
@@ -29,13 +29,13 @@ public class ControlBombasUI_PAI : ControlBombasUI
         buttonApagar.SetActive(false);
         msgMantenimiento.SetActive(false);
         
-        if (_sitio != null)
+        if (sitio != null)
         {
-            if (_sitio.MyDataSitio.bomba.Count > 0)
+            if (sitio.dataSitio.bomba.Count > 0)
             {
-                bombaPrendida = _sitio.MyDataSitio.bomba[0].Valor == 1;
+                bombaPrendida = sitio.dataSitio.bomba[0].Valor == 1;
 
-                switch (_sitio.MyDataSitio.bomba[_sitio.indexBomba].Valor)
+                switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
                 {
                     case 1:
                         bombaGreen.SetActive(true);
@@ -56,23 +56,23 @@ public class ControlBombasUI_PAI : ControlBombasUI
                 }
                    
                 
-                if (_sitio.statusDataInTime == 1)
+                if (sitio.dataInTime)
                 {
-                    if (_sitio.MyDataSitio.PerillaBomba.Count > 0)
+                    if (sitio.dataSitio.PerillaBomba.Count > 0)
                     {
-                        if (_sitio.MyDataSitio.PerillaBomba[_sitio.indexBomba].Valor >= 1 )
+                        if (sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor >= 1 )
                         {
-                            switch (_sitio.MyDataSitio.bomba[_sitio.indexBomba].Valor)
+                            switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
                             {
                                 case 1:
-                                    if (Time.time - _sitio.timeLastCommand > 60)
+                                    if (Time.time - sitio.timeLastCommand > 60)
                                         buttonApagar.SetActive(true);
                                     else
                                         buttonApagar.SetActive(false);
                                     break;
 
                                 case 2:
-                                    if (Time.time - _sitio.timeLastCommand > 60)
+                                    if (Time.time - sitio.timeLastCommand > 60)
                                         buttonEncender.SetActive(true);
                                     else
                                         buttonEncender.SetActive(false);
@@ -81,7 +81,7 @@ public class ControlBombasUI_PAI : ControlBombasUI
                         }
                         else
                         {
-                            Debug.Log("Perilla : " + _sitio.MyDataSitio.PerillaBomba[_sitio.indexBomba].Valor);
+                            Debug.Log("Perilla : " + sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor);
                         }
                     }
                 }
@@ -89,9 +89,9 @@ public class ControlBombasUI_PAI : ControlBombasUI
 
             if (textStatusPerilla != null)
             {
-                if (_sitio.MyDataSitio.PerillaBomba.Count > 0)
+                if (sitio.dataSitio.PerillaBomba.Count > 0)
                 {
-                    switch (_sitio.MyDataSitio.PerillaBomba[_sitio.indexBomba].Valor)
+                    switch (sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor)
                     {
                         default:
                             textStatusPerilla.text = "Mantenimiento";
@@ -119,11 +119,11 @@ public class ControlBombasUI_PAI : ControlBombasUI
     public bool ValidateUser()
     {
         //Validar que el usuario pueda operar la bomba
-        if (SelectedSitio != null)
+        if (selectedControlSitio != null)
         {
-            if (SelectedSitio.MyDataSitio.PerillaBomba.Count > 0)
+            if (selectedControlSitio.dataSitio.PerillaBomba.Count > 0)
             {
-                switch (SelectedSitio.MyDataSitio.PerillaBomba[0].Valor)
+                switch (selectedControlSitio.dataSitio.PerillaBomba[0].Valor)
                 {
                     case 0://OFF: no puede ser operada
                         return false;
@@ -156,6 +156,6 @@ public class ControlBombasUI_PAI : ControlBombasUI
 
     public void SetTimeLastCommand()
     {
-        SelectedSitio.timeLastCommand = Time.time;
+        selectedControlSitio.timeLastCommand = Time.time;
     }
 }
