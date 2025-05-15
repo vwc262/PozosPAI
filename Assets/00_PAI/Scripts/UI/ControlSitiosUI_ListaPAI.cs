@@ -16,7 +16,7 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
         coutNoActTotal = 0;
         coutActTotal = 0;
         
-        ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).ResetTotales();
+        ((SitiosOrdenados_PAI)sitiosOrdenados).ResetTotales();
         
         foreach (var controlSitio in sitios)
         {
@@ -28,13 +28,13 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
                 {
                     if (controlSitio.sitio.dataInTime)
                     {
-                        ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).RegionesLabelUILabel[ControlDatos.singleton.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
+                        ((SitiosOrdenados_PAI)sitiosOrdenados).RegionesLabelUILabel[ControlDatos.singleton.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
                             .coutActRegional++;
                         coutActTotal++;
                     }
                     else
                     {
-                        ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).RegionesLabelUILabel[ControlDatos.singleton.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
+                        ((SitiosOrdenados_PAI)sitiosOrdenados).RegionesLabelUILabel[ControlDatos.singleton.GetIndexRegionByID(controlSitio.sitio.dataSitio.Estructura)]
                             .coutNoActRegional++;
                         coutNoActTotal++;
                     }
@@ -45,7 +45,7 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
         if (TextActTotal != null) TextActTotal.text = coutActTotal.ToString();
         if (TextNoActTotal != null) TextNoActTotal.text = coutNoActTotal.ToString();
 
-        ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).SetTextTotales();
+        ((SitiosOrdenados_PAI)sitiosOrdenados).SetTextTotales();
     }
     
     public override void SetSitioSelectUI_GO(ControlSitio sitio)
@@ -68,7 +68,7 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
         }
 
         GameObject instance = Instantiate(instancePrefab, 
-            ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)].
+            ((SitiosOrdenados_PAI)sitiosOrdenados).RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)].
                 rootRegion.transform);
 
         RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
@@ -90,7 +90,7 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
     {
         if (sitiosOrdenados != null)
         {
-            foreach (var listSitios in ((SitiosOrdenadosRegionesPozosPAINorte)sitiosOrdenados).RegionesLabelUIList)
+            foreach (var listSitios in ((SitiosOrdenados_PAI)sitiosOrdenados).RegionesLabelUIList)
             {
                 foreach (var sitio in listSitios.sitiosRegion)
                 {

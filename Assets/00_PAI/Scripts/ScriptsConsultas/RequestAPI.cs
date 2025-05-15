@@ -50,39 +50,8 @@ public class RequestAPI : Singleton<RequestAPI>
     public bool useDataFile;
     public bool enableHistoricos = true;
     public bool simulaCallBackHistoricos;
-    
-    public enum Proyectos
-    {
-        Default,                        //00 - Default: 'Default',
-        GustavoAMadero,                 //01 - GustavoAMadero: 'Gustavo A Madero',
-        Padierna,                       //02 - Padierna: 'Padierna',
-        PozosSistemaLerma,              //03 - PozosSistemaLerma: 'Pozos Sistema Lerma',
-        Iztapalapa,                     //04 - Iztapalapa: 'Iztapalapa',
-        Chalmita,                       //05 - Chalmita: 'Chalmita',
-        Yaqui,                          //06 - Yaqui: 'Yaqui',
-        SistemaCutzamala,               //07 - SistemaCutzamala: 'SistemaCutzamala',
-        PruebasCampo,                   //08 - PruebasCampo: 'Puebas Campo',
-        SantaCatarina,                  //09 - SantaCatarina: 'Santa Catarina',
-        Chiconautla,                    //10 - Chiconautla: 'Chiconautla',
-        Sorpasso,                       //11 - Sorpasso: 'Sorpasso',
-        EscudoNacional,                 //12 - EscudoNacional: 'Escudo Nacional',
-        ClimatologicasHidrometricas,    //13 - ClimatologicasHidrometricas: 'Estaciones Climatologicas e Hidrometricas',
-        Teoloyucan,                     //14 - Teoloyucan: 'Teoloyucan',
-        Pruebas,                        //15 - Pruebas: 'Pruebas',
-        LineaMorada,                    //16 - LineaMorada: 'Línea Morada',
-        PozosAIFA,                      //17 - PozosAIFA: 'Pozos AIFA',
-        PozosZumpango,                  //18 - PozosZumpango: 'Pozos Zumpango',
-        PaseoDelRio,                    //19 - PaseoDelRio: 'Paseo del Rio',
-        Aduana,                         //20 - Aduana: 'Aduana',
-        PozosPAI,                       //21 - PozosPAI: 'Pozos PAI',
-        PozosCoyoacan,                  //22 - PozosCoyoacan: 'Pozos Coyoacan',
-        PozosAzcapotzalco,              //23 - PozosAzcapotzalco: 'Pozos Azcapotzalco',
-        Encharcamientos,                //24 - Encharcamientos: 'Encharcamientos',
-        Lumbreras,                      //25 - Lumbreras: 'Lumbreras',
-        Ramales                         //26 - Ramales: 'Ramales'
-    }
 
-    [TabGroup("Data")] public Proyectos sistema = Proyectos.PozosAIFA;
+    [TabGroup("Data")] public EstructurasAPI.Proyectos sistema = EstructurasAPI.Proyectos.PozosAIFA;
 
     [TabGroup("Data")] public DataRequestAPI dataRequestAPI;
     
@@ -151,18 +120,6 @@ public class RequestAPI : Singleton<RequestAPI>
 
         url = GetAddressByMethod(Metodos.Infraestructura);
         corrutinaInfraestructura = StartCoroutine(DoRequest(Metodos.Infraestructura));
-
-        // switch (sistema)
-        // {
-        //     case Proyectos.Lerma:
-        //         url = GetLocalIPAddress(Metodos.Lerma_Infraestructura);
-        //         corrutinaInfraestructura = StartCoroutine(DoRequest(Metodos.Lerma_Infraestructura));
-        //         break;
-        //     case Proyectos.Chiconautla:
-        //         url = GetLocalIPAddress(Metodos.Chiconautla_Infraestructura);
-        //         corrutinaInfraestructura = StartCoroutine(DoRequest(Metodos.Chiconautla_Infraestructura));
-        //         break;
-        // }
       
         yield return new WaitForSeconds(delay);
         LanzarPoleo();
@@ -174,18 +131,6 @@ public class RequestAPI : Singleton<RequestAPI>
         
         url = GetAddressByMethod(Metodos.UpdateData);
         corrutinaSignals = StartCoroutine(DoRequest(Metodos.UpdateData));
-        
-        // switch (sistema)
-        // {
-        //     case Proyectos.Lerma:
-        //         url = GetLocalIPAddress(Metodos.Lerma_UpdateData);
-        //         corrutinaSignals = StartCoroutine(DoRequest(Metodos.Lerma_UpdateData));
-        //         break;
-        //     case Proyectos.Chiconautla:
-        //         url = GetLocalIPAddress(Metodos.Chiconautla_UpdateData);
-        //         corrutinaSignals = StartCoroutine(DoRequest(Metodos.Chiconautla_UpdateData));
-        //         break;
-        // }
         
         yield return new WaitForSeconds(delay);
         LanzarPoleo();
@@ -246,7 +191,7 @@ public class RequestAPI : Singleton<RequestAPI>
         switch (method)
         {
             case Metodos.Infraestructura:
-                if (sistema == Proyectos.PozosPAI)
+                if (sistema == EstructurasAPI.Proyectos.PozosPAI)
                 {
                     if (MyConectionData.useLocalHost)
                         return $"{MyConectionData.local}/API24/VWC/APP2024/GetInfraestructuraPozosPai";
@@ -263,7 +208,7 @@ public class RequestAPI : Singleton<RequestAPI>
                 
             
             case Metodos.UpdateData:
-                if (sistema == Proyectos.PozosPAI)
+                if (sistema == EstructurasAPI.Proyectos.PozosPAI)
                 {
                     if (MyConectionData.useLocalHost)
                         return $"{MyConectionData.local}/API24/VWC/APP2024/GetUpdatePozosPai";

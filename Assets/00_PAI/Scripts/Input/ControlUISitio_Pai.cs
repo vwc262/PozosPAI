@@ -280,24 +280,19 @@ public class ControlUISitio_Pai : ControlUISitio
             }
             else
             {
-                switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
+                switch ((EstructurasAPI.Proyectos)sitio.dataSitio.Estructura)
                 {
-                    case RequestAPI.Proyectos.Teoloyucan:
+                    case EstructurasAPI.Proyectos.Teoloyucan:
                         ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.Teoloyucan);
                         break;
 
-                    case RequestAPI.Proyectos.PozosZumpango:
+                    case EstructurasAPI.Proyectos.PozosZumpango:
                         ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango);
                         break;
 
-                    // case RequestAPI.Proyectos.PozosReyesFerrocarril:
-                    //     ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
-                    //         ControlAccesoPozosPAI.Proyectos.PozosReyesFerrocarril);
-                    //     break;
-
-                    case RequestAPI.Proyectos.PozosAIFA:
+                    case EstructurasAPI.Proyectos.PozosAIFA:
                         ControlAccesSitio = ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosAIFA);
                         break;

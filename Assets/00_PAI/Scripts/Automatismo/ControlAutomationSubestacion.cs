@@ -133,14 +133,14 @@ public class ControlAutomationSubestacion : MonoBehaviour
                     {
                         case 1:
                             estacionAux.SetDataEstacion(RequestAPI_Auto.singleton.estacionesSistemaAutomatismo.Find(
-                                    x => x.sistema == (RequestAPI.Proyectos)14).estacionesAutomatismo
+                                    x => x.sistema == (EstructurasAPI.Proyectos)14).estacionesAutomatismo
                                 .EstacionAutomatismos
                                 .Find(
                                     x => x.IdEstacion == estacion.dataSitio.idSitio % 100));
                             break;
                         case 2:
                             estacionAux.SetDataEstacion(RequestAPI_Auto.singleton.estacionesSistemaAutomatismo.Find(
-                                    x => x.sistema == (RequestAPI.Proyectos)17).estacionesAutomatismo
+                                    x => x.sistema == (EstructurasAPI.Proyectos)17).estacionesAutomatismo
                                 .EstacionAutomatismos
                                 .Find(
                                     x => x.IdEstacion == estacion.dataSitio.idSitio % 100));
@@ -148,7 +148,7 @@ public class ControlAutomationSubestacion : MonoBehaviour
                         case 3:
                         case 4:
                             estacionAux.SetDataEstacion(RequestAPI_Auto.singleton.estacionesSistemaAutomatismo.Find(
-                                    x => x.sistema == (RequestAPI.Proyectos)18).estacionesAutomatismo
+                                    x => x.sistema == (EstructurasAPI.Proyectos)18).estacionesAutomatismo
                                 .EstacionAutomatismos
                                 .Find(
                                     x => x.IdEstacion == estacion.dataSitio.idSitio % 100));

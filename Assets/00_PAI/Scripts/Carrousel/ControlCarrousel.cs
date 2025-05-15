@@ -35,19 +35,19 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
 
     public void SetSelectedSitioGPS(ControlSitio sitio)
     {
-        switch ((RequestAPI.Proyectos)sitio.dataSitio.Estructura)
+        switch ((EstructurasAPI.Proyectos)sitio.dataSitio.Estructura)
         {
-            case RequestAPI.Proyectos.Teoloyucan:
+            case EstructurasAPI.Proyectos.Teoloyucan:
                 if (ControlBombaButton != null)
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                         ControlAccesoPozosPAI.Proyectos.Teoloyucan));
                 break;
-            case RequestAPI.Proyectos.PozosZumpango:
+            case EstructurasAPI.Proyectos.PozosZumpango:
                 if (ControlBombaButton != null)
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                         ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                 break;
-            case RequestAPI.Proyectos.PozosAIFA:
+            case EstructurasAPI.Proyectos.PozosAIFA:
                 if (ControlBombaButton != null)
                     ControlBombaButton.gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                         ControlAccesoPozosPAI.Proyectos.PozosAIFA));

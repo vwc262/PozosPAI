@@ -109,10 +109,10 @@ public class BoyLoginPassword : MonoBehaviour
             Credencials.usuario = _user;
             Credencials.contrasena = _password;
            
-           if (RequestAPI.singleton.sistema != RequestAPI.Proyectos.PozosPAI)
+           if (RequestAPI.singleton.sistema != EstructurasAPI.Proyectos.PozosPAI)
                dataLogin.idProyect = (int)RequestAPI.singleton.sistema;
            else
-               dataLogin.idProyect = (int)RequestAPI.Proyectos.Teoloyucan;
+               dataLogin.idProyect = (int)EstructurasAPI.Proyectos.Teoloyucan;
            
             Credencials.idProyecto = dataLogin.idProyect;
 

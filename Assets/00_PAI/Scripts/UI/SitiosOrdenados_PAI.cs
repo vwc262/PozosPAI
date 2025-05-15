@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
+public class SitiosOrdenados_PAI : SitiosOrdenados
 { 
     [TabGroup("Regiones")] public List<ControlRegionUILabel> RegionesLabelUILabel;
     [TabGroup("Regiones")] public List<ControlRegionUIList> RegionesLabelUIList;
@@ -157,20 +157,20 @@ public class SitiosOrdenadosRegionesPozosPAINorte : SitiosOrdenados
         {
             for (int i = 0; i < RegionesLabelUILabel.Count; i++)
             {
-                switch ((RequestAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegionales[
+                switch ((EstructurasAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegionales[
                             RegionesLabelUILabel[i].region - 1])
                 {
-                    case RequestAPI.Proyectos.Teoloyucan:
+                    case EstructurasAPI.Proyectos.Teoloyucan:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.Teoloyucan));
                         break;
 
-                    case RequestAPI.Proyectos.PozosZumpango:
+                    case EstructurasAPI.Proyectos.PozosZumpango:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosZumpango));
                         break;
                     
-                    case RequestAPI.Proyectos.PozosAIFA:
+                    case EstructurasAPI.Proyectos.PozosAIFA:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(
                             ControlAccesoPozosPAI.Proyectos.PozosAIFA));
                         break;

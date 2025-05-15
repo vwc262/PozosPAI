@@ -88,7 +88,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
             Sub_Teoloyucan.ClearLists();
 
             foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
-                         item => item.dataSitio.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
+                         item => item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.Teoloyucan))
             {
                 if (contentTeoloyucan != null && prefabControlAutomatismo != null)
                 {
@@ -129,7 +129,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
             Sub_FFCC.ClearLists();
 
             foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
-                         item => item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
+                         item => item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosAIFA))
             {
                 if (contentFFCC != null && prefabControlAutomatismo != null)
                 {
@@ -172,7 +172,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
             foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                          item =>
                          {
-                             return item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
+                             return item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosZumpango &&
                                     item.dataSitio.automationData.idSubestacion == 3;
                          }))
             {
@@ -201,7 +201,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
             foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                          item =>
                          {
-                             return (item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
+                             return (item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosZumpango) &&
                                     item.dataSitio.automationData.idSubestacion == 4;
                          }))
             {
@@ -269,7 +269,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
         
         int cont = 0;
         foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
-                     item=>item.dataSitio.Estructura == (int)RequestAPI.Proyectos.Teoloyucan))
+                     item=>item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.Teoloyucan))
         {
             cont++;
             sitioT.dataSitio.automationData.index = cont;
@@ -282,7 +282,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
         
         cont = 0;
         foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
-                     item=>item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosAIFA))
+                     item=>item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosAIFA))
         {
             cont++;
             sitioT.dataSitio.automationData.index = cont;
@@ -297,7 +297,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
         foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                      item=>
                      {
-                         return item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango &&
+                         return item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosZumpango &&
                                 item.dataSitio.idSitio <= 1813;
                      }))
         {
@@ -314,7 +314,7 @@ public class ControlAutomation : Singleton<ControlAutomation>
         foreach (var sitioT in ControlDatos.singleton.listSitios.Where(
                      item=>
                      {
-                         return (item.dataSitio.Estructura == (int)RequestAPI.Proyectos.PozosZumpango) &&
+                         return (item.dataSitio.Estructura == (int)EstructurasAPI.Proyectos.PozosZumpango) &&
                                 item.dataSitio.idSitio > 1813;
                      }))
         {
