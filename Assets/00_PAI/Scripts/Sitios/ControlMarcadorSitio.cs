@@ -15,11 +15,6 @@ public class ControlMarcadorSitio : MonoBehaviour
     
     public static LeanSelectByFinger leanSelectByFinger;
     private LeanSelectable selectable;
-
-    //public ControlSitioUI controlSitioUI;
-
-    public TMPro.TMP_Text textoNombre;
-    public TMPro.TMP_Text textoFecha;
     
     public TMPro.TMP_Text textoIdSitioUnity;
     public TMPro.TMP_Text textoAlias;

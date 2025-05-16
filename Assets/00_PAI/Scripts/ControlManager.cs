@@ -5,7 +5,7 @@ public class ControlManager : Singleton<ControlManager>
 {
     public PlayMakerFSM mainFSM;
 
-    public bool moveMap;
+    public bool useCenterSitios;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,9 +67,9 @@ public class ControlManager : Singleton<ControlManager>
 
         if (ControlMap._singletonExists)
         {
-            ControlMap.singleton.SetGlobalDataMapa(moveMap);
+            ControlMap.singleton.SetGlobalDataMapa(useCenterSitios);
             
-            if (moveMap)
+            if (useCenterSitios)
                 ControlMap.singleton.SetPositionMapa();
         }
         
@@ -80,7 +80,7 @@ public class ControlManager : Singleton<ControlManager>
         {
             VWC_MoveCamera_PAI.singleton.SetLimitsCameraMovement();
 
-            if (!moveMap)
+            if (!useCenterSitios)
                 VWC_MoveCamera_PAI.singleton.ResetCenterCamera();
             else
                 VWC_MoveCamera_PAI.singleton.ResetCamera();

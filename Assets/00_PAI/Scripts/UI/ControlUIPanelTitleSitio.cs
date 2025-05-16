@@ -43,18 +43,21 @@ public class ControlUIPanelTitleSitio : MonoBehaviour
     
     public void UpdateStatusSitio(ControlSitio _sitio)
     {
-        if (Nombre != null)
-            Nombre.text = _sitio.dataSitio.nombre;
-        
-        if (Fecha != null)
-            Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_sitio.dataSitio.fecha);
-
-        if (statusImage != null)
+        if (_sitio != null)
         {
-            if (_sitio.dataInTime)
-                statusImage.sprite = imageStatusConectado;
-            else
-                statusImage.sprite = imageStatusNoConectado;
+            if (Nombre != null)
+                Nombre.text = _sitio.dataSitio.nombre;
+
+            if (Fecha != null)
+                Fecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(_sitio.dataSitio.fecha);
+
+            if (statusImage != null)
+            {
+                if (_sitio.dataInTime)
+                    statusImage.sprite = imageStatusConectado;
+                else
+                    statusImage.sprite = imageStatusNoConectado;
+            }
         }
     }
 }

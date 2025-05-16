@@ -20,9 +20,9 @@ public class ControlDatos : Singleton<ControlDatos>
     [SerializeField][TabGroup("Sitios")]
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "smallDescription")]
     public List<ControlSitio> listSitios = new List<ControlSitio>();
-    [TabGroup("Sitios")] public List<int> listIdRegionales = new List<int>();
+    [TabGroup("Sitios")] public List<int> listIdRegiones = new List<int>();
 
-    [TabGroup("Sitios")] public int regionales;
+    [TabGroup("Sitios")] public int regiones;
 
     //[TabGroup("Marcadores")]public List<GameObject> listMarcadoresSitios = new List<GameObject>();
 
@@ -149,25 +149,25 @@ public class ControlDatos : Singleton<ControlDatos>
             listSitios.Add(newSitio);
         }
 
-        listIdRegionales.Clear();
+        listIdRegiones.Clear();
         
         foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
         {
-            listIdRegionales.Add(sitio.dataSitio.Estructura);
+            listIdRegiones.Add(sitio.dataSitio.Estructura);
         }
 
-        regionales = listIdRegionales.Count();
+        regiones = listIdRegiones.Count();
     }
 
     public int GetIndexRegionByID(int idRegion)
     {
-        return listIdRegionales.FindIndex(Item => Item == idRegion);
+        return listIdRegiones.FindIndex(Item => Item == idRegion);
     }
 
     public int GetIDRegionByIndex(int index)
     {
-        if (index < listIdRegionales.Count)
-            return listIdRegionales[index];
+        if (index < listIdRegiones.Count)
+            return listIdRegiones[index];
 
         return 0;
     }
@@ -655,7 +655,7 @@ public class ControlDatos : Singleton<ControlDatos>
                             dir.y = 0;
                             sitio1.transform.Translate(dir * overlapMoveDistance, Space.World);
                             sitio1.positionFinalMarcador = sitio1.transform.localPosition;
-                            sitio1.RecalculateLineRenderer();
+                            //sitio1.RecalculateLineRenderer();
                             finishOverlap = false;
                         }
                 }

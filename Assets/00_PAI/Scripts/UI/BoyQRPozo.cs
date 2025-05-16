@@ -21,13 +21,17 @@ public class BoyQRPozo : MonoBehaviour
 
 	private void UpdateInfoSitio(ControlSitio _sitio)
 	{
-		gpsQR = $"{_sitio.dataSitio.latitud},{_sitio.dataSitio.longitud}";
+		if (_sitio != null)
+		{
+			gpsQR = $"{_sitio.dataSitio.latitud},{_sitio.dataSitio.longitud}";
 
-		gpsText.text = $"{ConvertDecimelToGrades(_sitio.dataSitio.latitud)}, {ConvertDecimelToGrades(_sitio.dataSitio.longitud)}";
-		
-		Texture2D qrTexture = QRGenerator.EncodeString(baseQR+gpsQR, darkColor, lightColor);
-		
-		GetComponent<Renderer>().material.mainTexture = qrTexture;
+			gpsText.text =
+				$"{ConvertDecimelToGrades(_sitio.dataSitio.latitud)}, {ConvertDecimelToGrades(_sitio.dataSitio.longitud)}";
+
+			Texture2D qrTexture = QRGenerator.EncodeString(baseQR + gpsQR, darkColor, lightColor);
+
+			GetComponent<Renderer>().material.mainTexture = qrTexture;
+		}
 	}
 
 

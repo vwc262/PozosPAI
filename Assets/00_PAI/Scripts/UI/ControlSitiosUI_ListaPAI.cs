@@ -64,7 +64,8 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
                 instancePrefab = ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion;
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                instancePrefab = ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion;
+                break;
         }
 
         GameObject instance = Instantiate(instancePrefab, 

@@ -12,7 +12,7 @@ public class VWCBillboardSitio : MonoBehaviour
     private VWC_MoveCamera cameraMoveVWC;
     public ControlSitio sitio;
 
-    public bool useDistance_X_Z;
+    public bool useDistanceDeformationZ;
     
     public SpriteRenderer frameDark;
     public SpriteRenderer circleID;
@@ -36,18 +36,11 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("Position")] public float interpolationValuePosMax = 0.8f;
     [TabGroup("Position")] public Vector3 positionFinalMarcador;
     [TabGroup("Position")] public Vector3 positionGPSOriginal;
-    [TabGroup("Position")] public Vector3 pos0GUIAtPlay;
-    [TabGroup("Position")] public Vector3 posOriginalBillboard;
-    [TabGroup("Position")] public Vector3 posOverlay;
     
     [TabGroup("GUI")]public GameObject guiObject;
     [TabGroup("GUI")]public GameObject guiObject2;
     [TabGroup("GUI")]public Vector3 guiObjPosTilt;
     [TabGroup("GUI")]Vector3 posGuiOriginal;
-    
-    [TabGroup("LineRender")] public Vector3 lineRenderOffsetStart;
-    [TabGroup("LineRender")] public Vector3 lineRenderOffsetFinish;
-    [TabGroup("LineRender")] public LineRenderer lineRenderer;
     
     [TabGroup("Deformation")]public GameObject[] DeformationObjects;
     [TabGroup("Deformation")]public float deformationFactor;
@@ -62,10 +55,8 @@ public class VWCBillboardSitio : MonoBehaviour
     
     void Start()
     {
-        //_originalPos = positionGPSOriginal;
         cameraMove = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
 
-        pos0GUIAtPlay = transform.localPosition;
         RecalculatePerspectiveDeformation();
         RecalculateHeight();
         posGuiOriginal = guiObject2.transform.localPosition;
@@ -147,12 +138,6 @@ public class VWCBillboardSitio : MonoBehaviour
             guiObject2.transform.localPosition = posGuiOriginal;
     }
 
-    public void RecalculateLineRenderer()
-    {
-        lineRenderer.SetPosition(0, transform.parent.position+lineRenderOffsetStart);
-        lineRenderer.SetPosition(1, transform.position+lineRenderOffsetFinish);
-    }
-
     public void RecalculatePerspectiveDeformation()
     {
         foreach (var obj in DeformationObjects)
@@ -164,7 +149,7 @@ public class VWCBillboardSitio : MonoBehaviour
 
             var distanceForDeformation = cameraMove.gameObject.transform.position - transform.position;
 
-            var distanceDeform = useDistance_X_Z
+            var distanceDeform = useDistanceDeformationZ
                 ? distanceForDeformation.z
                 : distanceForDeformation.x;
             
@@ -173,27 +158,4 @@ public class VWCBillboardSitio : MonoBehaviour
             obj.transform.localScale = obj.transform.localScale.with(y: scaleX * deformationFactor);
         }
     }
-    
-    // public void Recalculate2(float _interpolationValue)
-    // {
-    //     if (cameraMove == null)
-    //         cameraMove = FindObjectOfType<VWC_Lerma_MoveCamera>().CameraGimbal;
-    //     
-    //     interpolationValueAngle = _interpolationValue;
-    //     transform.localEulerAngles = Vector3.Lerp(minAngle, maxAngle, interpolationValueAngle);
-    //     
-    //     transform.localScale = Vector3.Lerp(minScale, maxScale, interpolationValuePos);
-    //
-    //     distance = Vector3.Distance(cameraMove.gameObject.transform.position, transform.position);
-    //     interpolationValueHeight = curve.Evaluate(distance / maxHeightDistance);
-    //
-    //     var heightOffset = Vector3.Lerp(new Vector3(0,minHeight,0),new Vector3(0,maxHeight,0), interpolationValueHeight);
-    //     
-    //     var newPos = Vector3.Lerp(pos0GUIAtPlay, originalPos, interpolationValuePos);
-    //
-    //     transform.localPosition = newPos + heightOffset;
-    //     frameDark.material.color = new Color(0, 0, 0, interpolationValuePos*2);
-    //
-    //     RecalculateLineRenderer();
-    // }
 }

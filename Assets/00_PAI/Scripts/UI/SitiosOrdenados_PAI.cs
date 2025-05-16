@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,6 @@ using UnityEngine.UI;
 
 public class SitiosOrdenados_PAI : SitiosOrdenados
 { 
-    [TabGroup("Regiones")] public List<ControlRegionUILabel> RegionesLabelUILabel;
-    [TabGroup("Regiones")] public List<ControlRegionUIList> RegionesLabelUIList;
-    [TabGroup("UI")] public Sprite noFoldRegion;
-    
-    public GameObject contentSitiosList;
-
     public override void Init()
     {
     }
@@ -63,6 +58,14 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
     {
         int contRegionesActivas = 0;
         
+        if (header != null)
+            HeigtHeader = header.GetComponent<RectTransform>().rect.height;
+        if (contentSitiosList != null)
+            HeigtContenedor = contentSitiosList.GetComponent<RectTransform>().rect.height;
+        if (RegionesLabelUILabel.Count > 0)
+            HeigtLabelRegiones = (RegionesLabelUILabel[0].GetComponent<RectTransform>().rect.height + HeigtAuxSpacing) * 
+                                 RegionesLabelUILabel.Count;
+        
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
             if (i == index)
@@ -75,13 +78,12 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
             RegionesLabelUILabel[i].SetIsOn(RegionesLabelUIList[i].gameObject.activeSelf);
-            //RegionesLabelUILabel[i].foldButtonRegion.sprite = foldInRegion;
+            
             if(RegionesLabelUIList[i].gameObject.activeSelf)
             {
-                //RegionesLabelUILabel[i].foldButtonRegion.sprite = foldOutRegion;
                 var rect1 = RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().rect;
                 RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().sizeDelta =
-                    new Vector2(rect1.width, heights[contRegionesActivas]);
+                    new Vector2(rect1.width, (HeigtContenedor - HeigtHeader - HeigtLabelRegiones) / contRegionesActivas);
 			    
                 var content = RegionesLabelUIList[i].gameObject.GetComponent<ScrollRect>().content;
                 var rect2 = content.GetComponent<RectTransform>().rect;
@@ -139,7 +141,8 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
                 instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
                 string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i));
                 instanceLabel.SetNameRegional(nameRegion);
-                instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
+                if (selectedColors.Length > i)
+                    instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
                 instanceLabel.gameObject.name = "Label " + nameRegion;
                 RegionesLabelUILabel.Add(instanceLabel);
                 
@@ -157,7 +160,7 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         {
             for (int i = 0; i < RegionesLabelUILabel.Count; i++)
             {
-                switch ((EstructurasAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegionales[
+                switch ((EstructurasAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegiones[
                             RegionesLabelUILabel[i].region - 1])
                 {
                     case EstructurasAPI.Proyectos.Teoloyucan:
