@@ -15,36 +15,39 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
 
     public void UpdateInfoSitio(ControlSitio sitio)
     {
-        if (ListGraph.Count > 0)
+        if (sitio != null)
         {
-            foreach (var graph in ListGraph)
+            if (ListGraph.Count > 0)
             {
-                graph.InitPanelsActuallizacion();
-            }
+                foreach (var graph in ListGraph)
+                {
+                    graph.InitPanelsActuallizacion();
+                }
 
-            if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
-            {
-                BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
-                BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
-            
-                RequestAPI.singleton.GetHistricosByDates(
-                    BoyGraph.idSitio,(int)sitio.dataSitio.Estructura,
-                    BoyGraph.minDate,
-                    BoyGraph.maxDate,
-                    BoyGraph.tipoPromedio,
-                    HistoricosCallBack);
-            }
-            else
-            {
-                BoyGraph.idSitio = sitio.dataSitio.idSitio;
-                BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
-            
-                RequestAPI.singleton.GetHistricosByDates(
-                    BoyGraph.idSitio,
-                    BoyGraph.minDate,
-                    BoyGraph.maxDate,
-                    BoyGraph.tipoPromedio,
-                    HistoricosCallBack);
+                if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+                {
+                    BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
+                    BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
+
+                    RequestAPI.singleton.GetHistricosByDates(
+                        BoyGraph.idSitio, (int)sitio.dataSitio.Estructura,
+                        BoyGraph.minDate,
+                        BoyGraph.maxDate,
+                        BoyGraph.tipoPromedio,
+                        HistoricosCallBack);
+                }
+                else
+                {
+                    BoyGraph.idSitio = sitio.dataSitio.idSitio;
+                    BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
+
+                    RequestAPI.singleton.GetHistricosByDates(
+                        BoyGraph.idSitio,
+                        BoyGraph.minDate,
+                        BoyGraph.maxDate,
+                        BoyGraph.tipoPromedio,
+                        HistoricosCallBack);
+                }
             }
         }
     }

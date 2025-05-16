@@ -111,9 +111,7 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
     public override void SetDataSitio(ControlSitio _Sitio)
     {
         sitio = _Sitio;
-        
-        textoNombre.text = sitio.dataSitio.nombre;
-        textoFecha.text = sitio.dataSitio.fecha;
+
         textoIdSitioUnity.text = $"{GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
         textoAlias.text = $"{sitio.dataSitio.abreviacion}";
         

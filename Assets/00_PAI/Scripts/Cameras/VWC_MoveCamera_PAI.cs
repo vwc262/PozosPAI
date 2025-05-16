@@ -1,27 +1,36 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class VWC_MoveCamera_PAI : Singleton<VWC_MoveCamera_PAI>
 {
     public VWC_MoveCamera moveCamera;
 
-    public List<Vector3> positions;
+    public Vector3 positionCenterEstructura, MaxPos, MinPos;
     
     public Vector3 OffsetMov;
+
+    public List<ControlSitio> listSitiosEstructura;
     
-    public void SetMoveCameraByRigionID(int zone)
+    public void SetMoveCameraByRigionID(int estructura)
     {
-        switch (zone)
+        if (ControlDatos._singletonExists)
         {
-            case 14:
-                moveCamera.SetPointZoom(positions[0].x, positions[0].y, positions[0].z);
-                break;
-            case 17:
-                moveCamera.SetPointZoom(positions[1].x, positions[1].y, positions[1].z);
-                break;
-            case 18:
-                moveCamera.SetPointZoom(positions[2].x, positions[2].y, positions[2].z);
-                break;
+            listSitiosEstructura = ControlDatos.singleton.listSitios.Where(
+                x => x.dataSitio.Estructura == estructura).ToList();
+
+            MaxPos.x = listSitiosEstructura.Max(x => x.controlMarcadorMap.transform.position.x);
+            MaxPos.z = listSitiosEstructura.Max(x => x.controlMarcadorMap.transform.position.z);
+            
+            MinPos.x = listSitiosEstructura.Min(x => x.controlMarcadorMap.transform.position.x);
+            MinPos.z = listSitiosEstructura.Min(x => x.controlMarcadorMap.transform.position.z);
+            
+            positionCenterEstructura = new Vector3(
+                MinPos.x + ((MaxPos.x - MinPos.x) / 2f),
+                moveCamera.flyCamera.transform.position.y,
+                MinPos.z + ((MaxPos.z - MinPos.z) / 2f));
+            
+            moveCamera.flyCamera.SetPosition(positionCenterEstructura);
         }
     }
 

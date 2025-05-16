@@ -15,16 +15,26 @@ public class SitiosOrdenados : MonoBehaviour
     [TabGroup("UI")] public Image ordenPresionImage;
     [TabGroup("UI")] public Image ordenTotalizadoImage;
     [TabGroup("UI")] public int currentOrderIndex;
-    [TabGroup("UI")] public float[] heights;
     [TabGroup("UI")] public float AlphaSelected = 0.7f;
     [TabGroup("UI")] public float AlphaNoSelected = 0.5f;
     [TabGroup("UI")] public Color[] selectedColors;
     
-    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatos._singletonExists? ControlDatos.singleton.regionales : 0;
+    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatos._singletonExists? ControlDatos.singleton.regiones : 0;
     [TabGroup("Sitios")] public SpriteRenderer[] colorRegiones;
     
     [ShowInInspector]
     public Dictionary<int, List<ControlUISitio>> dictionaryListSitios = new Dictionary<int, List<ControlUISitio>>();
+    
+    [TabGroup("Regiones")] public List<ControlRegionUILabel> RegionesLabelUILabel;
+    [TabGroup("Regiones")] public List<ControlRegionUIList> RegionesLabelUIList;
+    [TabGroup("UI")] public Sprite noFoldRegion;
+    
+    [TabGroup("Contenedor")] public GameObject contentSitiosList;
+    [TabGroup("Contenedor")] public GameObject header;
+    [TabGroup("Contenedor")] public float HeigtAuxSpacing;
+    [TabGroup("Contenedor")] public float HeigtHeader;
+    [TabGroup("Contenedor")] public float HeigtContenedor;
+    [TabGroup("Contenedor")] public float HeigtLabelRegiones;
     
     [Button]
     private void Start()

@@ -35,9 +35,9 @@ public class ControlRegionUILabel : MonoBehaviour
 
     public void ToggleValueIsOn()
     {
-        IsOn = !IsOn;
-        
-        onValueIsOnChange.Invoke(IsOn);
+        // IsOn = !IsOn;
+        // onValueIsOnChange.Invoke(IsOn);
+        sitiosOrdenados.ToggleRegion((int)region - 1);
     }
 
     public void SetIsOn(bool val)

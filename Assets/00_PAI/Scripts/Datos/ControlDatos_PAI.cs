@@ -47,63 +47,68 @@ public class ControlDatos_PAI : ControlDatos
 
     public void UpdateDataAutomatismo()
     {
-        if (RequestAPI_Auto._singletonExists)
+        if (RequestAPI_Auto._singletonExists && RequestAPI._singletonExists)
         {
-            foreach (var sistema in RequestAPI_Auto.singleton.estacionesSistemaAutomatismo)
+            if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
-                foreach (var estacion in sistema.estacionesAutomatismo.EstacionAutomatismos)
+                foreach (var sistema in RequestAPI_Auto.singleton.estacionesSistemaAutomatismo)
                 {
-                    ControlSitio sitio = listSitios.Find(item =>
-                        item.dataSitio.idSitio == (estacion.IdEstacion + (100 * (int)sistema.sistema)));
-
-                    SegmentoAutomatismo segmento =
-                        RequestAPI_Auto.singleton.segmentosAutomatismo.Segmentos.Find(item =>
-                            item.ID == estacion.IdSegmento);
-
-                    if (sitio.dataSitio.automationData == null)
-                        sitio.dataSitio.automationData = new Automation();
-
-                    sitio.dataSitio.automationData.isActiveAutomation = estacion.Automatismo == 1 ? true : false;
-                    sitio.dataSitio.automationData.index = estacion.Secuencia;
-                    sitio.dataSitio.automationData.AutomationError = estacion.BanderaArranqueFallido == 1 ? true : false;
-                    sitio.dataSitio.automationData.nominalVoltage = estacion.VNominal;
-
-                    if (segmento != null)
+                    foreach (var estacion in sistema.estacionesAutomatismo.EstacionAutomatismos)
                     {
-                        sitio.dataSitio.automationData.idSubestacion = segmento.ID;
-                        sitio.dataSitio.automationData.toleranceVoltage = segmento.Tolerancia;
-                        sitio.dataSitio.automationData.starupTime = segmento.T1;
-                        sitio.dataSitio.automationData.windowTime = segmento.T2;
+                        ControlSitio sitio = listSitios.Find(item =>
+                            item.dataSitio.idSitio == (estacion.IdEstacion + (100 * (int)sistema.sistema)));
+
+                        SegmentoAutomatismo segmento =
+                            RequestAPI_Auto.singleton.segmentosAutomatismo.Segmentos.Find(item =>
+                                item.ID == estacion.IdSegmento);
+
+                        if (sitio.dataSitio.automationData == null)
+                            sitio.dataSitio.automationData = new Automation();
+
+                        sitio.dataSitio.automationData.isActiveAutomation = estacion.Automatismo == 1 ? true : false;
+                        sitio.dataSitio.automationData.index = estacion.Secuencia;
+                        sitio.dataSitio.automationData.AutomationError =
+                            estacion.BanderaArranqueFallido == 1 ? true : false;
+                        sitio.dataSitio.automationData.nominalVoltage = estacion.VNominal;
+
+                        if (segmento != null)
+                        {
+                            sitio.dataSitio.automationData.idSubestacion = segmento.ID;
+                            sitio.dataSitio.automationData.toleranceVoltage = segmento.Tolerancia;
+                            sitio.dataSitio.automationData.starupTime = segmento.T1;
+                            sitio.dataSitio.automationData.windowTime = segmento.T2;
+                        }
+
+                        if (ControlAutomation._singletonExists)
+                            ControlAutomation.singleton.enableControlAutomatismo();
                     }
-
-                    if (ControlAutomation._singletonExists)
-                        ControlAutomation.singleton.enableControlAutomatismo();
                 }
-            }
 
-            foreach (var sistema in RequestAPI_Auto.singleton.ConfEstacionesSistemaAutomatismo)
-            {
-                foreach (var estacion in sistema.estacionesAutomatismo.EstacionAutomatismos)
+                foreach (var sistema in RequestAPI_Auto.singleton.ConfEstacionesSistemaAutomatismo)
                 {
-                    ControlSitio sitio = listSitios.Find(item =>
-                        item.dataSitio.idSitio == (estacion.IdEstacion + (100 * (int)sistema.sistema)));
-                    
-                    SegmentoAutomatismo segmento =
-                        RequestAPI_Auto.singleton.ConfSegmentosAutomatismo.Segmentos.Find(item =>
-                            item.ID == estacion.IdSegmento);
-                    
-                    if (sitio.dataSitio.automationData == null)
-                        sitio.dataSitio.automationData = new Automation();
-                    
-                    sitio.dataSitio.automationData.ConfIsActiveAutomation = estacion.Automatismo == 1 ? true : false;
-                    sitio.dataSitio.automationData.ConfIndex = estacion.Secuencia;
-                    sitio.dataSitio.automationData.ConfNominalVoltage = estacion.VNominal;
-
-                    if (segmento != null)
+                    foreach (var estacion in sistema.estacionesAutomatismo.EstacionAutomatismos)
                     {
-                        sitio.dataSitio.automationData.ConfToleranceVoltage = segmento.Tolerancia;
-                        sitio.dataSitio.automationData.ConfStarupTime = segmento.T1;
-                        sitio.dataSitio.automationData.ConfWindowTime = segmento.T2;
+                        ControlSitio sitio = listSitios.Find(item =>
+                            item.dataSitio.idSitio == (estacion.IdEstacion + (100 * (int)sistema.sistema)));
+
+                        SegmentoAutomatismo segmento =
+                            RequestAPI_Auto.singleton.ConfSegmentosAutomatismo.Segmentos.Find(item =>
+                                item.ID == estacion.IdSegmento);
+
+                        if (sitio.dataSitio.automationData == null)
+                            sitio.dataSitio.automationData = new Automation();
+
+                        sitio.dataSitio.automationData.ConfIsActiveAutomation =
+                            estacion.Automatismo == 1 ? true : false;
+                        sitio.dataSitio.automationData.ConfIndex = estacion.Secuencia;
+                        sitio.dataSitio.automationData.ConfNominalVoltage = estacion.VNominal;
+
+                        if (segmento != null)
+                        {
+                            sitio.dataSitio.automationData.ConfToleranceVoltage = segmento.Tolerancia;
+                            sitio.dataSitio.automationData.ConfStarupTime = segmento.T1;
+                            sitio.dataSitio.automationData.ConfWindowTime = segmento.T2;
+                        }
                     }
                 }
             }
