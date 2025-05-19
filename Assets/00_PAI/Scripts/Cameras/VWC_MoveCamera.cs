@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Lean.Touch;
 using Raskulls.ScriptableSystem;
 using Sirenix.OdinInspector;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -27,7 +28,7 @@ public class VWC_MoveCamera : MonoBehaviour
     [TabGroup("Zoom Tilt")] public Vector3 OrigenRotCamera;
     [TabGroup("Zoom Tilt")] public Vector3 finalRotCamera;
     [TabGroup("Zoom Tilt")] private Vector3 rotationCamera;
-    [TabGroup("Zoom Tilt")] public bool UseZoom;
+    [TabGroup("Zoom Tilt")] public bool UseTiltMove;
     [TabGroup("Zoom Tilt")] public float zoomHome = 0.125f;
     
     [TabGroup("Touch")] public Vector3 inputTouch;
@@ -55,7 +56,6 @@ public class VWC_MoveCamera : MonoBehaviour
     [TabGroup("CameraInterpolated")] public Vector3 FinalPosition;
     [TabGroup("CameraInterpolated")] public float MoveVelocity = 0.1f;
     [TabGroup("CameraInterpolated")] public float DistancePos = 100;
-    [TabGroup("CameraInterpolated")] public Coroutine coroutinePosition;
     
     [TabGroup("Scriptable Events")] public SE_Float SetTouchInputZoomEvent;
     [TabGroup("Scriptable Events")] public SE_Float SetTouchInputTiltEvent;
@@ -65,6 +65,16 @@ public class VWC_MoveCamera : MonoBehaviour
     [TabGroup("GUI")] public bool useElementUI;
     
     private float _touchSpeed;
+    
+    public CinemachineBrain cinemachineBrainMainCamera;
+    public CinemachineCamera cameraHolder;
+    //public CinemachineCamera cameraBase;
+    
+    public float AnimTime = 1f;
+    public float waitAnimTime = 0.05f;
+
+    public float ZoomCinemachineCamera;
+    public float ZoomCinemachineCameraAnt;
     
     private void Start()
     {
@@ -89,16 +99,16 @@ public class VWC_MoveCamera : MonoBehaviour
     
     void Update()
     {
-        if (UseZoom)
+        if (UseTiltMove)
         {
-            if (FlyCamera._singletonExists && FlyCamera.singleton.enableInputKeyboard)
+            if (FlyCamera.enableInputKeyboard)
             {
                 if (Input.GetKey(KeyCode.Q))
                 {
                     tiltValue -= displacementSpeed;
                     if (tiltValue < 0)
                         tiltValue = 0;
-                    SetTouchInputTiltEvent.Raise(tiltValue);
+                    TiltMove();
                 }
 
                 if (Input.GetKey(KeyCode.E))
@@ -106,24 +116,36 @@ public class VWC_MoveCamera : MonoBehaviour
                     tiltValue += displacementSpeed;
                     if (tiltValue > 1)
                         tiltValue = 1f;
-                    SetTouchInputTiltEvent.Raise(tiltValue);
+
+                    TiltMove();
                 }
             }
         }
         
-        cameraRoot.transform.position = Vector3.Lerp(
-            zoomUpPivot.transform.position,
-            zoomDownPivot.transform.position,
-            tiltValue);
+        if (cameraZoomMap != null && FlyCamera.enableInputKeyboard)
+        {
+            if (Input.GetKey(KeyCode.R))
+            {
+                cameraZoomMap.zoomVal -= cameraZoomMap.zoomDelta;
+                if (cameraZoomMap.zoomVal < 0)
+                    cameraZoomMap.zoomVal = 0;
+                cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                
+                tiltValue -= cameraZoomMap.zoomDelta;
+                if (tiltValue < 0)
+                    tiltValue = 0;
+                
+                TiltMove();
+            }
 
-        rotationCamera = CameraGimbal.transform.rotation.eulerAngles;
-
-        rotationCamera.x = Mathf.Lerp(
-            OrigenRotCamera.x,
-            finalRotCamera.x,
-            tiltValue);
-
-        CameraGimbal.transform.rotation = Quaternion.Euler(rotationCamera);
+            if (Input.GetKey(KeyCode.F))
+            {
+                cameraZoomMap.zoomVal += cameraZoomMap.zoomDelta;
+                if (cameraZoomMap.zoomVal > 1)
+                    cameraZoomMap.zoomVal = 1f;
+                cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+            }
+        }
         
         //---
         if (isInputDrag)
@@ -144,6 +166,50 @@ public class VWC_MoveCamera : MonoBehaviour
             if (flyCamera != null)
                 flyCamera.inputTouch = Vector3.zero;
         }
+        
+        ZoomCinemachineCamera = 1-((cinemachineBrainMainCamera.transform.position.y - cameraZoomMap.zoomDownPivot.transform.position.y)*
+                                (1f/(transform.position.y - cameraZoomMap.zoomDownPivot.transform.position.y)));
+
+        if (ZoomCinemachineCamera != ZoomCinemachineCameraAnt)
+        {
+            SetTouchInputZoomEvent.Raise(ZoomCinemachineCamera);
+            ZoomCinemachineCameraAnt = ZoomCinemachineCamera;
+        }
+    }
+
+    public void TiltMove()
+    {
+        // cameraRoot.transform.position = Vector3.Lerp(
+        //     zoomUpPivot.transform.position,
+        //     zoomDownPivot.transform.position,
+        //     tiltValue);
+        
+        if (tiltValue < cameraZoomMap.zoomVal)
+        {
+            cameraZoomMap.zoomVal -= displacementSpeed;
+            if (cameraZoomMap.zoomVal < 0)
+                cameraZoomMap.zoomVal = 0;
+            cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+        }
+
+        if (tiltValue > cameraZoomMap.zoomVal)
+        {
+            cameraZoomMap.zoomVal += displacementSpeed;
+            if (cameraZoomMap.zoomVal > 1)
+                cameraZoomMap.zoomVal = 1f;
+            cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+        }
+
+        rotationCamera = CameraGimbal.transform.rotation.eulerAngles;
+
+        rotationCamera.x = Mathf.Lerp(
+            OrigenRotCamera.x,
+            finalRotCamera.x,
+            tiltValue);
+
+        CameraGimbal.transform.rotation = Quaternion.Euler(rotationCamera);
+        
+        SetTouchInputTiltEvent.Raise(tiltValue);
     }
 
     public void ResetTilt()
@@ -161,15 +227,15 @@ public class VWC_MoveCamera : MonoBehaviour
 
     public void GoHome()
     {
-        ResetTilt();
-        MoveHome();
-        
+        tiltValue = 0;
         cameraZoomMap.SetZoom(zoomHome);
+        MoveHome();
     }
     
     public void MoveHome()
     {
-        flyCamera.SetPosition(OrigenPos);
+        //flyCamera.SetPosition(OrigenPos);
+        MoveCameraMapa(cinemachineBrainMainCamera.transform.position, OrigenPos);
     }
     
     public void SetTouchInputZoom(Vector2 _input)
@@ -200,6 +266,7 @@ public class VWC_MoveCamera : MonoBehaviour
         if (tiltValue > 1)
             tiltValue = 1f;
 
+        TiltMove();
         SetTouchInputTiltEvent.Raise(tiltValue);
     }
 
@@ -234,12 +301,6 @@ public class VWC_MoveCamera : MonoBehaviour
             return;
         }
         
-        if (coroutinePosition != null && _input.magnitude > stopCoroutineMagnitude)
-        {
-            StopCoroutine(coroutinePosition);
-            coroutinePos = false;
-        }
-        
         inputTouch.x = _input.x;
         inputTouch.z = _input.y;
         
@@ -251,13 +312,6 @@ public class VWC_MoveCamera : MonoBehaviour
     public void SetTouchInputDragNoFinger(Vector2 _input, float _DragSpeed)
     {
         isInputDrag = true;
-        //SetTouchInputDrag(_input);
-        
-        if (coroutinePosition != null)
-        {
-            StopCoroutine(coroutinePosition);
-            coroutinePos = false;
-        }
         
         inputTouch.x = _input.x;
         inputTouch.z = _input.y;
@@ -275,12 +329,6 @@ public class VWC_MoveCamera : MonoBehaviour
     
     public void SetSelectedSitioPosition(Vector3 _position)
     {
-        if (coroutinePosition != null)
-        {
-            StopCoroutine(coroutinePosition);
-            coroutinePos = false;
-        }
-        
         tiltValue = 0;
         SetTouchInputTiltEvent.Raise(tiltValue);
         
@@ -299,8 +347,7 @@ public class VWC_MoveCamera : MonoBehaviour
         if (!InterpolatedCamera)
             transform.position = FinalPosition;
         else
-            coroutinePosition = StartCoroutine(MoveCameraToFinal());
-        
+            MoveCameraMapa(cinemachineBrainMainCamera.transform.position, FinalPosition);
     }
 
     public IEnumerator MoveCameraToFinal()
@@ -314,7 +361,7 @@ public class VWC_MoveCamera : MonoBehaviour
             if (Vector3.Distance(transform.position, FinalPosition) < DistancePos)
                 transform.position = FinalPosition;
             
-            SetTouchInputZoomEvent.Raise(zoomUpPivot.GetComponent<CameraZoomMapa>().zoomVal);
+            //SetTouchInputZoomEvent.Raise(zoomUpPivot.GetComponent<CameraZoomMapa>().zoomVal);
             SetTouchInputDragEvent.Raise(tiltValue);
 
             yield return null;
@@ -322,27 +369,38 @@ public class VWC_MoveCamera : MonoBehaviour
         
         coroutinePos = false;
     }
+    
+    public void MoveCameraMapa(Vector3 origin, Vector3 destiny)
+    {
+        StartCoroutine(animCameraMapa(origin, destiny));
+    }
+    
+    public IEnumerator animCameraMapa(Vector3 origin, Vector3 destiny)
+    {
+        cameraHolder.transform.position = origin;
+        transform.position = new Vector3(
+            origin.x, 
+            transform.position.y, 
+            origin.z);
+        cinemachineBrainMainCamera.DefaultBlend.Time = 0;
+        cameraHolder.Priority = 5;
+
+        yield return new WaitForSeconds(waitAnimTime);
+        
+        cinemachineBrainMainCamera.DefaultBlend.Time = AnimTime;
+        transform.position = destiny;
+        cameraHolder.Priority = 1;
+    }
 
     public void MoveCameraDisplacemment(Vector3 _displacement)
     {
-        StopCoroutinePosition();
-
         _displacement.y = 0;
 
         FinalPosition = transform.position + _displacement;
 
         transform.position = FinalPosition;
         
-        SetTouchInputZoomEvent.Raise(zoomUpPivot.GetComponent<CameraZoomMapa>().zoomVal);
-    }
-
-    public void StopCoroutinePosition()
-    {
-        if (coroutinePosition != null)
-        {
-            StopCoroutine(coroutinePosition);
-            coroutinePos = false;
-        }
+        //SetTouchInputZoomEvent.Raise(zoomUpPivot.GetComponent<CameraZoomMapa>().zoomVal);
     }
 
     public void SetPointZoom(float x, float z, float zoom)

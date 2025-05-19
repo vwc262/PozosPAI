@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FlyCamera : Singleton<FlyCamera>
+public class FlyCamera : MonoBehaviour
 {
-    public bool enableInputKeyboard;
+    [ShowInInspector]
+    public static bool enableInputKeyboard = true;
     
     public float mainSpeed = 1.0f; //regular speed
     public float shiftAdd = 250.0f; //multiplied by how long shift is held.  Basically running

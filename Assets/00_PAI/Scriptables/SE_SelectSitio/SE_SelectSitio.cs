@@ -14,19 +14,19 @@ namespace Raskulls.ScriptableSystem
     [CreateAssetMenu(fileName = "SE_SelectSitio_Name", menuName = "Raskulls/Scriptable System/Events/SelectSitio Event")]
     public class SE_SelectSitio : GameEventBase
     {
-        [FormerlySerializedAs("sitioGPS")] public ControlMarcadorSitio controlMarcadorSitio;
+        [FormerlySerializedAs("sitioGPS")] public ControlSitio controlMarcadorSitio;
         private readonly List<SE_SelectSitioListener> eventListeners = new List<SE_SelectSitioListener>();
-        public void Raise(ControlMarcadorSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
+        public void Raise(ControlSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
         {
             this.controlMarcadorSitio = controlMarcadorSitio;
             if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(controlMarcadorSitio, onEventComplete));
         }
-        public void Raise(ControlMarcadorSitio controlMarcadorSitio)
+        public void Raise(ControlSitio controlMarcadorSitio)
         {
             this.controlMarcadorSitio = controlMarcadorSitio;
             if(GameEventCoroutineStarter.instance) GameEventCoroutineStarter.instance.StartCoroutine(RaiseEvent(controlMarcadorSitio));
         }
-        private IEnumerator RaiseEvent(ControlMarcadorSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
+        private IEnumerator RaiseEvent(ControlSitio controlMarcadorSitio, OnEventComplete onEventComplete = null)
         {
             for (int i = eventListeners.Count - 1; i >= 0; i--)
                 eventListeners[i].OnPreEventRaised(controlMarcadorSitio);

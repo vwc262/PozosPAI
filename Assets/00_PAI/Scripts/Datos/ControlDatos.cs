@@ -582,18 +582,6 @@ public class ControlDatos : Singleton<ControlDatos>
             x => x.Diferencia).ToList();
     }
 
-    [TabGroup("Sitios")]
-    [Button]
-    public void SetSitioInterpolationValue(float val)
-    {
-        for (int i = 0; i < listSitios.Count; i++)
-        {
-            VWCBillboardSitio UIBilboard = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
-            UIBilboard.RecalculateTilt(val);
-            UIBilboard.RecalculateZoom(val);
-        }
-    }
-
     [TabGroup("Overlap")]
     public Vector3[] originalPos;
 

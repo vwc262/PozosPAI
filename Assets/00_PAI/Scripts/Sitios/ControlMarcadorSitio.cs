@@ -110,7 +110,7 @@ public class ControlMarcadorSitio : MonoBehaviour
     
     public void SeleccionarSitio()
     {
-        eventSelectSitio.Raise(this);
+        //eventSelectSitio.Raise(this.sitio);
 
         foreach (var go in MarcaSeleccionado)
         {

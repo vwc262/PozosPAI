@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class VWCBillboardSitio : MonoBehaviour
 {
     // Hola Boy
-    private GameObject cameraMove;
+    private GameObject cameraGimbal;
     private VWC_MoveCamera cameraMoveVWC;
     public ControlSitio sitio;
 
@@ -17,7 +17,7 @@ public class VWCBillboardSitio : MonoBehaviour
     public SpriteRenderer frameDark;
     public SpriteRenderer circleID;
     
-    [TabGroup("Angle")] public float interpolationValueAngle;
+    //[TabGroup("Angle")] public float interpolationValueAngle;
     [TabGroup("Angle")] public Vector3 minAngle;
     [TabGroup("Angle")] public Vector3 maxAngle;
     
@@ -32,7 +32,7 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("Scale")][ShowInInspector] public static Vector3 maxScale = new Vector3(1,1,1);
 
     [TabGroup("Position")] public float interpolationValuePos;
-    [TabGroup("Position")] public float interpolationValuePosAux;
+    //[TabGroup("Position")] public float interpolationValuePosAux;
     [TabGroup("Position")] public float interpolationValuePosMax = 0.8f;
     [TabGroup("Position")] public Vector3 positionFinalMarcador;
     [TabGroup("Position")] public Vector3 positionGPSOriginal;
@@ -55,7 +55,7 @@ public class VWCBillboardSitio : MonoBehaviour
     
     void Start()
     {
-        cameraMove = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
+        cameraGimbal = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
 
         RecalculatePerspectiveDeformation();
         RecalculateHeight();
@@ -64,15 +64,11 @@ public class VWCBillboardSitio : MonoBehaviour
 
     public void RecalculateTilt(float _interpolationValueAngle)
     {
-        interpolationValueAngle = _interpolationValueAngle;
-        
         RecalculateHeight();
     }
     
     public void RecalculateZoom(float _interpolationValuePos)
     {
-        interpolationValuePosAux =_interpolationValuePos;
-        
         RecalculateHeight();
     }
 
@@ -83,15 +79,15 @@ public class VWCBillboardSitio : MonoBehaviour
     
     private void RecalculateHeight()
     {
-        if (cameraMove == null)
-            cameraMove = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
-        if (cameraMoveVWC == null)
-            cameraMoveVWC = cameraMove.GetComponentInParent<VWC_MoveCamera>();
+        if (cameraMoveVWC == null && VWC_MoveCamera_PAI._singletonExists)
+            cameraMoveVWC = VWC_MoveCamera_PAI.singleton.moveCamera;
+        if (cameraGimbal == null && cameraMoveVWC != null)
+            cameraGimbal = cameraMoveVWC.cinemachineBrainMainCamera.gameObject;
         
-        interpolationValuePos = Mathf.Max(interpolationValuePosAux, interpolationValueAngle);
+        interpolationValuePos = Mathf.Max(cameraMoveVWC.ZoomCinemachineCamera, cameraMoveVWC.tiltValue);
         
         if (useChangeAngle)
-            transform.localEulerAngles = Vector3.Lerp(minAngle, maxAngle, interpolationValueAngle);
+            transform.localEulerAngles = Vector3.Lerp(minAngle, maxAngle, cameraMoveVWC.tiltValue);
         
         if (useChangeScale)
             transform.localScale = Vector3.Lerp(minScale, maxScale, interpolationValuePos);
@@ -101,7 +97,7 @@ public class VWCBillboardSitio : MonoBehaviour
         
         if (useChangeGUIHeight)
         {
-            distance = Vector3.Distance(cameraMove.gameObject.transform.position, transform.position);
+            distance = Vector3.Distance(cameraGimbal.gameObject.transform.position, transform.position);
             interpolationValueHeight = curve.Evaluate(distance / maxHeightDistance) *
                                        cameraMoveVWC.tiltValue;
 
@@ -147,7 +143,7 @@ public class VWCBillboardSitio : MonoBehaviour
             
             var scaleX = obj.transform.localScale.x;
 
-            var distanceForDeformation = cameraMove.gameObject.transform.position - transform.position;
+            var distanceForDeformation = cameraGimbal.gameObject.transform.position - transform.position;
 
             var distanceDeform = useDistanceDeformationZ
                 ? distanceForDeformation.z

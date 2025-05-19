@@ -13,8 +13,7 @@ public class ControlLogin : Singleton<ControlLogin>
 
     public void SetEnableKeyboardInput(bool _enable)
     {
-        if (FlyCamera._singletonExists)
-            FlyCamera.singleton.enableInputKeyboard = _enable;
+        FlyCamera.enableInputKeyboard = _enable;
     }
 
     public void CloseLoginPanel()
