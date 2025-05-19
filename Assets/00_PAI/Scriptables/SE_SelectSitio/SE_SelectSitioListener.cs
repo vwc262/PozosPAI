@@ -19,18 +19,18 @@ namespace Raskulls.ScriptableSystem
         {
             Event.UnregisterListener(this);
         }
-        public void OnPreEventRaised(ControlMarcadorSitio controlMarcadorSitio)
+        public void OnPreEventRaised(ControlSitio controlMarcadorSitio)
         {
             PreResponse.Invoke(controlMarcadorSitio);
         }
-        public void OnEventRaised(ControlMarcadorSitio controlMarcadorSitio)
+        public void OnEventRaised(ControlSitio controlMarcadorSitio)
         {
             Response.Invoke(controlMarcadorSitio);
         }
-        public void OnPostEventRaised(ControlMarcadorSitio controlMarcadorSitio)
+        public void OnPostEventRaised(ControlSitio controlMarcadorSitio)
         {
             PostResponse.Invoke(controlMarcadorSitio);
         }
-        [System.Serializable] public class UnityEventReborn : UnityEvent<ControlMarcadorSitio> { }
+        [System.Serializable] public class UnityEventReborn : UnityEvent<ControlSitio> { }
     }
 }

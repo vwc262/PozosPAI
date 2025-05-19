@@ -122,8 +122,7 @@ public class ControlObservaciones : MonoBehaviour
 
     public void EnableEditObservaciones()
     {
-        if (FlyCamera._singletonExists)
-            FlyCamera.singleton.enableInputKeyboard = false;
+        FlyCamera.enableInputKeyboard = false;
         
         buttonEdit.SetActive(false);
         buttonSave.SetActive(true);
@@ -132,8 +131,7 @@ public class ControlObservaciones : MonoBehaviour
 
     public void DisableEditObservaciones()
     {
-        if (FlyCamera._singletonExists)
-            FlyCamera.singleton.enableInputKeyboard = true;
+        FlyCamera.enableInputKeyboard = true;
         
         buttonEdit.SetActive(true);
         buttonSave.SetActive(false);

@@ -12,48 +12,22 @@ public class CameraZoomMapa : MonoBehaviour
     // Hola Boy
     public float zoomVal;
     public float resetZoomVal;
-
     public float zoomIncrement;
-
-    public GameObject zoomDownPivot;
-    public Vector2 screenPos;
-    public Vector3 relativePoint;
 
     public float DesplacementZoomIn = 80000;
     public float DesplacementZoomOut = 34000;
-
-    public VWC_MoveCamera moveCamera;
-
+    
     public bool ZoomToPosition = true;
-    
     public double ZoomDeatZone = 0.03f;
-    
     public float zoomDelta;
-    
     public float zoomValMultiply = 0.5f;
-
-    private void Update()
-    {
-        if (FlyCamera._singletonExists && FlyCamera.singleton.enableInputKeyboard)
-        {
-            if (Input.GetKey(KeyCode.R))
-            {
-                zoomVal -= zoomDelta;
-                if (zoomVal < 0)
-                    zoomVal = 0;
-                SetZoom(zoomVal);
-            }
-
-            if (Input.GetKey(KeyCode.F))
-            {
-                zoomVal += zoomDelta;
-                if (zoomVal > 1)
-                    zoomVal = 1f;
-                SetZoom(zoomVal);
-            }
-        }
-    }
-
+    
+    public Vector2 screenPos;
+    public Vector3 relativePoint;
+    
+    public VWC_MoveCamera moveCamera;
+    public GameObject zoomDownPivot;
+    
     [Button]
     public void SetZoom(float val)
     {
@@ -96,12 +70,10 @@ public class CameraZoomMapa : MonoBehaviour
             AddToZoom((val-1) * zoomValMultiply);
     }
     
-
     public void AddToZoom(float val)
     {
         zoomIncrement = val;
-        zoomVal = Mathf.Clamp01(zoomVal + val);
-        SetZoom(zoomVal);
+        SetZoom(Mathf.Clamp01(zoomVal + val));
     }
 
     public void GetScreenPosition()
@@ -131,8 +103,9 @@ public class CameraZoomMapa : MonoBehaviour
         {
             if (zoomIncrement > 0)
             {
-                moveCamera.MoveCameraDisplacemment(new Vector3(screenPos.x, 0, screenPos.y) *
-                                                       DesplacementZoomIn * (1 - zoomVal) * zoomIncrement);
+                moveCamera.MoveCameraDisplacemment(
+                    new Vector3(screenPos.x, 0, screenPos.y) * 
+                    (DesplacementZoomIn * (1 - zoomVal) * zoomIncrement));
             }
             else
             {
@@ -143,9 +116,8 @@ public class CameraZoomMapa : MonoBehaviour
                     relativePoint.x = mov.x;
                     relativePoint.z = mov.z;
                     
-                    moveCamera.MoveCameraDisplacemment(relativePoint *
-                                                       DesplacementZoomOut * (1f - zoomVal) * 
-                                                       Mathf.Abs(zoomIncrement));
+                    moveCamera.MoveCameraDisplacemment(relativePoint * 
+                                                       (DesplacementZoomOut * (1f - zoomVal) * Mathf.Abs(zoomIncrement)));
                 }
                 else
                 {
