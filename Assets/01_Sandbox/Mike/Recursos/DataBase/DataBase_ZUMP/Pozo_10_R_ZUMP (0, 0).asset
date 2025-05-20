@@ -1,0 +1,2659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 220930207, guid: 8c33fffcd70c4fb418e419a2cfc77ab5, type: 3}
+  m_Name: Pozo_10_R_ZUMP (0, 0)
+  m_EditorClassIdentifier: 
+  source: 0
+  filename: Pozo_10_R_ZUMP
+  minLocation:
+    latitude: 19.74844227155481
+    longitude: -99.10862934311577
+  maxLocation:
+    latitude: 19.753041645681517
+    longitude: -99.10374248305611
+  terrainSize: 512
+  recursion: 0
+  area: 1
+  origin:
+    latitude: 19.750741958618164
+    longitude: -99.10618591308594
+  tile: {x: 0, y: 0}
+  mapNodes:
+  - unique_id: 270473833
+    location:
+      latitude: 19.622909545898438
+      longitude: -99.04505920410156
+    tags: []
+    type: 0
+  - unique_id: 270473834
+    location:
+      latitude: 19.631542205810547
+      longitude: -99.04923248291016
+    tags: []
+    type: 0
+  - unique_id: 270473835
+    location:
+      latitude: 19.641284942626953
+      longitude: -99.05399322509766
+    tags: []
+    type: 0
+  - unique_id: 270473836
+    location:
+      latitude: 19.647790908813477
+      longitude: -99.05713653564453
+    tags: []
+    type: 0
+  - unique_id: 270473837
+    location:
+      latitude: 19.654848098754883
+      longitude: -99.06053924560547
+    tags: []
+    type: 0
+  - unique_id: 270473838
+    location:
+      latitude: 19.657838821411133
+      longitude: -99.06196594238281
+    tags: []
+    type: 0
+  - unique_id: 270473839
+    location:
+      latitude: 19.663820266723633
+      longitude: -99.06494140625
+    tags: []
+    type: 0
+  - unique_id: 270473840
+    location:
+      latitude: 19.670398712158203
+      longitude: -99.06812286376953
+    tags: []
+    type: 0
+  - unique_id: 270473841
+    location:
+      latitude: 19.67844009399414
+      longitude: -99.07202911376953
+    tags: []
+    type: 0
+  - unique_id: 270473842
+    location:
+      latitude: 19.688194274902344
+      longitude: -99.07676696777344
+    tags: []
+    type: 0
+  - unique_id: 270473843
+    location:
+      latitude: 19.695838928222656
+      longitude: -99.08049011230469
+    tags: []
+    type: 0
+  - unique_id: 270473844
+    location:
+      latitude: 19.708372116088867
+      longitude: -99.08654022216797
+    tags: []
+    type: 0
+  - unique_id: 270473845
+    location:
+      latitude: 19.715362548828125
+      longitude: -99.08993530273438
+    tags: []
+    type: 0
+  - unique_id: 270473846
+    location:
+      latitude: 19.72340965270996
+      longitude: -99.09382629394531
+    tags: []
+    type: 0
+  - unique_id: 270473847
+    location:
+      latitude: 19.734703063964844
+      longitude: -99.09931945800781
+    tags: []
+    type: 0
+  - unique_id: 270473848
+    location:
+      latitude: 19.748146057128906
+      longitude: -99.10590362548828
+    tags: []
+    type: 0
+  - unique_id: 270473849
+    location:
+      latitude: 19.74946403503418
+      longitude: -99.10633850097656
+    tags: []
+    type: 0
+  - unique_id: 270473850
+    location:
+      latitude: 19.750804901123047
+      longitude: -99.10697937011719
+    tags: []
+    type: 0
+  - unique_id: 270473851
+    location:
+      latitude: 19.759172439575195
+      longitude: -99.11090087890625
+    tags: []
+    type: 0
+  - unique_id: 270473852
+    location:
+      latitude: 19.77047348022461
+      longitude: -99.11629486083984
+    tags: []
+    type: 0
+  - unique_id: 270473853
+    location:
+      latitude: 19.7763614654541
+      longitude: -99.11909484863281
+    tags: []
+    type: 0
+  - unique_id: 270473854
+    location:
+      latitude: 19.77712059020996
+      longitude: -99.1194076538086
+    tags: []
+    type: 0
+  - unique_id: 270473855
+    location:
+      latitude: 19.777929306030273
+      longitude: -99.11962127685547
+    tags: []
+    type: 0
+  - unique_id: 270473856
+    location:
+      latitude: 19.77863121032715
+      longitude: -99.1197280883789
+    tags: []
+    type: 0
+  - unique_id: 270473857
+    location:
+      latitude: 19.779285430908203
+      longitude: -99.11969757080078
+    tags: []
+    type: 0
+  - unique_id: 270473858
+    location:
+      latitude: 19.77994728088379
+      longitude: -99.11959075927734
+    tags: []
+    type: 0
+  - unique_id: 270473859
+    location:
+      latitude: 19.78473663330078
+      longitude: -99.1180191040039
+    tags: []
+    type: 0
+  - unique_id: 270473860
+    location:
+      latitude: 19.789566040039062
+      longitude: -99.11637115478516
+    tags: []
+    type: 0
+  - unique_id: 270473861
+    location:
+      latitude: 19.79851722717285
+      longitude: -99.11341094970703
+    tags: []
+    type: 0
+  - unique_id: 270473862
+    location:
+      latitude: 19.808237075805664
+      longitude: -99.11006927490234
+    tags: []
+    type: 0
+  - unique_id: 270473863
+    location:
+      latitude: 19.809171676635742
+      longitude: -99.10989379882812
+    tags: []
+    type: 0
+  - unique_id: 270473864
+    location:
+      latitude: 19.80999183654785
+      longitude: -99.10987854003906
+    tags: []
+    type: 0
+  - unique_id: 300715776
+    location:
+      latitude: 19.701356887817383
+      longitude: -99.08470153808594
+    tags: []
+    type: 0
+  - unique_id: 300715777
+    location:
+      latitude: 19.702991485595703
+      longitude: -99.08575439453125
+    tags: []
+    type: 0
+  - unique_id: 300715778
+    location:
+      latitude: 19.703672409057617
+      longitude: -99.0860366821289
+    tags: []
+    type: 0
+  - unique_id: 300715779
+    location:
+      latitude: 19.707088470458984
+      longitude: -99.0866470336914
+    tags: []
+    type: 0
+  - unique_id: 300715780
+    location:
+      latitude: 19.713647842407227
+      longitude: -99.0897445678711
+    tags: []
+    type: 0
+  - unique_id: 300715784
+    location:
+      latitude: 19.743003845214844
+      longitude: -99.10396575927734
+    tags: []
+    type: 0
+  - unique_id: 300715785
+    location:
+      latitude: 19.74614143371582
+      longitude: -99.10563659667969
+    tags: []
+    type: 0
+  - unique_id: 300715786
+    location:
+      latitude: 19.74732780456543
+      longitude: -99.1067886352539
+    tags: []
+    type: 0
+  - unique_id: 300715787
+    location:
+      latitude: 19.74846076965332
+      longitude: -99.10870361328125
+    tags: []
+    type: 0
+  - unique_id: 300715788
+    location:
+      latitude: 19.7486515045166
+      longitude: -99.1092300415039
+    tags: []
+    type: 0
+  - unique_id: 300715790
+    location:
+      latitude: 19.749094009399414
+      longitude: -99.12263488769531
+    tags: []
+    type: 0
+  - unique_id: 300715791
+    location:
+      latitude: 19.749340057373047
+      longitude: -99.12519073486328
+    tags: []
+    type: 0
+  - unique_id: 300715792
+    location:
+      latitude: 19.749704360961914
+      longitude: -99.12626647949219
+    tags: []
+    type: 0
+  - unique_id: 300719170
+    location:
+      latitude: 19.749662399291992
+      longitude: -99.12640380859375
+    tags: []
+    type: 0
+  - unique_id: 300719173
+    location:
+      latitude: 19.7490177154541
+      longitude: -99.12357330322266
+    tags: []
+    type: 0
+  - unique_id: 300719177
+    location:
+      latitude: 19.74901008605957
+      longitude: -99.12248992919922
+    tags: []
+    type: 0
+  - unique_id: 300719180
+    location:
+      latitude: 19.748947143554688
+      longitude: -99.11231994628906
+    tags: []
+    type: 0
+  - unique_id: 300719183
+    location:
+      latitude: 19.748756408691406
+      longitude: -99.11002349853516
+    tags: []
+    type: 0
+  - unique_id: 300719186
+    location:
+      latitude: 19.748336791992188
+      longitude: -99.10868072509766
+    tags: []
+    type: 0
+  - unique_id: 300719188
+    location:
+      latitude: 19.747188568115234
+      longitude: -99.10680389404297
+    tags: []
+    type: 0
+  - unique_id: 300719189
+    location:
+      latitude: 19.746170043945312
+      longitude: -99.10578155517578
+    tags: []
+    type: 0
+  - unique_id: 300719190
+    location:
+      latitude: 19.743030548095703
+      longitude: -99.10406494140625
+    tags: []
+    type: 0
+  - unique_id: 300719195
+    location:
+      latitude: 19.70711326599121
+      longitude: -99.08676147460938
+    tags: []
+    type: 0
+  - unique_id: 300719196
+    location:
+      latitude: 19.70418930053711
+      longitude: -99.0862808227539
+    tags: []
+    type: 0
+  - unique_id: 300719197
+    location:
+      latitude: 19.702354431152344
+      longitude: -99.08556365966797
+    tags: []
+    type: 0
+  - unique_id: 1722638025
+    location:
+      latitude: 19.75014305114746
+      longitude: -99.12728881835938
+    tags: []
+    type: 0
+  - unique_id: 1722638027
+    location:
+      latitude: 19.750167846679688
+      longitude: -99.12715148925781
+    tags: []
+    type: 0
+  - unique_id: 1722638032
+    location:
+      latitude: 19.75037384033203
+      longitude: -99.12875366210938
+    tags: []
+    type: 0
+  - unique_id: 1722638034
+    location:
+      latitude: 19.750364303588867
+      longitude: -99.12617492675781
+    tags: []
+    type: 0
+  - unique_id: 1730918743
+    location:
+      latitude: 19.654605865478516
+      longitude: -99.0604248046875
+    tags: []
+    type: 0
+  - unique_id: 1747758932
+    location:
+      latitude: 19.705890655517578
+      longitude: -99.08653259277344
+    tags:
+    - key: highway
+      value: motorway_junction
+    - key: noref
+      value: yes
+    type: 0
+  - unique_id: 2396872185
+    location:
+      latitude: 19.75018310546875
+      longitude: -99.1071548461914
+    tags: []
+    type: 0
+  - unique_id: 2396872186
+    location:
+      latitude: 19.750221252441406
+      longitude: -99.10424041748047
+    tags: []
+    type: 0
+  - unique_id: 2396872187
+    location:
+      latitude: 19.750215530395508
+      longitude: -99.10693359375
+    tags: []
+    type: 0
+  - unique_id: 2396872188
+    location:
+      latitude: 19.75017547607422
+      longitude: -99.09468841552734
+    tags: []
+    type: 0
+  - unique_id: 2396872189
+    location:
+      latitude: 19.750261306762695
+      longitude: -99.10787963867188
+    tags: []
+    type: 0
+  - unique_id: 2396872190
+    location:
+      latitude: 19.750335693359375
+      longitude: -99.11888885498047
+    tags: []
+    type: 0
+  - unique_id: 2396872192
+    location:
+      latitude: 19.75053596496582
+      longitude: -99.10601043701172
+    tags: []
+    type: 0
+  - unique_id: 2396872193
+    location:
+      latitude: 19.750579833984375
+      longitude: -99.1056900024414
+    tags: []
+    type: 0
+  - unique_id: 2396872197
+    location:
+      latitude: 19.753009796142578
+      longitude: -99.10323333740234
+    tags: []
+    type: 0
+  - unique_id: 2396872200
+    location:
+      latitude: 19.7550106048584
+      longitude: -99.1034164428711
+    tags: []
+    type: 0
+  - unique_id: 2396872202
+    location:
+      latitude: 19.755802154541016
+      longitude: -99.10311889648438
+    tags: []
+    type: 0
+  - unique_id: 2396872207
+    location:
+      latitude: 19.757610321044922
+      longitude: -99.1024169921875
+    tags: []
+    type: 0
+  - unique_id: 2396905423
+    location:
+      latitude: 19.737852096557617
+      longitude: -99.0998306274414
+    tags: []
+    type: 0
+  - unique_id: 2453620261
+    location:
+      latitude: 19.744783401489258
+      longitude: -99.0928955078125
+    tags: []
+    type: 0
+  - unique_id: 2537521818
+    location:
+      latitude: 19.750810623168945
+      longitude: -99.09657287597656
+    tags: []
+    type: 0
+  - unique_id: 2537521820
+    location:
+      latitude: 19.7512149810791
+      longitude: -99.0977554321289
+    tags: []
+    type: 0
+  - unique_id: 2539946307
+    location:
+      latitude: 19.749755859375
+      longitude: -99.09343719482422
+    tags: []
+    type: 0
+  - unique_id: 3232430222
+    location:
+      latitude: 19.721277236938477
+      longitude: -99.09207153320312
+    tags: []
+    type: 0
+  - unique_id: 3232430224
+    location:
+      latitude: 19.721818923950195
+      longitude: -99.09230041503906
+    tags: []
+    type: 0
+  - unique_id: 3232430225
+    location:
+      latitude: 19.72247886657715
+      longitude: -99.09256744384766
+    tags: []
+    type: 0
+  - unique_id: 3232430233
+    location:
+      latitude: 19.7349853515625
+      longitude: -99.09857177734375
+    tags: []
+    type: 0
+  - unique_id: 3232430234
+    location:
+      latitude: 19.73579978942871
+      longitude: -99.09894561767578
+    tags: []
+    type: 0
+  - unique_id: 3232430235
+    location:
+      latitude: 19.736705780029297
+      longitude: -99.09927368164062
+    tags: []
+    type: 0
+  - unique_id: 3232430237
+    location:
+      latitude: 19.736778259277344
+      longitude: -99.10093688964844
+    tags: []
+    type: 0
+  - unique_id: 3232430238
+    location:
+      latitude: 19.736743927001953
+      longitude: -99.10102844238281
+    tags: []
+    type: 0
+  - unique_id: 3232430242
+    location:
+      latitude: 19.73615074157715
+      longitude: -99.10040283203125
+    tags: []
+    type: 0
+  - unique_id: 3232430245
+    location:
+      latitude: 19.739032745361328
+      longitude: -99.10039520263672
+    tags: []
+    type: 0
+  - unique_id: 3232430246
+    location:
+      latitude: 19.73951530456543
+      longitude: -99.10054779052734
+    tags: []
+    type: 0
+  - unique_id: 3232430251
+    location:
+      latitude: 19.746755599975586
+      longitude: -99.10405731201172
+    tags: []
+    type: 0
+  - unique_id: 3232430252
+    location:
+      latitude: 19.74768829345703
+      longitude: -99.10447692871094
+    tags: []
+    type: 0
+  - unique_id: 3232430253
+    location:
+      latitude: 19.749204635620117
+      longitude: -99.10508728027344
+    tags: []
+    type: 0
+  - unique_id: 3232430254
+    location:
+      latitude: 19.750385284423828
+      longitude: -99.10649108886719
+    tags: []
+    type: 0
+  - unique_id: 3232430255
+    location:
+      latitude: 19.80699348449707
+      longitude: -99.11051177978516
+    tags: []
+    type: 0
+  - unique_id: 3307005364
+    location:
+      latitude: 19.803930282592773
+      longitude: -99.11154174804688
+    tags: []
+    type: 0
+  - unique_id: 3329415264
+    location:
+      latitude: 19.79334259033203
+      longitude: -99.11511993408203
+    tags: []
+    type: 0
+  - unique_id: 3358908517
+    location:
+      latitude: 19.808731079101562
+      longitude: -99.10994720458984
+    tags: []
+    type: 0
+  - unique_id: 3398916660
+    location:
+      latitude: 19.619945526123047
+      longitude: -99.04362487792969
+    tags: []
+    type: 0
+  - unique_id: 3456331907
+    location:
+      latitude: 19.752111434936523
+      longitude: -99.10045623779297
+    tags: []
+    type: 0
+  - unique_id: 3456412676
+    location:
+      latitude: 19.702476501464844
+      longitude: -99.0827407836914
+    tags: []
+    type: 0
+  - unique_id: 3456412805
+    location:
+      latitude: 19.705270767211914
+      longitude: -99.0843276977539
+    tags: []
+    type: 0
+  - unique_id: 3456412815
+    location:
+      latitude: 19.705629348754883
+      longitude: -99.08451843261719
+    tags: []
+    type: 0
+  - unique_id: 3456412822
+    location:
+      latitude: 19.70574188232422
+      longitude: -99.08456420898438
+    tags: []
+    type: 0
+  - unique_id: 3456412829
+    location:
+      latitude: 19.705944061279297
+      longitude: -99.08463287353516
+    tags: []
+    type: 0
+  - unique_id: 3456412842
+    location:
+      latitude: 19.706218719482422
+      longitude: -99.0846939086914
+    tags: []
+    type: 0
+  - unique_id: 3456412848
+    location:
+      latitude: 19.70655632019043
+      longitude: -99.08477020263672
+    tags: []
+    type: 0
+  - unique_id: 3456412851
+    location:
+      latitude: 19.706674575805664
+      longitude: -99.08482360839844
+    tags: []
+    type: 0
+  - unique_id: 3456412860
+    location:
+      latitude: 19.70685577392578
+      longitude: -99.08491516113281
+    tags: []
+    type: 0
+  - unique_id: 3456412870
+    location:
+      latitude: 19.70712661743164
+      longitude: -99.08507537841797
+    tags: []
+    type: 0
+  - unique_id: 3456412912
+    location:
+      latitude: 19.7078857421875
+      longitude: -99.08549499511719
+    tags: []
+    type: 0
+  - unique_id: 3456413055
+    location:
+      latitude: 19.708599090576172
+      longitude: -99.08589935302734
+    tags: []
+    type: 0
+  - unique_id: 3456413103
+    location:
+      latitude: 19.714706420898438
+      longitude: -99.08883666992188
+    tags: []
+    type: 0
+  - unique_id: 3456413104
+    location:
+      latitude: 19.715152740478516
+      longitude: -99.08910369873047
+    tags: []
+    type: 0
+  - unique_id: 3456413105
+    location:
+      latitude: 19.715429306030273
+      longitude: -99.08924865722656
+    tags: []
+    type: 0
+  - unique_id: 3794836335
+    location:
+      latitude: 19.763771057128906
+      longitude: -99.09880828857422
+    tags: []
+    type: 0
+  - unique_id: 3794847754
+    location:
+      latitude: 19.744457244873047
+      longitude: -99.08809661865234
+    tags: []
+    type: 0
+  - unique_id: 3794847758
+    location:
+      latitude: 19.744468688964844
+      longitude: -99.08866119384766
+    tags: []
+    type: 0
+  - unique_id: 3794847759
+    location:
+      latitude: 19.744470596313477
+      longitude: -99.0887222290039
+    tags: []
+    type: 0
+  - unique_id: 3794847768
+    location:
+      latitude: 19.744510650634766
+      longitude: -99.08914184570312
+    tags: []
+    type: 0
+  - unique_id: 3794847774
+    location:
+      latitude: 19.744539260864258
+      longitude: -99.08959197998047
+    tags: []
+    type: 0
+  - unique_id: 3794847776
+    location:
+      latitude: 19.744543075561523
+      longitude: -99.08757019042969
+    tags: []
+    type: 0
+  - unique_id: 3794847797
+    location:
+      latitude: 19.74464225769043
+      longitude: -99.09117126464844
+    tags: []
+    type: 0
+  - unique_id: 3794847814
+    location:
+      latitude: 19.744707107543945
+      longitude: -99.08712005615234
+    tags: []
+    type: 0
+  - unique_id: 3794847821
+    location:
+      latitude: 19.744735717773438
+      longitude: -99.09256744384766
+    tags: []
+    type: 0
+  - unique_id: 3794847825
+    location:
+      latitude: 19.74476432800293
+      longitude: -99.0929183959961
+    tags: []
+    type: 0
+  - unique_id: 3794847829
+    location:
+      latitude: 19.744775772094727
+      longitude: -99.09319305419922
+    tags: []
+    type: 0
+  - unique_id: 3794847849
+    location:
+      latitude: 19.744876861572266
+      longitude: -99.09415435791016
+    tags: []
+    type: 0
+  - unique_id: 3794847852
+    location:
+      latitude: 19.744888305664062
+      longitude: -99.09441375732422
+    tags: []
+    type: 0
+  - unique_id: 3794847861
+    location:
+      latitude: 19.744953155517578
+      longitude: -99.09544372558594
+    tags: []
+    type: 0
+  - unique_id: 3794847864
+    location:
+      latitude: 19.744970321655273
+      longitude: -99.08650970458984
+    tags: []
+    type: 0
+  - unique_id: 3794847865
+    location:
+      latitude: 19.744977951049805
+      longitude: -99.09569549560547
+    tags: []
+    type: 0
+  - unique_id: 3794847875
+    location:
+      latitude: 19.74500846862793
+      longitude: -99.09662628173828
+    tags: []
+    type: 0
+  - unique_id: 3794847884
+    location:
+      latitude: 19.74506378173828
+      longitude: -99.09712219238281
+    tags: []
+    type: 0
+  - unique_id: 3794847905
+    location:
+      latitude: 19.745147705078125
+      longitude: -99.08601379394531
+    tags: []
+    type: 0
+  - unique_id: 3794847926
+    location:
+      latitude: 19.745241165161133
+      longitude: -99.09810638427734
+    tags: []
+    type: 0
+  - unique_id: 3794847940
+    location:
+      latitude: 19.745330810546875
+      longitude: -99.09860229492188
+    tags: []
+    type: 0
+  - unique_id: 3794847950
+    location:
+      latitude: 19.745433807373047
+      longitude: -99.08513641357422
+    tags: []
+    type: 0
+  - unique_id: 3794847965
+    location:
+      latitude: 19.745525360107422
+      longitude: -99.09971618652344
+    tags: []
+    type: 0
+  - unique_id: 3794847989
+    location:
+      latitude: 19.74571418762207
+      longitude: -99.10083770751953
+    tags: []
+    type: 0
+  - unique_id: 3794848023
+    location:
+      latitude: 19.74590492248535
+      longitude: -99.1019515991211
+    tags: []
+    type: 0
+  - unique_id: 3794848027
+    location:
+      latitude: 19.745912551879883
+      longitude: -99.10199737548828
+    tags: []
+    type: 0
+  - unique_id: 3794848052
+    location:
+      latitude: 19.74608039855957
+      longitude: -99.10282897949219
+    tags: []
+    type: 0
+  - unique_id: 3794848321
+    location:
+      latitude: 19.746992111206055
+      longitude: -99.10308074951172
+    tags: []
+    type: 0
+  - unique_id: 3794848654
+    location:
+      latitude: 19.74790382385254
+      longitude: -99.10333251953125
+    tags: []
+    type: 0
+  - unique_id: 3794848954
+    location:
+      latitude: 19.748817443847656
+      longitude: -99.10358428955078
+    tags: []
+    type: 0
+  - unique_id: 3794849081
+    location:
+      latitude: 19.74972915649414
+      longitude: -99.10383605957031
+    tags: []
+    type: 0
+  - unique_id: 3794849159
+    location:
+      latitude: 19.750112533569336
+      longitude: -99.10394287109375
+    tags: []
+    type: 0
+  - unique_id: 3794849172
+    location:
+      latitude: 19.750215530395508
+      longitude: -99.1042709350586
+    tags: []
+    type: 0
+  - unique_id: 3794849392
+    location:
+      latitude: 19.750713348388672
+      longitude: -99.10409545898438
+    tags: []
+    type: 0
+  - unique_id: 3794849446
+    location:
+      latitude: 19.751012802124023
+      longitude: -99.10418701171875
+    tags: []
+    type: 0
+  - unique_id: 3794849669
+    location:
+      latitude: 19.752029418945312
+      longitude: -99.10449981689453
+    tags: []
+    type: 0
+  - unique_id: 3794849822
+    location:
+      latitude: 19.752742767333984
+      longitude: -99.104248046875
+    tags: []
+    type: 0
+  - unique_id: 3794849934
+    location:
+      latitude: 19.753265380859375
+      longitude: -99.10405731201172
+    tags: []
+    type: 0
+  - unique_id: 3794849948
+    location:
+      latitude: 19.753318786621094
+      longitude: -99.10404205322266
+    tags: []
+    type: 0
+  - unique_id: 3794850458
+    location:
+      latitude: 19.754384994506836
+      longitude: -99.1036605834961
+    tags: []
+    type: 0
+  - unique_id: 3794850896
+    location:
+      latitude: 19.755033493041992
+      longitude: -99.10340881347656
+    tags: []
+    type: 0
+  - unique_id: 3794851048
+    location:
+      latitude: 19.755809783935547
+      longitude: -99.10311126708984
+    tags: []
+    type: 0
+  - unique_id: 3794851091
+    location:
+      latitude: 19.756092071533203
+      longitude: -99.1030044555664
+    tags: []
+    type: 0
+  - unique_id: 3794851107
+    location:
+      latitude: 19.75617027282715
+      longitude: -99.10297393798828
+    tags: []
+    type: 0
+  - unique_id: 3794851267
+    location:
+      latitude: 19.756906509399414
+      longitude: -99.10269927978516
+    tags: []
+    type: 0
+  - unique_id: 3794851507
+    location:
+      latitude: 19.757587432861328
+      longitude: -99.1024398803711
+    tags: []
+    type: 0
+  - unique_id: 3794851513
+    location:
+      latitude: 19.75760841369629
+      longitude: -99.10243225097656
+    tags: []
+    type: 0
+  - unique_id: 3794851519
+    location:
+      latitude: 19.757633209228516
+      longitude: -99.1024169921875
+    tags: []
+    type: 0
+  - unique_id: 3794851787
+    location:
+      latitude: 19.758447647094727
+      longitude: -99.10185241699219
+    tags: []
+    type: 0
+  - unique_id: 3794852066
+    location:
+      latitude: 19.75926399230957
+      longitude: -99.10128021240234
+    tags: []
+    type: 0
+  - unique_id: 3794852075
+    location:
+      latitude: 19.759292602539062
+      longitude: -99.10126495361328
+    tags: []
+    type: 0
+  - unique_id: 3794852442
+    location:
+      latitude: 19.760692596435547
+      longitude: -99.10028076171875
+    tags: []
+    type: 0
+  - unique_id: 3794852513
+    location:
+      latitude: 19.761159896850586
+      longitude: -99.0999526977539
+    tags: []
+    type: 0
+  - unique_id: 3794852635
+    location:
+      latitude: 19.76182746887207
+      longitude: -99.0994873046875
+    tags: []
+    type: 0
+  - unique_id: 3794852916
+    location:
+      latitude: 19.762788772583008
+      longitude: -99.09915161132812
+    tags: []
+    type: 0
+  - unique_id: 3794853050
+    location:
+      latitude: 19.763540267944336
+      longitude: -99.09889221191406
+    tags: []
+    type: 0
+  - unique_id: 4088826006
+    location:
+      latitude: 19.700841903686523
+      longitude: -99.0842056274414
+    tags: []
+    type: 0
+  - unique_id: 4354686852
+    location:
+      latitude: 19.753259658813477
+      longitude: -99.10404968261719
+    tags: []
+    type: 0
+  - unique_id: 4354686858
+    location:
+      latitude: 19.75034523010254
+      longitude: -99.12210083007812
+    tags: []
+    type: 0
+  - unique_id: 4354686876
+    location:
+      latitude: 19.764074325561523
+      longitude: -99.09869384765625
+    tags: []
+    type: 0
+  - unique_id: 4396973608
+    location:
+      latitude: 19.749221801757812
+      longitude: -99.1246337890625
+    tags: []
+    type: 0
+  - unique_id: 4396973609
+    location:
+      latitude: 19.749147415161133
+      longitude: -99.12419128417969
+    tags: []
+    type: 0
+  - unique_id: 4396973611
+    location:
+      latitude: 19.749231338500977
+      longitude: -99.12506103515625
+    tags: []
+    type: 0
+  - unique_id: 4396973613
+    location:
+      latitude: 19.749080657958984
+      longitude: -99.1241683959961
+    tags: []
+    type: 0
+  - unique_id: 4396973615
+    location:
+      latitude: 19.74912452697754
+      longitude: -99.12386322021484
+    tags: []
+    type: 0
+  - unique_id: 4396973616
+    location:
+      latitude: 19.749479293823242
+      longitude: -99.12564849853516
+    tags: []
+    type: 0
+  - unique_id: 4396973617
+    location:
+      latitude: 19.74913787841797
+      longitude: -99.12454986572266
+    tags: []
+    type: 0
+  - unique_id: 4396973619
+    location:
+      latitude: 19.749401092529297
+      longitude: -99.12571716308594
+    tags: []
+    type: 0
+  - unique_id: 4482072457
+    location:
+      latitude: 19.750003814697266
+      longitude: -99.10336303710938
+    tags: []
+    type: 0
+  - unique_id: 4482072458
+    location:
+      latitude: 19.751331329345703
+      longitude: -99.10283660888672
+    tags: []
+    type: 0
+  - unique_id: 4482073780
+    location:
+      latitude: 19.75176429748535
+      longitude: -99.10277557373047
+    tags: []
+    type: 0
+  - unique_id: 4482073781
+    location:
+      latitude: 19.752033233642578
+      longitude: -99.10359191894531
+    tags: []
+    type: 0
+  - unique_id: 4482080982
+    location:
+      latitude: 19.751657485961914
+      longitude: -99.0990982055664
+    tags: []
+    type: 0
+  - unique_id: 4636256800
+    location:
+      latitude: 19.754039764404297
+      longitude: -99.10372924804688
+    tags: []
+    type: 0
+  - unique_id: 4636256801
+    location:
+      latitude: 19.753801345825195
+      longitude: -99.10298919677734
+    tags: []
+    type: 0
+  - unique_id: 4636256802
+    location:
+      latitude: 19.754711151123047
+      longitude: -99.10266876220703
+    tags: []
+    type: 0
+  - unique_id: 4636256803
+    location:
+      latitude: 19.75496482849121
+      longitude: -99.10340118408203
+    tags: []
+    type: 0
+  - unique_id: 5262663881
+    location:
+      latitude: 19.752050399780273
+      longitude: -99.10447692871094
+    tags: []
+    type: 0
+  - unique_id: 5262663882
+    location:
+      latitude: 19.751514434814453
+      longitude: -99.10518646240234
+    tags: []
+    type: 0
+  - unique_id: 5262663883
+    location:
+      latitude: 19.751195907592773
+      longitude: -99.10540008544922
+    tags: []
+    type: 0
+  - unique_id: 5262663884
+    location:
+      latitude: 19.750747680664062
+      longitude: -99.10562133789062
+    tags: []
+    type: 0
+  - unique_id: 5262663886
+    location:
+      latitude: 19.748872756958008
+      longitude: -99.09883117675781
+    tags: []
+    type: 0
+  - unique_id: 5371678578
+    location:
+      latitude: 19.728322982788086
+      longitude: -99.0962142944336
+    tags: []
+    type: 0
+  - unique_id: 5708567475
+    location:
+      latitude: 19.725862503051758
+      longitude: -99.09416961669922
+    tags: []
+    type: 0
+  - unique_id: 5708567481
+    location:
+      latitude: 19.726280212402344
+      longitude: -99.09437561035156
+    tags: []
+    type: 0
+  - unique_id: 5708567501
+    location:
+      latitude: 19.725460052490234
+      longitude: -99.09396362304688
+    tags: []
+    type: 0
+  - unique_id: 5708567507
+    location:
+      latitude: 19.72319221496582
+      longitude: -99.09288787841797
+    tags: []
+    type: 0
+  - unique_id: 5708567512
+    location:
+      latitude: 19.72832679748535
+      longitude: -99.09534454345703
+    tags: []
+    type: 0
+  - unique_id: 5708569029
+    location:
+      latitude: 19.72670555114746
+      longitude: -99.09457397460938
+    tags: []
+    type: 0
+  - unique_id: 5708569032
+    location:
+      latitude: 19.72505760192871
+      longitude: -99.09375762939453
+    tags: []
+    type: 0
+  - unique_id: 5708569037
+    location:
+      latitude: 19.72754669189453
+      longitude: -99.094970703125
+    tags: []
+    type: 0
+  - unique_id: 5708569042
+    location:
+      latitude: 19.727102279663086
+      longitude: -99.09475708007812
+    tags: []
+    type: 0
+  - unique_id: 5708896585
+    location:
+      latitude: 19.71919822692871
+      longitude: -99.09104919433594
+    tags: []
+    type: 0
+  - unique_id: 6131818793
+    location:
+      latitude: 19.749521255493164
+      longitude: -99.1014175415039
+    tags: []
+    type: 0
+  - unique_id: 6336873435
+    location:
+      latitude: 19.749080657958984
+      longitude: -99.10667419433594
+    tags: []
+    type: 0
+  - unique_id: 6336873436
+    location:
+      latitude: 19.74906349182129
+      longitude: -99.10669708251953
+    tags: []
+    type: 0
+  - unique_id: 6336873437
+    location:
+      latitude: 19.749055862426758
+      longitude: -99.10672760009766
+    tags: []
+    type: 0
+  - unique_id: 6336873438
+    location:
+      latitude: 19.74905776977539
+      longitude: -99.10675048828125
+    tags: []
+    type: 0
+  - unique_id: 6336873439
+    location:
+      latitude: 19.749067306518555
+      longitude: -99.10678100585938
+    tags: []
+    type: 0
+  - unique_id: 6336873440
+    location:
+      latitude: 19.74908447265625
+      longitude: -99.10680389404297
+    tags: []
+    type: 0
+  - unique_id: 6336873441
+    location:
+      latitude: 19.749107360839844
+      longitude: -99.1068115234375
+    tags: []
+    type: 0
+  - unique_id: 6336873442
+    location:
+      latitude: 19.749134063720703
+      longitude: -99.10681915283203
+    tags: []
+    type: 0
+  - unique_id: 6336873443
+    location:
+      latitude: 19.74915885925293
+      longitude: -99.10681915283203
+    tags: []
+    type: 0
+  - unique_id: 6336873444
+    location:
+      latitude: 19.749181747436523
+      longitude: -99.10680389404297
+    tags: []
+    type: 0
+  - unique_id: 6336873445
+    location:
+      latitude: 19.74919891357422
+      longitude: -99.10678100585938
+    tags: []
+    type: 0
+  - unique_id: 6336873446
+    location:
+      latitude: 19.749210357666016
+      longitude: -99.10675811767578
+    tags: []
+    type: 0
+  - unique_id: 6336873447
+    location:
+      latitude: 19.74921417236328
+      longitude: -99.10673522949219
+    tags: []
+    type: 0
+  - unique_id: 6336873448
+    location:
+      latitude: 19.749208450317383
+      longitude: -99.10670471191406
+    tags: []
+    type: 0
+  - unique_id: 6336873449
+    location:
+      latitude: 19.749197006225586
+      longitude: -99.10668182373047
+    tags: []
+    type: 0
+  - unique_id: 6336873450
+    location:
+      latitude: 19.749176025390625
+      longitude: -99.1066665649414
+    tags: []
+    type: 0
+  - unique_id: 6336873451
+    location:
+      latitude: 19.74915313720703
+      longitude: -99.10665130615234
+    tags: []
+    type: 0
+  - unique_id: 6336873452
+    location:
+      latitude: 19.749128341674805
+      longitude: -99.10665130615234
+    tags: []
+    type: 0
+  - unique_id: 6336873453
+    location:
+      latitude: 19.749101638793945
+      longitude: -99.10665893554688
+    tags: []
+    type: 0
+  - unique_id: 6956007394
+    location:
+      latitude: 19.702207565307617
+      longitude: -99.08533477783203
+    tags: []
+    type: 0
+  - unique_id: 6956007395
+    location:
+      latitude: 19.701881408691406
+      longitude: -99.08511352539062
+    tags: []
+    type: 0
+  - unique_id: 6956007396
+    location:
+      latitude: 19.701587677001953
+      longitude: -99.08489990234375
+    tags: []
+    type: 0
+  - unique_id: 6956007398
+    location:
+      latitude: 19.703298568725586
+      longitude: -99.08589172363281
+    tags: []
+    type: 0
+  - unique_id: 6956007399
+    location:
+      latitude: 19.70328140258789
+      longitude: -99.08599090576172
+    tags: []
+    type: 0
+  - unique_id: 6956007401
+    location:
+      latitude: 19.704513549804688
+      longitude: -99.08625030517578
+    tags: []
+    type: 0
+  - unique_id: 6956007402
+    location:
+      latitude: 19.70659828186035
+      longitude: -99.08654022216797
+    tags: []
+    type: 0
+  - unique_id: 6956007405
+    location:
+      latitude: 19.706357955932617
+      longitude: -99.08660125732422
+    tags: []
+    type: 0
+  - unique_id: 6956007408
+    location:
+      latitude: 19.71160316467285
+      longitude: -99.08885955810547
+    tags: []
+    type: 0
+  - unique_id: 6956007410
+    location:
+      latitude: 19.745323181152344
+      longitude: -99.10509490966797
+    tags: []
+    type: 0
+  - unique_id: 6956007411
+    location:
+      latitude: 19.745271682739258
+      longitude: -99.10519409179688
+    tags: []
+    type: 0
+  - unique_id: 6956007412
+    location:
+      latitude: 19.745786666870117
+      longitude: -99.10549926757812
+    tags: []
+    type: 0
+  - unique_id: 6956007413
+    location:
+      latitude: 19.745832443237305
+      longitude: -99.10542297363281
+    tags: []
+    type: 0
+  - unique_id: 6956007414
+    location:
+      latitude: 19.746736526489258
+      longitude: -99.10614776611328
+    tags: []
+    type: 0
+  - unique_id: 6956007415
+    location:
+      latitude: 19.746753692626953
+      longitude: -99.10630798339844
+    tags: []
+    type: 0
+  - unique_id: 6956007416
+    location:
+      latitude: 19.747976303100586
+      longitude: -99.10772705078125
+    tags: []
+    type: 0
+  - unique_id: 6956007417
+    location:
+      latitude: 19.747831344604492
+      longitude: -99.1076889038086
+    tags: []
+    type: 0
+  - unique_id: 6956007418
+    location:
+      latitude: 19.74859046936035
+      longitude: -99.1093978881836
+    tags: []
+    type: 0
+  - unique_id: 6956007419
+    location:
+      latitude: 19.74898338317871
+      longitude: -99.11080169677734
+    tags: []
+    type: 0
+  - unique_id: 6956007420
+    location:
+      latitude: 19.748933792114258
+      longitude: -99.11137390136719
+    tags: []
+    type: 0
+  - unique_id: 6956007421
+    location:
+      latitude: 19.7490234375
+      longitude: -99.11150360107422
+    tags: []
+    type: 0
+  - unique_id: 6956007422
+    location:
+      latitude: 19.748910903930664
+      longitude: -99.11027526855469
+    tags: []
+    type: 0
+  - unique_id: 7272207718
+    location:
+      latitude: 19.725929260253906
+      longitude: -99.095703125
+    tags: []
+    type: 0
+  - unique_id: 7272207719
+    location:
+      latitude: 19.7259464263916
+      longitude: -99.0958023071289
+    tags: []
+    type: 0
+  - unique_id: 7272224370
+    location:
+      latitude: 19.75602912902832
+      longitude: -99.10301971435547
+    tags: []
+    type: 0
+  - unique_id: 7272224373
+    location:
+      latitude: 19.751951217651367
+      longitude: -99.10457611083984
+    tags: []
+    type: 0
+  - unique_id: 7272224374
+    location:
+      latitude: 19.75181770324707
+      longitude: -99.10484313964844
+    tags: []
+    type: 0
+  - unique_id: 7272224375
+    location:
+      latitude: 19.753631591796875
+      longitude: -99.10301208496094
+    tags: []
+    type: 0
+  - unique_id: 7272224383
+    location:
+      latitude: 19.75117301940918
+      longitude: -99.1023178100586
+    tags: []
+    type: 0
+  - unique_id: 7272235393
+    location:
+      latitude: 19.74749755859375
+      longitude: -99.107177734375
+    tags: []
+    type: 0
+  - unique_id: 7272235394
+    location:
+      latitude: 19.750232696533203
+      longitude: -99.10753631591797
+    tags: []
+    type: 0
+  - unique_id: 7272235398
+    location:
+      latitude: 19.74909210205078
+      longitude: -99.1033706665039
+    tags: []
+    type: 0
+  - unique_id: 7272235399
+    location:
+      latitude: 19.74858856201172
+      longitude: -99.10224151611328
+    tags: []
+    type: 0
+  - unique_id: 7272256707
+    location:
+      latitude: 19.750314712524414
+      longitude: -99.11627197265625
+    tags: []
+    type: 0
+  - unique_id: 7272256708
+    location:
+      latitude: 19.74879264831543
+      longitude: -99.10970306396484
+    tags: []
+    type: 0
+  - unique_id: 7272256709
+    location:
+      latitude: 19.748201370239258
+      longitude: -99.10813903808594
+    tags: []
+    type: 0
+  - unique_id: 7272256710
+    location:
+      latitude: 19.748064041137695
+      longitude: -99.10809326171875
+    tags: []
+    type: 0
+  - unique_id: 7272256711
+    location:
+      latitude: 19.748886108398438
+      longitude: -99.11077117919922
+    tags: []
+    type: 0
+  - unique_id: 7272257196
+    location:
+      latitude: 19.75111961364746
+      longitude: -99.10292053222656
+    tags: []
+    type: 0
+  - unique_id: 7272257197
+    location:
+      latitude: 19.750925064086914
+      longitude: -99.10237121582031
+    tags: []
+    type: 0
+  - unique_id: 7272257201
+    location:
+      latitude: 19.75252342224121
+      longitude: -99.10173034667969
+    tags: []
+    type: 0
+  - unique_id: 7272271130
+    location:
+      latitude: 19.731782913208008
+      longitude: -99.09705352783203
+    tags: []
+    type: 0
+  - unique_id: 7272481942
+    location:
+      latitude: 19.721656799316406
+      longitude: -99.09223175048828
+    tags: []
+    type: 0
+  - unique_id: 7272487396
+    location:
+      latitude: 19.719755172729492
+      longitude: -99.0927963256836
+    tags: []
+    type: 0
+  - unique_id: 7272487397
+    location:
+      latitude: 19.719783782958984
+      longitude: -99.09272003173828
+    tags: []
+    type: 0
+  - unique_id: 7272576814
+    location:
+      latitude: 19.707897186279297
+      longitude: -99.08692932128906
+    tags: []
+    type: 0
+  - unique_id: 7272576815
+    location:
+      latitude: 19.70760726928711
+      longitude: -99.08692932128906
+    tags: []
+    type: 0
+  - unique_id: 7273008603
+    location:
+      latitude: 19.704587936401367
+      longitude: -99.08636474609375
+    tags: []
+    type: 0
+  - unique_id: 7406532104
+    location:
+      latitude: 19.763259887695312
+      longitude: -99.11360168457031
+    tags: []
+    type: 0
+  - unique_id: 7406532109
+    location:
+      latitude: 19.763694763183594
+      longitude: -99.1124496459961
+    tags: []
+    type: 0
+  - unique_id: 7549504454
+    location:
+      latitude: 19.811370849609375
+      longitude: -99.1100082397461
+    tags: []
+    type: 0
+  - unique_id: 8299550107
+    location:
+      latitude: 19.73689079284668
+      longitude: -99.099365234375
+    tags: []
+    type: 0
+  - unique_id: 8301828876
+    location:
+      latitude: 19.73082733154297
+      longitude: -99.0965805053711
+    tags: []
+    type: 0
+  - unique_id: 8317355157
+    location:
+      latitude: 19.75797462463379
+      longitude: -99.1110610961914
+    tags: []
+    type: 0
+  - unique_id: 8317355158
+    location:
+      latitude: 19.75611686706543
+      longitude: -99.11021423339844
+    tags: []
+    type: 0
+  - unique_id: 8317355159
+    location:
+      latitude: 19.754179000854492
+      longitude: -99.10931396484375
+    tags: []
+    type: 0
+  - unique_id: 8317355160
+    location:
+      latitude: 19.750444412231445
+      longitude: -99.10758209228516
+    tags: []
+    type: 0
+  - unique_id: 8317438238
+    location:
+      latitude: 19.750293731689453
+      longitude: -99.11289978027344
+    tags: []
+    type: 0
+  - unique_id: 8317438254
+    location:
+      latitude: 19.750314712524414
+      longitude: -99.11609649658203
+    tags: []
+    type: 0
+  - unique_id: 8317444086
+    location:
+      latitude: 19.742948532104492
+      longitude: -99.10221099853516
+    tags: []
+    type: 0
+  - unique_id: 8317444109
+    location:
+      latitude: 19.738483428955078
+      longitude: -99.10013580322266
+    tags: []
+    type: 0
+  - unique_id: 8317526148
+    location:
+      latitude: 19.749040603637695
+      longitude: -99.09954071044922
+    tags: []
+    type: 0
+  - unique_id: 8317526150
+    location:
+      latitude: 19.749223709106445
+      longitude: -99.10028839111328
+    tags: []
+    type: 0
+  - unique_id: 8317550613
+    location:
+      latitude: 19.750350952148438
+      longitude: -99.10273742675781
+    tags: []
+    type: 0
+  - unique_id: 8317550614
+    location:
+      latitude: 19.749879837036133
+      longitude: -99.10286712646484
+    tags: []
+    type: 0
+  - unique_id: 8317550616
+    location:
+      latitude: 19.751523971557617
+      longitude: -99.10237121582031
+    tags: []
+    type: 0
+  - unique_id: 8317558720
+    location:
+      latitude: 19.749704360961914
+      longitude: -99.1021499633789
+    tags: []
+    type: 0
+  - unique_id: 8317558722
+    location:
+      latitude: 19.74979019165039
+      longitude: -99.10250091552734
+    tags: []
+    type: 0
+  - unique_id: 8317558723
+    location:
+      latitude: 19.748592376708984
+      longitude: -99.10313415527344
+    tags: []
+    type: 0
+  - unique_id: 8317558724
+    location:
+      latitude: 19.748626708984375
+      longitude: -99.10295867919922
+    tags: []
+    type: 0
+  - unique_id: 8317558725
+    location:
+      latitude: 19.748836517333984
+      longitude: -99.1028060913086
+    tags: []
+    type: 0
+  - unique_id: 8317590712
+    location:
+      latitude: 19.759984970092773
+      longitude: -99.11203002929688
+    tags: []
+    type: 0
+  - unique_id: 8317590713
+    location:
+      latitude: 19.738155364990234
+      longitude: -99.10140228271484
+    tags: []
+    type: 0
+  - unique_id: 8317590714
+    location:
+      latitude: 19.73866844177246
+      longitude: -99.10172271728516
+    tags: []
+    type: 0
+  - unique_id: 8317590715
+    location:
+      latitude: 19.73990821838379
+      longitude: -99.10227966308594
+    tags: []
+    type: 0
+  - unique_id: 8317590716
+    location:
+      latitude: 19.74155616760254
+      longitude: -99.10305786132812
+    tags: []
+    type: 0
+  - unique_id: 8317593609
+    location:
+      latitude: 19.749635696411133
+      longitude: -99.10356140136719
+    tags: []
+    type: 0
+  - unique_id: 8317593610
+    location:
+      latitude: 19.749670028686523
+      longitude: -99.10363006591797
+    tags: []
+    type: 0
+  - unique_id: 8317593611
+    location:
+      latitude: 19.750064849853516
+      longitude: -99.10360717773438
+    tags: []
+    type: 0
+  - unique_id: 8317599123
+    location:
+      latitude: 19.75693130493164
+      longitude: -99.1026611328125
+    tags: []
+    type: 0
+  - unique_id: 8317618317
+    location:
+      latitude: 19.745718002319336
+      longitude: -99.10513305664062
+    tags: []
+    type: 0
+  - unique_id: 8317618318
+    location:
+      latitude: 19.74657440185547
+      longitude: -99.10575866699219
+    tags: []
+    type: 0
+  - unique_id: 8317618319
+    location:
+      latitude: 19.748313903808594
+      longitude: -99.10662841796875
+    tags: []
+    type: 0
+  - unique_id: 8317618320
+    location:
+      latitude: 19.748472213745117
+      longitude: -99.10688781738281
+    tags: []
+    type: 0
+  - unique_id: 8317618321
+    location:
+      latitude: 19.74858856201172
+      longitude: -99.10701751708984
+    tags: []
+    type: 0
+  - unique_id: 8317618322
+    location:
+      latitude: 19.749608993530273
+      longitude: -99.10748291015625
+    tags: []
+    type: 0
+  - unique_id: 8317618323
+    location:
+      latitude: 19.749677658081055
+      longitude: -99.10746002197266
+    tags: []
+    type: 0
+  - unique_id: 8317618324
+    location:
+      latitude: 19.749788284301758
+      longitude: -99.10736083984375
+    tags: []
+    type: 0
+  - unique_id: 8317618325
+    location:
+      latitude: 19.749980926513672
+      longitude: -99.10736083984375
+    tags: []
+    type: 0
+  - unique_id: 8317618326
+    location:
+      latitude: 19.750225067138672
+      longitude: -99.10748291015625
+    tags: []
+    type: 0
+  - unique_id: 8317661501
+    location:
+      latitude: 19.74949836730957
+      longitude: -99.10699462890625
+    tags: []
+    type: 0
+  - unique_id: 8317661502
+    location:
+      latitude: 19.749895095825195
+      longitude: -99.1072006225586
+    tags: []
+    type: 0
+  - unique_id: 8317661503
+    location:
+      latitude: 19.749597549438477
+      longitude: -99.1090316772461
+    tags: []
+    type: 0
+  - unique_id: 8317661504
+    location:
+      latitude: 19.749732971191406
+      longitude: -99.10897064208984
+    tags: []
+    type: 0
+  - unique_id: 8317661505
+    location:
+      latitude: 19.750267028808594
+      longitude: -99.10901641845703
+    tags: []
+    type: 0
+  - unique_id: 8317661508
+    location:
+      latitude: 19.750307083129883
+      longitude: -99.11505126953125
+    tags: []
+    type: 0
+  - unique_id: 8317661509
+    location:
+      latitude: 19.749052047729492
+      longitude: -99.1161880493164
+    tags: []
+    type: 0
+  - unique_id: 8317661511
+    location:
+      latitude: 19.749055862426758
+      longitude: -99.11670684814453
+    tags: []
+    type: 0
+  - unique_id: 8317661516
+    location:
+      latitude: 19.74905014038086
+      longitude: -99.11589813232422
+    tags: []
+    type: 0
+  - unique_id: 8317677519
+    location:
+      latitude: 19.74897575378418
+      longitude: -99.11719512939453
+    tags: []
+    type: 0
+  - unique_id: 8317677521
+    location:
+      latitude: 19.74896812438965
+      longitude: -99.11688232421875
+    tags: []
+    type: 0
+  - unique_id: 8317677524
+    location:
+      latitude: 19.74897575378418
+      longitude: -99.11748504638672
+    tags: []
+    type: 0
+  - unique_id: 8317679274
+    location:
+      latitude: 19.7503719329834
+      longitude: -99.12859344482422
+    tags: []
+    type: 0
+  - unique_id: 8317679277
+    location:
+      latitude: 19.750288009643555
+      longitude: -99.112060546875
+    tags: []
+    type: 0
+  - unique_id: 8317679284
+    location:
+      latitude: 19.752004623413086
+      longitude: -99.10452270507812
+    tags: []
+    type: 0
+  - unique_id: 8317679285
+    location:
+      latitude: 19.752561569213867
+      longitude: -99.10650634765625
+    tags: []
+    type: 0
+  - unique_id: 8317679286
+    location:
+      latitude: 19.75261878967285
+      longitude: -99.10688781738281
+    tags: []
+    type: 0
+  - unique_id: 8317683452
+    location:
+      latitude: 19.753604888916016
+      longitude: -99.10742950439453
+    tags: []
+    type: 0
+  - unique_id: 8317683453
+    location:
+      latitude: 19.754825592041016
+      longitude: -99.10813903808594
+    tags: []
+    type: 0
+  - unique_id: 8317683454
+    location:
+      latitude: 19.75531005859375
+      longitude: -99.10846710205078
+    tags: []
+    type: 0
+  - unique_id: 8317683455
+    location:
+      latitude: 19.75558090209961
+      longitude: -99.10868835449219
+    tags: []
+    type: 0
+  - unique_id: 8317683456
+    location:
+      latitude: 19.756080627441406
+      longitude: -99.10892486572266
+    tags: []
+    type: 0
+  - unique_id: 8317683457
+    location:
+      latitude: 19.75684928894043
+      longitude: -99.1092758178711
+    tags: []
+    type: 0
+  - unique_id: 8317683458
+    location:
+      latitude: 19.75739860534668
+      longitude: -99.10954284667969
+    tags: []
+    type: 0
+  - unique_id: 8317683459
+    location:
+      latitude: 19.758451461791992
+      longitude: -99.10997772216797
+    tags: []
+    type: 0
+  - unique_id: 8317683460
+    location:
+      latitude: 19.75818634033203
+      longitude: -99.10989379882812
+    tags: []
+    type: 0
+  - unique_id: 8317683461
+    location:
+      latitude: 19.7598934173584
+      longitude: -99.11062622070312
+    tags: []
+    type: 0
+  - unique_id: 8317683462
+    location:
+      latitude: 19.759571075439453
+      longitude: -99.11055755615234
+    tags: []
+    type: 0
+  - unique_id: 8317683463
+    location:
+      latitude: 19.76036834716797
+      longitude: -99.11084747314453
+    tags: []
+    type: 0
+  - unique_id: 8317683464
+    location:
+      latitude: 19.76009178161621
+      longitude: -99.11068725585938
+    tags: []
+    type: 0
+  - unique_id: 8317683465
+    location:
+      latitude: 19.761011123657227
+      longitude: -99.1111831665039
+    tags: []
+    type: 0
+  - unique_id: 8317683466
+    location:
+      latitude: 19.76073455810547
+      longitude: -99.11100006103516
+    tags: []
+    type: 0
+  - unique_id: 8317683467
+    location:
+      latitude: 19.761323928833008
+      longitude: -99.11133575439453
+    tags: []
+    type: 0
+  - unique_id: 8317683468
+    location:
+      latitude: 19.76172637939453
+      longitude: -99.1114730834961
+    tags: []
+    type: 0
+  - unique_id: 8317683469
+    location:
+      latitude: 19.762216567993164
+      longitude: -99.1116714477539
+    tags: []
+    type: 0
+  - unique_id: 8317683470
+    location:
+      latitude: 19.76244354248047
+      longitude: -99.1118392944336
+    tags: []
+    type: 0
+  - unique_id: 8317683471
+    location:
+      latitude: 19.75499725341797
+      longitude: -99.10826873779297
+    tags: []
+    type: 0
+  - unique_id: 8317683472
+    location:
+      latitude: 19.75449562072754
+      longitude: -99.10798645019531
+    tags: []
+    type: 0
+  - unique_id: 8317683473
+    location:
+      latitude: 19.753992080688477
+      longitude: -99.1076431274414
+    tags: []
+    type: 0
+  - unique_id: 8317683474
+    location:
+      latitude: 19.75320053100586
+      longitude: -99.10718536376953
+    tags: []
+    type: 0
+  - unique_id: 8317683475
+    location:
+      latitude: 19.752784729003906
+      longitude: -99.10700988769531
+    tags: []
+    type: 0
+  - unique_id: 8317683476
+    location:
+      latitude: 19.752605438232422
+      longitude: -99.10702514648438
+    tags: []
+    type: 0
+  - unique_id: 8317683477
+    location:
+      latitude: 19.7523136138916
+      longitude: -99.10699462890625
+    tags: []
+    type: 0
+  - unique_id: 8317683478
+    location:
+      latitude: 19.751928329467773
+      longitude: -99.10688018798828
+    tags: []
+    type: 0
+  - unique_id: 8317683479
+    location:
+      latitude: 19.7515926361084
+      longitude: -99.10669708251953
+    tags: []
+    type: 0
+  - unique_id: 8317683480
+    location:
+      latitude: 19.75125503540039
+      longitude: -99.10643005371094
+    tags: []
+    type: 0
+  - unique_id: 8317683481
+    location:
+      latitude: 19.750829696655273
+      longitude: -99.10590362548828
+    tags: []
+    type: 0
+  - unique_id: 8317683482
+    location:
+      latitude: 19.75074577331543
+      longitude: -99.10585021972656
+    tags: []
+    type: 0
+  - unique_id: 8317683483
+    location:
+      latitude: 19.750577926635742
+      longitude: -99.1058349609375
+    tags: []
+    type: 0
+  - unique_id: 8317683484
+    location:
+      latitude: 19.761682510375977
+      longitude: -99.11282348632812
+    tags: []
+    type: 0
+  - unique_id: 8318022224
+    location:
+      latitude: 19.75518035888672
+      longitude: -99.10977935791016
+    tags: []
+    type: 0
+  - unique_id: 8318097054
+    location:
+      latitude: 19.749467849731445
+      longitude: -99.10321044921875
+    tags: []
+    type: 0
+  - unique_id: 8318097055
+    location:
+      latitude: 19.74993896484375
+      longitude: -99.10309600830078
+    tags: []
+    type: 0
+  - unique_id: 8348748075
+    location:
+      latitude: 19.750333786010742
+      longitude: -99.11859130859375
+    tags: []
+    type: 0
+  - unique_id: 8348748076
+    location:
+      latitude: 19.749067306518555
+      longitude: -99.11860656738281
+    tags: []
+    type: 0
+  - unique_id: 8348748079
+    location:
+      latitude: 19.74907112121582
+      longitude: -99.11913299560547
+    tags: []
+    type: 0
+  - unique_id: 8453970122
+    location:
+      latitude: 19.763376235961914
+      longitude: -99.11225128173828
+    tags: []
+    type: 0
+  - unique_id: 8561007545
+    location:
+      latitude: 19.751636505126953
+      longitude: -99.10254669189453
+    tags: []
+    type: 0
+  - unique_id: 8561007546
+    location:
+      latitude: 19.75172233581543
+      longitude: -99.10272979736328
+    tags: []
+    type: 0
+  - unique_id: 8561067640
+    location:
+      latitude: 19.747087478637695
+      longitude: -99.10650634765625
+    tags: []
+    type: 0
+  - unique_id: 8561067641
+    location:
+      latitude: 19.74766731262207
+      longitude: -99.10724639892578
+    tags: []
+    type: 0
+  - unique_id: 8561067642
+    location:
+      latitude: 19.749530792236328
+      longitude: -99.10748291015625
+    tags: []
+    type: 0
+  - unique_id: 8561067643
+    location:
+      latitude: 19.748384475708008
+      longitude: -99.10670471191406
+    tags: []
+    type: 0
+  - unique_id: 8561076044
+    location:
+      latitude: 19.748647689819336
+      longitude: -99.1029281616211
+    tags: []
+    type: 0
+  - unique_id: 8561076051
+    location:
+      latitude: 19.749656677246094
+      longitude: -99.10362243652344
+    tags: []
+    type: 0
+  - unique_id: 8561076052
+    location:
+      latitude: 19.74969482421875
+      longitude: -99.1036376953125
+    tags: []
+    type: 0
+  - unique_id: 8561076053
+    location:
+      latitude: 19.751333236694336
+      longitude: -99.1028060913086
+    tags: []
+    type: 0
+  - unique_id: 8561076054
+    location:
+      latitude: 19.751317977905273
+      longitude: -99.10285186767578
+    tags: []
+    type: 0
+  - unique_id: 8561114842
+    location:
+      latitude: 19.752601623535156
+      longitude: -99.10668182373047
+    tags: []
+    type: 0
+  - unique_id: 8561114843
+    location:
+      latitude: 19.752683639526367
+      longitude: -99.10700988769531
+    tags: []
+    type: 0
+  - unique_id: 9607807747
+    location:
+      latitude: 19.703439712524414
+      longitude: -99.0832748413086
+    tags: []
+    type: 0
+  - unique_id: 9818212996
+    location:
+      latitude: 19.704071044921875
+      longitude: -99.08614349365234
+    tags: []
+    type: 0
+  - unique_id: 9925745588
+    location:
+      latitude: 19.70583724975586
+      longitude: -99.08642578125
+    tags: []
+    type: 0
+  - unique_id: 9925745589
+    location:
+      latitude: 19.70631217956543
+      longitude: -99.08649444580078
+    tags: []
+    type: 0
+  - unique_id: 9925745590
+    location:
+      latitude: 19.70368766784668
+      longitude: -99.08612823486328
+    tags: []
+    type: 0
+  - unique_id: 9925745591
+    location:
+      latitude: 19.70265007019043
+      longitude: -99.0855941772461
+    tags: []
+    type: 0
+  - unique_id: 9925745592
+    location:
+      latitude: 19.702632904052734
+      longitude: -99.085693359375
+    tags: []
+    type: 0
+  - unique_id: 11055275439
+    location:
+      latitude: 19.729595184326172
+      longitude: -99.0959701538086
+    tags: []
+    type: 0
+  mapWays:
+  - unique_id: 160199712
+    nodes: c95ead6600000000429cec1100000000337e1406010000002b7e140601000000317e1406010000002d7e140601000000459cec1100000000499cec1100000000d4afc5ef01000000cfafc5ef01000000d1afc5ef010000004c9cec1100000000fc3f9c9e01000000c7d475b1010000004f9cec1100000000fa3f9c9e01000000529cec1100000000c6d475b101000000f93f9c9e01000000818175b101000000549cec1100000000f73f9c9e01000000559cec1100000000f43f9c9e01000000f33f9c9e01000000569cec11000000009ef8aac000000000671575b101000000e45979b101000000f03f9c9e010000002fb77ab1010000005b9cec1100000000ed3f9c9e0100000054af2c6800000000db4d81b1010000005c9cec1100000000b6db9e4f02000000e73f9c9e01000000b8db9e4f020000005d9cec1100000000
+    tags:
+    - key: alt_name
+      value: Calle Mexiquense
+    - key: highway
+      value: motorway
+    - key: lanes
+      value: 2
+    - key: lit
+      value: no
+    - key: maxspeed
+      value: 80
+    - key: name
+      value: Circuito Exterior Mexiquense Bicentenario
+    - key: oneway
+      value: yes
+    - key: ref
+      value: MEX 5D
+    - key: surface
+      value: asphalt
+    - key: toll
+      value: yes
+  - unique_id: 160199781
+    nodes: d05ead6600000000aab6c5ef01000000d25ead66000000008a3f8f0301000000fe5ddd8e000000002bc99ff101000000c3d475b1010000002e09c2ef010000004471c5ef010000001e09c2ef01000000adb6c5ef010000004171c5ef01000000fd5ddd8e00000000828175b10100000096c8c4ef01000000f95ddd8e00000000fb5ddd8e00000000
+    tags:
+    - key: highway
+      value: tertiary
+    - key: lit
+      value: no
+    - key: name
+      value: Teoloyucan - Jaltenco
+    - key: ref
+      value: MEX 8049
+  - unique_id: 231285366
+    nodes: fa5ddd8e00000000b504270b01000000055edd8e00000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: Calle Francisco I. Madero
+    - key: surface
+      value: paved
+  - unique_id: 294268324
+    nodes: 9688b6f300000000008fec1100000000e43f9c9e01000000e33f9c9e01000000e23f9c9e01000000b7db9e4f02000000018fec1100000000e63f9c9e01000000028fec1100000000840a364902000000e93f9c9e01000000b4db9e4f02000000b5db9e4f02000000ea3f9c9e01000000038fec11000000002eb77ab101000000048fec1100000000e55979b101000000661575b1010000009df8aac000000000088fec1100000000f23f9c9e01000000f53f9c9e01000000098fec1100000000f63f9c9e01000000788647fe010000000a8fec1100000000798647fe01000000f83f9c9e01000000c5d475b1010000000b8fec11000000000c8fec1100000000c4d475b101000000fe3f9c9e01000000fb3f9c9e01000000fd3f9c9e010000004c71c5ef010000004571c5ef010000004771c5ef010000002cc99ff1010000002fc99ff1010000000e8fec11000000002f7e140601000000297e140601000000287e1406010000000f8fec1100000000307e140601000000108fec1100000000cb5ead6600000000
+    tags:
+    - key: alt_name
+      value: Calle Mexiquense
+    - key: highway
+      value: motorway
+    - key: lanes
+      value: 2
+    - key: lit
+      value: no
+    - key: maxspeed
+      value: 80
+    - key: name
+      value: Circuito Exterior Mexiquense Bicentenario
+    - key: oneway
+      value: yes
+    - key: ref
+      value: MEX 5D
+    - key: surface
+      value: asphalt
+    - key: toll
+      value: yes
+  - unique_id: 317027250
+    nodes: 04ac04ce000000000383ab3c0200000085ac04ce000000008fac04ce0000000096ac04ce000000009dac04ce00000000aaac04ce00000000b0ac04ce00000000b3ac04ce00000000bcac04ce00000000c6ac04ce00000000f0ac04ce000000007fad04ce00000000afad04ce00000000b0ad04ce00000000b1ad04ce0000000049d94654010000008ef8aac000000000964479b10100000090f8aac00000000091f8aac000000000d3d3415401000000c8d9415401000000cdd3415401000000b3d3415401000000b9d3415401000000c5d9415401000000d2d9415401000000cdd9415401000000d8d3415401000000af1df292020000000cdbd3ee010000001a0d76b10100000099f8aac0000000009af8aac0000000009bf8aac0000000009b15b1ee01000000cfdfdd8e000000000d20c2ef01000000a5f8aac000000000a6f8aac000000000f61fc2ef01000000abf8aac000000000acf8aac000000000adf8aac000000000015edd8e00000000
+    tags:
+    - key: highway
+      value: tertiary
+    - key: lit
+      value: no
+  - unique_id: 317027256
+    nodes: fb5ddd8e00000000aef8aac000000000
+    tags:
+    - key: bridge
+      value: yes
+    - key: highway
+      value: tertiary
+    - key: layer
+      value: 1
+  - unique_id: 332757352
+    nodes: 345a97ca00000000691a1f10000000006a1a1f10000000006b1a1f10000000006c1a1f100000000057b92b67000000006d1a1f10000000006e1a1f10000000006f1a1f1000000000701a1f1000000000711a1f1000000000721a1f1000000000731a1f1000000000741a1f1000000000751a1f1000000000761a1f1000000000724f2d4001000000771a1f1000000000781a1f1000000000791a1f10000000007a1a1f10000000007b1a1f10000000007c1a1f10000000007d1a1f10000000007e1a1f10000000007f1a1f1000000000801a1f1000000000811a1f1000000000821a1f1000000000831a1f1000000000841a1f100000000060d872c600000000851a1f1000000000b4e51cc500000000aff8aac000000000861a1f100000000065e034c800000000871a1f1000000000881a1f1000000000c64bfcc101000000
+    tags:
+    - key: boat
+      value: no
+    - key: name
+      value: "Gran Canal de Desag\xFCe"
+    - key: waterway
+      value: canal
+  - unique_id: 376223980
+    nodes: cec830e200000000a1c830e20000000078c830e20000000046c830e20000000020c830e2000000000ac830e2000000000ec830e2000000000fc830e20000000018c830e2000000001ec830e20000000035c830e2000000004dc830e20000000025463f920000000051c830e20000000055c830e20000000069c830e2000000006cc830e20000000075c830e20000000079c830e20000000083c830e2000000008cc830e200000000b6c830e200000000c4c830e200000000ddc830e200000000f5c830e20000000017c930e2000000001bc930e20000000034c930e20000000041ca30e2000000008ecb30e200000000bacc30e20000000039cd30e20000000087cd30e20000000094cd30e20000000070ce30e200000000a6ce30e20000000085cf30e2000000001ed030e2000000008ed030e2000000009cd030e2000000009ad230e20000000050d430e200000000e8d430e20000000013d530e20000000023d530e200000000c3d530e200000000b3d630e200000000b9d630e200000000bfd630e200000000cbd730e200000000e2d830e200000000ebd830e2000000005ada30e200000000a1da30e2000000001bdb30e20000000034dc30e200000000badc30e2000000006f9b30e2000000009c3f8f0301000000
+    tags:
+    - key: admin_level
+      value: 6
+    - key: boundary
+      value: administrative
+    - key: source
+      value: INEGI, MGN 2014 v6.2
+  - unique_id: 451376865
+    nodes: 015edd8e00000000fa5ddd8e000000000b68c4ef0100000089ff260b010000009f16ccef0100000016c0c3ef01000000c2dfc3ef01000000c0dfc3ef0100000029217c6d010000008660c3ef010000008460c3ef01000000cee0ad3901000000
+    tags:
+    - key: highway
+      value: tertiary
+    - key: name
+      value: "Calle Profesor Isidro Gonz\xE1lez"
+  - unique_id: 451376990
+    nodes: 843f8f0301000000055edd8e00000000b1d675b101000000837003ce00000000d620270b010000009c823f97000000009a823f9700000000fc5ddd8e000000004381649700000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: "Calle Crist\xF3bal Col\xF3n"
+    - key: surface
+      value: paved
+  - unique_id: 451377021
+    nodes: 8aff260b0100000056a747fe01000000acd675b10100000089ff260b01000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: "Privada Gonz\xE1lez Ortega"
+  - unique_id: 451377215
+    nodes: 18c0c3ef01000000b99b46fe01000000ba9b46fe01000000b404270b01000000b504270b01000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: Privada Francisco I. Madero
+  - unique_id: 469237346
+    nodes: 23aa57140100000022aa57140100000021aa57140100000020aa57140100000023aa571401000000
+    tags:
+    - key: landuse
+      value: cemetery
+  - unique_id: 544410221
+    nodes: 0f5edd8e00000000937dc4ef01000000725675b1010000000a5edd8e00000000085edd8e00000000843f8f0301000000c9e0ad3901000000b4b6c5ef01000000755675b101000000765675b101000000cae0ad3901000000cbe0ad3901000000cce0ad3901000000015edd8e00000000
+    tags:
+    - key: highway
+      value: unclassified
+  - unique_id: 641684539
+    nodes: 015edd8e000000001bc7c5ef01000000005edd8e00000000aef8aac000000000
+    tags:
+    - key: highway
+      value: tertiary
+  - unique_id: 676702667
+    nodes: db03b57901000000dc03b57901000000dd03b57901000000de03b57901000000df03b57901000000e003b57901000000e103b57901000000e203b57901000000e303b57901000000e403b57901000000e503b57901000000e603b57901000000e703b57901000000e803b57901000000e903b57901000000ea03b57901000000eb03b57901000000ec03b57901000000ed03b57901000000db03b57901000000
+    tags:
+    - key: area
+      value: yes
+    - key: man_made
+      value: ventilation_shaft
+    - key: ref
+      value: L13TEO
+  - unique_id: 778882099
+    nodes: 775675b101000000055edd8e00000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: "Callej\xF3n Madero"
+  - unique_id: 778882103
+    nodes: 7f5675b10100000055a747fe010000008aff260b01000000
+    tags:
+    - key: highway
+      value: residential
+    - key: name
+      value: "Privada Gonz\xE1lez Ortega"
+  - unique_id: 778882110
+    nodes: 868175b101000000c5dfc3ef01000000878175b101000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 778884947
+    nodes: add675b101000000acd675b101000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 894791803
+    nodes: 828175b10100000098c4c0ef0100000097c4c0ef0100000050f2caef0100000096c4c0ef0100000095c4c0ef01000000b85cc4ef010000001cc7c5ef0100000008b676b901000000
+    tags:
+    - key: highway
+      value: unclassified
+  - unique_id: 894808687
+    nodes: 16c0c3ef0100000015c0c3ef01000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 894808691
+    nodes: c4dfc3ef01000000c3dfc3ef01000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 894808692
+    nodes: c5dfc3ef010000004ca747fe01000000c4dfc3ef01000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 894812647
+    nodes: 0b68c4ef0100000054a747fe010000000a68c4ef0100000053a747fe010000000968c4ef01000000
+    tags:
+    - key: highway
+      value: residential
+  - unique_id: 894814769
+    nodes: 96c8c4ef0100000095c8c4ef0100000094c8c4ef0100000093c8c4ef0100000092c8c4ef010000007a8647fe0100000091c8c4ef0100000090c8c4ef010000007b8647fe010000008fc8c4ef010000008ec8c4ef010000008dc8c4ef01000000bc5cc4ef01000000bb5cc4ef01000000ba5cc4ef01000000b95cc4ef01000000a2f8aac000000000
+    tags:
+    - key: highway
+      value: unclassified
+    - key: lit
+      value: no
+  - unique_id: 894821475
+    nodes: 95c8c4ef010000003e71c5ef010000003d71c5ef01000000
+    tags:
+    - key: highway
+      value: service
+  - unique_id: 894821476
+    nodes: 4171c5ef010000004071c5ef010000003f71c5ef01000000
+    tags:
+    - key: highway
+      value: service
+  - unique_id: 894822442
+    nodes: 1bc7c5ef010000001ac7c5ef0100000019c7c5ef0100000018c7c5ef0100000017c7c5ef0100000016c7c5ef0100000015c7c5ef0100000014c7c5ef01000000db3e48fe0100000013c7c5ef0100000012c7c5ef01000000fcc6c5ef0100000011c7c5ef0100000010c7c5ef01000000fdc6c5ef010000000fc7c5ef01000000fec6c5ef01000000ffc6c5ef0100000000c7c5ef0100000001c7c5ef0100000002c7c5ef0100000004c7c5ef0100000003c7c5ef0100000006c7c5ef0100000005c7c5ef0100000008c7c5ef0100000007c7c5ef010000000ac7c5ef0100000009c7c5ef010000000bc7c5ef010000000cc7c5ef010000000dc7c5ef010000000ec7c5ef01000000ca58e5f7010000000db676b901000000
+    tags:
+    - key: highway
+      value: unclassified
+  - unique_id: 894824004
+    nodes: 14c7c5ef01000000b6b6c5ef01000000da3e48fe01000000b5b6c5ef01000000b4b6c5ef01000000
+    tags:
+    - key: highway
+      value: unclassified
+  - unique_id: 894867927
+    nodes: 9f16ccef010000009e16ccef01000000
+    tags:
+    - key: highway
+      value: residential
+  mapRelations: []
