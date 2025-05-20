@@ -9,7 +9,7 @@ public class VWCBillboardSitio : MonoBehaviour
 {
     // Hola Boy
     private GameObject cameraGimbal;
-    private VWC_MoveCamera cameraMoveVWC;
+    private ControlMoveCameraMap _cameraMapMoveControl;
     public ControlSitio sitio;
 
     public bool useDistanceDeformationZ;
@@ -55,7 +55,7 @@ public class VWCBillboardSitio : MonoBehaviour
     
     void Start()
     {
-        cameraGimbal = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
+        cameraGimbal = FindObjectOfType<ControlMoveCameraMap>().CameraGimbal;
 
         RecalculatePerspectiveDeformation();
         RecalculateHeight();
@@ -79,15 +79,15 @@ public class VWCBillboardSitio : MonoBehaviour
     
     private void RecalculateHeight()
     {
-        if (cameraMoveVWC == null && VWC_MoveCamera_PAI._singletonExists)
-            cameraMoveVWC = VWC_MoveCamera_PAI.singleton.moveCamera;
-        if (cameraGimbal == null && cameraMoveVWC != null)
-            cameraGimbal = cameraMoveVWC.cinemachineBrainMainCamera.gameObject;
+        if (_cameraMapMoveControl == null && ControlMoveCamera._singletonExists)
+            _cameraMapMoveControl = ControlMoveCamera.singleton.moveCamera;
+        if (cameraGimbal == null && _cameraMapMoveControl != null)
+            cameraGimbal = _cameraMapMoveControl.cinemachineBrainMainCamera.gameObject;
         
-        interpolationValuePos = Mathf.Max(cameraMoveVWC.ZoomCinemachineCamera, cameraMoveVWC.tiltValue);
+        interpolationValuePos = Mathf.Max(_cameraMapMoveControl.ZoomCinemachineCamera, _cameraMapMoveControl.tiltValue);
         
         if (useChangeAngle)
-            transform.localEulerAngles = Vector3.Lerp(minAngle, maxAngle, cameraMoveVWC.tiltValue);
+            transform.localEulerAngles = Vector3.Lerp(minAngle, maxAngle, _cameraMapMoveControl.tiltValue);
         
         if (useChangeScale)
             transform.localScale = Vector3.Lerp(minScale, maxScale, interpolationValuePos);
@@ -99,7 +99,7 @@ public class VWCBillboardSitio : MonoBehaviour
         {
             distance = Vector3.Distance(cameraGimbal.gameObject.transform.position, transform.position);
             interpolationValueHeight = curve.Evaluate(distance / maxHeightDistance) *
-                                       cameraMoveVWC.tiltValue;
+                                       _cameraMapMoveControl.tiltValue;
 
             var heightOffset =
                 Vector3.Lerp(new Vector3(0, minHeight, 0), new Vector3(0, maxHeight, 0), interpolationValueHeight);

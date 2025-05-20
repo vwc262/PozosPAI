@@ -19,7 +19,7 @@ public class BoySitioLOD : MonoBehaviour
     
     void Start()
     {
-	    cameraMove = FindObjectOfType<VWC_MoveCamera>().CameraGimbal;
+	    cameraMove = ControlMoveCamera.singleton.moveCamera.cinemachineBrainMainCamera.gameObject;
 
         LOD0_active = false;
         LOD1_active = false;

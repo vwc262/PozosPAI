@@ -25,7 +25,7 @@ public class CameraZoomMapa : MonoBehaviour
     public Vector2 screenPos;
     public Vector3 relativePoint;
     
-    public VWC_MoveCamera moveCamera;
+    public ControlMoveCameraMap moveCamera;
     public GameObject zoomDownPivot;
     
     [Button]

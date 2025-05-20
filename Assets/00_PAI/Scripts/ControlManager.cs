@@ -76,14 +76,14 @@ public class ControlManager : Singleton<ControlManager>
         if (ControlPipes._singletonExists)
             ControlPipes.singleton.SetPositionPipes();
 
-        if (VWC_MoveCamera_PAI._singletonExists)
+        if (ControlMoveCamera._singletonExists)
         {
-            VWC_MoveCamera_PAI.singleton.SetLimitsCameraMovement();
+            ControlMoveCamera.singleton.SetLimitsCameraMovement();
 
             if (!useCenterSitios)
-                VWC_MoveCamera_PAI.singleton.ResetCenterCamera();
+                ControlMoveCamera.singleton.ResetCenterCamera();
             else
-                VWC_MoveCamera_PAI.singleton.ResetCamera();
+                ControlMoveCamera.singleton.ResetCamera();
         }
     }
 

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class VWC_MoveCamera_PAI : Singleton<VWC_MoveCamera_PAI>
+public class ControlMoveCamera : Singleton<ControlMoveCamera>
 {
-    public VWC_MoveCamera moveCamera;
+    public ControlMoveCameraMap moveCamera;
 
     public Vector3 positionCenterEstructura, MaxPos, MinPos;
     

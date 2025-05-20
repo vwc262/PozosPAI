@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ControlZonesRotationTilt : MonoBehaviour
 {
-    public VWC_MoveCamera _moveCamera;
+    public ControlMoveCameraMap _moveCamera;
 
     public Vector3 AngleIn;
     public Vector3 AngleOut;

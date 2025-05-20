@@ -1,9 +1,16 @@
+using System;
 using UnityEngine;
 
-public class ControlBrujula : MonoBehaviour
+public class ControlPanelMapa : MonoBehaviour
 {
-    public VWC_MoveCamera MoveCamera;
-    
+    public ControlMoveCameraMap MoveCamera;
+
+    private void Start()
+    {
+        if (ControlMoveCamera._singletonExists)
+            MoveCamera = ControlMoveCamera.singleton.moveCamera;
+    }
+
     public void SetHome()
     {
         if (MoveCamera != null)
