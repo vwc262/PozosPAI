@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 public class CoustomKeyboardNavigation : CoustomKeyboard
 {
     // Hola Boy
-    public VWC_MoveCamera cameraControl;
+    public ControlMoveCameraMap cameraControl;
     
     
     [BoxGroup("Zoom")]

@@ -48,8 +48,8 @@ public class ControlRegionUILabel : MonoBehaviour
 
     public void DobleClickRegion()
     {
-        if (VWC_MoveCamera_PAI._singletonExists)
-            VWC_MoveCamera_PAI.singleton.SetMoveCameraByRigionID(regionID);
+        if (ControlMoveCamera._singletonExists)
+            ControlMoveCamera.singleton.SetMoveCameraByRigionID(regionID);
     }
 }
 

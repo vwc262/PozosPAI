@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class VWC_MoveCamera : MonoBehaviour
+public class ControlMoveCameraMap : MonoBehaviour
 {
     [TabGroup("Cameras")] public FlyCamera flyCamera;
     [TabGroup("Cameras")] public CameraZoomMapa cameraZoomMap;
