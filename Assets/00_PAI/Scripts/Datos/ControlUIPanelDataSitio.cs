@@ -61,10 +61,12 @@ public class ControlUIPanelDataSitio : MonoBehaviour
     {
         if (textPresion != null)
         {
-            if (_sitio.dataSitio.presion.Count > 0)
+            List<SignalBase> presion = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+            
+            if (presion.Count > 0)
             {
-                if (_sitio.dataSitio.presion[0].DentroRango)
-                    textPresion.text = GetString2decimals(_sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
+                if (presion[0].DentroRango)
+                    textPresion.text = GetString2decimals(presion[0].Valor) + " Kg/cm2";
                 else
                     textPresion.text = "-";
             }
@@ -81,10 +83,12 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textGasto != null)
         {
-            if (_sitio.dataSitio.gasto.Count > 0)
+            List<SignalBase> gasto = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+            
+            if (gasto.Count > 0)
             {
-                if (_sitio.dataSitio.gasto[0].DentroRango)
-                    textGasto.text = GetString2decimals(_sitio.dataSitio.gasto[0].Valor) + " L/s";
+                if (gasto[0].DentroRango)
+                    textGasto.text = GetString2decimals(gasto[0].Valor) + " L/s";
                 else
                     textGasto.text = "-";
             }
@@ -94,10 +98,12 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textTotalizado != null)
         {
-            if (_sitio.dataSitio.totalizado.Count > 0)
+            List<SignalBase> totalizado = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
+            
+            if (totalizado.Count > 0)
             {
-                if (_sitio.dataSitio.gasto[0].DentroRango)
-                    textTotalizado.text = $"{_sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
+                if (totalizado[0].DentroRango)
+                    textTotalizado.text = $"{totalizado[0].Valor:F0}" + " m3";
                 else
                     textTotalizado.text = "-";
             }
@@ -107,11 +113,13 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textBateria != null)
         {
-            if (_sitio.dataSitio.Baterias.Count > 0)
+            List<SignalBase> baterias = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.VOLTAJE);
+            
+            if (baterias.Count > 0)
             {
                 textBateria.text = "";
                 
-                foreach (var bateria in _sitio.dataSitio.Baterias)
+                foreach (var bateria in baterias)
                 {
                     if (textBateria.text != "")
                         textBateria.text += "\n";
@@ -130,12 +138,14 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textNivel != null && GO_Nivel != null)
         {
-            if (_sitio.dataSitio.nivel.Count > 0)
+            List<SignalBase> nivel = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+            
+            if (nivel.Count > 0)
             {
                 GO_Nivel.SetActive(true);
                 
-                if (_sitio.dataSitio.nivel[0].DentroRango)
-                    textNivel.text = GetString2decimals(_sitio.dataSitio.nivel[0].Valor) + " m";
+                if (nivel[0].DentroRango)
+                    textNivel.text = GetString2decimals(nivel[0].Valor) + " m";
                 else
                     textNivel.text = "-\n";
             }
@@ -160,15 +170,17 @@ public class ControlUIPanelDataSitio : MonoBehaviour
         
         if (textBomba != null)
         {
-            if (sitio.dataSitio.bomba.Count > sitio.indexBomba)
+            List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+            
+            if (bomba.Count > sitio.indexBomba)
             {
                 //textBomba.text = DataSitio.GetStringBombaStatus((int)_DataSitio.bomba[0].Valor);
 
                 // if (sitio.MyDataSitio.bomba[sitio.indexBomba].DentroRango)
                 // {
-                    textBomba.text = DataSitio.GetStringBombaStatus((int)sitio.dataSitio.bomba[sitio.indexBomba].Valor);
+                    textBomba.text = DataSitio.GetStringBombaStatus((int)bomba[sitio.indexBomba].Valor);
 
-                    switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
+                    switch (bomba[sitio.indexBomba].Valor)
                     {
                         case 0:
                             if (bomba_0 != null) bomba_0.SetActive(true);

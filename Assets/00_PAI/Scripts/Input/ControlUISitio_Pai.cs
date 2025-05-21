@@ -48,7 +48,9 @@ public class ControlUISitio_Pai : ControlUISitio
             if (sitio.controlMarcadorMap != null) statusColor = sitio.controlMarcadorMap.statusColor;
             statusColor.a = 1;
 
-            if (sitio.dataSitio.bomba.Count == 1)
+            List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+            
+            if (bomba.Count == 1)
             {
                 if (UIStatus != 1)
                 {
@@ -58,7 +60,7 @@ public class ControlUISitio_Pai : ControlUISitio
 
                 SetStatusBomba(statusBomba, 0);
             }
-            else if (sitio.dataSitio.bomba.Count > 1)
+            else if (bomba.Count > 1)
             {
                 UpdateNumBombas();
             }
@@ -78,16 +80,18 @@ public class ControlUISitio_Pai : ControlUISitio
 
             if (!dataOverwrited)
             {
-                if (sitio.dataSitio.gasto.Count > 0)
+                List<SignalBase> gasto = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+                
+                if (gasto.Count > 0)
                 {
-                    if (sitio.dataSitio.gasto[0].DentroRango)
+                    if (gasto[0].DentroRango)
                     {
-                        textGasto.text = $"{sitio.dataSitio.gasto[0].Valor:F2}";
+                        textGasto.text = $"{gasto[0].Valor:F2}";
 
                         if (progressBarGasto != null)
                         {
                             progressBarGasto.transform.parent.gameObject.SetActive(true);
-                            progressBarGasto.fillAmount = sitio.dataSitio.gasto[0].Valor / MaxGasto;
+                            progressBarGasto.fillAmount = gasto[0].Valor / MaxGasto;
                         }
                     }
                     else
@@ -112,16 +116,18 @@ public class ControlUISitio_Pai : ControlUISitio
                     }
                 }
 
-                if (sitio.dataSitio.presion.Count > 0)
+                List<SignalBase> presion = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+                
+                if (presion.Count > 0)
                 {
-                    if (sitio.dataSitio.presion[0].DentroRango)
+                    if (presion[0].DentroRango)
                     {
-                        textPresion.text = $"{sitio.dataSitio.presion[0].Valor:F2}";
+                        textPresion.text = $"{presion[0].Valor:F2}";
 
                         if (progressBarPresion != null)
                         {
                             progressBarPresion.transform.parent.gameObject.SetActive(true);
-                            progressBarPresion.fillAmount = sitio.dataSitio.presion[0].Valor / MaxPresion;
+                            progressBarPresion.fillAmount = presion[0].Valor / MaxPresion;
                         }
                     }
                     else
@@ -162,10 +168,12 @@ public class ControlUISitio_Pai : ControlUISitio
 
             }
 
-            if (sitio.dataSitio.totalizado.Count > 0)
+            List<SignalBase> totalizado = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
+            
+            if (totalizado.Count > 0)
             {
-                textTotalizado.text = sitio.dataSitio.totalizado[0].DentroRango
-                    ? $"{sitio.dataSitio.totalizado[0].Valor:F0}"
+                textTotalizado.text = totalizado[0].DentroRango
+                    ? $"{totalizado[0].Valor:F0}"
                     : "-";
             }
             else
@@ -175,11 +183,13 @@ public class ControlUISitio_Pai : ControlUISitio
 
             if (textNivel != null)
             {
-                if (sitio.dataSitio.nivel.Count > 0)
+                List<SignalBase> nivel = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+                
+                if (nivel.Count > 0)
                 {
-                    if (sitio.dataSitio.nivel[0].DentroRango)
+                    if (nivel[0].DentroRango)
                     {
-                        textNivel.text = $"Nivel: {sitio.dataSitio.nivel[0].Valor} m";
+                        textNivel.text = $"Nivel: {nivel[0].Valor} m";
                     }
                     else
                     {
@@ -308,9 +318,11 @@ public class ControlUISitio_Pai : ControlUISitio
 
     public void UpdatePerilla()
     {
-        if (sitio.dataSitio.PerillaBomba.Count > 0)
+        List<SignalBase> perillaBomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PERILLA_BOMBA);
+        
+        if (perillaBomba.Count > 0)
         {
-            switch (sitio.dataSitio.PerillaBomba[0].Valor)
+            switch (perillaBomba[0].Valor)
             {
                 case 0://OFF
                     if (perillaOff != null) perillaOff.SetActive(true);

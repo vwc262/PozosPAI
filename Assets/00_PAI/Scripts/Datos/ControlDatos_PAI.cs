@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms.VisualStyles;
 using Sirenix.OdinInspector;
@@ -34,9 +35,48 @@ public class ControlDatos_PAI : ControlDatos
 
             if (sitio != null)
             {
-                controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
-                controlSitio.dataSitio.idSitioUnity = cont;
+                controlSitio.dataSitio.nombre = sitio.Nombre;
+                controlSitio.dataSitio.abreviacion = sitio.Abreviacion;
+                controlSitio.dataSitio.fecha = sitio.Tiempo;
+                controlSitio.dataSitio.voltaje = sitio.Voltaje;
+                controlSitio.dataSitio.Estructura = sitio.Grupo;
+                controlSitio.dataSitio.tipoSitioPozo = (TipoSitioPozo)sitio.TipoEstacion;
+                controlSitio.dataSitio.longitud = sitio.Longitud;
+                controlSitio.dataSitio.latitud = sitio.Latitud;
+                
+                //controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
+                SiteBase siteBaseUpdate = RequestAPI.singleton.dataRequestAPI.updateUnitySites.Sites.Find(
+                    item => item.Id == sitio.Id);
+
+                if (siteBaseUpdate != null)
+                {
+                    controlSitio.dataSitio.fecha = siteBaseUpdate.Tiempo;
+                    controlSitio.dataSitio.enlace = siteBaseUpdate.Enlace;
+                    controlSitio.dataSitio.fallaAC = siteBaseUpdate.FallaAC;
+
+                    foreach (var signalUpdate in siteBaseUpdate.SignalsContainer)
+                    {
+                        if (controlSitio.dataSitio.GetSignalExist((SignalBase.TipoSignalEnum)signalUpdate.TipoSignal))
+                        {
+                            List<SignalBase> signal =
+                            controlSitio.dataSitio.GetSignal((SignalBase.TipoSignalEnum)signalUpdate.TipoSignal);
+                            signal.Clear();
+                            signal.AddRange(signalUpdate.Signals);
+                        }
+                        else
+                        {
+                            Signal signal = new Signal();
+                            signal.tipoSignal = (SignalBase.TipoSignalEnum)signalUpdate.TipoSignal;
+                            signal.signals.AddRange(signalUpdate.Signals); 
+                
+                            controlSitio.dataSitio.listSignals.Add(signal);
+                        }
+                    }
+                }
+
                 controlSitio.GetStatusConexionSitio();
+                
+                controlSitio.dataSitio.idSitioUnity = cont;
             }
 
             cont++;

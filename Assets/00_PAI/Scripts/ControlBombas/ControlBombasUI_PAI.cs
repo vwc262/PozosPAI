@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ControlBombasUI_PAI : ControlBombasUI
 {
-    public bool bombaPrendida;
+    //public bool bombaPrendida;
     
     public GameObject bombaGreen;
     public GameObject bombaRed;
@@ -31,11 +31,14 @@ public class ControlBombasUI_PAI : ControlBombasUI
         
         if (sitio != null)
         {
-            if (sitio.dataSitio.bomba.Count > 0)
+            List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+            List<SignalBase> perillaBomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PERILLA_BOMBA);
+            
+            if (bomba.Count > 0)
             {
-                bombaPrendida = sitio.dataSitio.bomba[0].Valor == 1;
+                //bombaPrendida = bomba[0].Valor == 1;
 
-                switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
+                switch (bomba[sitio.indexBomba].Valor)
                 {
                     case 1:
                         bombaGreen.SetActive(true);
@@ -58,11 +61,11 @@ public class ControlBombasUI_PAI : ControlBombasUI
                 
                 if (sitio.dataInTime)
                 {
-                    if (sitio.dataSitio.PerillaBomba.Count > 0)
+                    if (perillaBomba.Count > 0)
                     {
-                        if (sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor >= 1 )
+                        if (perillaBomba[sitio.indexBomba].Valor >= 1 )
                         {
-                            switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
+                            switch (bomba[sitio.indexBomba].Valor)
                             {
                                 case 1:
                                     if (Time.time - sitio.timeLastCommand > 60)
@@ -81,7 +84,7 @@ public class ControlBombasUI_PAI : ControlBombasUI
                         }
                         else
                         {
-                            Debug.Log("Perilla : " + sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor);
+                            Debug.Log("Perilla : " + perillaBomba[sitio.indexBomba].Valor);
                         }
                     }
                 }
@@ -89,9 +92,9 @@ public class ControlBombasUI_PAI : ControlBombasUI
 
             if (textStatusPerilla != null)
             {
-                if (sitio.dataSitio.PerillaBomba.Count > 0)
+                if (perillaBomba.Count > 0)
                 {
-                    switch (sitio.dataSitio.PerillaBomba[sitio.indexBomba].Valor)
+                    switch (perillaBomba[sitio.indexBomba].Valor)
                     {
                         default:
                             textStatusPerilla.text = "Mantenimiento";
@@ -121,9 +124,11 @@ public class ControlBombasUI_PAI : ControlBombasUI
         //Validar que el usuario pueda operar la bomba
         if (selectedControlSitio != null)
         {
-            if (selectedControlSitio.dataSitio.PerillaBomba.Count > 0)
+            List<SignalBase> perillaBomba = selectedControlSitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PERILLA_BOMBA);
+            
+            if (perillaBomba.Count > 0)
             {
-                switch (selectedControlSitio.dataSitio.PerillaBomba[0].Valor)
+                switch (perillaBomba[0].Valor)
                 {
                     case 0://OFF: no puede ser operada
                         return false;

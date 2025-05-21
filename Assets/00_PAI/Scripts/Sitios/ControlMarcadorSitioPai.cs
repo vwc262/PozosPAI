@@ -37,12 +37,14 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                         dataInTime = false;
                         statusColor = statusColor3;
                     }
+                    
+                    List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
 
-                    if (sitio.dataSitio.bomba.Count > 0)
+                    if (bomba.Count > 0)
                     {
                         // if (MyDataSitio.bomba[indexBomba].DentroRango)
                         // {
-                            switch (sitio.dataSitio.bomba[sitio.indexBomba].Valor)
+                            switch (bomba[sitio.indexBomba].Valor)
                             {
                                 case 0:
                                     SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));

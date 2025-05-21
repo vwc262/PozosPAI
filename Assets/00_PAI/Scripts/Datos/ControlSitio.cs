@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -63,36 +64,44 @@ public class ControlSitio
 
     public float GetGasto()
     {
-        if (dataSitio.gasto.Count>0)
-            if (dataSitio.gasto[0].DentroRango)
-                return dataSitio.gasto[0].Valor;
+        List<SignalBase> gasto = dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+        
+        if (gasto.Count>0)
+            if (gasto[0].DentroRango)
+                return gasto[0].Valor;
 
         return 0;
     }
     
     public float GetPresion()
     {
-        if (dataSitio.presion.Count>0)
-            if (dataSitio.presion[0].DentroRango)
-                return dataSitio.presion[0].Valor;
+        List<SignalBase> presion = dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+        
+        if (presion.Count>0)
+            if (presion[0].DentroRango)
+                return presion[0].Valor;
 
         return 0;
     }
     
     public float GetTotalizado()
     {
-        if (dataSitio.totalizado.Count>0)
-            if (dataSitio.totalizado[0].DentroRango)
-                return dataSitio.totalizado[0].Valor;
+        List<SignalBase> totalizado = dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
+        
+        if (totalizado.Count>0)
+            if (totalizado[0].DentroRango)
+                return totalizado[0].Valor;
 
         return 0;
     }
 
     public float GetBomba()
     {
-        if (dataSitio.bomba.Count>0)
-            //if (dataSitio.bomba[0].DentroRango)
-                return dataSitio.bomba[0].Valor;
+        List<SignalBase> bomba = dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+        
+        if (bomba.Count>0)
+            //if (bomba[0].DentroRango)
+                return bomba[0].Valor;
 
         return 0;
     }
@@ -107,9 +116,11 @@ public class ControlSitio
     
     public void incrementIndexBomba()
     {
+        List<SignalBase> bomba = dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+        
         indexBomba++;
         
-        if (indexBomba >= dataSitio.bomba.Count)
+        if (indexBomba >= bomba.Count)
             indexBomba = 0;
         
         if (ControlSelectedSitio._singletonExists)
@@ -118,9 +129,11 @@ public class ControlSitio
     
     public void SetIndexBomba(int index)
     {
+        List<SignalBase> bomba = dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+        
         indexBomba = index;
         
-        if (indexBomba >= dataSitio.bomba.Count)
+        if (indexBomba >= bomba.Count)
             indexBomba = 0;
         
         if (ControlSelectedSitio._singletonExists)
