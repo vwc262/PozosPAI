@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class ControlBombaParticular : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ControlBombaParticular : MonoBehaviour
     public Color colorSinDatos;
     public Color colorMantenimiento;
     
-    public Material materialBombaParticular;
+    public List<Renderer>  renderersBomba;
     //public Rotator rotatorBombaParticular;
     
     void Start()
@@ -40,26 +41,42 @@ public class ControlBombaParticular : MonoBehaviour
             {
                 switch (bomba[0].Valor)
                 {
-                    case 0: 
-                        materialBombaParticular.SetColor("_Color", colorSinDatos);
+                    case 0:
+                        foreach (var rb in renderersBomba)
+                        {
+                            rb.material.SetColor("_BaseColor", colorSinDatos);
+                            HDMaterial.ValidateMaterial(rb.material);
+                        }
                         // rotatorBombaParticular.fill = 0;
                         // rotatorBombaParticular.fillSpeed = 0;
                         // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         
                         break;
                     case 1: 
-                        materialBombaParticular.SetColor("_Color",colorEncendido);
+                        foreach (var rb in renderersBomba)
+                        {
+                            rb.material.SetColor("_BaseColor", colorEncendido);
+                            HDMaterial.ValidateMaterial(rb.material);
+                        }
                         // rotatorBombaParticular.fillSpeed = 0.6f;
                         // rotatorBombaParticular.rotDirection = new Vector3(0, 100, 0);
                         break;
                     case 2: 
-                        materialBombaParticular.SetColor("_Color",colorApagado);
+                        foreach (var rb in renderersBomba)
+                        {
+                            rb.material.SetColor("_BaseColor", colorApagado);
+                            HDMaterial.ValidateMaterial(rb.material);
+                        }
                         // rotatorBombaParticular.fill = 0;
                         // rotatorBombaParticular.fillSpeed = 0;
                         // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         break;
                     case 3: 
-                        materialBombaParticular.SetColor("_Color",colorMantenimiento);
+                        foreach (var rb in renderersBomba)
+                        {
+                            rb.material.SetColor("_BaseColor", colorMantenimiento);
+                            HDMaterial.ValidateMaterial(rb.material);
+                        }
                         // rotatorBombaParticular.fill = 0;
                         // rotatorBombaParticular.fillSpeed = 0;
                         // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
