@@ -236,8 +236,10 @@ public class ControlUISitio : MonoBehaviour
     public void SetStatusBomba(Image _statusBomba, int indexBomba)
     {
         var bombaSprite = statusBombaGrey;
+        
+        List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
 
-        if (sitio.dataSitio.bomba.Count > indexBomba)
+        if (bomba.Count > indexBomba)
         {
             bombaSprite = statusBombaGrey;
 
@@ -245,7 +247,7 @@ public class ControlUISitio : MonoBehaviour
             //{
             // if (sitio.MyDataSitio.bomba[0].DentroRango)
             // {
-            switch (sitio.dataSitio.bomba[indexBomba].Valor)
+            switch (bomba[indexBomba].Valor)
             {
                 case 1:
                     bombaSprite = statusBombaGreen;

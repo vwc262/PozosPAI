@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,12 +48,14 @@ public class Etiqueta_Manager : MonoBehaviour
                 panel.GetComponent<Image>().sprite = imageStateOff;
                 line.material.color = colorDesconexion;
             }
+            
+            List<SignalBase> gasto = ParticularManager.singleton.sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
 
-            if (ParticularManager.singleton.sitio.dataSitio.gasto.Count > 0)
+            if (gasto.Count > 0)
             {
-                if (ParticularManager.singleton.sitio.dataSitio.gasto[0].DentroRango)
+                if (gasto[0].DentroRango)
                 {
-                    textGasto.text = "Gasto: " + $"{ParticularManager.singleton.sitio.dataSitio.gasto[0].Valor}" + " LPS";
+                    textGasto.text = "Gasto: " + $"{gasto[0].Valor}" + " LPS";
                 }
                 else
                 {
@@ -64,11 +67,13 @@ public class Etiqueta_Manager : MonoBehaviour
                 textGasto.text = "Gasto: N/A";
             }
             
-            if (ParticularManager.singleton.sitio.dataSitio.presion.Count > 0)
+            List<SignalBase> presion = ParticularManager.singleton.sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+            
+            if (presion.Count > 0)
             {
-                if (ParticularManager.singleton.sitio.dataSitio.presion[0].DentroRango)
+                if (presion[0].DentroRango)
                 {
-                    textPresion.text = "Presíon: " + $"{ParticularManager.singleton.sitio.dataSitio.presion[0].Valor}" + " Kg/cm2";
+                    textPresion.text = "Presíon: " + $"{presion[0].Valor}" + " Kg/cm2";
                 }
                 else
                 {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,10 +20,12 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
         {
             if (textPresion != null)
             {
-                if (_sitio.dataSitio.presion != null && _sitio.dataSitio.presion.Count > 0)
+                List<SignalBase> presion = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+                
+                if (presion != null && presion.Count > 0)
                 {
-                    if (_sitio.dataSitio.presion[0].DentroRango)
-                        textPresion.text = GetString2decimals(_sitio.dataSitio.presion[0].Valor) + " Kg/cm2";
+                    if (presion[0].DentroRango)
+                        textPresion.text = GetString2decimals(presion[0].Valor) + " Kg/cm2";
                     else
                         textPresion.text = "-";
                 }
@@ -39,10 +42,12 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (textGasto != null)
             {
-                if (_sitio.dataSitio.gasto.Count > 0)
+                List<SignalBase> gasto = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+                
+                if (gasto.Count > 0)
                 {
-                    if (_sitio.dataSitio.gasto[0].DentroRango)
-                        textGasto.text = GetString2decimals(_sitio.dataSitio.gasto[0].Valor) + " L/s";
+                    if (gasto[0].DentroRango)
+                        textGasto.text = GetString2decimals(gasto[0].Valor) + " L/s";
                     else
                         textGasto.text = "-";
                 }
@@ -52,10 +57,12 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (textTotalizado != null)
             {
-                if (_sitio.dataSitio.totalizado.Count > 0)
+                List<SignalBase> totalizado = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
+                
+                if (totalizado.Count > 0)
                 {
-                    if (_sitio.dataSitio.gasto[0].DentroRango)
-                        textTotalizado.text = $"{_sitio.dataSitio.totalizado[0].Valor:F0}" + " m3";
+                    if (totalizado[0].DentroRango)
+                        textTotalizado.text = $"{totalizado[0].Valor:F0}" + " m3";
                     else
                         textTotalizado.text = "-";
                 }
@@ -65,11 +72,13 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (textBateria != null)
             {
-                if (_sitio.dataSitio.Baterias.Count > 0)
+                List<SignalBase> baterias = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.VOLTAJE);
+                
+                if (baterias.Count > 0)
                 {
                     textBateria.text = "";
 
-                    foreach (var bateria in _sitio.dataSitio.Baterias)
+                    foreach (var bateria in baterias)
                     {
                         if (textBateria.text != "")
                             textBateria.text += "\n";
@@ -88,24 +97,26 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (GO_Nivel != null)
             {
-                if (_sitio.dataSitio.nivel.Count > 0)
+                List<SignalBase> nivel = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+                
+                if (nivel.Count > 0)
                 {
                     GO_Nivel.SetActive(true);
 
                     if (textNivel != null)
                     {
-                        if (_sitio.dataSitio.nivel[0].DentroRango)
-                            textNivel.text = GetString2decimals(_sitio.dataSitio.nivel[0].Valor) + " m";
+                        if (nivel[0].DentroRango)
+                            textNivel.text = GetString2decimals(nivel[0].Valor) + " m";
                         else
                             textNivel.text = "-\n";
                     }
 
-                    if (_sitio.dataSitio.nivel.Count > 1)
+                    if (nivel.Count > 1)
                     {
                         if (textNivel_estatico != null)
                         {
-                            if (_sitio.dataSitio.nivel[1].DentroRango)
-                                textNivel_estatico.text = GetString2decimals(_sitio.dataSitio.nivel[1].Valor) + " m";
+                            if (nivel[1].DentroRango)
+                                textNivel_estatico.text = GetString2decimals(nivel[1].Valor) + " m";
                             else
                                 textNivel_estatico.text = "-\n";
                         }
@@ -116,13 +127,15 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                     GO_Nivel.SetActive(false);
                 }
             }
+            
+            List<SignalBase> voltajesMotor = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.VOLTAJE_RANGO);
 
             if (text_voltage_L1 != null)
             {
-                if (_sitio.dataSitio.Voltajes_Motor.Count > 0)
+                if (voltajesMotor.Count > 0)
                 {
-                    if (_sitio.dataSitio.Voltajes_Motor[0].DentroRango)
-                        text_voltage_L1.text = $"{_sitio.dataSitio.Voltajes_Motor[0].Valor:F0}" + " V";
+                    if (voltajesMotor[0].DentroRango)
+                        text_voltage_L1.text = $"{voltajesMotor[0].Valor:F0}" + " V";
                     else
                         text_voltage_L1.text = "-";
                 }
@@ -132,10 +145,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (text_voltage_L2 != null)
             {
-                if (_sitio.dataSitio.Voltajes_Motor.Count > 1)
+                if (voltajesMotor.Count > 1)
                 {
-                    if (_sitio.dataSitio.Voltajes_Motor[1].DentroRango)
-                        text_voltage_L2.text = $"{_sitio.dataSitio.Voltajes_Motor[1].Valor:F0}" + " V";
+                    if (voltajesMotor[1].DentroRango)
+                        text_voltage_L2.text = $"{voltajesMotor[1].Valor:F0}" + " V";
                     else
                         text_voltage_L2.text = "-";
                 }
@@ -145,23 +158,25 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (text_voltage_L3 != null)
             {
-                if (_sitio.dataSitio.Voltajes_Motor.Count > 2)
+                if (voltajesMotor.Count > 2)
                 {
-                    if (_sitio.dataSitio.Voltajes_Motor[2].DentroRango)
-                        text_voltage_L3.text = $"{_sitio.dataSitio.Voltajes_Motor[2].Valor:F0}" + " V";
+                    if (voltajesMotor[2].DentroRango)
+                        text_voltage_L3.text = $"{voltajesMotor[2].Valor:F0}" + " V";
                     else
                         text_voltage_L3.text = "-";
                 }
                 else
                     text_voltage_L3.text = "N/A";
             }
+            
+            List<SignalBase> corrientesMotor = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.CORRIENTE_RANGO);
 
             if (text_corriente_L1 != null)
             {
-                if (_sitio.dataSitio.Corrientes_Motor.Count > 0)
+                if (corrientesMotor.Count > 0)
                 {
-                    if (_sitio.dataSitio.Corrientes_Motor[0].DentroRango)
-                        text_corriente_L1.text = $"{_sitio.dataSitio.Corrientes_Motor[0].Valor:F0}" + " Amp";
+                    if (corrientesMotor[0].DentroRango)
+                        text_corriente_L1.text = $"{corrientesMotor[0].Valor:F0}" + " Amp";
                     else
                         text_corriente_L1.text = "-";
                 }
@@ -171,10 +186,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (text_corriente_L2 != null)
             {
-                if (_sitio.dataSitio.Corrientes_Motor.Count > 1)
+                if (corrientesMotor.Count > 1)
                 {
-                    if (_sitio.dataSitio.Corrientes_Motor[1].DentroRango)
-                        text_corriente_L2.text = $"{_sitio.dataSitio.Corrientes_Motor[1].Valor:F0}" + " Amp";
+                    if (corrientesMotor[1].DentroRango)
+                        text_corriente_L2.text = $"{corrientesMotor[1].Valor:F0}" + " Amp";
                     else
                         text_corriente_L2.text = "-";
                 }
@@ -184,10 +199,10 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
 
             if (text_corriente_L3 != null)
             {
-                if (_sitio.dataSitio.Corrientes_Motor.Count > 2)
+                if (corrientesMotor.Count > 2)
                 {
-                    if (_sitio.dataSitio.Corrientes_Motor[2].DentroRango)
-                        text_corriente_L3.text = $"{_sitio.dataSitio.Corrientes_Motor[2].Valor:F0}" + " Amp";
+                    if (corrientesMotor[2].DentroRango)
+                        text_corriente_L3.text = $"{corrientesMotor[2].Valor:F0}" + " Amp";
                     else
                         text_corriente_L3.text = "-";
                 }

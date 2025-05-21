@@ -459,84 +459,15 @@ public class ControlDatos : Singleton<ControlDatos>
             newDataSitio.fecha = sitebase.Tiempo;
             newDataSitio.enlace = sitebase.Enlace;
             newDataSitio.fallaAC = sitebase.FallaAC;
-            
-            SignalsContainer signalNivel = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
 
-            if (signalNivel != null)
-                newDataSitio.nivel.AddRange(signalNivel.Signals);
-
-            SignalsContainer signalBomba = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);//signals["Bomba"]);
-
-            if (signalBomba != null)
-                newDataSitio.bomba.AddRange(signalBomba.Signals);
-                    
-            SignalsContainer signalPresion = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);//signals["Pressure"]);
-
-            if (signalPresion != null)
-                newDataSitio.presion.AddRange(signalPresion.Signals);
-            
-            foreach (var signal in newDataSitio.presion)
+            foreach (var signalAux in sitebase.SignalsContainer)
             {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
+                Signal signal = new Signal();
+                signal.tipoSignal = (SignalBase.TipoSignalEnum)signalAux.TipoSignal;
+                signal.signals.AddRange(signalAux.Signals); 
+                
+                newDataSitio.listSignals.Add(signal);
             }
-                    
-            SignalsContainer signalGasto = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);//signals["FlowRate"]);
-
-            if (signalGasto != null)
-                newDataSitio.gasto.AddRange(signalGasto.Signals);
-            
-            foreach (var signal in newDataSitio.gasto)
-            {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
-            }
-                    
-            SignalsContainer signalTotalizado = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);//signals["FlowRateWithTotal"]);
-
-            if (signalTotalizado != null)
-                newDataSitio.totalizado.AddRange(signalTotalizado.Signals);
-            
-            foreach (var signal in newDataSitio.totalizado)
-            {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
-            }
-            
-            SignalsContainer signalBateria = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.VOLTAJE);//signals["Bateria"]);
-
-            if (signalBateria != null)
-                newDataSitio.Baterias.AddRange(signalBateria.Signals);
-            
-            SignalsContainer signalPerillaBomba = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PERILLA_BOMBA);//signals["PerillaBomba"]);
-
-            if (signalPerillaBomba != null)
-                newDataSitio.PerillaBomba.AddRange(signalPerillaBomba.Signals);
-            
-            SignalsContainer signalPerillaGeneral = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PERILLA_GENERAL);//signals["PerillaGeneral"]);
-
-            if (signalPerillaGeneral != null)
-                newDataSitio.PerillaGeneral.AddRange(signalPerillaGeneral.Signals);
-            
-            SignalsContainer signalVoltaje = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.VOLTAJE_RANGO);
-
-            if (signalVoltaje != null)
-                newDataSitio.Voltajes_Motor.AddRange(signalVoltaje.Signals);
-            
-            SignalsContainer signalCorriente = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.CORRIENTE_RANGO);
-
-            if (signalCorriente != null)
-                newDataSitio.Corrientes_Motor.AddRange(signalCorriente.Signals);
         }
 
         return newDataSitio;

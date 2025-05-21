@@ -51,17 +51,23 @@ public class ControlParticular : Singleton<ControlParticular>
             {
                 datosPozo.text = "Abreviatura: " + sitio.dataSitio.abreviacion + "\n";
 
-                if (sitio.dataSitio.gasto.Count>0)
-                    if (sitio.dataSitio.gasto[0].DentroRango)
-                        datosPozo.text += "\nGasto: " + sitio.dataSitio.gasto[0].Valor + "  l/s";
+                List<SignalBase> gasto = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+                
+                if (gasto.Count>0)
+                    if (gasto[0].DentroRango)
+                        datosPozo.text += "\nGasto: " + gasto[0].Valor + "  l/s";
 
-                if (sitio.dataSitio.presion.Count > 0)
-                    if (sitio.dataSitio.presion[0].DentroRango)
-                        datosPozo.text += "\nPresion: " + sitio.dataSitio.presion[0].Valor + " km/cm2";
+                List<SignalBase> presion = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
+                
+                if (presion.Count > 0)
+                    if (presion[0].DentroRango)
+                        datosPozo.text += "\nPresion: " + presion[0].Valor + " km/cm2";
 
-                if (sitio.dataSitio.totalizado.Count > 0)
-                    if (sitio.dataSitio.totalizado[0].DentroRango)
-                        datosPozo.text += "\nTotalizado: " + sitio.dataSitio.totalizado[0].Valor + " m3";
+                List<SignalBase> totalizado = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
+                
+                if (totalizado.Count > 0)
+                    if (totalizado[0].DentroRango)
+                        datosPozo.text += "\nTotalizado: " + totalizado[0].Valor + " m3";
             }
 
             yield return new WaitForSeconds(waitUpdateUITime);

@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CntrolBombaParticular : MonoBehaviour
+public class ControlBombaParticular : MonoBehaviour
 {
     public float updateRate = 5;
     private float countdown;
@@ -33,9 +34,11 @@ public class CntrolBombaParticular : MonoBehaviour
     {
         if (ParticularManager._singletonExists)
         {
-            if (ParticularManager.singleton.sitio.dataSitio.bomba.Count > 0)
+            List<SignalBase> bomba = ParticularManager.singleton.sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+            
+            if (bomba.Count > 0)
             {
-                switch (ParticularManager.singleton.sitio.dataSitio.bomba[0].Valor)
+                switch (bomba[0].Valor)
                 {
                     case 0: 
                         materialBombaParticular.SetColor("_Color", colorSinDatos);
