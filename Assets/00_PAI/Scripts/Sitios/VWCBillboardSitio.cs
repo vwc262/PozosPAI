@@ -1,15 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class VWCBillboardSitio : MonoBehaviour
 {
     // Hola Boy
-    private GameObject cameraGimbal;
-    private ControlMoveCameraMap _cameraMapMoveControl;
+    public GameObject cameraGimbal;
+    public ControlMoveCameraMap _cameraMapMoveControl;
     public ControlSitio sitio;
 
     public bool useDistanceDeformationZ;
@@ -17,7 +13,6 @@ public class VWCBillboardSitio : MonoBehaviour
     public SpriteRenderer frameDark;
     public SpriteRenderer circleID;
     
-    //[TabGroup("Angle")] public float interpolationValueAngle;
     [TabGroup("Angle")] public Vector3 minAngle;
     [TabGroup("Angle")] public Vector3 maxAngle;
     
@@ -32,7 +27,6 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("Scale")][ShowInInspector] public static Vector3 maxScale = new Vector3(1,1,1);
 
     [TabGroup("Position")] public float interpolationValuePos;
-    //[TabGroup("Position")] public float interpolationValuePosAux;
     [TabGroup("Position")] public float interpolationValuePosMax = 0.8f;
     [TabGroup("Position")] public Vector3 positionFinalMarcador;
     [TabGroup("Position")] public Vector3 positionGPSOriginal;
@@ -40,7 +34,7 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("GUI")]public GameObject guiObject;
     [TabGroup("GUI")]public GameObject guiObject2;
     [TabGroup("GUI")]public Vector3 guiObjPosTilt;
-    [TabGroup("GUI")]Vector3 posGuiOriginal;
+    [TabGroup("GUI")]public Vector3 posGuiOriginal;
     
     [TabGroup("Deformation")]public GameObject[] DeformationObjects;
     [TabGroup("Deformation")]public float deformationFactor;
@@ -53,7 +47,7 @@ public class VWCBillboardSitio : MonoBehaviour
     public bool useGPSDisplacement;
     public bool useMoveGUISelected;
     
-    void Start()
+    public void Start()
     {
         cameraGimbal = FindObjectOfType<ControlMoveCameraMap>().CameraGimbal;
 
@@ -77,7 +71,7 @@ public class VWCBillboardSitio : MonoBehaviour
         RecalculateHeight();
     }
     
-    private void RecalculateHeight()
+    public void RecalculateHeight()
     {
         if (_cameraMapMoveControl == null && ControlMoveCamera._singletonExists)
             _cameraMapMoveControl = ControlMoveCamera.singleton.moveCamera;
@@ -123,7 +117,7 @@ public class VWCBillboardSitio : MonoBehaviour
         RecalculatePerspectiveDeformation();
     }
 
-    private void MoveGUISelectedSitio()
+    public void MoveGUISelectedSitio()
     {
         var pos1 = posGuiOriginal + guiObjPosTilt;
         

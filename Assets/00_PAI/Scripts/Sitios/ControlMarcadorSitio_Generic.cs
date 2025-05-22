@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HutongGames.PlayMaker.Actions;
+using Sirenix.OdinInspector;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
-public class ControlMarcadorSitioPai : ControlMarcadorSitio
+public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
 {
     public List<GameObject> listFallaAC_GO;
     public List<GameObject> listFallaBomba;
@@ -23,7 +26,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
 
                     if (diferencia < umbralGreen)
                     {
-                        dataInTime = true;
                         statusColor = statusColor1;
                     }
                     // else if (diferencia < umbralYellow)
@@ -34,7 +36,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                     // }
                     else
                     {
-                        dataInTime = false;
                         statusColor = statusColor3;
                     }
                     
@@ -92,7 +93,6 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
                         item.material.SetColor("_BaseColor", statusColor);
                         item.material.SetColor("_EmissiveColorLDR", statusColor);
                         HDMaterial.ValidateMaterial(item.material);
-
                     });
                 }
                 else
@@ -187,5 +187,97 @@ public class ControlMarcadorSitioPai : ControlMarcadorSitio
         {
             Debug.Log("No Selectable Sitio: " + proyecto);
         }
+    }
+
+    public GameObject prefabSignal;
+    public GameObject contentSignal;
+    public List<GameObject> signals;
+
+    public float ap;
+    public float radio;
+
+    public int ContSignals;
+    
+    [Button]
+    public void SpawnSignals()
+    {
+        ap = radio / 1.15f;
+        
+        for (int i = 0; i < 36; i++)
+        {
+            GameObject signal = Instantiate(prefabSignal, contentSignal.transform);
+            signal.transform.localPosition = GetHexagonalPosition(i);
+            signal.transform.localRotation = Quaternion.identity;
+            signal.transform.localScale = Vector3.one;
+
+            signals.Add(signal);
+        }
+    }
+
+    public Vector3 GetHexagonalPosition(int index)
+    {
+        Vector3 PositionSignal;
+        
+        if (index < 6)
+        {
+            Vector3 posSignal = new Vector3(2 * ap, 0, 0);
+            PositionSignal = Quaternion.Euler(0, 30 + (60 * index), 0) * posSignal;
+        }
+        else if (index < 18) 
+        {
+            Vector3 posSignal;
+                
+            if ((index-6) % 2 == 0)
+                posSignal = new Vector3(radio * 3, 0, 0);
+            else
+                posSignal = new Vector3(ap * 4, 0, 0);
+                
+            PositionSignal = Quaternion.Euler(0, (30 * (index-6)), 0) * posSignal;
+        }
+        else if (index < 24) 
+        {
+            Vector3 posSignal = new Vector3(ap * 6, 0, 0);
+                
+            PositionSignal = Quaternion.Euler(0, 30 + (60 * (index-18)), 0) * posSignal;
+        }
+        else if (index < 30)
+        {
+            Vector3 posSignal = new Vector3(radio * 3, 0, 0);
+                
+            PositionSignal = Quaternion.Euler(0, 60 * (index - 24), 0) * (posSignal + (Quaternion.Euler(0, 30, 0) * new Vector3(2 * ap, 0, 0)));
+        }
+        else
+        {
+            Vector3 posSignal = new Vector3(radio * 3, 0, 0);
+                
+            PositionSignal = Quaternion.Euler(0, 60 * (index - 24), 0) * (posSignal + (Quaternion.Euler(0, -30, 0) * new Vector3(2 * ap, 0, 0)));
+        }
+        
+        return PositionSignal;
+    }
+    
+    [Button]
+    public void RemoveSignals()
+    {
+        foreach (var signal in signals)
+        {
+            Destroy(signal);
+        }
+        
+        signals.Clear();
+    }
+
+    public override void SeleccionarSitio()
+    {
+        base.SeleccionarSitio();
+
+        SpawnSignals();
+    }
+
+    public override void DeseleccionarSitio()
+    {
+        base.DeseleccionarSitio();
+        
+        RemoveSignals();
     }
 }

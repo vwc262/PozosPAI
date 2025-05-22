@@ -16,7 +16,7 @@ public class DataSitio
     
     public float voltaje;
 
-    public TipoSitioPozo tipoSitioPozo;
+    public TipoSitio tipoSitio;
     
     public int Estructura;
     
@@ -52,7 +52,7 @@ public class DataSitio
         this.fallaAC = _data.fallaAC;
         this.voltaje = _data.voltaje;
         this.Estructura = _data.Estructura;
-        this.tipoSitioPozo = _data.tipoSitioPozo;
+        this.tipoSitio = _data.tipoSitio;
         this.longitud = _data.longitud;
         this.latitud = _data.latitud;
         
@@ -89,7 +89,7 @@ public class DataSitio
     {
         get
         {
-            string descrip = $"{nombre}   /  {abreviacion}   /   {tipoSitioPozo.ToString()}";
+            string descrip = $"{nombre}   /  {abreviacion}   /   {tipoSitio.ToString()}";
             return descrip;
         }
     } 
