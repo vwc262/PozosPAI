@@ -40,7 +40,7 @@ public class ControlUISitio_Pai : ControlUISitio
     {
         if (sitio != null)
         {
-            textID.text = $"{ControlMarcadorSitioPai.GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
+            textID.text = $"{ControlMarcadorSitio_PAI.GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
             textAlias.text = sitio.dataSitio.abreviacion;
             textNombre.text = sitio.dataSitio.nombre;
             DataInTime = sitio.dataInTime;

@@ -40,7 +40,7 @@ public class ControlDatos_PAI : ControlDatos
                 controlSitio.dataSitio.fecha = sitio.Tiempo;
                 controlSitio.dataSitio.voltaje = sitio.Voltaje;
                 controlSitio.dataSitio.Estructura = sitio.Grupo;
-                controlSitio.dataSitio.tipoSitioPozo = (TipoSitioPozo)sitio.TipoEstacion;
+                controlSitio.dataSitio.tipoSitio = (TipoSitio)sitio.TipoEstacion;
                 controlSitio.dataSitio.longitud = sitio.Longitud;
                 controlSitio.dataSitio.latitud = sitio.Latitud;
                 

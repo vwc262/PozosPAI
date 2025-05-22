@@ -43,8 +43,6 @@ public class ControlSitiosUI_Lista : Singleton<ControlSitiosUI_Lista>
     }
     
     public virtual void UpdateData() { }
-    
-    public virtual void SetSitioSelectUI_Prefab(ControlSitio sitio) { }
 
     public virtual void SetSitioSelectUI_GO(ControlSitio sitio) { }
 

@@ -50,40 +50,28 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
     
     public override void SetSitioSelectUI_GO(ControlSitio sitio)
     {
-        GameObject instancePrefab = null;
+        GameObject instancePrefab = ControlPrefabs.singleton.GetPrefabUIListSitio(sitio.dataSitio.tipoSitio);
         
-        switch (sitio.dataSitio.tipoSitioPozo)
+        if (instancePrefab != null)
         {
-            case TipoSitioPozo.Pozo:
-                instancePrefab = ControlPrefabs.singleton.prefabPanelUISitio;
-                break;
-            case TipoSitioPozo.Repetidor:
-                instancePrefab = ControlPrefabs.singleton.prefabPanelUIRepetidor;
-                break;
-            case TipoSitioPozo.EnConstruccion:
-                instancePrefab = ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion;
-                break;
-            default:
-                instancePrefab = ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion;
-                break;
+            GameObject instance = Instantiate(instancePrefab,
+                ((SitiosOrdenados_PAI)sitiosOrdenados)
+                .RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)].rootRegion
+                .transform);
+
+            RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
+            m_RectTransform.anchoredPosition = new Vector2(0, 0);
+
+            ControlUISitio controlUI_Sitio = instance.GetComponent<ControlUISitio>();
+            controlUI_Sitio.SetSitio(sitio);
+
+            if (sitio.controlUIsitio != null)
+                Destroy(sitio.controlUIsitio.gameObject);
+            sitio.controlUIsitio = controlUI_Sitio;
+
+            instance.name = $"PanelSitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
+            sitios.Add(controlUI_Sitio);
         }
-
-        GameObject instance = Instantiate(instancePrefab, 
-            ((SitiosOrdenados_PAI)sitiosOrdenados).RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)].
-                rootRegion.transform);
-
-        RectTransform m_RectTransform = instance.GetComponent<RectTransform>();
-        m_RectTransform.anchoredPosition = new Vector2(0,0);
-        
-        ControlUISitio controlUI_Sitio = instance.GetComponent<ControlUISitio>();
-        controlUI_Sitio.SetSitio(sitio);
-        
-        if (sitio.controlUIsitio != null)
-            Destroy(sitio.controlUIsitio.gameObject);
-        sitio.controlUIsitio = controlUI_Sitio;
-        
-        instance.name = $"PanelSitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
-        sitios.Add(controlUI_Sitio);
     }
 
     [Button]
