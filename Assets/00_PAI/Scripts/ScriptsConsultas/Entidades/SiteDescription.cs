@@ -24,13 +24,13 @@ public class SiteDescription : SiteBase
     {
         get
         {
-            string descrip = $"{Nombre}   /  {Abreviacion}  /  {((TipoSitioPozo)TipoEstacion).ToString()}";
+            string descrip = $"{Nombre}   /  {Abreviacion}  /  {((TipoSitio)TipoEstacion).ToString()}";
             return descrip;
         }
     } 
 }
 
-public enum TipoSitioPozo
+public enum TipoSitio
 {
     none = 0,
     Pozo,

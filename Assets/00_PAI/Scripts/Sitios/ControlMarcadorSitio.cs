@@ -45,11 +45,11 @@ public class ControlMarcadorSitio : MonoBehaviour
 
     public List<MeshRenderer> Bombas;
     
-    public GameObject billboardObj;
-    public Vector3 billboardSelectedPos;
-    public Vector3 billboardUnSelectedPos;
+    // public GameObject billboardObj;
+    // public Vector3 billboardSelectedPos;
+    // public Vector3 billboardUnSelectedPos;
     
-    public bool dataInTime = false;
+    // public bool dataInTime = false;
 
     public float timeToDobleClick;
     
@@ -108,7 +108,7 @@ public class ControlMarcadorSitio : MonoBehaviour
         }
     }
     
-    public void SeleccionarSitio()
+    public virtual void SeleccionarSitio()
     {
         //eventSelectSitio.Raise(this.sitio);
 
@@ -125,7 +125,7 @@ public class ControlMarcadorSitio : MonoBehaviour
         selectedSitio = true;
     }
     
-    public void DeseleccionarSitio()
+    public virtual void DeseleccionarSitio()
     {
         foreach (var go in MarcaSeleccionado)
         {

@@ -15,16 +15,16 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 2
   threshold:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.67
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 0.797
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Value: 2
   m_HighQualityPrefiltering:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   m_HighQualityFiltering:
     m_OverrideState: 0
     m_Value: 1
@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 4080735657631907589}
   - {fileID: 8211020807564617484}
   - {fileID: -2299894706183827057}
+  - {fileID: 3392292059554605096}
 --- !u!114 &540870395859728262
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -237,7 +238,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 5000
   mipFogMaxMip:
     m_OverrideState: 0
@@ -249,14 +250,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1000
   baseHeight:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 149
   maximumHeight:
-    m_OverrideState: 0
-    m_Value: 50
+    m_OverrideState: 1
+    m_Value: 2000
   meanFreePath:
-    m_OverrideState: 0
-    m_Value: 400
+    m_OverrideState: 1
+    m_Value: 2000
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -299,6 +300,46 @@ MonoBehaviour:
   directionalLightsOnly:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &3392292059554605096
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1be1b6c95cd2e41b27903b9270817f, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 0
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.647
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 1
+  roundness:
+    m_OverrideState: 1
+    m_Value: 0.125
+  rounded:
+    m_OverrideState: 1
+    m_Value: 0
+  mask:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  opacity:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &3788283704237664251
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -357,8 +398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   rotation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 349.8
   skyIntensityMode:
     m_OverrideState: 1
     m_Value: 0
@@ -370,10 +411,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 0.0006694382
+    m_Value: 0.087375775
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.48825705, z: 0.4358096}
+    m_Value: {x: 0.070792496, y: 0.0987585, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -388,7 +429,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 21691d3751033d7489edfa2c09ebe432, type: 3}
+    m_Value: {fileID: 8900000, guid: 562d70731b885414fb0377867e5e39da, type: 3}
   distortionMode:
     m_OverrideState: 0
     m_Value: 1
@@ -399,7 +440,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   scrollOrientation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 1
       customValue: 0
