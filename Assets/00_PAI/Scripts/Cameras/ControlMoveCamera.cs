@@ -62,6 +62,9 @@ public class ControlMoveCamera : Singleton<ControlMoveCamera>
 
     public void ResetCamera()
     {
-        moveCamera.ResetHomeXZ(new Vector3(0,0,0));
+        if (ControlPrefabs._singletonExists)
+            moveCamera.ResetHomeXZ(new Vector3(0, 0, 0) + ControlPrefabs.singleton.GetOffsetPrefab());
+        else
+            moveCamera.ResetHomeXZ(new Vector3(0, 0, 0));
     }
 }
