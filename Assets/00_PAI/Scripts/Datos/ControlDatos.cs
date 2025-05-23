@@ -64,10 +64,6 @@ public class ControlDatos : Singleton<ControlDatos>
 
     public virtual void Start()
     {
-        // if (requestAPI != null)
-        // {
-        //     requestAPI.infraestructuraActualizada.AddListener(ActualizarInfraestructura);
-        // }
     }
 
     public void IniciarUpdateData()
@@ -171,23 +167,7 @@ public class ControlDatos : Singleton<ControlDatos>
 
         return 0;
     }
-
-    [Button][GUIColor(1,0.25f,0.25f)]
-    [TabGroup("Marcadores")]
-    public void ReCreateAll()
-    {
-        ReCreateSitiosGPS();
-        ReCreateSitiosUI_prefab();
-    }
     
-    [Button][GUIColor(1,0.5f,0.5f)]
-    [TabGroup("Marcadores")]
-    public void ReCreateSitiosGPS()
-    {
-        DeleteSitiosGPS();
-        CreateSitiosGPS_prefab();
-    }
-
     [TabGroup("Marcadores")]
     public void DeleteSitiosGPS()
     {
@@ -207,70 +187,6 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    [TabGroup("Marcadores")]
-    public void CreateSitiosGPS_prefab()
-    {
-    #if UNITY_EDITOR
-        var cont = 1;
-        
-        Gps2UnityConverter.longitud0 = longitud0;
-        Gps2UnityConverter.latitud0 = latitud0;
-        
-        foreach (var sitio in listSitios)
-        {
-            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
-            
-            // Bit shift the index of the layer (3) to get a bit mask
-            //int layerMask = -1;
-            
-            RaycastHit hit;
-            // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(position, transform.TransformDirection(Vector3.down), out hit, maxAltitude, groundedLayerMaskayer))
-            {
-                position.y = hit.point.y + alturaMarcador;
-            }
-
-
-            GameObject instancePrefab = null;
-            switch (sitio.dataSitio.tipoSitioPozo)
-            {
-                case TipoSitioPozo.Pozo:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitio;
-                    break;
-                case TipoSitioPozo.Repetidor:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorRepetidor;
-                    break;
-                case TipoSitioPozo.EnConstruccion:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            
-            string prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(instancePrefab);
-            Object prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(Object));
-
-            GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, this.transform);
-            instance.transform.position = position;
-            
-            instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
-            
-            ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
-            if (myControlMarcadorSitio != null)
-            {
-                myControlMarcadorSitio.SetDataSitio(sitio);
-                //myControlMarcadorSitio.controlSitioUI = controlSitioUI;
-            }
-
-            //CreateGUISitios(mySitio);
-            
-            sitio.controlMarcadorMap = myControlMarcadorSitio;
-            
-            PrefabUtility.RecordPrefabInstancePropertyModifications(instance);
-        }
-    #endif
-    }
-    
     public void CreateMarcadoresSitios_GO()
     {
         var cont = 1;
@@ -287,55 +203,31 @@ public class ControlDatos : Singleton<ControlDatos>
                 position.y = hit.point.y + alturaMarcador;
             }
             
-            GameObject instancePrefab = null;
-            switch (sitio.dataSitio.tipoSitioPozo)
+            GameObject instancePrefab = ControlPrefabs.singleton.GetPrefabMarcadorSitio(sitio.dataSitio.tipoSitio);
+
+            if (instancePrefab != null)
             {
-                case TipoSitioPozo.Pozo:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitio;
-                    break;
-                case TipoSitioPozo.Repetidor:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorRepetidor;
-                    break;
-                case TipoSitioPozo.EnConstruccion:
-                    instancePrefab = ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                GameObject instance;
+
+                if (ControlMap._singletonExists && ControlMap.singleton.contenedorMarcadores != null)
+                    instance = Instantiate(instancePrefab, ControlMap.singleton.contenedorMarcadores.transform);
+                else
+                    instance = Instantiate(instancePrefab, this.transform);
+
+                instance.transform.position = position;
+                instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
+
+                ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
+                if (myControlMarcadorSitio != null)
+                {
+                    myControlMarcadorSitio.SetDataSitio(sitio);
+                }
+
+                if (sitio.controlMarcadorMap != null)
+                    Destroy(sitio.controlMarcadorMap.gameObject);
+
+                sitio.controlMarcadorMap = myControlMarcadorSitio;
             }
-
-            GameObject instance;
-                
-            if (ControlMap._singletonExists && ControlMap.singleton.contenedorMarcadores != null)
-                instance = Instantiate(instancePrefab, ControlMap.singleton.contenedorMarcadores.transform);
-            else
-                instance = Instantiate(instancePrefab, this.transform);
-            
-            instance.transform.position = position;
-            instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
-
-            ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
-            if (myControlMarcadorSitio != null)
-            {
-                myControlMarcadorSitio.SetDataSitio(sitio);
-            }
-
-            if (sitio.controlMarcadorMap != null) 
-                Destroy(sitio.controlMarcadorMap.gameObject);
-            
-            sitio.controlMarcadorMap = myControlMarcadorSitio;
-        }
-    }
-    
-    [Button][GUIColor(1,0.5f,0.5f)]
-    [TabGroup("Marcadores")]
-    public void ReCreateSitiosUI_prefab()
-    {
-        DeleteSitiosSelectUI();
-
-        foreach (var sitio in listSitios)
-        {
-            if (sitio.controlMarcadorMap != null) 
-                CreateGUISitios(sitio);
         }
     }
     
@@ -362,71 +254,6 @@ public class ControlDatos : Singleton<ControlDatos>
             ControlSitiosUI_Lista.singleton.DeleteSitios();
     }
     
-    [TabGroup("Marcadores")]
-    public void CreateGUISitios(ControlSitio sitio)
-    {
-        if (ControlSitiosUI_Lista._singletonExists)
-            ControlSitiosUI_Lista.singleton.SetSitioSelectUI_Prefab(sitio);
-    }
-    
-    [TabGroup("Marcadores")]
-    [Button]
-    [GUIColor(0.5f,1,1)]
-    private void UnpackPrefabs()
-    {
-#if UNITY_EDITOR
-        if (ControlPrefabs.singleton.prefabMarcadorSitio != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorSitio, 
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (ControlPrefabs.singleton.prefabMarcadorRepetidor != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorRepetidor, 
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabMarcadorSitioEnConstruccion, 
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (ControlPrefabs.singleton.prefabPanelUISitio != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUISitio, 
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (ControlPrefabs.singleton.prefabPanelUIRepetidor != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUIRepetidor, 
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        if (ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion != null)
-        {
-            PrefabUtility.UnpackAllInstancesOfPrefab(ControlPrefabs.singleton.prefabPanelUISitioEnConstruccion,
-                PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-        }
-        #endif
-    }
-    
-    [TabGroup("Marcadores")]
-    [Button]
-    [GUIColor(0.1f,0.1f,1)]
-    private void CreateAllOverlap()
-    {
-        ReCreateAll();
-        GetOriginalPos();
-        RecalculateOverlaping();
-    }
-    
-    [TabGroup("Marcadores")]
-    [Button]
-    [GUIColor(1,1,1)]
-    private void CreateAllOverlapUnpack()
-    {
-        CreateAllOverlap();
-        UnpackPrefabs();
-    }
-    
     IEnumerator UpdateData()
     {
         while (UpdateLoop)
@@ -446,7 +273,7 @@ public class ControlDatos : Singleton<ControlDatos>
         newDataSitio.fecha = sitio.Tiempo;
         newDataSitio.voltaje = sitio.Voltaje;
         newDataSitio.Estructura = sitio.Grupo;
-        newDataSitio.tipoSitioPozo = (TipoSitioPozo)sitio.TipoEstacion;
+        newDataSitio.tipoSitio = (TipoSitio)sitio.TipoEstacion;
         
         newDataSitio.longitud = sitio.Longitud;
         newDataSitio.latitud = sitio.Latitud;
@@ -459,84 +286,15 @@ public class ControlDatos : Singleton<ControlDatos>
             newDataSitio.fecha = sitebase.Tiempo;
             newDataSitio.enlace = sitebase.Enlace;
             newDataSitio.fallaAC = sitebase.FallaAC;
-            
-            SignalsContainer signalNivel = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
 
-            if (signalNivel != null)
-                newDataSitio.nivel.AddRange(signalNivel.Signals);
-
-            SignalsContainer signalBomba = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);//signals["Bomba"]);
-
-            if (signalBomba != null)
-                newDataSitio.bomba.AddRange(signalBomba.Signals);
-                    
-            SignalsContainer signalPresion = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);//signals["Pressure"]);
-
-            if (signalPresion != null)
-                newDataSitio.presion.AddRange(signalPresion.Signals);
-            
-            foreach (var signal in newDataSitio.presion)
+            foreach (var signalAux in sitebase.SignalsContainer)
             {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
+                Signal signal = new Signal();
+                signal.tipoSignal = (SignalBase.TipoSignalEnum)signalAux.TipoSignal;
+                signal.signals.AddRange(signalAux.Signals); 
+                
+                newDataSitio.listSignals.Add(signal);
             }
-                    
-            SignalsContainer signalGasto = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);//signals["FlowRate"]);
-
-            if (signalGasto != null)
-                newDataSitio.gasto.AddRange(signalGasto.Signals);
-            
-            foreach (var signal in newDataSitio.gasto)
-            {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
-            }
-                    
-            SignalsContainer signalTotalizado = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);//signals["FlowRateWithTotal"]);
-
-            if (signalTotalizado != null)
-                newDataSitio.totalizado.AddRange(signalTotalizado.Signals);
-            
-            foreach (var signal in newDataSitio.totalizado)
-            {
-                if (!signal.DentroRango)
-                    signal.Valor = 0;
-            }
-            
-            SignalsContainer signalBateria = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.VOLTAJE);//signals["Bateria"]);
-
-            if (signalBateria != null)
-                newDataSitio.Baterias.AddRange(signalBateria.Signals);
-            
-            SignalsContainer signalPerillaBomba = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PERILLA_BOMBA);//signals["PerillaBomba"]);
-
-            if (signalPerillaBomba != null)
-                newDataSitio.PerillaBomba.AddRange(signalPerillaBomba.Signals);
-            
-            SignalsContainer signalPerillaGeneral = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.PERILLA_GENERAL);//signals["PerillaGeneral"]);
-
-            if (signalPerillaGeneral != null)
-                newDataSitio.PerillaGeneral.AddRange(signalPerillaGeneral.Signals);
-            
-            SignalsContainer signalVoltaje = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.VOLTAJE_RANGO);
-
-            if (signalVoltaje != null)
-                newDataSitio.Voltajes_Motor.AddRange(signalVoltaje.Signals);
-            
-            SignalsContainer signalCorriente = sitebase.SignalsContainer.Find(
-                item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.CORRIENTE_RANGO);
-
-            if (signalCorriente != null)
-                newDataSitio.Corrientes_Motor.AddRange(signalCorriente.Signals);
         }
 
         return newDataSitio;

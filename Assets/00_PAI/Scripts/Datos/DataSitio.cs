@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Serialization;
 
 [Serializable]
@@ -15,24 +16,25 @@ public class DataSitio
     
     public float voltaje;
 
-    public TipoSitioPozo tipoSitioPozo;
+    public TipoSitio tipoSitio;
     
     public int Estructura;
     
     public float longitud;
     public float latitud;
     
-    public List<SignalBase> nivel = new List<SignalBase>();
-    public List<SignalBase> bomba = new List<SignalBase>();
-    public List<SignalBase> presion = new List<SignalBase>();
-    public List<SignalBase> gasto = new List<SignalBase>();
-    public List<SignalBase> totalizado = new List<SignalBase>();
-    public List<SignalBase> Baterias = new List<SignalBase>();
-    public List<SignalBase> PerillaBomba = new List<SignalBase>();
-    public List<SignalBase> PerillaGeneral = new List<SignalBase>();
+    public List<Signal> listSignals = new List<Signal>();
     
-    public List<SignalBase> Voltajes_Motor = new List<SignalBase>();
-    public List<SignalBase> Corrientes_Motor = new List<SignalBase>();
+    // public List<SignalBase> nivel = new List<SignalBase>();
+    // public List<SignalBase> bomba = new List<SignalBase>();
+    // public List<SignalBase> presion = new List<SignalBase>();
+    // public List<SignalBase> gasto = new List<SignalBase>();
+    // public List<SignalBase> totalizado = new List<SignalBase>();
+    // public List<SignalBase> Baterias = new List<SignalBase>();
+    // public List<SignalBase> PerillaBomba = new List<SignalBase>();
+    // public List<SignalBase> PerillaGeneral = new List<SignalBase>();
+    // public List<SignalBase> Voltajes_Motor = new List<SignalBase>();
+    // public List<SignalBase> Corrientes_Motor = new List<SignalBase>();
 
     public string observaciones;
     
@@ -50,19 +52,22 @@ public class DataSitio
         this.fallaAC = _data.fallaAC;
         this.voltaje = _data.voltaje;
         this.Estructura = _data.Estructura;
-        this.tipoSitioPozo = _data.tipoSitioPozo;
+        this.tipoSitio = _data.tipoSitio;
         this.longitud = _data.longitud;
         this.latitud = _data.latitud;
-        this.nivel = _data.nivel;
-        this.bomba = _data.bomba;
-        this.presion = _data.presion;
-        this.gasto = _data.gasto;
-        this.totalizado = _data.totalizado;
-        this.Baterias = _data.Baterias;
-        this.PerillaBomba = _data.PerillaBomba;
-        this.PerillaGeneral = _data.PerillaGeneral;
-        this.Voltajes_Motor = _data.Voltajes_Motor;
-        this.Corrientes_Motor = _data.Corrientes_Motor;
+        
+        this.listSignals = _data.listSignals;
+
+        // this.nivel = _data.nivel;
+        // this.bomba = _data.bomba;
+        // this.presion = _data.presion;
+        // this.gasto = _data.gasto;
+        // this.totalizado = _data.totalizado;
+        // this.Baterias = _data.Baterias;
+        // this.PerillaBomba = _data.PerillaBomba;
+        // this.PerillaGeneral = _data.PerillaGeneral;
+        // this.Voltajes_Motor = _data.Voltajes_Motor;
+        // this.Corrientes_Motor = _data.Corrientes_Motor;
     }
     
     public static string GetStringBombaStatus(int valor)
@@ -84,8 +89,31 @@ public class DataSitio
     {
         get
         {
-            string descrip = $"{nombre}   /  {abreviacion}   /   {tipoSitioPozo.ToString()}";
+            string descrip = $"{nombre}   /  {abreviacion}   /   {tipoSitio.ToString()}";
             return descrip;
         }
     } 
+    
+    public bool GetSignalExist(SignalBase.TipoSignalEnum tipoSignal)
+    {
+        return listSignals.Exists(x => x.tipoSignal == tipoSignal);
+    }
+    
+    public List<SignalBase> GetSignal(SignalBase.TipoSignalEnum tipoSignal)
+    {
+        Signal signal = listSignals.FirstOrDefault(x => x.tipoSignal == tipoSignal);
+        return signal != null ? signal.signals : new List<SignalBase>();
+    }
+}
+
+[Serializable]
+public class Signal
+{
+    public Signal()
+    {
+        signals = new List<SignalBase>();
+    }
+    
+    public SignalBase.TipoSignalEnum tipoSignal;
+    public List<SignalBase> signals;
 }

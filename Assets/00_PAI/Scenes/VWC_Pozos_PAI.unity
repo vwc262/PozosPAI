@@ -24100,20 +24100,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -24155,20 +24146,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -29223,20 +29205,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -29724,10 +29697,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f843d6103b012624a8eb4774f7992926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useGenericPrefab: 1
   prefabMarcadorSitio: {fileID: 4617454687772707406, guid: e029100f754447647a40b7910831d025, type: 3}
-  prefabMarcadorRepetidor: {fileID: 4617454687772707406, guid: e029100f754447647a40b7910831d025, type: 3}
-  prefabMarcadorSitioEnConstruccion: {fileID: 4617454687772707406, guid: e029100f754447647a40b7910831d025, type: 3}
+  prefabMarcadorPozo: {fileID: 4617454687772707406, guid: cfeec769f0f572941a2639a2df7d520f, type: 3}
+  prefabMarcadorRepetidor: {fileID: 4617454687772707406, guid: cfeec769f0f572941a2639a2df7d520f, type: 3}
+  prefabMarcadorSitioEnConstruccion: {fileID: 4617454687772707406, guid: cfeec769f0f572941a2639a2df7d520f, type: 3}
   prefabPanelUISitio: {fileID: 1943836588459953644, guid: cdfc264052fb0934398aaf0f409c04f4, type: 3}
+  prefabPanelUIPozo: {fileID: 1943836588459953644, guid: cdfc264052fb0934398aaf0f409c04f4, type: 3}
   prefabPanelUIRepetidor: {fileID: 1943836588459953644, guid: cdfc264052fb0934398aaf0f409c04f4, type: 3}
   prefabPanelUISitioEnConstruccion: {fileID: 1943836588459953644, guid: cdfc264052fb0934398aaf0f409c04f4, type: 3}
   prefabUIRegionaLabel: {fileID: 7656758823062706749, guid: a25593f2e6843e94a8234d6cbf4ca6b7, type: 3}
@@ -49731,20 +49707,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -55912,20 +55879,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -70489,8 +70447,8 @@ MonoBehaviour:
   m_IncludeForPathTracing: 1
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
-  m_InteractsWithSky: 1
-  m_AngularDiameter: 5
+  m_InteractsWithSky: 0
+  m_AngularDiameter: 20
   diameterMultiplerMode: 0
   diameterMultiplier: 1
   diameterOverride: 5
@@ -70647,7 +70605,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
   m_ShadowRadius: 0
-  m_ShadowAngle: 5
+  m_ShadowAngle: 20
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
@@ -76585,20 +76543,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -92899,20 +92848,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
