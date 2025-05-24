@@ -18,6 +18,7 @@ public class ControlUIPanelDataSitio : MonoBehaviour
     [TabGroup("UI")] public Text textGasto;
     [TabGroup("UI")] public Text textTotalizado;
     [TabGroup("UI")] public Text textBateria;
+    [TabGroup("UI")] public Text textFuente;
     [TabGroup("UI")] public Text textNivel;
     
     public GameObject GO_Nivel;

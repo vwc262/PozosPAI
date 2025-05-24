@@ -1,17 +1,14 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class VWCBillboardSitio : MonoBehaviour
 {
     // Hola Boy
     public GameObject cameraGimbal;
     public ControlMoveCameraMap _cameraMapMoveControl;
-    public ControlSitio sitio;
-
-    public bool useDistanceDeformationZ;
-    
-    public SpriteRenderer frameDark;
-    public SpriteRenderer circleID;
+    public ControlMarcadorSitio controlSitio;
     
     [TabGroup("Angle")] public Vector3 minAngle;
     [TabGroup("Angle")] public Vector3 maxAngle;
@@ -31,15 +28,16 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("Position")] public Vector3 positionFinalMarcador;
     [TabGroup("Position")] public Vector3 positionGPSOriginal;
     
-    [TabGroup("GUI")]public GameObject guiObject;
-    [TabGroup("GUI")]public GameObject guiObject2;
-    [TabGroup("GUI")]public Vector3 guiObjPosTilt;
-    [TabGroup("GUI")]public Vector3 posGuiOriginal;
+    [TabGroup("GUI")] public GameObject guiHeightDistance;
+    [TabGroup("GUI")] public GameObject guiDespSelection;
+    [TabGroup("GUI")] public Vector3 despGuiSelected;
+    [TabGroup("GUI")] public Vector3 posGuiOriginal;
     
-    [TabGroup("Deformation")]public GameObject[] DeformationObjects;
-    [TabGroup("Deformation")]public float deformationFactor;
-    [TabGroup("Deformation")]public float deformationDistanceFactor; 
-    [TabGroup("Deformation")]public float deformationDistanceFactorOffset;
+    [TabGroup("Deformation")] public GameObject[] DeformationObjects;
+    [TabGroup("Deformation")] public float deformationFactor;
+    [TabGroup("Deformation")] public float deformationDistanceFactor; 
+    [TabGroup("Deformation")] public float deformationDistanceFactorOffset;
+    [TabGroup("Deformation")] public bool useDistanceDeformationZ;
     
     public bool useChangeAngle;
     public bool useChangeScale;
@@ -50,10 +48,9 @@ public class VWCBillboardSitio : MonoBehaviour
     public void Start()
     {
         cameraGimbal = FindObjectOfType<ControlMoveCameraMap>().CameraGimbal;
-
         RecalculatePerspectiveDeformation();
         RecalculateHeight();
-        posGuiOriginal = guiObject2.transform.localPosition;
+        posGuiOriginal = guiDespSelection.transform.localPosition;
     }
 
     public void RecalculateTilt(float _interpolationValueAngle)
@@ -71,7 +68,7 @@ public class VWCBillboardSitio : MonoBehaviour
         RecalculateHeight();
     }
     
-    public void RecalculateHeight()
+    public virtual void RecalculateHeight()
     {
         if (_cameraMapMoveControl == null && ControlMoveCamera._singletonExists)
             _cameraMapMoveControl = ControlMoveCamera.singleton.moveCamera;
@@ -98,7 +95,7 @@ public class VWCBillboardSitio : MonoBehaviour
             var heightOffset =
                 Vector3.Lerp(new Vector3(0, minHeight, 0), new Vector3(0, maxHeight, 0), interpolationValueHeight);
             
-            guiObject.transform.localPosition = heightOffset;
+            guiHeightDistance.transform.localPosition = heightOffset;
         }
 
         if (useGPSDisplacement)
@@ -111,21 +108,18 @@ public class VWCBillboardSitio : MonoBehaviour
             transform.localPosition = newPos;
         }
         
-        if (frameDark != null)
-            frameDark.material.color = new Color(0, 0, 0, interpolationValuePos * 2);
-        
         RecalculatePerspectiveDeformation();
     }
 
     public void MoveGUISelectedSitio()
     {
-        var pos1 = posGuiOriginal + guiObjPosTilt;
-        
-        if (sitio.isSelected) 
-            //guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, interpolationValueAngle);
-            guiObject2.transform.localPosition = Vector3.Lerp(posGuiOriginal, pos1, 1);
-        else
-            guiObject2.transform.localPosition = posGuiOriginal;
+        if (controlSitio != null)
+        {
+            if (controlSitio.sitio.isSelected)
+                guiDespSelection.transform.localPosition = posGuiOriginal + despGuiSelected;
+            else
+                guiDespSelection.transform.localPosition = posGuiOriginal;
+        }
     }
 
     public void RecalculatePerspectiveDeformation()
@@ -147,5 +141,17 @@ public class VWCBillboardSitio : MonoBehaviour
                 deformationDistanceFactor * (interpolationValuePos + deformationDistanceFactorOffset);
             obj.transform.localScale = obj.transform.localScale.with(y: scaleX * deformationFactor);
         }
+    }
+
+    public void SetSelectedSitio()
+    {
+        if (useMoveGUISelected)
+            MoveGUISelectedSitio();
+    }
+    
+    public void SetDeselectedSitio()
+    {
+        if (useMoveGUISelected)
+            MoveGUISelectedSitio();
     }
 }

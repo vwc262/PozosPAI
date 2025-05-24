@@ -42,24 +42,24 @@ public class ControlSitio
 
     public void SeleccionarSitio()
     {
+        isSelected = true;
+        
         if (controlUIsitio != null)
             controlUIsitio.SeleccionarSitio();
         
         if (controlMarcadorMap != null)
             controlMarcadorMap.SeleccionarSitio();
-        
-        isSelected = true;
     }
 
     public void DeseleccionarSitio()
     {
+        isSelected = false;
+        
         if (controlUIsitio != null)
             controlUIsitio.DeseleccionarSitio();
         
         if (controlMarcadorMap != null)
             controlMarcadorMap.DeseleccionarSitio();
-        
-        isSelected = false;
     }
 
     public float GetGasto()

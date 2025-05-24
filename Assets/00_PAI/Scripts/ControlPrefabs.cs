@@ -5,6 +5,9 @@ public class ControlPrefabs : Singleton<ControlPrefabs>
 {
     public bool useGenericPrefab = true;
     
+    public Vector3 offsetPrefabGeneric = Vector3.zero;
+    public Vector3 offsetPrefabPozo = Vector3.zero;
+    
     [TabGroup("Prefabs")]public GameObject prefabMarcadorSitio;
     [TabGroup("Prefabs")]public GameObject prefabMarcadorPozo;
     [TabGroup("Prefabs")]public GameObject prefabMarcadorRepetidor;
@@ -50,5 +53,13 @@ public class ControlPrefabs : Singleton<ControlPrefabs>
             default:
                 return prefabPanelUISitio; 
         }
+    }
+
+    public Vector3 GetOffsetPrefab()
+    {
+        if (useGenericPrefab)
+            return offsetPrefabGeneric;
+
+        return offsetPrefabPozo;
     }
 }

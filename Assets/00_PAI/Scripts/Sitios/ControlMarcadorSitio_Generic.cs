@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using HutongGames.PlayMaker.Actions;
 using Sirenix.OdinInspector;
 using Unity.Collections;
@@ -9,8 +10,9 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
 {
-    public List<GameObject> listFallaAC_GO;
-    public List<GameObject> listFallaBomba;
+    [TabGroup("Interfaz")] public List<MeshRenderer> rendererUIStatus = new List<MeshRenderer>();
+    [TabGroup("Interfaz")] public List<GameObject> listFallaAC_GO;
+    [TabGroup("Interfaz")] public List<GameObject> listFallaBomba;
     
     public override IEnumerator StatusUI()
     {
@@ -18,88 +20,46 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
         {
             while (true)
             {
-                DateTime parsedDate;
-
-                if (DateTime.TryParse(sitio.dataSitio.fecha, out parsedDate))
+                if (sitio.dataInTime)
                 {
-                    diferencia = (float)(DateTime.Now - parsedDate).TotalMinutes;
-
-                    if (diferencia < umbralGreen)
-                    {
-                        statusColor = statusColor1;
-                    }
-                    // else if (diferencia < umbralYellow)
-                    // {
-                    //     dataInTime = false;
-                    //     statusColor = statusColor2;
-                    //     statusDataInTime = 2;
-                    // }
-                    else
-                    {
-                        statusColor = statusColor3;
-                    }
-                    
-                    List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
-
-                    if (bomba.Count > 0)
-                    {
-                        // if (MyDataSitio.bomba[indexBomba].DentroRango)
-                        // {
-                            switch (bomba[sitio.indexBomba].Valor)
-                            {
-                                case 0:
-                                    SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(true);
-                                    }
-                                    break;
-                                case 1:
-                                    SetColorMeshBombas(Color.green);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case 2:
-                                    SetColorMeshBombas(Color.red);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case 3:
-                                    SetColorMeshBombas(Color.blue);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
-                            }
-                        // }
-                        // else
-                        // {
-                        //     SetColorMeshBombas(Color.gray);
-                        // }
-                    }
-                    else
-                    {
-                        SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                    }
-                    
-                    rendererUIStatus.ForEach(item =>
-                    {
-                        item.color = statusColor;
-                        item.material.SetColor("_BaseColor", statusColor);
-                        item.material.SetColor("_EmissiveColorLDR", statusColor);
-                        HDMaterial.ValidateMaterial(item.material);
-                    });
+                    statusColor = statusColor1;
                 }
                 else
                 {
-                    Debug.Log("Invalid date format");
+                    statusColor = statusColor3;
                 }
+                    
+                List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
 
+                if (bomba.Count > 0)
+                {
+                    switch (bomba[sitio.indexBomba].Valor)
+                    {
+                        case 0:
+                            foreach (var falloBomba in listFallaBomba)
+                            {
+                                falloBomba.gameObject.SetActive(true);
+                            }
+                            break;
+                        case 1:
+                        case 2:
+                        case 3:
+                            foreach (var falloBomba in listFallaBomba)
+                            {
+                                falloBomba.gameObject.SetActive(false);
+                            }
+                            break;
+                    }
+                }
+                
+                rendererUIStatus.ForEach(item =>
+                {
+                    item.material.color = statusColor;
+                    item.material.SetColor("_BaseColor", statusColor);
+                    item.material.SetColor("_EmissiveColorLDR", statusColor);
+                    HDMaterial.ValidateMaterial(item.material);
+                });
+                
                 foreach (var go in listFallaAC_GO)
                 {
                     go.SetActive(sitio.dataSitio.fallaAC);
@@ -116,11 +76,6 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
 
         textoIdSitioUnity.text = $"{GetIDSitiosPAI(sitio.dataSitio.abreviacion)}";
         textoAlias.text = $"{sitio.dataSitio.abreviacion}";
-        
-        foreach (var mesh in Bombas)
-        {
-            mesh.gameObject.SetActive(true);
-        }
     }
 
     public static string GetIDSitiosPAI(string _abreviacion)
@@ -128,23 +83,6 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
         string id = _abreviacion.ToUpper();
         
         return id.Replace("AIFA", "A");
-    }
-    
-    public void SetColorMeshBombas(Color _color)
-    {
-        foreach (var mesh in Bombas)
-        {
-            if (mesh != null)
-            {
-                var renderer = mesh.GetComponent<Renderer>();
-
-                if (renderer != null)
-                {
-                    renderer.material.color = _color;
-                    
-                }
-            }
-        }
     }
 
     public override void SetSelectedSitio()
@@ -197,9 +135,40 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
     public float radio;
 
     public int ContSignals;
-    
+
     [Button]
     public void SpawnSignals()
+    {
+        ap = radio / 1.15f;
+        ContSignals = 0;
+        
+        foreach (var signal in sitio.dataSitio.listSignals.Where(x=> 
+                     x.tipoSignal != SignalBase.TipoSignalEnum.TIEMPO &&
+                     x.tipoSignal != SignalBase.TipoSignalEnum.FALLAC &&
+                     x.tipoSignal != SignalBase.TipoSignalEnum.PERILLA_BOMBA ))
+        {
+            int index = 0;
+            
+            foreach (var signalBase in signal.signals)
+            {
+                GameObject signalInstance = Instantiate(prefabSignal, contentSignal.transform);
+                signalInstance.transform.localPosition = GetHexagonalPosition(ContSignals);
+                signalInstance.transform.localRotation = Quaternion.identity;
+                signalInstance.transform.localScale = Vector3.one;
+                signalInstance.name = $"Signal_{ContSignals}";
+                
+                ControlMarcadorSignal signalController = signalInstance.GetComponent<ControlMarcadorSignal>();
+                if (signalController != null)
+                    signalController.SetSignal(signal, index);
+                
+                signals.Add(signalInstance);
+                ContSignals++;
+                index++;
+            }
+        }
+    }
+    
+    public void PruebaSpawnSignals()
     {
         ap = radio / 1.15f;
         
