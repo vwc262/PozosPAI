@@ -133,46 +133,6 @@ public class ControlUISitio : MonoBehaviour
             UpdateData();
             countdown = updateRate;
         }
-
-        /*if (dataOverwrited)
-        {
-            dataPozo.fecha = dataAforo.fecha;
-            dataPozo.gasto = dataAforo.gasto;
-            dataPozo.presion = dataAforo.presion;
-            dataPozo.totalizado = dataAforo.totalizado;
-        }
-        else
-        {
-            if (sitio.MyDataSitio.tipoSitioPozo == TipoSitioPozo.PozoLerma1
-                || sitio.MyDataSitio.tipoSitioPozo == TipoSitioPozo.PozoLerma2)
-            {
-         
-                if (sitio.MyDataSitio.gasto.Count > 0)
-                    dataPozo.gasto = sitio.MyDataSitio.gasto[0].Valor;
-                else
-                    dataPozo.gasto = 0;
-                
-                if (sitio.MyDataSitio.presion.Count > 0)
-                    dataPozo.presion = sitio.MyDataSitio.presion[0].Valor;
-                else
-                    dataPozo.presion = 0;
-                
-                if (sitio.MyDataSitio.totalizado.Count > 0)
-                    dataPozo.totalizado = sitio.MyDataSitio.totalizado[0].Valor;
-                else
-                    dataPozo.totalizado = 0;
-                
-                dataPozo.fecha = sitio.MyDataSitio.fecha;;
-            }
-
-            if (sitio.MyDataSitio.tipoSitioPozo == TipoSitioPozo.EnConstruccion)
-            {
-                dataPozo.fecha = "---"; 
-                dataPozo.gasto = 0;
-                dataPozo.presion = 0;
-                dataPozo.totalizado = 0;
-            }
-        }*/
     }
 
     public virtual void UpdateData(){ }

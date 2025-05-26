@@ -20,14 +20,20 @@ MonoBehaviour:
     rid: 6051245937711906886
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/00_PAI/Scenes/EmptyScene.unity
   - m_enabled: 0
     m_path: Assets/00_PAI/Scenes/EmptySceneValidaPC.unity
   - m_enabled: 1
+    m_path: Assets/00_PAI/Scenes/LoadProyectoScene.unity
+  - m_enabled: 1
     m_path: Assets/00_PAI/Scenes/VWC_Pozos_PAI.unity
   - m_enabled: 1
     m_path: Assets/00_PAI/Scenes/Particulares/AIFA/Pozo_1_AIFA.unity
+  - m_enabled: 1
+    m_path: Assets/00_PAI/Scenes/Particulares/AIFA/Pozo_2_AIFA.unity
+  - m_enabled: 1
+    m_path: Assets/00_PAI/Scenes/Particulares/AIFA/Pozo_3_AIFA.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

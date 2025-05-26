@@ -50,7 +50,7 @@ public class ControlUISitio_Pai : ControlUISitio
 
             List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
             
-            if (bomba.Count == 1)
+            if (bomba.Count >= 1)
             {
                 if (UIStatus != 1)
                 {
@@ -59,10 +59,6 @@ public class ControlUISitio_Pai : ControlUISitio
                 }
 
                 SetStatusBomba(statusBomba, 0);
-            }
-            else if (bomba.Count > 1)
-            {
-                UpdateNumBombas();
             }
             else
             {

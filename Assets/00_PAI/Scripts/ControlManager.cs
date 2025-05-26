@@ -41,8 +41,14 @@ public class ControlManager : Singleton<ControlManager>
         
         SendEventMainFSM("infraestructuraActualizada");
     }
-    
-    public void InicioProyecto() {}
+
+    public void InicioProyecto()
+    {
+        if (ControlConfiguration._singletonExists && RequestAPI._singletonExists)
+        {
+            RequestAPI.singleton.sistema = ControlConfiguration.singleton.proyecto;
+        }
+    }
 
     public void InicioRequest()
     {
