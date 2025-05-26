@@ -440,10 +440,13 @@ public class ControlDatos : Singleton<ControlDatos>
 
     public virtual void SetGlobalDataSitios()
     {
-        maxLongitud = listSitios.Max(item => item.dataSitio.longitud);
-        minLongitud = listSitios.Min(item => item.dataSitio.longitud);
+        if (listSitios.Count > 0)
+        {
+            maxLongitud = listSitios.Max(item => item.dataSitio.longitud);
+            minLongitud = listSitios.Min(item => item.dataSitio.longitud);
 
-        maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
-        minLatitud = listSitios.Min(item => item.dataSitio.latitud);
+            maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
+            minLatitud = listSitios.Min(item => item.dataSitio.latitud);
+        }
     }
 }
