@@ -4,60 +4,49 @@ using System.Collections.Generic;
 using Lean.Common;
 using Lean.Touch;
 using Raskulls.ScriptableSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class ControlMarcadorSitio : MonoBehaviour
 {
     public ControlSitio sitio;
+    public GameObject rootOverlaping;
+    public VWCBillboardSitio billboardObj;
     
-    public SE_SelectSitio eventSelectSitio;
+    [TabGroup("Debug")] public bool debugSphere;
+    [TabGroup("Debug")] public GameObject colliderDebug;
+    [TabGroup("Debug")] public GameObject sphereDebug;
     
-    public static LeanSelectByFinger leanSelectByFinger;
-    private LeanSelectable selectable;
+    [TabGroup("Seleccion")] public SE_SelectSitio eventSelectSitio;
+    [TabGroup("Seleccion")] public static LeanSelectByFinger leanSelectByFinger;
+    [TabGroup("Seleccion")] private LeanSelectable selectable;
+    [TabGroup("Seleccion")] public float timeToDobleClick;
+    [TabGroup("Seleccion")] public Vector3 SelectedSitioOffset;
     
-    public TMPro.TMP_Text textoIdSitioUnity;
-    public TMPro.TMP_Text textoAlias;
-
-    public bool debugSphere;
-
-    public GameObject colliderDebug;
-    public GameObject sphereDebug;
+    [TabGroup("Interfaz")] public TMPro.TMP_Text textoIdSitioUnity;
+    [TabGroup("Interfaz")] public TMPro.TMP_Text textoAlias;
+    [TabGroup("Interfaz")] public List<GameObject> MarcaSeleccionado;
+    [TabGroup("Interfaz")] public List<GameObject> MarcaNoSeleccionado;
     
-    public List<SpriteRenderer> rendererUIStatus = new List<SpriteRenderer>();
-    public List<TMPro.TMP_Text> textUIStatus = new List<TMPro.TMP_Text>();
-    public float updateRate = 60;
-    private Coroutine UpateMarcadorCoroutine;
-    public float diferencia;
-    public float umbralGreen;
-    public float umbralYellow;
-
-    public Color statusColor;
-    
-    public Color statusColor1;
-    public Color statusColor2;
-    public Color statusColor3;
-    
-    public List<GameObject> MarcaSeleccionado;
-    public List<GameObject> MarcaNoSeleccionado;
-    
-    public bool selectedSitio;
-
-    public List<MeshRenderer> Bombas;
-    
-    // public GameObject billboardObj;
-    // public Vector3 billboardSelectedPos;
-    // public Vector3 billboardUnSelectedPos;
-    
-    // public bool dataInTime = false;
-
-    public float timeToDobleClick;
+    [TabGroup("Update")] public float updateRate = 60;
+    [TabGroup("Update")] private Coroutine UpateMarcadorCoroutine;
+    [TabGroup("Update")] public float diferencia;
+    [TabGroup("Update")] public float umbralGreen;
+    [TabGroup("Update")] public float umbralYellow;
+    [TabGroup("Update")] public Color statusColor;
+    [TabGroup("Update")] public Color statusColor1;
+    [TabGroup("Update")] public Color statusColor2;
+    [TabGroup("Update")] public Color statusColor3;
     
     public void Start()
     {
         UpateMarcadorCoroutine = StartCoroutine(StatusUI());
         
         DeseleccionarSitio();
+        
+        if (billboardObj != null)
+            billboardObj.controlSitio = this;
     }
 
     public virtual IEnumerator StatusUI()
@@ -110,8 +99,6 @@ public class ControlMarcadorSitio : MonoBehaviour
     
     public virtual void SeleccionarSitio()
     {
-        //eventSelectSitio.Raise(this.sitio);
-
         foreach (var go in MarcaSeleccionado)
         {
             go.SetActive(true);
@@ -122,7 +109,8 @@ public class ControlMarcadorSitio : MonoBehaviour
             go.SetActive(false);
         }
 
-        selectedSitio = true;
+        if (billboardObj != null)
+            billboardObj.SetSelectedSitio();
     }
     
     public virtual void DeseleccionarSitio()
@@ -136,8 +124,9 @@ public class ControlMarcadorSitio : MonoBehaviour
         {
             go.SetActive(true);
         }
-        
-        selectedSitio = false;
+
+        if (billboardObj != null)
+            billboardObj.SetDeselectedSitio();
     }
 
     public virtual void SetDataSitio(ControlSitio _Sitio) { }
@@ -158,5 +147,13 @@ public class ControlMarcadorSitio : MonoBehaviour
             timeToDobleClick -= Time.deltaTime;
             yield return null;
         }
+    }
+
+    public Vector3 GetMarcadorPosition()
+    {
+        if (billboardObj != null)
+            return billboardObj.transform.position;
+
+        return transform.position;
     }
 }

@@ -34,9 +34,7 @@ public class ControlMoveCameraMap : MonoBehaviour
     [TabGroup("Touch")] public Vector3 inputTouch;
     [TabGroup("Touch")] public float minTouchSpeed = 1;
     [TabGroup("Touch")] public float maxTouchSpeed = 3;
-    [TabGroup("Touch")] public float stopCoroutineMagnitude;
     [TabGroup("Touch")] public float valZoomSlectedSitio = 0.8f;
-    [TabGroup("Touch")] public Vector3 SelectedSitioOffset;
     [TabGroup("Touch")] public bool isInputDrag;
     [TabGroup("Touch")] public float touchSpeed
     {
@@ -105,6 +103,14 @@ public class ControlMoveCameraMap : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.Q))
                 {
+                    if (tiltValue < cameraZoomMap.zoomVal)
+                    {
+                        cameraZoomMap.zoomVal -= displacementSpeed;
+                        if (cameraZoomMap.zoomVal < 0)
+                            cameraZoomMap.zoomVal = 0;
+                        cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                    }
+                    
                     tiltValue -= displacementSpeed;
                     if (tiltValue < 0)
                         tiltValue = 0;
@@ -113,10 +119,17 @@ public class ControlMoveCameraMap : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.E))
                 {
+                    if (tiltValue > cameraZoomMap.zoomVal)
+                    {
+                        cameraZoomMap.zoomVal += displacementSpeed;
+                        if (cameraZoomMap.zoomVal > 1)
+                            cameraZoomMap.zoomVal = 1f;
+                        cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                    }
+                    
                     tiltValue += displacementSpeed;
                     if (tiltValue > 1)
                         tiltValue = 1f;
-
                     TiltMove();
                 }
             }
@@ -126,16 +139,19 @@ public class ControlMoveCameraMap : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.R))
             {
+                if (cameraZoomMap.zoomVal < tiltValue)
+                {
+                    tiltValue -= cameraZoomMap.zoomDelta;
+                    if (tiltValue < 0)
+                        tiltValue = 0;
+
+                    TiltMove();
+                }
+                
                 cameraZoomMap.zoomVal -= cameraZoomMap.zoomDelta;
                 if (cameraZoomMap.zoomVal < 0)
                     cameraZoomMap.zoomVal = 0;
                 cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
-                
-                tiltValue -= cameraZoomMap.zoomDelta;
-                if (tiltValue < 0)
-                    tiltValue = 0;
-                
-                TiltMove();
             }
 
             if (Input.GetKey(KeyCode.F))
@@ -179,27 +195,6 @@ public class ControlMoveCameraMap : MonoBehaviour
 
     public void TiltMove()
     {
-        // cameraRoot.transform.position = Vector3.Lerp(
-        //     zoomUpPivot.transform.position,
-        //     zoomDownPivot.transform.position,
-        //     tiltValue);
-        
-        if (tiltValue < cameraZoomMap.zoomVal)
-        {
-            cameraZoomMap.zoomVal -= displacementSpeed;
-            if (cameraZoomMap.zoomVal < 0)
-                cameraZoomMap.zoomVal = 0;
-            cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
-        }
-
-        if (tiltValue > cameraZoomMap.zoomVal)
-        {
-            cameraZoomMap.zoomVal += displacementSpeed;
-            if (cameraZoomMap.zoomVal > 1)
-                cameraZoomMap.zoomVal = 1f;
-            cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
-        }
-
         rotationCamera = CameraGimbal.transform.rotation.eulerAngles;
 
         rotationCamera.x = Mathf.Lerp(
@@ -215,6 +210,7 @@ public class ControlMoveCameraMap : MonoBehaviour
     public void ResetTilt()
     {
         tiltValue = 0;
+        TiltMove();
         SetTouchInputTiltEvent.Raise(tiltValue);
     }
 
@@ -227,15 +223,15 @@ public class ControlMoveCameraMap : MonoBehaviour
 
     public void GoHome()
     {
-        tiltValue = 0;
-        cameraZoomMap.SetZoom(zoomHome);
+        ResetTilt();
         MoveHome();
+        cameraZoomMap.SetZoom(zoomHome);
     }
     
     public void MoveHome()
     {
         //flyCamera.SetPosition(OrigenPos);
-        MoveCameraMapa(cinemachineBrainMainCamera.transform.position, OrigenPos);
+        MoveCameraMapa(cinemachineBrainMainCamera.transform, OrigenPos);
     }
     
     public void SetTouchInputZoom(Vector2 _input)
@@ -324,13 +320,12 @@ public class ControlMoveCameraMap : MonoBehaviour
     public void SetSelectedSitio(ControlSitio sitio)
     {
         if (sitio != null)
-            SetSelectedSitioPosition(sitio.controlMarcadorMap.transform.position);
+            SetSelectedSitioPosition(sitio.controlMarcadorMap.GetMarcadorPosition(), sitio.controlMarcadorMap.SelectedSitioOffset);
     }
     
-    public void SetSelectedSitioPosition(Vector3 _position)
+    public void SetSelectedSitioPosition(Vector3 _position, Vector3 SelectedSitioOffset)
     {
-        tiltValue = 0;
-        SetTouchInputTiltEvent.Raise(tiltValue);
+        ResetTilt();
         
         cameraZoomMap.SetZoom(valZoomSlectedSitio);
         
@@ -339,15 +334,12 @@ public class ControlMoveCameraMap : MonoBehaviour
         Vector3 oldPosition = _position;
         oldPosition.y = transform.position.y;
         
-        FinalPosition = oldPosition + 
-                        (offsetTilt * Mathf.Sqrt(tiltValue)) + 
-                        (offsetZoom * Mathf.Sqrt(zoomValue)) + 
-                        SelectedSitioOffset;
+        FinalPosition = oldPosition + SelectedSitioOffset;
         
         if (!InterpolatedCamera)
             transform.position = FinalPosition;
         else
-            MoveCameraMapa(cinemachineBrainMainCamera.transform.position, FinalPosition);
+            MoveCameraMapa(cinemachineBrainMainCamera.transform, FinalPosition);
     }
 
     public IEnumerator MoveCameraToFinal()
@@ -370,18 +362,19 @@ public class ControlMoveCameraMap : MonoBehaviour
         coroutinePos = false;
     }
     
-    public void MoveCameraMapa(Vector3 origin, Vector3 destiny)
+    public void MoveCameraMapa(Transform origin, Vector3 destiny)
     {
         StartCoroutine(animCameraMapa(origin, destiny));
     }
     
-    public IEnumerator animCameraMapa(Vector3 origin, Vector3 destiny)
+    public IEnumerator animCameraMapa(Transform origin, Vector3 destiny)
     {
-        cameraHolder.transform.position = origin;
+        cameraHolder.transform.position = origin.position;
+        cameraHolder.transform.rotation = origin.rotation;
         transform.position = new Vector3(
-            origin.x, 
+            origin.position.x, 
             transform.position.y, 
-            origin.z);
+            origin.position.z);
         cinemachineBrainMainCamera.DefaultBlend.Time = 0;
         cameraHolder.Priority = 5;
 

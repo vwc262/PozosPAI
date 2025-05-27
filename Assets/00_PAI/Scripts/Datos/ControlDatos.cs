@@ -351,12 +351,9 @@ public class ControlDatos : Singleton<ControlDatos>
         originalPos = new Vector3[listSitios.Count];
         for (int i = 0; i < listSitios.Count; i++)
         {
-            var billboard = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
+            var billboard = listSitios[i].controlMarcadorMap.rootOverlaping;
             originalPos[i] = billboard.transform.localPosition;
-            billboard.positionGPSOriginal = originalPos[i];
-#if UNITY_EDITOR
-            PrefabUtility.RecordPrefabInstancePropertyModifications(billboard);
-#endif
+            listSitios[i].controlMarcadorMap.billboardObj.positionGPSOriginal = originalPos[i];
         }
     }
     
@@ -367,9 +364,8 @@ public class ControlDatos : Singleton<ControlDatos>
     {
         for (int i = 0; i < listSitios.Count; i++)
         {
-            var sitio1 = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
+            var sitio1 = listSitios[i].controlMarcadorMap.rootOverlaping;
             sitio1.transform.localPosition = originalPos[i];
-            sitio1.circleID.color = Color.cyan;
         }
     }
     
@@ -385,23 +381,18 @@ public class ControlDatos : Singleton<ControlDatos>
             finishOverlap = true;
             for (int i = 0; i < listSitios.Count; i++)
             {
-                var sitio1 = listSitios[i].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
-
-                sitio1.circleID.color = Color.cyan;
+                var sitio1 = listSitios[i].controlMarcadorMap.rootOverlaping;
 
                 for (int j = 0; j < listSitios.Count; j++)
                 {
-                    var sitio2 = listSitios[j].controlMarcadorMap.GetComponentInChildren<VWCBillboardSitio>();
+                    var sitio2 = listSitios[j].controlMarcadorMap.rootOverlaping;
                     if (sitio1 != sitio2)
                         if (Vector3.Distance(sitio1.transform.position.with(y:0), sitio2.transform.position.with(y:0)) < overlapingDistance)
                         {
-                            //print($"Overlaping {sitio1.MyDataSitio.nombre}, {sitio2.MyDataSitio.nombre}");
-                            sitio1.circleID.color = Color.red;
                             var dir = (sitio1.transform.position - sitio2.transform.position).normalized;
                             dir.y = 0;
                             sitio1.transform.Translate(dir * overlapMoveDistance, Space.World);
-                            sitio1.positionFinalMarcador = sitio1.transform.localPosition;
-                            //sitio1.RecalculateLineRenderer();
+                            listSitios[i].controlMarcadorMap.billboardObj.positionFinalMarcador = sitio1.transform.localPosition;
                             finishOverlap = false;
                         }
                 }
@@ -449,10 +440,13 @@ public class ControlDatos : Singleton<ControlDatos>
 
     public virtual void SetGlobalDataSitios()
     {
-        maxLongitud = listSitios.Max(item => item.dataSitio.longitud);
-        minLongitud = listSitios.Min(item => item.dataSitio.longitud);
+        if (listSitios.Count > 0)
+        {
+            maxLongitud = listSitios.Max(item => item.dataSitio.longitud);
+            minLongitud = listSitios.Min(item => item.dataSitio.longitud);
 
-        maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
-        minLatitud = listSitios.Min(item => item.dataSitio.latitud);
+            maxLatitud = listSitios.Max(item => item.dataSitio.latitud);
+            minLatitud = listSitios.Min(item => item.dataSitio.latitud);
+        }
     }
 }

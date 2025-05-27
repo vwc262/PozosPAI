@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
 public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
 {
-    public List<GameObject> listFallaAC_GO;
-    public List<GameObject> listFallaBomba;
+    [TabGroup("Interfaz")] public List<MeshRenderer> Bombas;
+    [TabGroup("Interfaz")] public List<SpriteRenderer> rendererUIStatus = new List<SpriteRenderer>();
+    [TabGroup("Interfaz")] public List<GameObject> listFallaAC_GO;
+    [TabGroup("Interfaz")] public List<GameObject> listFallaBomba;
     
     public override IEnumerator StatusUI()
     {

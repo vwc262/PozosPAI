@@ -69,30 +69,31 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 else
                     textTotalizado.text = "N/A";
             }
-
-            if (textBateria != null)
+            
+            List<SignalBase> baterias = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.VOLTAJE);
+            
+            if (baterias.Count > 0)
             {
-                List<SignalBase> baterias = _sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.VOLTAJE);
-                
-                if (baterias.Count > 0)
+                if (textBateria != null)
                 {
-                    textBateria.text = "";
-
-                    foreach (var bateria in baterias)
+                    textBateria.text = GetString2decimals(baterias[0].Valor) + " V";
+                }
+                
+                if (baterias.Count > 1)
+                {
+                    if (textFuente != null)
                     {
-                        if (textBateria.text != "")
-                            textBateria.text += "\n";
-
-                        if (bateria.DentroRango)
-                            textBateria.text += GetString2decimals(bateria.Valor) + " V";
-                        else
-                            textBateria.text += "-";
+                        textFuente.text = GetString2decimals(baterias[1].Valor) + " V";
                     }
                 }
-                else
-                {
-                    textBateria.text = GetString2decimals(_sitio.dataSitio.voltaje) + " V";
-                }
+            }
+            else
+            {
+                if (textBateria != null)
+                    textBateria.text = "-";
+                
+                if (textFuente != null)
+                    textFuente.text = GetString2decimals(_sitio.dataSitio.voltaje) + " V";
             }
 
             if (GO_Nivel != null)
@@ -108,7 +109,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                         if (nivel[0].DentroRango)
                             textNivel.text = GetString2decimals(nivel[0].Valor) + " m";
                         else
-                            textNivel.text = "-\n";
+                            textNivel.text = "-";
                     }
 
                     if (nivel.Count > 1)
@@ -118,7 +119,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                             if (nivel[1].DentroRango)
                                 textNivel_estatico.text = GetString2decimals(nivel[1].Valor) + " m";
                             else
-                                textNivel_estatico.text = "-\n";
+                                textNivel_estatico.text = "-";
                         }
                     }
                 }
