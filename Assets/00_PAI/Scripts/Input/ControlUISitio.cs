@@ -201,26 +201,20 @@ public class ControlUISitio : MonoBehaviour
 
         if (bomba.Count > indexBomba)
         {
-            bombaSprite = statusBombaGrey;
-
-            //if (sitio.dataInTime)
-            //{
-            // if (sitio.MyDataSitio.bomba[0].DentroRango)
-            // {
+            bombaSprite = statusBombaRed;
+            
             switch (bomba[indexBomba].Valor)
             {
                 case 1:
                     bombaSprite = statusBombaGreen;
                     break;
                 case 2:
-                    bombaSprite = statusBombaRed;
+                    bombaSprite = statusBombaGrey;
                     break;
                 case 3:
                     bombaSprite = statusBombaBlue;
                     break;
             }
-            // }
-            //}
             
             _statusBomba.gameObject.SetActive(true);
             _statusBomba.sprite = bombaSprite;

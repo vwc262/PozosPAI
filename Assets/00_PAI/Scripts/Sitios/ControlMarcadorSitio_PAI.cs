@@ -14,101 +14,95 @@ public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
     
     public override IEnumerator StatusUI()
     {
-        if (rendererUIStatus.Count > 0)
+        while (true)
         {
-            while (true)
+            if (sitio.dataInTime)
             {
-                DateTime parsedDate;
+                statusColor = statusColor1;
+            }
+            else
+            {
+                statusColor = statusColor3;
+            }
+            
+            List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
 
-                if (DateTime.TryParse(sitio.dataSitio.fecha, out parsedDate))
+            if (bomba.Count > sitio.indexBomba)
+            {
+                if (sitio.dataInTime)
                 {
-                    diferencia = (float)(DateTime.Now - parsedDate).TotalMinutes;
-
-                    if (diferencia < umbralGreen)
+                    switch (bomba[sitio.indexBomba].Valor)
                     {
-                        statusColor = statusColor1;
-                    }
-                    // else if (diferencia < umbralYellow)
-                    // {
-                    //     dataInTime = false;
-                    //     statusColor = statusColor2;
-                    //     statusDataInTime = 2;
-                    // }
-                    else
-                    {
-                        statusColor = statusColor3;
-                    }
-                    
-                    List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
-
-                    if (bomba.Count > 0)
-                    {
-                        // if (MyDataSitio.bomba[indexBomba].DentroRango)
-                        // {
-                            switch (bomba[sitio.indexBomba].Valor)
+                        case 0:
+                            SetColorMeshBombas(Color.red);
+                            SetColorUIEnlace(Color.red);
+                            break;
+                        case 1:
+                            SetColorMeshBombas(Color.green);
+                            SetColorUIEnlace(Color.green);
+                            foreach (var falloBomba in listFallaBomba)
                             {
-                                case 0:
-                                    SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(true);
-                                    }
-                                    break;
-                                case 1:
-                                    SetColorMeshBombas(Color.green);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case 2:
-                                    SetColorMeshBombas(Color.red);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case 3:
-                                    SetColorMeshBombas(Color.blue);
-                                    foreach (var falloBomba in listFallaBomba)
-                                    {
-                                        falloBomba.gameObject.SetActive(false);
-                                    }
-                                    break;
+                                falloBomba.gameObject.SetActive(false);
                             }
-                        // }
-                        // else
-                        // {
-                        //     SetColorMeshBombas(Color.gray);
-                        // }
+                            break;
+                        case 2:
+                            SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
+                            SetColorUIEnlace(new Color(0.9f,0.9f,0.9f,1f));
+                            foreach (var falloBomba in listFallaBomba)
+                            {
+                                falloBomba.gameObject.SetActive(false);
+                            }
+                            break;
+                        case 3:
+                            //SetColorMeshBombas(Color.blue);
+                            SetColorMeshBombas(Color.red);
+                            SetColorUIEnlace(Color.red);
+                            foreach (var falloBomba in listFallaBomba)
+                            {
+                                falloBomba.gameObject.SetActive(false);
+                            }
+                            break;
                     }
-                    else
-                    {
-                        SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                    }
-                    
-                    rendererUIStatus.ForEach(item =>
-                    {
-                        item.color = statusColor;
-                        item.material.SetColor("_BaseColor", statusColor);
-                        item.material.SetColor("_EmissiveColorLDR", statusColor);
-                        HDMaterial.ValidateMaterial(item.material);
-
-                    });
                 }
                 else
                 {
-                    Debug.Log("Invalid date format");
+                    SetColorMeshBombas(Color.red);
+                    SetColorUIEnlace(Color.red);
                 }
-
-                foreach (var go in listFallaAC_GO)
-                {
-                    go.SetActive(sitio.dataSitio.fallaAC);
-                }
-
-                yield return new WaitForSeconds(updateRate);
             }
+            else
+            {
+                SetColorMeshBombas(Color.red);
+                SetColorUIEnlace(Color.red);
+            }
+
+            foreach (var go in listFallaAC_GO)
+            {
+                go.SetActive(sitio.dataSitio.fallaAC);
+            }
+
+            yield return new WaitForSeconds(updateRate);
         }
+    }
+
+    public void SetFalloBomba(bool fallo)
+    {
+        foreach (var falloBomba in listFallaBomba)
+        {
+            falloBomba.gameObject.SetActive(true);
+        }
+    }
+
+    public void SetColorUIEnlace(Color _statusColor)
+    {
+        rendererUIStatus.ForEach(item =>
+        {
+            item.color = _statusColor;
+            item.material.SetColor("_BaseColor", _statusColor);
+            item.material.SetColor("_EmissiveColorLDR", _statusColor);
+            HDMaterial.ValidateMaterial(item.material);
+
+        });
     }
     
     public override void SetDataSitio(ControlSitio _Sitio)

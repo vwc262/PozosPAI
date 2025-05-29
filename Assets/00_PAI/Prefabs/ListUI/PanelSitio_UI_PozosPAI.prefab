@@ -1419,20 +1419,11 @@ MonoBehaviour:
       enlace: 0
       fallaAC: 0
       voltaje: 0
-      tipoSitioPozo: 0
+      tipoSitio: 0
       Estructura: 0
       longitud: 0
       latitud: 0
-      nivel: []
-      bomba: []
-      presion: []
-      gasto: []
-      totalizado: []
-      Baterias: []
-      PerillaBomba: []
-      PerillaGeneral: []
-      Voltajes_Motor: []
-      Corrientes_Motor: []
+      listSignals: []
       observaciones: 
       automationData:
         idSubestacion: 0
@@ -1459,6 +1450,7 @@ MonoBehaviour:
     controlMarcadorMap: {fileID: 0}
     controlUIsitio: {fileID: 0}
     indexBomba: 0
+    isSelected: 0
     SelectedForAnalitics: 0
     timeLastCommand: 0
   statusColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1468,7 +1460,7 @@ MonoBehaviour:
   updateRate: 5
   statusBombaGreen: {fileID: 21300000, guid: 5e5cd20b209716244ab95054315af58b, type: 3}
   statusBombaRed: {fileID: 21300000, guid: 9f10edae06039554c88644e20c43ab07, type: 3}
-  statusBombaBlue: {fileID: 21300000, guid: b19ae00ca225e6544bc382537244e9bc, type: 3}
+  statusBombaBlue: {fileID: 21300000, guid: 9f10edae06039554c88644e20c43ab07, type: 3}
   statusBombaGrey: {fileID: 21300000, guid: 5084238f5dcfa034ebe0d9d938dfbe2d, type: 3}
   progressBarGasto: {fileID: 0}
   progressBarPresion: {fileID: 0}

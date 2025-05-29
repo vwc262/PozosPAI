@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 3541396120754691857}
   - component: {fileID: 6386981869384567607}
   m_Layer: 20
-  m_Name: Bomba_red
+  m_Name: Bomba_Apagado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dbcf87005b0b9cc4da636d14fa3fb522, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb6d7f6245ebbf945afe987fb2f40b59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 5810533924976699740}
   - component: {fileID: 4417061975463088215}
   m_Layer: 20
-  m_Name: Bomba_green
+  m_Name: Bomba_Encendido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 2575780141474187712}
   - component: {fileID: 7497730057893652306}
   m_Layer: 20
-  m_Name: Bomba_gray
+  m_Name: Bomba_FueraDeLinea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fb6d7f6245ebbf945afe987fb2f40b59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbcf87005b0b9cc4da636d14fa3fb522, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -664,11 +664,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateRate: 5
-  SelectedSitio: {fileID: 0}
-  bombaPrendida: 0
-  bombaGreen: {fileID: 938970397152585678}
-  bombaRed: {fileID: 574356203348492550}
-  bombaBlue: {fileID: 4230906743108819988}
+  selectedControlSitio:
+    diferencia: 0
+    dataInTime: 0
+    dataSitio:
+      idSitioUnity: 0
+      idSitio: 0
+      nombre: 
+      abreviacion: 
+      fecha: 
+      enlace: 0
+      fallaAC: 0
+      voltaje: 0
+      tipoSitio: 0
+      Estructura: 0
+      longitud: 0
+      latitud: 0
+      listSignals: []
+      observaciones: 
+      automationData:
+        idSubestacion: 0
+        isActiveAutomation: 0
+        AutomationError: 0
+        index: 0
+        starupTime: 0
+        stabilitationTime: 0
+        windowTime: 0
+        nominalVoltage: 0
+        toleranceVoltage: 0
+        ConfIsActiveAutomation: 0
+        ConfIndex: 0
+        ConfStarupTime: 0
+        ConfWindowTime: 0
+        ConfNominalVoltage: 0
+        ConfToleranceVoltage: 0
+    dataAforo:
+      isAforado: 0
+      fecha: ---
+      gasto: 0
+      presion: 0
+      totalizado: 0
+    controlMarcadorMap: {fileID: 0}
+    controlUIsitio: {fileID: 0}
+    indexBomba: 0
+    isSelected: 0
+    SelectedForAnalitics: 0
+    timeLastCommand: 0
+  bombaEncendido: {fileID: 938970397152585678}
+  bombaApagado: {fileID: 574356203348492550}
+  bombaAlarmaArrancador: {fileID: 4230906743108819988}
   buttonEncender: {fileID: 6238779145944336129}
   buttonApagar: {fileID: 1643300456927538105}
   buttonConfirmar: {fileID: 1681329133474447276}
@@ -4076,7 +4120,7 @@ GameObject:
   - component: {fileID: 6967930484677656869}
   - component: {fileID: 3525958212997487079}
   m_Layer: 20
-  m_Name: Bomba_blue
+  m_Name: Bomba_AlarmaArrancador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4129,7 +4173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70bf209c43fa62f468a4e3170eb03887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbcf87005b0b9cc4da636d14fa3fb522, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

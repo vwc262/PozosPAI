@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ControlBombasUI_PAI : ControlBombasUI
 {
     //public bool bombaPrendida;
     
-    public GameObject bombaGreen;
-    public GameObject bombaRed;
-    public GameObject bombaBlue;
+    [FormerlySerializedAs("bombaGreen")] public GameObject bombaEncendido;
+    [FormerlySerializedAs("bombaRed")] public GameObject bombaApagado;
+    [FormerlySerializedAs("bombaBlue")] public GameObject bombaAlarmaArrancador;
     
     public GameObject buttonEncender;
     public GameObject buttonApagar;
@@ -22,9 +23,9 @@ public class ControlBombasUI_PAI : ControlBombasUI
     
     public override void UpdateUISitio(ControlSitio sitio)
     {
-        bombaGreen.SetActive(false);
-        bombaRed.SetActive(false);
-        bombaBlue.SetActive(false);
+        bombaEncendido.SetActive(false);
+        bombaApagado.SetActive(false);
+        bombaAlarmaArrancador.SetActive(false);
         buttonEncender.SetActive(false);
         buttonApagar.SetActive(false);
         msgMantenimiento.SetActive(false);
@@ -41,11 +42,11 @@ public class ControlBombasUI_PAI : ControlBombasUI
                 switch (bomba[sitio.indexBomba].Valor)
                 {
                     case 1:
-                        bombaGreen.SetActive(true);
+                        bombaEncendido.SetActive(true);
                         break;
 
                     case 2:
-                        bombaRed.SetActive(true);
+                        bombaApagado.SetActive(true);
                         break;
 
                     case 0:
@@ -53,7 +54,7 @@ public class ControlBombasUI_PAI : ControlBombasUI
                         break;
 
                     case 3:
-                        bombaBlue.SetActive(true);
+                        bombaAlarmaArrancador.SetActive(true);
                         msgMantenimiento.SetActive(true);
                         break;
                 }

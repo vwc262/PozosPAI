@@ -7,12 +7,15 @@ using Sirenix.OdinInspector;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Serialization;
 
 public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
 {
     [TabGroup("Interfaz")] public List<MeshRenderer> rendererUIStatus = new List<MeshRenderer>();
     [TabGroup("Interfaz")] public List<GameObject> listFallaAC_GO;
     [TabGroup("Interfaz")] public List<GameObject> listFallaBomba;
+    
+    public Vector3 despPosicionSelection;
     
     public override IEnumerator StatusUI()
     {
@@ -239,6 +242,8 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
     public override void SeleccionarSitio()
     {
         base.SeleccionarSitio();
+        
+        gameObject.transform.position += despPosicionSelection;
 
         SpawnSignals();
     }
@@ -246,6 +251,8 @@ public class ControlMarcadorSitio_Generic : ControlMarcadorSitio
     public override void DeseleccionarSitio()
     {
         base.DeseleccionarSitio();
+        
+        gameObject.transform.position -= despPosicionSelection;
         
         RemoveSignals();
     }
