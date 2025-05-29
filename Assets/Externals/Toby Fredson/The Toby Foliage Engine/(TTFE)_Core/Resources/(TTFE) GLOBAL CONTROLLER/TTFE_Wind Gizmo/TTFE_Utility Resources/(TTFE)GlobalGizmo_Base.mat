@@ -166,6 +166,7 @@ Material:
     - _DryLeavesOffset: -0.6
     - _DryLeavesScale: 1
     - _DstBlend: 0
+    - _DstBlend2: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _FlutterTangentMode: 0
@@ -194,6 +195,8 @@ Material:
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
+    - _PerPixelSorting: 0
+    - _PivotSway: 0
     - _PreventBarkStretching: 0
     - _PreventStrecthing_Offset: -0.2
     - _PreventStrecthing_Scale: 5
@@ -207,7 +210,7 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _SeasonChangeGlobal: -2
+    - _SeasonChangeGlobal: 0
     - _SeasonVertexColorR: 0
     - _SelfShadingVertexColor: 1
     - _SimplePivotSway: 0
@@ -260,13 +263,13 @@ Material:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.09411765, g: 0.32941177, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
-    - _DiffusionProfile_Asset: {r: -1.4871875e-20, g: -5.074476e-36, b: -3.8101293e-12,
-        a: 7.172459e+28}
+    - _DiffusionProfile_Asset: {r: -1.4871875e-20, g: -5.074476e-36, b: -3.8101293e-12, a: 7.172459e+28}
     - _Diffusion_Asset: {r: -1.4871875e-20, g: -5.074476e-36, b: -3.8101293e-12, a: 7.172459e+28}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DryLeafColor: {r: 1, g: 0.2850455, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &6615630400668522557
 MonoBehaviour:
   m_ObjectHideFlags: 11

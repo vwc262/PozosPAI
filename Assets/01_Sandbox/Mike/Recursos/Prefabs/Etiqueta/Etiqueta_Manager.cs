@@ -8,11 +8,16 @@ public class Etiqueta_Manager : MonoBehaviour
     public float updateRate = 5;
     private float _countdown;
 
-    public GameObject panel;
+    //public GameObject panel;
+    
+
+    public SpriteRenderer imageEtiqueta;
+    
     public Sprite imageStateOff;
     public Sprite imageStateOn;
-    public Text textGasto;
-    public Text textPresion;
+    
+    public TMPro.TMP_Text textGasto;
+    public TMPro.TMP_Text textPresion;
 
     public LineRenderer line;
     public Color colorConexion;
@@ -40,12 +45,14 @@ public class Etiqueta_Manager : MonoBehaviour
         {
             if (ParticularManager.singleton.sitio.dataInTime)
             {
-                panel.GetComponent<Image>().sprite = imageStateOn;
+                // panel.GetComponent<Image>().sprite = imageStateOn;
+                imageEtiqueta.sprite = imageStateOn;
                 line.material.color = colorConexion;
             }
             else
             {
-                panel.GetComponent<Image>().sprite = imageStateOff;
+                //panel.GetComponent<Image>().sprite = imageStateOff;
+                imageEtiqueta.sprite = imageStateOff;
                 line.material.color = colorDesconexion;
             }
             
