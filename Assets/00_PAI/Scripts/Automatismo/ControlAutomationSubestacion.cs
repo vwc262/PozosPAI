@@ -442,7 +442,22 @@ public class ControlAutomationSubestacion : MonoBehaviour
                 input_starupTime.text = time.Replace("-", "");
         }
         else
+        {
             startupTime = ControlAutomation.ValidaInputPositiveInt(time);
+        }
+    }
+
+    public void ValidStartupTime(string time)
+    {
+        startupTime = ControlAutomation.ValidaInputPositiveInt(time);
+            
+        if (startupTime < 60)
+        {
+            startupTime = 60;
+                
+            if (input_starupTime != null)
+                input_starupTime.text = startupTime.ToString();
+        }
     }
     
     public void SetStabilitationTime(string time)

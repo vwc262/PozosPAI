@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Serialization;
 
 public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
 {
     [TabGroup("Interfaz")] public List<MeshRenderer> Bombas;
     [TabGroup("Interfaz")] public List<SpriteRenderer> rendererUIStatus = new List<SpriteRenderer>();
-    [TabGroup("Interfaz")] public List<GameObject> listFallaAC_GO;
+    [TabGroup("Interfaz")] public List<GameObject> listFallaAC;
     [TabGroup("Interfaz")] public List<GameObject> listFallaBomba;
+    [TabGroup("Interfaz")] public List<GameObject> listFallaConexion;
     
     public override IEnumerator StatusUI()
     {
@@ -19,64 +21,47 @@ public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
             if (sitio.dataInTime)
             {
                 statusColor = statusColor1;
-            }
-            else
-            {
-                statusColor = statusColor3;
-            }
-            
-            List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
+                SetFalloConexion(false);
+                List<SignalBase> bomba = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.BOMBA);
 
-            if (bomba.Count > sitio.indexBomba)
-            {
-                if (sitio.dataInTime)
+                if (bomba.Count > sitio.indexBomba)
                 {
                     switch (bomba[sitio.indexBomba].Valor)
                     {
                         case 0:
                             SetColorMeshBombas(Color.red);
                             SetColorUIEnlace(Color.red);
+                            SetFalloBomba(true);
                             break;
                         case 1:
                             SetColorMeshBombas(Color.green);
                             SetColorUIEnlace(Color.green);
-                            foreach (var falloBomba in listFallaBomba)
-                            {
-                                falloBomba.gameObject.SetActive(false);
-                            }
+                            SetFalloBomba(false);
                             break;
                         case 2:
-                            SetColorMeshBombas(new Color(0.9f,0.9f,0.9f,1f));
-                            SetColorUIEnlace(new Color(0.9f,0.9f,0.9f,1f));
-                            foreach (var falloBomba in listFallaBomba)
-                            {
-                                falloBomba.gameObject.SetActive(false);
-                            }
+                            SetColorMeshBombas(new Color(0.9f, 0.9f, 0.9f, 1f));
+                            SetColorUIEnlace(new Color(0.7f, 0.7f, 0.7f, 1f));
+                            SetFalloBomba(false);
                             break;
                         case 3:
                             //SetColorMeshBombas(Color.blue);
                             SetColorMeshBombas(Color.red);
                             SetColorUIEnlace(Color.red);
-                            foreach (var falloBomba in listFallaBomba)
-                            {
-                                falloBomba.gameObject.SetActive(false);
-                            }
+                            SetFalloBomba(true);
                             break;
                     }
-                }
-                else
-                {
-                    SetColorMeshBombas(Color.red);
-                    SetColorUIEnlace(Color.red);
                 }
             }
             else
             {
+                statusColor = statusColor3;
+                SetFalloConexion(true);
+                SetFalloBomba(false);
                 SetColorMeshBombas(Color.red);
                 SetColorUIEnlace(Color.red);
             }
 
-            foreach (var go in listFallaAC_GO)
+            foreach (var go in listFallaAC)
             {
                 go.SetActive(sitio.dataSitio.fallaAC);
             }
@@ -84,12 +69,20 @@ public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
             yield return new WaitForSeconds(updateRate);
         }
     }
+    
+    public void SetFalloConexion(bool fallo)
+    {
+        foreach (var falloConexion in listFallaConexion)
+        {
+            falloConexion.gameObject.SetActive(fallo);
+        }
+    }
 
     public void SetFalloBomba(bool fallo)
     {
         foreach (var falloBomba in listFallaBomba)
         {
-            falloBomba.gameObject.SetActive(true);
+            falloBomba.gameObject.SetActive(fallo);
         }
     }
 
@@ -101,7 +94,6 @@ public class ControlMarcadorSitio_PAI : ControlMarcadorSitio
             item.material.SetColor("_BaseColor", _statusColor);
             item.material.SetColor("_EmissiveColorLDR", _statusColor);
             HDMaterial.ValidateMaterial(item.material);
-
         });
     }
     
