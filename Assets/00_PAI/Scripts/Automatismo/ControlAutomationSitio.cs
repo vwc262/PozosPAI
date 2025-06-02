@@ -175,9 +175,8 @@ public class ControlAutomationSitio : MonoBehaviour
     {
         // return subEstacion.useConfigurationData ?
         //     dataSitio.automationData.ConfToleranceVoltage.ToString():
-        //     dataSitio.automationData.toleranceVoltage.ToString();
         
-        return dataSitio.automationData.ConfToleranceVoltage.ToString();
+        return dataSitio.automationData.toleranceVoltage.ToString();
     }
     
     public string GetNominalVoltage()

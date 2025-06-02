@@ -22,7 +22,7 @@ public class Automation
     public int ConfStarupTime;
     public int ConfWindowTime;
     public int ConfNominalVoltage;
-    public float ConfToleranceVoltage;
+    //public float ConfToleranceVoltage;
 
     public void SetDataAutomation(Automation automation)
     {
@@ -40,6 +40,5 @@ public class Automation
         ConfStarupTime = automation.ConfStarupTime;
         ConfWindowTime = automation.ConfWindowTime;
         ConfNominalVoltage = automation.ConfNominalVoltage;
-        ConfToleranceVoltage = automation.ConfToleranceVoltage;
     }
 }

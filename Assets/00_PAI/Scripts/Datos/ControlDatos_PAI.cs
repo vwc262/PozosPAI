@@ -145,7 +145,7 @@ public class ControlDatos_PAI : ControlDatos
 
                         if (segmento != null)
                         {
-                            sitio.dataSitio.automationData.ConfToleranceVoltage = segmento.Tolerancia;
+                            //sitio.dataSitio.automationData.ConfToleranceVoltage = segmento.Tolerancia;
                             sitio.dataSitio.automationData.ConfStarupTime = segmento.T1;
                             sitio.dataSitio.automationData.ConfWindowTime = segmento.T2;
                         }
