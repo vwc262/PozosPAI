@@ -67,6 +67,7 @@ public class ControlMoveCameraMap : MonoBehaviour
     public CinemachineBrain cinemachineBrainMainCamera;
     public CinemachineCamera cameraHolder;
     //public CinemachineCamera cameraBase;
+    public Coroutine coroutineMoveCamera;
     
     public float AnimTime = 1f;
     public float waitAnimTime = 0.05f;
@@ -163,26 +164,6 @@ public class ControlMoveCameraMap : MonoBehaviour
             }
         }
         
-        //---
-        if (isInputDrag)
-        {
-            if (flyCamera != null)
-                flyCamera.inputTouch = inputTouch;
-
-            isInputDrag = false;
-        }
-        else if (LeanTouch.Fingers.Count == 1)
-        {
-            //isTouchDrag = false;
-            if (flyCamera != null)
-                flyCamera.inputTouch = inputTouch;
-        }
-        else
-        {
-            if (flyCamera != null)
-                flyCamera.inputTouch = Vector3.zero;
-        }
-        
         ZoomCinemachineCamera = 1-((cinemachineBrainMainCamera.transform.position.y - cameraZoomMap.zoomDownPivot.transform.position.y)*
                                 (1f/(transform.position.y - cameraZoomMap.zoomDownPivot.transform.position.y)));
 
@@ -236,73 +217,22 @@ public class ControlMoveCameraMap : MonoBehaviour
     
     public void SetTouchInputZoom(Vector2 _input)
     {
-        if (LeanTouch.Fingers.Count  != 3)
-            return;
-        
-        if (MapTouchElement != null)
-            if (!MapTouchElement.IsClicOverElement)
-            {
-                return;
-            }
-        
-        if (InteractionOverUI_List.GetIsInteractionOverUI_List())
-        {
-            return;
-        }
-        
-        SetTouchInputTiltAction(_input);
+
     }
 
-    private void SetTouchInputTiltAction(Vector2 _input)
+    private void SetTouchInputTilt(Vector2 _input)
     {
-        tiltValue += displacementSpeedTouch * _input.y;
-        if (tiltValue < 0)
-            tiltValue = 0;
 
-        if (tiltValue > 1)
-            tiltValue = 1f;
-
-        TiltMove();
-        SetTouchInputTiltEvent.Raise(tiltValue);
     }
-
-    public void SetTouchInputTiltFloat(float _input)
+    
+    public void SetTouchInputTilt(float _input)
     {
-        SetTouchInputTiltAction(new Vector2(0, _input));
+
     }
     
     public void SetTouchInputDrag(Vector2 _input)
     {
-        if (LeanTouch.Fingers.Count > 1)
-        {
-            inputTouch.x = 0;
-            inputTouch.z = 0;
-            return;
-        }
-        
-        if (MapTouchElement != null)
-        {
-            if (!MapTouchElement.IsClicOverElement)
-            {
-                inputTouch.x = 0;
-                inputTouch.z = 0;
-                return;
-            }
-        }
-        
-        if (InteractionOverUI_List.GetIsInteractionOverUI_List())
-        {
-            inputTouch.x = 0;
-            inputTouch.z = 0;
-            return;
-        }
-        
-        inputTouch.x = _input.x;
-        inputTouch.z = _input.y;
-        
-        inputTouch = inputTouch.normalized * (touchSpeed / (1 + tiltValue));
-        
-        SetTouchInputDragEvent.Raise(tiltValue);
+
     }
 
     public void SetTouchInputDragNoFinger(Vector2 _input, float _DragSpeed)
@@ -311,7 +241,7 @@ public class ControlMoveCameraMap : MonoBehaviour
         
         inputTouch.x = _input.x;
         inputTouch.z = _input.y;
-
+    
         inputTouch = inputTouch.normalized * (_DragSpeed / (1 + tiltValue));
         
         SetTouchInputDragEvent.Raise(tiltValue);
@@ -364,7 +294,10 @@ public class ControlMoveCameraMap : MonoBehaviour
     
     public void MoveCameraMapa(Transform origin, Vector3 destiny)
     {
-        StartCoroutine(animCameraMapa(origin, destiny));
+        if (coroutineMoveCamera != null)
+            StopCoroutine(coroutineMoveCamera);
+                
+        coroutineMoveCamera = StartCoroutine(animCameraMapa(origin, destiny));
     }
     
     public IEnumerator animCameraMapa(Transform origin, Vector3 destiny)
