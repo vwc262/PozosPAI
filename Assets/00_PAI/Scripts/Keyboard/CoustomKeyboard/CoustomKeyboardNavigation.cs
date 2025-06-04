@@ -54,7 +54,7 @@ public class CoustomKeyboardNavigation : CoustomKeyboard
 
     private void SetPan()
     {
-	    cameraControl.SetTouchInputTiltFloat(panAction);
+	    cameraControl.SetTouchInputTilt(panAction);
 	    panAction *= panAttenuation;
     }
 	

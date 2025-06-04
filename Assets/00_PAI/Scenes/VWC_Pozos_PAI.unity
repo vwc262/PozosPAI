@@ -9843,7 +9843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &450549727
 Transform:
   m_ObjectHideFlags: 0
@@ -9852,13 +9852,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450549726}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.12543243, z: -0, w: 0.9921022}
-  m_LocalPosition: {x: 431.42, y: 10.520508, z: 840}
-  m_LocalScale: {x: 14151.892, y: 6740.6675, z: 19609.016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 529, y: 0, z: -827.00006}
+  m_LocalScale: {x: 10000, y: 1, z: 10000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1797971582}
-  m_LocalEulerAnglesHint: {x: 0, y: 14.411, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &450549728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9882,7 +9882,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1917b08f619d6644885194b20ecc4902, type: 2}
+  - {fileID: 2100000, guid: bc8f87bdee9f4ba45bb4eb570578bde2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67335,9 +67335,7 @@ GameObject:
   - component: {fileID: 1588264297}
   - component: {fileID: 1588264299}
   - component: {fileID: 1588264298}
-  - component: {fileID: 1588264305}
-  - component: {fileID: 1588264304}
-  - component: {fileID: 1588264303}
+  - component: {fileID: 1588264300}
   m_Layer: 0
   m_Name: ControlCameraMap
   m_TagString: Untagged
@@ -67441,7 +67439,7 @@ MonoBehaviour:
   SetPositionAux: 0
   ClampX: 1
   ClampZ: 1
---- !u!114 &1588264303
+--- !u!114 &1588264300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67450,161 +67448,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588264296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd98a842fb511a4c89c419df094e04f, type: 3}
+  m_Script: {fileID: 11500000, guid: ac9691b701f09e949a5622010ae15d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 0
-    RequiredFingerCount: 0
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  ignoreIfStatic: 0
-  coordinate: 0
-  multiplier: 1
-  onPinch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1175109244}
-        m_TargetAssemblyTypeName: CameraMapa, Assembly-CSharp
-        m_MethodName: AddToZoomInverted
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1588264304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588264296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5726d77b04f1a53448ffb9873ac0e474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 0
-    RequiredFingerCount: 3
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  ignoreIfStatic: 0
-  onFingers:
-    m_PersistentCalls:
-      m_Calls: []
-  coordinate: 0
-  constrain: 0
-  constrainThreshold: 5
-  multiplier: 1
-  onDelta:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1588264298}
-        m_TargetAssemblyTypeName: VWC_Lerma_MoveCamera, Assembly-CSharp
-        m_MethodName: SetTouchInputZoom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDistance:
-    m_PersistentCalls:
-      m_Calls: []
-  ScreenDepth:
-    Conversion: 1
-    Camera: {fileID: 0}
-    Object: {fileID: 0}
-    Layers:
-      serializedVersion: 2
-      m_Bits: 58611
-    Distance: 0
-  onWorldFrom:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldTo:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldDelta:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldFromTo:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1588264305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588264296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5726d77b04f1a53448ffb9873ac0e474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 0
-    RequiredFingerCount: 1
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  ignoreIfStatic: 0
-  onFingers:
-    m_PersistentCalls:
-      m_Calls: []
-  coordinate: 0
-  constrain: 0
-  constrainThreshold: 5
-  multiplier: 1
-  onDelta:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1588264298}
-        m_TargetAssemblyTypeName: VWC_Lerma_MoveCamera, Assembly-CSharp
-        m_MethodName: SetTouchInputDrag
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDistance:
-    m_PersistentCalls:
-      m_Calls: []
-  ScreenDepth:
-    Conversion: 1
-    Camera: {fileID: 0}
-    Object: {fileID: 0}
-    Layers:
-      serializedVersion: 2
-      m_Bits: 58611
-    Distance: 0
-  onWorldFrom:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldTo:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldDelta:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldFromTo:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1590114795
 GameObject:
   m_ObjectHideFlags: 0
@@ -68908,7 +68754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1640601059
 Transform:
   m_ObjectHideFlags: 0
@@ -68917,10 +68763,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640601058}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 431.42, y: 10.520508, z: 840}
-  m_LocalScale: {x: 14151.895, y: 6740.6675, z: 19609.016}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 529, y: 0, z: -827}
+  m_LocalScale: {x: 12000, y: 12000, z: 12000}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1797971582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68947,7 +68793,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1917b08f619d6644885194b20ecc4902, type: 2}
+  - {fileID: 2100000, guid: bc8f87bdee9f4ba45bb4eb570578bde2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
