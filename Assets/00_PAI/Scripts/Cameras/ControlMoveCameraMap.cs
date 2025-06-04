@@ -35,7 +35,6 @@ public class ControlMoveCameraMap : MonoBehaviour
     [TabGroup("Touch")] public float minTouchSpeed = 1;
     [TabGroup("Touch")] public float maxTouchSpeed = 3;
     [TabGroup("Touch")] public float valZoomSlectedSitio = 0.8f;
-    [TabGroup("Touch")] public bool isInputDrag;
     [TabGroup("Touch")] public float touchSpeed
     {
         get
@@ -106,32 +105,20 @@ public class ControlMoveCameraMap : MonoBehaviour
                 {
                     if (tiltValue < cameraZoomMap.zoomVal)
                     {
-                        cameraZoomMap.zoomVal -= displacementSpeed;
-                        if (cameraZoomMap.zoomVal < 0)
-                            cameraZoomMap.zoomVal = 0;
-                        cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                        SetZoom(-displacementSpeed);
                     }
                     
-                    tiltValue -= displacementSpeed;
-                    if (tiltValue < 0)
-                        tiltValue = 0;
-                    TiltMove();
+                    TiltMove(-displacementSpeed);
                 }
 
                 if (Input.GetKey(KeyCode.E))
                 {
                     if (tiltValue > cameraZoomMap.zoomVal)
                     {
-                        cameraZoomMap.zoomVal += displacementSpeed;
-                        if (cameraZoomMap.zoomVal > 1)
-                            cameraZoomMap.zoomVal = 1f;
-                        cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                        SetZoom(displacementSpeed);
                     }
                     
-                    tiltValue += displacementSpeed;
-                    if (tiltValue > 1)
-                        tiltValue = 1f;
-                    TiltMove();
+                    TiltMove(displacementSpeed);
                 }
             }
         }
@@ -142,25 +129,15 @@ public class ControlMoveCameraMap : MonoBehaviour
             {
                 if (cameraZoomMap.zoomVal < tiltValue)
                 {
-                    tiltValue -= cameraZoomMap.zoomDelta;
-                    if (tiltValue < 0)
-                        tiltValue = 0;
-
-                    TiltMove();
+                    TiltMove(-cameraZoomMap.zoomDelta);
                 }
                 
-                cameraZoomMap.zoomVal -= cameraZoomMap.zoomDelta;
-                if (cameraZoomMap.zoomVal < 0)
-                    cameraZoomMap.zoomVal = 0;
-                cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                SetZoom(-cameraZoomMap.zoomDelta);
             }
 
             if (Input.GetKey(KeyCode.F))
             {
-                cameraZoomMap.zoomVal += cameraZoomMap.zoomDelta;
-                if (cameraZoomMap.zoomVal > 1)
-                    cameraZoomMap.zoomVal = 1f;
-                cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+                SetZoom(cameraZoomMap.zoomDelta);
             }
         }
         
@@ -174,6 +151,30 @@ public class ControlMoveCameraMap : MonoBehaviour
         }
     }
 
+    public void SetZoom(float incrementZoomValue)
+    {
+        cameraZoomMap.zoomVal += incrementZoomValue;
+            
+        if (cameraZoomMap.zoomVal > 1)
+            cameraZoomMap.zoomVal = 1f;
+        else if (cameraZoomMap.zoomVal < 0)
+            cameraZoomMap.zoomVal = 0;
+        
+        cameraZoomMap.SetZoom(cameraZoomMap.zoomVal);
+    }
+
+    public void TiltMove(float incrementTiltValue)
+    {
+        tiltValue += incrementTiltValue;
+
+        if (tiltValue < 0)
+            tiltValue = 0;
+        else if (tiltValue > 1)
+            tiltValue = 1f;
+
+        TiltMove();
+    }
+    
     public void TiltMove()
     {
         rotationCamera = CameraGimbal.transform.rotation.eulerAngles;
@@ -215,36 +216,65 @@ public class ControlMoveCameraMap : MonoBehaviour
         MoveCameraMapa(cinemachineBrainMainCamera.transform, OrigenPos);
     }
     
-    public void SetTouchInputZoom(Vector2 _input)
+    public void SetTouchInputZoom(float _input)
     {
-
+        if (cameraZoomMap != null)
+        {
+            if (_input < 0)
+            {
+                if (cameraZoomMap.zoomVal < tiltValue)
+                {
+                    TiltMove(_input);
+                }
+            }
+                
+            SetZoom(_input);
+        }
     }
 
-    private void SetTouchInputTilt(Vector2 _input)
-    {
-
-    }
+    // private void SetTouchInputTilt(Vector2 _input)
+    // {
+    //
+    // }
     
     public void SetTouchInputTilt(float _input)
     {
-
+        if (_input < 0)
+        {
+            if (tiltValue < cameraZoomMap.zoomVal)
+            {
+                SetZoom(_input);
+            }
+                    
+            TiltMove(_input);
+        }
+        else
+        {
+            if (tiltValue > cameraZoomMap.zoomVal)
+            {
+                SetZoom(_input);
+            }
+                    
+            TiltMove(_input);
+        }
     }
     
     public void SetTouchInputDrag(Vector2 _input)
     {
-
+        flyCamera.inputTouch.x = -_input.x;
+        flyCamera.inputTouch.z = -_input.y;
+        
+        SetTouchInputDragEvent.Raise(tiltValue);
     }
 
     public void SetTouchInputDragNoFinger(Vector2 _input, float _DragSpeed)
     {
-        isInputDrag = true;
-        
         inputTouch.x = _input.x;
         inputTouch.z = _input.y;
     
         inputTouch = inputTouch.normalized * (_DragSpeed / (1 + tiltValue));
-        
-        SetTouchInputDragEvent.Raise(tiltValue);
+
+        SetTouchInputDrag(inputTouch);
     }
     
     public void SetSelectedSitio(ControlSitio sitio)

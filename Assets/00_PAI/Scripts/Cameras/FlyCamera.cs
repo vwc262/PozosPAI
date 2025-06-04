@@ -74,7 +74,7 @@ public class FlyCamera : MonoBehaviour
         //Keyboard commands
         float f = 0.0f;
         
-        Vector3 p = GetBaseInput() + inputTouch;
+        Vector3 p = GetBaseInput() + GetBaseInputTouch();
         
         if (p.sqrMagnitude > 0)
         {
@@ -142,6 +142,14 @@ public class FlyCamera : MonoBehaviour
         }
 
         return positionAux;
+    }
+
+    private Vector3 GetBaseInputTouch()
+    {
+        Vector3 input = inputTouch;
+        inputTouch = Vector3.zero;
+        
+        return input;
     }
 
     private Vector3 GetBaseInput()
