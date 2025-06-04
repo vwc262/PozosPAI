@@ -67,41 +67,44 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
 
     public void SetRegional()
     {
-        regional = sitio.dataSitio.Estructura;
-
-        if (regional != regionalAnt)
+        if (sitio != null)
         {
-            regionalAnt = regional;
-            
-            if (TextRegionalNombre != null)
-                TextRegionalNombre.text = ControlDatos.singleton.GetNameRegionByID(regional);
+            regional = sitio.dataSitio.Estructura;
 
-            foreach (var uiSitio in sitiosUIParticular)
+            if (regional != regionalAnt)
             {
-                Destroy(uiSitio);
-            }
-            
-            sitiosUIParticular.Clear();
+                regionalAnt = regional;
 
-            if (ControlDatos._singletonExists)
-            {
-                foreach (var sitio in ControlDatos.singleton.listSitios)
+                if (TextRegionalNombre != null)
+                    TextRegionalNombre.text = ControlDatos.singleton.GetNameRegionByID(regional);
+
+                foreach (var uiSitio in sitiosUIParticular)
                 {
-                    //ControlMarcadorSitio controlMarcadorSitio = sitio.controlMarcadorMap;
+                    Destroy(uiSitio);
+                }
 
-                    // if (controlMarcadorSitio != null)
-                    // {
-                    if (sitio.dataSitio.Estructura == regional)
+                sitiosUIParticular.Clear();
+
+                if (ControlDatos._singletonExists)
+                {
+                    foreach (var sitio in ControlDatos.singleton.listSitios)
                     {
-                        GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
-                        
-                        ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
-                        if (controlSitioUI != null)
-                            controlSitioUI.SetSitio(sitio);
-                        
-                        sitiosUIParticular.Add(instance);
+                        //ControlMarcadorSitio controlMarcadorSitio = sitio.controlMarcadorMap;
+
+                        // if (controlMarcadorSitio != null)
+                        // {
+                        if (sitio.dataSitio.Estructura == regional)
+                        {
+                            GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
+
+                            ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
+                            if (controlSitioUI != null)
+                                controlSitioUI.SetSitio(sitio);
+
+                            sitiosUIParticular.Add(instance);
+                        }
+                        // }
                     }
-                    // }
                 }
             }
         }
