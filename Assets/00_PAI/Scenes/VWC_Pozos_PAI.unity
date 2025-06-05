@@ -49854,7 +49854,6 @@ MonoBehaviour:
   zoomIncrement: 0.025
   DesplacementZoomIn: 10000
   DesplacementZoomOut: 10000
-  ZoomToPosition: 1
   ZoomDeatZone: 0.03
   zoomDelta: 0.01
   zoomValMultiply: 0.5
@@ -67418,9 +67417,13 @@ MonoBehaviour:
   MultiplyInputTiltTouch: 0.001
   MultiplyInputMoveTouchMax: 0.1
   MultiplyInputMoveTouchMin: 0.03
+  MultiplyInputMoveZoomTouch: 50000
   distance: 0
   distanceAnt: 0
+  zoomIncrement: 0
   isInitTouch2Fingers: 0
+  moveCameraZoom: 1
+  posCenterZoom: {x: 0, y: 0}
 --- !u!1 &1590114795
 GameObject:
   m_ObjectHideFlags: 0
