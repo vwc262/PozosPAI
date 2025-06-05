@@ -26,6 +26,7 @@ public class ControlAutomationSitio : MonoBehaviour
     public float updateRate = 5;
     private float countdown;
 
+    public bool isEnbledEditors = false;
     public bool isDataChanged;
     public bool isActiveAutomation = false;
     public int index;
@@ -92,6 +93,11 @@ public class ControlAutomationSitio : MonoBehaviour
                 
                 if (Button_Alarma != null)
                     Button_Alarma.gameObject.SetActive(dataSitio.automationData.AutomationError);
+
+                if (!isEnbledEditors)
+                {
+                    UpdateEditores();
+                }
             }
         }
     }
@@ -279,6 +285,8 @@ public class ControlAutomationSitio : MonoBehaviour
 
     public void SetEnableEditors(bool enable)
     {
+        isEnbledEditors = enable;
+        
         toggle_Automation.interactable = enable;
         Input_Voltage.interactable = enable;
         Button_UP.interactable = enable;

@@ -212,7 +212,6 @@ public class ControlMoveCameraMap : MonoBehaviour
     
     public void MoveHome()
     {
-        //flyCamera.SetPosition(OrigenPos);
         MoveCameraMapa(cinemachineBrainMainCamera.transform, OrigenPos);
     }
     
@@ -231,11 +230,6 @@ public class ControlMoveCameraMap : MonoBehaviour
             SetZoom(_input);
         }
     }
-
-    // private void SetTouchInputTilt(Vector2 _input)
-    // {
-    //
-    // }
     
     public void SetTouchInputTilt(float _input)
     {
@@ -355,8 +349,11 @@ public class ControlMoveCameraMap : MonoBehaviour
         FinalPosition = transform.position + _displacement;
 
         transform.position = FinalPosition;
-        
-        //SetTouchInputZoomEvent.Raise(zoomUpPivot.GetComponent<CameraZoomMapa>().zoomVal);
+    }
+
+    public void MoveCameraAnimDisplacemment(Vector3 _displacement)
+    {
+        MoveCameraMapa(cinemachineBrainMainCamera.transform, transform.position + _displacement);
     }
 
     public void SetPointZoom(float x, float z, float zoom)
