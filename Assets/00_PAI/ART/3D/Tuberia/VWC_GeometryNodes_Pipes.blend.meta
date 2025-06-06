@@ -3,7 +3,42 @@ guid: 6a39b064990d89a4eaceb3987de3d54a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_NuevoMapa
+    second: {fileID: 2100000, guid: f2eeafcf963b3e048a7e8475b91a57ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Tubo
+    second: {fileID: 2100000, guid: dd1031b7cb118b34db1c37d8d05309b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_agua
+    second: {fileID: 2100000, guid: 3fe50a85ca483e7428bc70f89f78f6ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_brida
+    second: {fileID: 2100000, guid: dd8280d72ce462746bfad55d86e18be4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_conexion_C
+    second: {fileID: 2100000, guid: c8a8904569b5a4b499976c0be1c305ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_conexiones_T
+    second: {fileID: 2100000, guid: bb403a3b78d20384f9a7fff3f65083a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_mapa
+    second: {fileID: 2100000, guid: a33b29f745d055f429e6fa90691590ba, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
