@@ -10,16 +10,13 @@ public class Etiqueta_Manager : MonoBehaviour
 
     //public GameObject panel;
     
-
-    public SpriteRenderer imageEtiqueta;
-    
-    public Sprite imageStateOff;
-    public Sprite imageStateOn;
+    public SpriteRenderer imageState;
     
     public TMPro.TMP_Text textGasto;
     public TMPro.TMP_Text textPresion;
 
     public LineRenderer line;
+    
     public Color colorConexion;
     public Color colorDesconexion;
     
@@ -45,15 +42,13 @@ public class Etiqueta_Manager : MonoBehaviour
         {
             if (ParticularManager.singleton.sitio.dataInTime)
             {
-                // panel.GetComponent<Image>().sprite = imageStateOn;
-                imageEtiqueta.sprite = imageStateOn;
-                line.material.color = colorConexion;
+                imageState.color = colorConexion;
+                line.material.SetColor("_Emision_color", colorConexion);
             }
             else
             {
-                //panel.GetComponent<Image>().sprite = imageStateOff;
-                imageEtiqueta.sprite = imageStateOff;
-                line.material.color = colorDesconexion;
+                imageState.color = colorDesconexion;
+                line.material.SetColor("_Emision_color", colorDesconexion);
             }
             
             List<SignalBase> gasto = ParticularManager.singleton.sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
