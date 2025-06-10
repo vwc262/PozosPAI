@@ -13,7 +13,7 @@ public class ControlBombaParticular : MonoBehaviour
     public Color colorMantenimiento;
     
     public List<Renderer>  renderersBomba;
-    //public Rotator rotatorBombaParticular;
+    public Rotator rotatorBombaParticular;
     
     void Start()
     {
@@ -48,8 +48,8 @@ public class ControlBombaParticular : MonoBehaviour
                             HDMaterial.ValidateMaterial(rb.material);
                         }
                         // rotatorBombaParticular.fill = 0;
-                        // rotatorBombaParticular.fillSpeed = 0;
-                        // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
+                        //rotatorBombaParticular.fillSpeed = 0;
+                        rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         
                         break;
                     case 1: 
@@ -59,7 +59,7 @@ public class ControlBombaParticular : MonoBehaviour
                             HDMaterial.ValidateMaterial(rb.material);
                         }
                         // rotatorBombaParticular.fillSpeed = 0.6f;
-                        // rotatorBombaParticular.rotDirection = new Vector3(0, 100, 0);
+                        rotatorBombaParticular.rotDirection = new Vector3(0, 100, 0);
                         break;
                     case 2: 
                         foreach (var rb in renderersBomba)
@@ -69,7 +69,7 @@ public class ControlBombaParticular : MonoBehaviour
                         }
                         // rotatorBombaParticular.fill = 0;
                         // rotatorBombaParticular.fillSpeed = 0;
-                        // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
+                        rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         break;
                     case 3: 
                         foreach (var rb in renderersBomba)
@@ -79,7 +79,7 @@ public class ControlBombaParticular : MonoBehaviour
                         }
                         // rotatorBombaParticular.fill = 0;
                         // rotatorBombaParticular.fillSpeed = 0;
-                        // rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
+                        rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         break;
                 }
             }

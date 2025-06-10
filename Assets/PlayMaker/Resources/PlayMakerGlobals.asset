@@ -40,7 +40,12 @@ MonoBehaviour:
   events:
   - logged
   - noLogged
-  - particularVC0
-  - particularVC1
-  - particularVC2
-  - particularVC3
+  - turnOn_automatismo
+  - turnOff_automatismo
+  - toggle
+  - send
+  - toggleSunRotation
+  - particularVCDron
+  - particularVCEtiqueta
+  - particularVCGeneral
+  - particularVCPozo

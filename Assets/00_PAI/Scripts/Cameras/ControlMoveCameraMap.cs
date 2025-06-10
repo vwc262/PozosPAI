@@ -320,8 +320,9 @@ public class ControlMoveCameraMap : MonoBehaviour
     {
         if (coroutineMoveCamera != null)
             StopCoroutine(coroutineMoveCamera);
-                
-        coroutineMoveCamera = StartCoroutine(animCameraMapa(origin, destiny));
+        
+        if (gameObject.activeInHierarchy)
+            coroutineMoveCamera = StartCoroutine(animCameraMapa(origin, destiny));
     }
     
     public IEnumerator animCameraMapa(Transform origin, Vector3 destiny)

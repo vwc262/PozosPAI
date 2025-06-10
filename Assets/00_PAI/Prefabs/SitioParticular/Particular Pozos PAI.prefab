@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297906062359311707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.012622847, y: 0.92044044, z: -0.029826503, w: 0.3895388}
-  m_LocalPosition: {x: -3.9194477, y: 8, z: 3.8012547}
+  m_LocalRotation: {x: -0.029820394, y: 0.38998356, z: -0.0126372585, w: -0.9202521}
+  m_LocalPosition: {x: 3.902941, y: 8, z: -3.818292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -352,7 +352,7 @@ MonoBehaviour:
         serializedVersion: 2
         x: 219
         y: 117
-        width: 111.46
+        width: 131.25
         height: 16
       isBreakpoint: 0
       isSequence: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
         serializedVersion: 2
         x: 368
         y: 118
-        width: 113.62
+        width: 132.23001
         height: 16
       isBreakpoint: 0
       isSequence: 0
@@ -672,7 +672,7 @@ MonoBehaviour:
         serializedVersion: 2
         x: 512
         y: 116
-        width: 120.5
+        width: 148.72
         height: 16
       isBreakpoint: 0
       isSequence: 0
@@ -832,7 +832,7 @@ MonoBehaviour:
         serializedVersion: 2
         x: 669
         y: 116
-        width: 132.64
+        width: 151.8
         height: 16
       isBreakpoint: 0
       isSequence: 0
@@ -989,21 +989,21 @@ MonoBehaviour:
     - name: FINISHED
       isSystemEvent: 1
       isGlobal: 0
-    - name: particularVC0
+    - name: particularVCDron
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC1
+    - name: particularVCEtiqueta
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC2
+    - name: particularVCGeneral
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC3
+    - name: particularVCPozo
       isSystemEvent: 0
       isGlobal: 1
     globalTransitions:
     - fsmEvent:
-        name: particularVC0
+        name: particularVCDron
         isSystemEvent: 0
         isGlobal: 1
       toState: CameraDron
@@ -1012,7 +1012,7 @@ MonoBehaviour:
       linkTarget: 0
       colorIndex: 0
     - fsmEvent:
-        name: particularVC1
+        name: particularVCPozo
         isSystemEvent: 0
         isGlobal: 1
       toState: CameraPozo
@@ -1021,7 +1021,7 @@ MonoBehaviour:
       linkTarget: 0
       colorIndex: 0
     - fsmEvent:
-        name: particularVC2
+        name: particularVCGeneral
         isSystemEvent: 0
         isGlobal: 1
       toState: CameraGeneral
@@ -1030,7 +1030,7 @@ MonoBehaviour:
       linkTarget: 0
       colorIndex: 0
     - fsmEvent:
-        name: particularVC3
+        name: particularVCEtiqueta
         isSystemEvent: 0
         isGlobal: 1
       toState: Camera Etiqueta
@@ -1069,16 +1069,16 @@ MonoBehaviour:
     keepDelayedEventsOnStateExit: 0
     preprocessed: 0
     ExposedEvents:
-    - name: particularVC0
+    - name: particularVCDron
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC1
+    - name: particularVCPozo
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC2
+    - name: particularVCGeneral
       isSystemEvent: 0
       isGlobal: 1
-    - name: particularVC3
+    - name: particularVCEtiqueta
       isSystemEvent: 0
       isGlobal: 1
     OutputEvents: []

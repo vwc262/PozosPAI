@@ -210,6 +210,7 @@ public class ParticularManager : Singleton<ParticularManager>
             currentParticularSceneName = sceneName;
             
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            StartCoroutine(waitLoading());
             
             SetUIParticular();
         }
