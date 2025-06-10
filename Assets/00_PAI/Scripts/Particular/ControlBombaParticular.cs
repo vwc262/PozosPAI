@@ -13,6 +13,7 @@ public class ControlBombaParticular : MonoBehaviour
     public Color colorMantenimiento;
     
     public List<Renderer>  renderersBomba;
+    public GameObject waterTubo;
     public Rotator rotatorBombaParticular;
     
     void Start()
@@ -47,38 +48,38 @@ public class ControlBombaParticular : MonoBehaviour
                             rb.material.SetColor("_BaseColor", colorSinDatos);
                             HDMaterial.ValidateMaterial(rb.material);
                         }
-                        // rotatorBombaParticular.fill = 0;
-                        //rotatorBombaParticular.fillSpeed = 0;
+                        waterTubo.SetActive(false);
                         rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
-                        
                         break;
+                    
                     case 1: 
                         foreach (var rb in renderersBomba)
                         {
                             rb.material.SetColor("_BaseColor", colorEncendido);
                             HDMaterial.ValidateMaterial(rb.material);
                         }
-                        // rotatorBombaParticular.fillSpeed = 0.6f;
+                        waterTubo.SetActive(true);
                         rotatorBombaParticular.rotDirection = new Vector3(0, 100, 0);
                         break;
+                    
                     case 2: 
                         foreach (var rb in renderersBomba)
                         {
                             rb.material.SetColor("_BaseColor", colorApagado);
                             HDMaterial.ValidateMaterial(rb.material);
                         }
-                        // rotatorBombaParticular.fill = 0;
-                        // rotatorBombaParticular.fillSpeed = 0;
+                        waterTubo.SetActive(false);
                         rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         break;
                     case 3: 
+                        
                         foreach (var rb in renderersBomba)
                         {
                             rb.material.SetColor("_BaseColor", colorMantenimiento);
                             HDMaterial.ValidateMaterial(rb.material);
+                            waterTubo.SetActive(false);
                         }
-                        // rotatorBombaParticular.fill = 0;
-                        // rotatorBombaParticular.fillSpeed = 0;
+                        waterTubo.SetActive(false);
                         rotatorBombaParticular.rotDirection = new Vector3(0, 0, 0);
                         break;
                 }
