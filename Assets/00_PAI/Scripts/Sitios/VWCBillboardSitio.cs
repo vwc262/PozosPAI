@@ -108,7 +108,7 @@ public class VWCBillboardSitio : MonoBehaviour
             transform.localPosition = newPos;
         }
         
-        RecalculatePerspectiveDeformation();
+        //RecalculatePerspectiveDeformation();
     }
 
     public void MoveGUISelectedSitio()
