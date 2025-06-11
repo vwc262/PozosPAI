@@ -1783,7 +1783,9 @@ MonoBehaviour:
   colorSinDatos: {r: 1, g: 0, b: 0, a: 1}
   colorMantenimiento: {r: 1, g: 0, b: 0, a: 1}
   renderersBomba:
-  - {fileID: 2830897716499296771}
+  - {fileID: 0}
+  waterTubo: {fileID: 0}
+  rotatorBombaParticular: {fileID: 0}
 --- !u!65 &2595336583397905943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2213,11 +2215,6 @@ PrefabInstance:
 --- !u!4 &534354116071225674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0ecb567c1d7bbe43b05578acc65222b, type: 3}
-  m_PrefabInstance: {fileID: 63280474940513953}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2830897716499296771 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6365399124318376798, guid: c0ecb567c1d7bbe43b05578acc65222b, type: 3}
   m_PrefabInstance: {fileID: 63280474940513953}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7369711907498956412 stripped
