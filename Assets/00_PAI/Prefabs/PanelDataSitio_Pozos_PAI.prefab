@@ -1665,7 +1665,6 @@ MonoBehaviour:
         ConfStarupTime: 0
         ConfWindowTime: 0
         ConfNominalVoltage: 0
-        ConfToleranceVoltage: 0
     dataAforo:
       isAforado: 0
       fecha: ---
@@ -1943,7 +1942,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Corriente L3-L1
+  m_Text: Corriente L3
 --- !u!1 &1988673228091242281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,7 +2314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Corriente L2-L3
+  m_Text: Corriente L2
 --- !u!1 &2326409957766111209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,7 +3111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Corriente L1-L2
+  m_Text: Corriente L1
 --- !u!1 &3202387316047038694
 GameObject:
   m_ObjectHideFlags: 0

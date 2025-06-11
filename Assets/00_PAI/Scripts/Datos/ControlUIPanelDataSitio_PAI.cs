@@ -177,7 +177,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 if (corrientesMotor.Count > 0)
                 {
                     if (corrientesMotor[0].DentroRango)
-                        text_corriente_L1.text = $"{corrientesMotor[0].Valor:F0}" + " Amp";
+                        text_corriente_L1.text = $"{corrientesMotor[0].Valor:F0}" + " A";
                     else
                         text_corriente_L1.text = "-";
                 }
@@ -190,7 +190,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 if (corrientesMotor.Count > 1)
                 {
                     if (corrientesMotor[1].DentroRango)
-                        text_corriente_L2.text = $"{corrientesMotor[1].Valor:F0}" + " Amp";
+                        text_corriente_L2.text = $"{corrientesMotor[1].Valor:F0}" + " A";
                     else
                         text_corriente_L2.text = "-";
                 }
@@ -203,7 +203,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 if (corrientesMotor.Count > 2)
                 {
                     if (corrientesMotor[2].DentroRango)
-                        text_corriente_L3.text = $"{corrientesMotor[2].Valor:F0}" + " Amp";
+                        text_corriente_L3.text = $"{corrientesMotor[2].Valor:F0}" + " A";
                     else
                         text_corriente_L3.text = "-";
                 }
