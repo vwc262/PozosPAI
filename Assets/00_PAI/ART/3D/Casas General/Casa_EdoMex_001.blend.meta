@@ -3,7 +3,12 @@ guid: 472d647d754c95d4cb8f6571953f5b60
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Casa_EdoMex_001
+    second: {fileID: 2100000, guid: 3c3577f70de00e946883c92ca0ccefee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
