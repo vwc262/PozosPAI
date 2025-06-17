@@ -265,7 +265,7 @@ public class ControlAutomationSubestacion : MonoBehaviour
 
             if (segmento != null)
             {
-                Nombre = $"Transformador: {segmento.Descripcion}";
+                Nombre = $"Subestación: {segmento.Descripcion}";
                 toleranceVoltage = segmento.Tolerancia;
             }
             
