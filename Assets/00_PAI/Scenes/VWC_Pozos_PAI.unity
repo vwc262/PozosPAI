@@ -93530,18 +93530,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 5508643566013940686, guid: 766b9007a01b4dc46995dae2d561d48c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2058406063}
-    - target: {fileID: 5508643566013940686, guid: 766b9007a01b4dc46995dae2d561d48c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePanelAutomation
-      objectReference: {fileID: 0}
-    - target: {fileID: 5508643566013940686, guid: 766b9007a01b4dc46995dae2d561d48c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ControlAutomation, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 5635514376459655639, guid: 766b9007a01b4dc46995dae2d561d48c, type: 3}
       propertyPath: m_Camera
       value: 
