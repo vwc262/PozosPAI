@@ -17,6 +17,7 @@ public class ControlAutomationSitio : MonoBehaviour
     public TMPro.TMP_Text texto_StartupTime;
     public TMPro.TMP_Text texto_StabilitationTime;
     public TMPro.TMP_Text texto_WindowTime;
+    public TMPro.TMP_Text texto_Version;
     
     public Toggle toggle_Automation;
     public Button Button_UP;
@@ -78,7 +79,7 @@ public class ControlAutomationSitio : MonoBehaviour
             {
                 if (texto_Orden != null)
                     texto_Orden.text = GetIndex();
-                
+
                 if (texto_Tolerance != null)
                     texto_Tolerance.text = GetTolarence();
 
@@ -90,6 +91,9 @@ public class ControlAutomationSitio : MonoBehaviour
 
                 if (texto_WindowTime != null)
                     texto_WindowTime.text = GetWindowTime();
+            
+                if (texto_Version != null)
+                    texto_Version.text = GetVersion().ToString();
                 
                 if (Button_Alarma != null)
                     Button_Alarma.gameObject.SetActive(dataSitio.automationData.AutomationError);
@@ -141,6 +145,9 @@ public class ControlAutomationSitio : MonoBehaviour
 
             if (texto_WindowTime != null)
                 texto_WindowTime.text = GetWindowTime();
+            
+            if (texto_Version != null)
+                texto_Version.text = GetVersion().ToString();
         }
     }
 
@@ -190,6 +197,13 @@ public class ControlAutomationSitio : MonoBehaviour
         return subestacion.useConfigurationData ?
             dataSitio.automationData.ConfNominalVoltage.ToString():
             dataSitio.automationData.nominalVoltage.ToString();
+    }
+    
+    public int GetVersion()
+    {
+        return subestacion.useConfigurationData ?
+            dataSitio.automationData.ConfVersion:
+            dataSitio.automationData.version;
     }
 
     public void SetActiveAutomation(bool active)
