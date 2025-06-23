@@ -758,7 +758,7 @@ MonoBehaviour:
           name: toggle
           isSystemEvent: 0
           isGlobal: 1
-        toState: toggle
+        toState: clic
         linkStyle: 0
         linkConstraint: 0
         linkTarget: 0
@@ -860,12 +860,12 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: DobleClickRegion
+          value: ToggleValueIsOn
         fsmObjectParams:
-        - useVariable: 0
-          name: 
+        - useVariable: 1
+          name: ControlRegionUI
           tooltip: 
-          showInInspector: 0
+          showInInspector: 1
           networkSync: 0
           typeName: ControlRegionUILabel
           value: {fileID: 6335507704571647722}
@@ -921,7 +921,7 @@ MonoBehaviour:
         - manualUI
         paramDataPos: 000000000000000000000000000000000000000001000000
         paramByteDataSize: 000000000000000000000000000000000100000001000000
-    - name: toggle
+    - name: clic
       description: 
       colorIndex: 0
       position:
@@ -967,12 +967,12 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: ToggleValueIsOn
+          value: CenterRegion
         fsmObjectParams:
-        - useVariable: 1
-          name: ControlRegionUI
+        - useVariable: 0
+          name: 
           tooltip: 
-          showInInspector: 1
+          showInInspector: 0
           networkSync: 0
           typeName: ControlRegionUILabel
           value: {fileID: 6335507704571647722}
@@ -1081,7 +1081,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1

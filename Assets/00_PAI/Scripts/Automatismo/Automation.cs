@@ -17,11 +17,14 @@ public class Automation
     public int nominalVoltage;
     public float toleranceVoltage;
 
+    public int version;
+
     public bool ConfIsActiveAutomation;
     public int ConfIndex;
     public int ConfStarupTime;
     public int ConfWindowTime;
     public int ConfNominalVoltage;
+    public int ConfVersion;
     //public float ConfToleranceVoltage;
 
     public void SetDataAutomation(Automation automation)

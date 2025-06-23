@@ -46,10 +46,10 @@ public class ControlRegionUILabel : MonoBehaviour
         onValueIsOnChange.Invoke(IsOn);
     }
 
-    public void DobleClickRegion()
+    public void CenterRegion()
     {
         if (ControlMoveCamera._singletonExists)
-            ControlMoveCamera.singleton.SetMoveCameraByRigionID(regionID);
+            ControlMoveCamera.singleton.SetMoveCameraByRegionID(regionID);
     }
 }
 

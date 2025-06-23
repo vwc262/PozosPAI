@@ -12,7 +12,7 @@ public class ControlMoveCamera : Singleton<ControlMoveCamera>
 
     public List<ControlSitio> listSitiosEstructura;
     
-    public void SetMoveCameraByRigionID(int estructura)
+    public void SetMoveCameraByRegionID(int estructura)
     {
         if (ControlDatos._singletonExists)
         {

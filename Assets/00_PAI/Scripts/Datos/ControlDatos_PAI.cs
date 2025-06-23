@@ -110,6 +110,7 @@ public class ControlDatos_PAI : ControlDatos
                         sitio.dataSitio.automationData.AutomationError =
                             estacion.BanderaArranqueFallido == 1 ? true : false;
                         sitio.dataSitio.automationData.nominalVoltage = estacion.VNominal;
+                        sitio.dataSitio.automationData.version = estacion.Version;
 
                         if (segmento != null)
                         {
@@ -142,6 +143,7 @@ public class ControlDatos_PAI : ControlDatos
                             estacion.Automatismo == 1 ? true : false;
                         sitio.dataSitio.automationData.ConfIndex = estacion.Secuencia;
                         sitio.dataSitio.automationData.ConfNominalVoltage = estacion.VNominal;
+                        sitio.dataSitio.automationData.ConfVersion = estacion.Version;
 
                         if (segmento != null)
                         {
