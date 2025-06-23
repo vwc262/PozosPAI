@@ -136,7 +136,7 @@ public class ControlDatos : Singleton<ControlDatos>
 
         var cont = 0;
         
-        foreach (SiteDescription sitio in RequestAPI.singleton.dataRequestAPI.infraestructura.Sites)
+        foreach (SiteDescription sitio in RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.OrderByDescending(x=>x.Latitud))
         {
             ControlSitio newSitio = new ControlSitio();
             newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio);
