@@ -49,6 +49,12 @@ public class RayCastSelectSitio : MonoBehaviour
 			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().SetSelectedSitio();
 			    hit.collider.GetComponentInParent<ControlMarcadorSitio>().CreateSphere();
 		    }
+		    
+		    if (hit.collider.GetComponentInParent<ControlLetrero>() != null)
+		    {
+			    hit.collider.GetComponentInParent<ControlLetrero>().CenterRegion();
+			    
+		    }
 	    }
     }
     
