@@ -3475,9 +3475,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BoyAforos, Assembly-CSharp
-        m_MethodName: ReadUpdateAforos
+      - m_Target: {fileID: 5327615473540976726}
+        m_TargetAssemblyTypeName: ControlSitiosUI_ListaPAI, Assembly-CSharp
+        m_MethodName: UpdateAforos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4175,7 +4175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4597844310393705236}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: Separador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4362,10 +4362,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayMakerFSM, PlayMaker
-        m_MethodName: SendEvent
-        m_Mode: 5
+      - m_Target: {fileID: 5327615473540976726}
+        m_TargetAssemblyTypeName: ControlSitiosUI_ListaPAI, Assembly-CSharp
+        m_MethodName: TogglePanelAnalitics
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4540,8 +4540,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BoyAforos, Assembly-CSharp
+      - m_Target: {fileID: 5327615473540976726}
+        m_TargetAssemblyTypeName: ControlSitiosUI_ListaPAI, Assembly-CSharp
         m_MethodName: ClearAforos
         m_Mode: 1
         m_Arguments:
@@ -4871,8 +4871,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ControlSitioUIPozosPaiNorte, Assembly-CSharp
+      - m_Target: {fileID: 5327615473540976726}
+        m_TargetAssemblyTypeName: ControlSitiosUI_ListaPAI, Assembly-CSharp
         m_MethodName: DeseleccionarAll
         m_Mode: 1
         m_Arguments:

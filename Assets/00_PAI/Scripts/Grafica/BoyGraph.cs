@@ -134,7 +134,7 @@ public class BoyGraph : MonoBehaviour
             idSitio = _DataSitio.idSitio % 100;
             EstructuraSitio = (int)_DataSitio.Estructura;
             
-            RequestAPI.singleton.GetHistricosByDates(
+            RequestAPI_Historicos.singleton.GetHistricosByDates(
                 idSitio,(int)_DataSitio.Estructura,
                 minDate,
                 maxDate,
@@ -146,7 +146,7 @@ public class BoyGraph : MonoBehaviour
             idSitio = _DataSitio.idSitio;
             EstructuraSitio = (int)_DataSitio.Estructura;
             
-            RequestAPI.singleton.GetHistricosByDates(
+            RequestAPI_Historicos.singleton.GetHistricosByDates(
                 idSitio,
                 minDate,
                 maxDate,
@@ -415,7 +415,7 @@ public class BoyGraph : MonoBehaviour
             
             if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
-                RequestAPI.singleton.GetHistricosByDates(
+                RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
                     minDate,
                     maxDate,
@@ -424,7 +424,7 @@ public class BoyGraph : MonoBehaviour
             }
             else
             {
-                RequestAPI.singleton.GetHistricosByDates(
+                RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,
                     minDate,
                     maxDate,
@@ -438,7 +438,7 @@ public class BoyGraph : MonoBehaviour
             
             if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
-                RequestAPI.singleton.GetHistricosByDates(
+                RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
                     minDate,
                     maxDate,
@@ -447,7 +447,7 @@ public class BoyGraph : MonoBehaviour
             }
             else
             {
-                RequestAPI.singleton.GetHistricosByDates(
+                RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,
                     minDate,
                     maxDate,

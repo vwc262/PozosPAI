@@ -8,7 +8,7 @@ using SFB;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class BoyAforos : MonoBehaviour
+public class BoyAforos : Singleton<BoyAforos>
 {
     // Hola Boy
     public List<string> lineas;
@@ -134,29 +134,6 @@ public class BoyAforos : MonoBehaviour
                     if (uiSitio.toggleOverride != null)
                         uiSitio.toggleOverride.onValueChanged.Invoke(uiSitio.toggleOverride.isOn);
                     
-                }
-            }
-        }*/
-    }
-
-    public void ClearAforos()
-    {
-        /*if (controlSitioUI != null)
-        {
-            foreach (var sitio in controlSitioUI.sitios)
-            {
-                var uiSitio = sitio.GetComponent<ControlUISitio>();
-
-                if (uiSitio != null)
-                {
-                    // if (uiSitio.TooltipOverride != null)
-                    //     uiSitio.TooltipOverride.enabled = false;
-                        
-                    if (uiSitio.toggleOverride != null)
-                        uiSitio.toggleOverride.isOn = false;
-                    
-                    if (uiSitio.toggleOverride != null)
-                        uiSitio.toggleOverride.onValueChanged.Invoke(uiSitio.toggleOverride.isOn);
                 }
             }
         }*/

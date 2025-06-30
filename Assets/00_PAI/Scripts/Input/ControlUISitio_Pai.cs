@@ -74,7 +74,7 @@ public class ControlUISitio_Pai : ControlUISitio
             if (textoVoltaje != null)
                 textoVoltaje.text = $"{sitio.dataSitio.voltaje:F2} V";
 
-            if (!dataOverwrited)
+            if (!sitio.dataAforo.isAforado)
             {
                 List<SignalBase> gasto = sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
                 

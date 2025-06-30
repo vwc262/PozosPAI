@@ -29,7 +29,7 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
                     BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
                     BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
 
-                    RequestAPI.singleton.GetHistricosByDates(
+                    RequestAPI_Historicos.singleton.GetHistricosByDates(
                         BoyGraph.idSitio, (int)sitio.dataSitio.Estructura,
                         BoyGraph.minDate,
                         BoyGraph.maxDate,
@@ -41,7 +41,7 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
                     BoyGraph.idSitio = sitio.dataSitio.idSitio;
                     BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;
 
-                    RequestAPI.singleton.GetHistricosByDates(
+                    RequestAPI_Historicos.singleton.GetHistricosByDates(
                         BoyGraph.idSitio,
                         BoyGraph.minDate,
                         BoyGraph.maxDate,

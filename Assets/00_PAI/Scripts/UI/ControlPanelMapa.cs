@@ -28,4 +28,10 @@ public class ControlPanelMapa : MonoBehaviour
         if (ControlLogin._singletonExists)
             ControlLogin.singleton.CloseLoginPanel();
     }
+
+    public void OpenGraficadorWeb()
+    {
+        if (ControlManager._singletonExists)
+            ControlManager.singleton.OpenGraficadorWeb();
+    }
 }

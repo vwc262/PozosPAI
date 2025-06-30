@@ -5,8 +5,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BalanceGastoGUI : MonoBehaviour
+public class BalanceGastoGUI : Singleton<BalanceGastoGUI>
 {
+    public PlayMakerFSM analiticsFSM;
+    
     private void Update()
     {
         UpdateUI();
@@ -15,5 +17,11 @@ public class BalanceGastoGUI : MonoBehaviour
     public virtual void UpdateUI()
     {
 
+    }
+    
+    public void SendEventFSMPanelAnalitics(string eventName)
+    {
+        if (analiticsFSM != null)
+            analiticsFSM.SendEvent(eventName);
     }
 }
