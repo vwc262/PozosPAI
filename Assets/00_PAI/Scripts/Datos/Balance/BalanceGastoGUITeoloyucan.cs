@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,6 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
     public float BalanceTotal;
     public float BalanceSelected;
 
-    private void Start()
-    {
-        if (ControlDatos._singletonExists)
-            ControlDatos.singleton.DatosInicializados.AddListener(ChangeUIText);
-    }
-    
     public void ChangeUIText()
     {
         if (RequestAPI._singletonExists)
@@ -44,7 +39,7 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
             {
                 if (ControlSitiosUI_Lista.singleton.sitiosOrdenados.dictionaryListSitios.ContainsKey(i))
                     ListBalances[i].Balance = ControlSitiosUI_Lista.singleton.sitiosOrdenados.dictionaryListSitios[i]
-                        .Select(x => x.sitio.GetGasto()).Sum();
+                        .Select(x => x.sitio.GetGastoAnalitics()).Sum();
 
                 ListBalances[i].SetValue(ListBalances[i].Balance.ToString());
             }
@@ -61,7 +56,7 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
                 if (ControlSitiosUI_Lista.singleton.sitiosOrdenados.dictionaryListSitios.ContainsKey(i))
                     BalanceSelected += ControlSitiosUI_Lista.singleton.sitiosOrdenados.dictionaryListSitios[i]
                         .Where(x => x.sitio.SelectedForAnalitics)
-                        .Select(x => x.sitio.GetGasto()).Sum();
+                        .Select(x => x.sitio.GetGastoAnalitics()).Sum();
             }
 
             if (ControlBalanceSelected != null)

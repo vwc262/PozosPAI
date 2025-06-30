@@ -91,4 +91,33 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
             }
         }
     }
+
+    public void TogglePanelAnalitics()
+    {
+        if (BalanceGastoGUI._singletonExists)
+            BalanceGastoGUI.singleton.SendEventFSMPanelAnalitics("toggle");
+    }
+
+    public void UpdateAforos()
+    {
+        if (BoyAforos._singletonExists)
+            BoyAforos.singleton.ReadUpdateAforos();
+    }
+    
+    public void ClearAforos()
+    {
+          foreach (var sitio in sitios)
+          {
+              var uiSitio = sitio.GetComponent<ControlUISitio>();
+
+              if (uiSitio != null)
+              {
+                  if (uiSitio.toggleOverride != null)
+                      uiSitio.toggleOverride.isOn = false;
+
+                  if (uiSitio.toggleOverride != null)
+                      uiSitio.toggleOverride.onValueChanged.Invoke(uiSitio.toggleOverride.isOn);
+              }
+          }
+    }
 }

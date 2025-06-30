@@ -50,16 +50,10 @@ public class ControlUISitio : MonoBehaviour
 
     public Image onlineStatusImage;
 
-    public bool dataOverwrited;
+    //public bool dataOverwrited;
 
-    public bool selectedForAnalitics;
-    
-    //public DataPozoAnalitics dataPozo;
-    public DataPozoAnalitics dataAforo;
-    
     public Toggle toggleOverride;
     public Toggle toggleSelectForAnalitics;
-    //public SimpleTooltip TooltipOverride;
     
     public Vector2 sizeDelta;
 
@@ -83,41 +77,37 @@ public class ControlUISitio : MonoBehaviour
 
     public void SetSelectedForAnalitics(bool val)
     {
-        selectedForAnalitics = val;
+        sitio.SelectedForAnalitics = val;
     }
     
     public void SetOverwriteSitioData(bool val)
     {
-        dataOverwrited = val;
-        textGasto.gameObject.SetActive(!dataOverwrited);
-        textPresion.gameObject.SetActive(!dataOverwrited);
-        inputFieldGasto.gameObject.SetActive(dataOverwrited);
-        inputFieldPresion.gameObject.SetActive(dataOverwrited);
+        sitio.dataAforo.isAforado = val;
+        textGasto.gameObject.SetActive(!sitio.dataAforo.isAforado);
+        textPresion.gameObject.SetActive(!sitio.dataAforo.isAforado);
+        inputFieldGasto.gameObject.SetActive(sitio.dataAforo.isAforado);
+        inputFieldPresion.gameObject.SetActive(sitio.dataAforo.isAforado);
         
-        if (dataOverwrited)
+        if (sitio.dataAforo.isAforado)
         {
             updateDataAforoUI();
-        }
-        else
-        {
-
         }
     }
     
     public void updateDataAforoUI()
     {
-        inputFieldGasto.text = $"{dataAforo.gasto:F2}";
-        inputFieldPresion.text = $"{dataAforo.presion:F2}";
+        inputFieldGasto.text = $"{sitio.dataAforo.gasto:F2}";
+        inputFieldPresion.text = $"{sitio.dataAforo.presion:F2}";
     }
 
     public void SetAforoGasto(string val)
     {
-        dataAforo.gasto = float.Parse(val);
+        sitio.dataAforo.gasto = float.Parse(val);
     }
     
     public void SetAforoPresion(string val)
     {
-        dataAforo.presion = float.Parse(val);
+        sitio.dataAforo.presion = float.Parse(val);
     }
      
     private void OnEnable()

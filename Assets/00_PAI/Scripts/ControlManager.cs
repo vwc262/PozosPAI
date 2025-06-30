@@ -7,6 +7,8 @@ public class ControlManager : Singleton<ControlManager>
 
     public bool useCenterSitios;
     
+    public string url = "https://www.google.com.mx"; 
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -103,5 +105,10 @@ public class ControlManager : Singleton<ControlManager>
     {
         if (ControlDatos._singletonExists)
             ControlDatos.singleton.RecreateUIListSitios();
+    }
+    
+    public void OpenGraficadorWeb()
+    {
+        Application.OpenURL(url);
     }
 }
