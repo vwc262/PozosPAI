@@ -18,24 +18,24 @@ MonoBehaviour:
     m_Value: 1
   meteringMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
   luminanceSource:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 8.324874
+    m_Value: 11.430413
   compensation:
     m_OverrideState: 1
-    m_Value: -1.51
+    m_Value: -1
   limitMin:
     m_OverrideState: 1
-    m_Value: 7.1939354
+    m_Value: 8
   limitMax:
     m_OverrideState: 1
-    m_Value: 13.767122
+    m_Value: 15
   curveMap:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value:
       serializedVersion: 2
       m_Curve:
@@ -61,7 +61,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   limitMinCurveMap:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value:
       serializedVersion: 2
       m_Curve:
@@ -87,7 +87,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   limitMaxCurveMap:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value:
       serializedVersion: 2
       m_Curve:
@@ -113,43 +113,43 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   adaptationMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   adaptationSpeedDarkToLight:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 3
   adaptationSpeedLightToDark:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   weightTextureMask:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 0}
   histogramPercentages:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 40, y: 90}
   histogramUseCurveRemapping:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   targetMidGray:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   centerAroundExposureTarget:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   proceduralCenter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   proceduralRadii:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.3, y: 0.3}
   maskMinIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -30
   maskMaxIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 30
   proceduralSoftness:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.5
 --- !u!114 &-7040558264941034197
 MonoBehaviour:
@@ -724,7 +724,6 @@ MonoBehaviour:
   - {fileID: 5527293696352363444}
   - {fileID: -6684131155134625911}
   - {fileID: 7922941726509772328}
-  - {fileID: -7040558264941034197}
   - {fileID: 2986690707150985667}
   - {fileID: 5803028903793283147}
   - {fileID: -6353779829196160299}
@@ -732,6 +731,7 @@ MonoBehaviour:
   - {fileID: -1045400422586044221}
   - {fileID: -9188914321148705697}
   - {fileID: 2133258711330652667}
+  - {fileID: -7040558264941034197}
 --- !u!114 &432601958633967235
 MonoBehaviour:
   m_ObjectHideFlags: 3
