@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -34,17 +37,25 @@ public class AplicationControl : Singleton<AplicationControl>
     [DllImport("user32.dll")]
     private static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr processId);
     
+    [DllImport("user32.dll", SetLastError = true)]
+    private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+    
     [DllImport("user32.dll")]
     private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
     
     [DllImport("user32.dll")]
     private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
     
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetForegroundWindow();
+    
     private const int SW_RESTORE = 9; // Para restaurar la ventana si está minimizada
     private IntPtr unityWindowHandle;
     
     public float updateRate = 5;
     private float countdown;
+    
+    private string _targetProcessName = "chrome";
     
     void Start()
     {
@@ -67,6 +78,13 @@ public class AplicationControl : Singleton<AplicationControl>
                 CreateNoWindow = true,
                 UseShellExecute = false
             };
+
+            // ProcessStartInfo startInfo = new ProcessStartInfo
+            // {
+            //     FileName = file,
+            //     CreateNoWindow = false,
+            //     UseShellExecute = false
+            // };
             
             Process.Start(startInfo);
         }
@@ -109,13 +127,39 @@ public class AplicationControl : Singleton<AplicationControl>
         if (validaAplicationInFocus)
         {
             // Verificar si la ventana de Unity ya no está activa
-            if (GetActiveWindow() != unityWindowHandle)
+            if (IsChromeFocused())
             {
-                Debug.Log("La ventana perdió el foco. Recuperando...");
-                ForceFocusKeyboardSim();
+                Debug.Log("La ventana activa es chrome");
+            }
+            else
+            {
+                if (GetActiveWindow() != unityWindowHandle)
+                {
+                    Debug.Log("La ventana perdió el foco. Recuperando...");
+                    ForceFocusKeyboardSim();
+                }
             }
         }
 #endif
+    }
+    
+    public bool IsChromeFocused()
+    {
+        // Obtener la ventana activa
+        IntPtr foregroundWindow = GetForegroundWindow();
+        
+        if (foregroundWindow == IntPtr.Zero)
+            return false; // No hay ventana activa
+
+        // Obtener el ID del proceso de la ventana activa
+        uint processId;
+        GetWindowThreadProcessId(foregroundWindow, out processId);
+        
+        // Buscar el proceso por ID
+        Process foregroundProcess = Process.GetProcessById((int)processId);
+        
+        // Comparar el nombre del proceso (ignorando mayúsculas)
+        return foregroundProcess.ProcessName.Equals(_targetProcessName, StringComparison.OrdinalIgnoreCase);
     }
     
     private void RestoreWindowFocus()
