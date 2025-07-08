@@ -49,6 +49,12 @@ public class ControlSitio
         
         if (controlMarcadorMap != null)
             controlMarcadorMap.SeleccionarSitio();
+        
+        if (ControlBombas_PAI._singletonExists)
+            ((ControlBombas_PAI)ControlBombas_PAI.singleton).SendEventFSM("hide");
+        
+        if (ControlLogin._singletonExists)
+            ControlLogin.singleton.CloseLoginPanel();
     }
 
     public void DeseleccionarSitio()

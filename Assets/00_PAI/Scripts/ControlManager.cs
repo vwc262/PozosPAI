@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ControlManager : Singleton<ControlManager>
@@ -109,6 +110,7 @@ public class ControlManager : Singleton<ControlManager>
     
     public void OpenGraficadorWeb()
     {
-        Application.OpenURL(url);
+        //Application.OpenURL(url);
+        Process.Start("chrome.exe", "--kiosk " + url);
     }
 }
