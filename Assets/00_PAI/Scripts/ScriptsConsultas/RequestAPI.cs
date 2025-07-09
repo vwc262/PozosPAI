@@ -32,10 +32,10 @@ public class RequestAPI : Singleton<RequestAPI>
     
     [TabGroup("Comunication")] public bool versionInitialized = false;
 
-    [TabGroup("Historicos")] private int idSitio;
-    [TabGroup("Historicos")] private DateTime totalizadosTime1 = DateTime.Now.Subtract(TimeSpan.FromDays(2));
-    [TabGroup("Historicos")] private DateTime totalizadosTime2 = DateTime.Now;
-    [TabGroup("Historicos")] public RequestBoy.TipoPromedio tipoPromedio;
+    // [TabGroup("Historicos")] private int idSitio;
+    // [TabGroup("Historicos")] private DateTime totalizadosTime1 = DateTime.Now.Subtract(TimeSpan.FromDays(2));
+    // [TabGroup("Historicos")] private DateTime totalizadosTime2 = DateTime.Now;
+    // [TabGroup("Historicos")] public RequestBoy.TipoPromedio tipoPromedio;
 
     public Action TotalizadosCallback;
     
@@ -131,14 +131,14 @@ public class RequestAPI : Singleton<RequestAPI>
         LanzarPoleo();
     }
     
-    public void GetTotalizadosByDates(DateTime time1, DateTime time2, Action Callback)
-    {
-        totalizadosTime1 = time1;
-        totalizadosTime2 = time2;
-        GetTotalizados();
-
-        TotalizadosCallback = Callback;
-    }
+    // public void GetTotalizadosByDates(DateTime time1, DateTime time2, Action Callback)
+    // {
+    //     totalizadosTime1 = time1;
+    //     totalizadosTime2 = time2;
+    //     GetTotalizados();
+    //
+    //     TotalizadosCallback = Callback;
+    // }
 
     private void GetTotalizados()
     {
@@ -236,15 +236,15 @@ public class RequestAPI : Singleton<RequestAPI>
                 yield return unityWebRequest.SendWebRequest();
                 CallBack(unityWebRequest, method);
                 break;
-            case Metodos.UpdateTotalizados:
-                WWWForm formData = new WWWForm();
-                formData.AddField("fechaInicial", totalizadosTime1.ToString());
-                formData.AddField("fechaFinal", totalizadosTime2.ToString());
-                unityWebRequest = UnityWebRequest.Post(address, formData);
-                
-                yield return unityWebRequest.SendWebRequest();
-                CallBack(unityWebRequest, method);
-                break;
+            // case Metodos.UpdateTotalizados:
+            //     WWWForm formData = new WWWForm();
+            //     formData.AddField("fechaInicial", totalizadosTime1.ToString());
+            //     formData.AddField("fechaFinal", totalizadosTime2.ToString());
+            //     unityWebRequest = UnityWebRequest.Post(address, formData);
+            //     
+            //     yield return unityWebRequest.SendWebRequest();
+            //     CallBack(unityWebRequest, method);
+            //     break;
             // case Metodos.UpdateHistoricos:
             // {
             //     if (enableHistoricos)
@@ -354,7 +354,7 @@ public class RequestAPI : Singleton<RequestAPI>
             //         CallBackHistoricos();
             //     }
             // }
-                break;
+            // break;
             default:
                 break;
         }

@@ -292,10 +292,18 @@ public class BoyGraph : MonoBehaviour
         
         for (int i = 0; i < serieDatos.Count; i++)
         {
-            if (tipoPromedio == RequestBoy.TipoPromedio.HORAS)
-                LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5) + "   " + serieDatos[i].Tiempo.Substring(11,2) + "h");
-            else
-                LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5));
+            switch (tipoPromedio)
+            {
+                default:
+                    LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5));
+                    break;
+                case RequestBoy.TipoPromedio.HORAS:
+                    LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5) + "   " + serieDatos[i].Tiempo.Substring(11,2) + "h");
+                    break;
+                case RequestBoy.TipoPromedio.Min5:
+                    LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5) + "   " + serieDatos[i].Tiempo.Substring(11,5) + "h");
+                    break;
+            }
         }
     }
     
@@ -594,6 +602,12 @@ public class BoyGraph : MonoBehaviour
     {
         ActivateGrafica(TipoDatosGrafico.NIVEL);
         updateSeries();
+    }
+
+    public void setToggle5Min(bool isOn)
+    {
+        if (isOn)
+            tipoPromedio = RequestBoy.TipoPromedio.Min5;
     }
 
     public void setToggleHora(bool isOn)

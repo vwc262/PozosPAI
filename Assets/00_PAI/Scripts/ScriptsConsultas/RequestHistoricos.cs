@@ -11,7 +11,8 @@ public class RequestBoy
     {
         HORAS,
         DIAS,
-        MES
+        MES,
+        Min5
     }
 
     public int IdSignal;
