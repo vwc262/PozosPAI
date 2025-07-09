@@ -323,15 +323,15 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
 
-    [TabGroup("Totalizados")]
-    [Button]
-    public void GetTotalizadosByDates()
-    {
-        RequestAPI.singleton.GetTotalizadosByDates(
-            totalizadosTime1.dateTime, 
-            totalizadosTime2.dateTime,
-            ReadTotalizados);
-    }
+    // [TabGroup("Totalizados")]
+    // [Button]
+    // public void GetTotalizadosByDates()
+    // {
+    //     RequestAPI.singleton.GetTotalizadosByDates(
+    //         totalizadosTime1.dateTime, 
+    //         totalizadosTime2.dateTime,
+    //         ReadTotalizados);
+    // }
     
     private void ReadTotalizados()
     {
