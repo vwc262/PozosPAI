@@ -68,8 +68,9 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
             {
                 if (enableHistoricos)
                 {
-                    SiteDescription sitio =
-                        RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio);
+                    SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
+                        item => item.Id == idSitio);
+                    
                     List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
                     RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto.Clear();
@@ -77,10 +78,12 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                     RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado.Clear();
                     RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba.Clear();
                     RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel.Clear();
+                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo.Clear();
+                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
 
                     SignalsDescriptionContainerC signalDescriptionC_G =
-                        signalsDescriptionContainer.Find(
-                            item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
+                        signalsDescriptionContainer.Find(item => 
+                            item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
                     SignalsDescriptionContainerC signalDescriptionC_P =
                         signalsDescriptionContainer.Find(item =>
                             item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);
@@ -88,11 +91,17 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                         signalsDescriptionContainer.Find(item =>
                             item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);
                     SignalsDescriptionContainerC signalDescriptionC_B =
-                        signalsDescriptionContainer.Find(
-                            item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
+                        signalsDescriptionContainer.Find(item => 
+                            item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
                     SignalsDescriptionContainerC signalDescriptionC_N =
-                        signalsDescriptionContainer.Find(
-                            item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
+                        signalsDescriptionContainer.Find(item => 
+                            item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
+                    SignalsDescriptionContainerC signalDescriptionC_A =
+                        signalsDescriptionContainer.Find(item => 
+                            item.TipoSignal == (int)SignalBase.TipoSignalEnum.AUTOMATISMO);
+                    SignalsDescriptionContainerC signalDescriptionC_FA =
+                        signalsDescriptionContainer.Find(item => 
+                            item.TipoSignal == (int)SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
 
                     if (signalDescriptionC_G != null)
                     {
@@ -163,6 +172,34 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                         yield return unityWebRequest.SendWebRequest();
                         SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.NIVEL);
                     }
+                    
+                    if (signalDescriptionC_A != null)
+                    {
+                        RequestBoy DataH = new RequestBoy();
+                        DataH.IdSignal = signalDescriptionC_A.SignalsDescription.First().IdSignal;
+                        DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                        DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                        unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                            JsonUtility.ToJson(DataH), "application/json");
+
+                        yield return unityWebRequest.SendWebRequest();
+                        SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.AUTOMATISMO);
+                    }
+                    
+                    if (signalDescriptionC_FA != null)
+                    {
+                        RequestBoy DataH = new RequestBoy();
+                        DataH.IdSignal = signalDescriptionC_FA.SignalsDescription.First().IdSignal;
+                        DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                        DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                        unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                            JsonUtility.ToJson(DataH), "application/json");
+
+                        yield return unityWebRequest.SendWebRequest();
+                        SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
+                    }
 
                     //Llamada a funcion de callback
                     CallBackHistoricos();
@@ -189,6 +226,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
         {
             SiteDescription sitio =
                 RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id % 100 == idSitio);
+            
             List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
             RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto.Clear();
@@ -196,10 +234,13 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
             RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado.Clear();
             RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba.Clear();
             RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel.Clear();
+            
+            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo.Clear();
+            RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
 
             SignalsDescriptionContainerC signalDescriptionC_G =
-                signalsDescriptionContainer.Find(
-                    item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
+                signalsDescriptionContainer.Find(item => 
+                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
             SignalsDescriptionContainerC signalDescriptionC_P =
                 signalsDescriptionContainer.Find(item =>
                     item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);
@@ -207,11 +248,17 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                 signalsDescriptionContainer.Find(item =>
                     item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);
             SignalsDescriptionContainerC signalDescriptionC_B =
-                signalsDescriptionContainer.Find(
-                    item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
+                signalsDescriptionContainer.Find(item => 
+                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
             SignalsDescriptionContainerC signalDescriptionC_N =
-                signalsDescriptionContainer.Find(
-                    item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
+                signalsDescriptionContainer.Find(item => 
+                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
+            SignalsDescriptionContainerC signalDescriptionC_A =
+                signalsDescriptionContainer.Find(item => 
+                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.AUTOMATISMO);
+            SignalsDescriptionContainerC signalDescriptionC_FA =
+                signalsDescriptionContainer.Find(item => 
+                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
 
             if (signalDescriptionC_G != null)
             {
@@ -281,6 +328,34 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
 
                 yield return unityWebRequest.SendWebRequest();
                 SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.NIVEL);
+            }
+            
+            if (signalDescriptionC_A != null)
+            {
+                RequestBoy DataH = new RequestBoy();
+                DataH.IdSignal = signalDescriptionC_A.SignalsDescription.First().IdSignal;
+                DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                    JsonUtility.ToJson(DataH), "application/json");
+
+                yield return unityWebRequest.SendWebRequest();
+                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.AUTOMATISMO);
+            }
+                    
+            if (signalDescriptionC_FA != null)
+            {
+                RequestBoy DataH = new RequestBoy();
+                DataH.IdSignal = signalDescriptionC_FA.SignalsDescription.First().IdSignal;
+                DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                    JsonUtility.ToJson(DataH), "application/json");
+
+                yield return unityWebRequest.SendWebRequest();
+                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
             }
 
             //Llamada a funcion de callback
@@ -400,6 +475,20 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
                                 RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel = reportes.Reporte;
+                                HistoricoCout++;
+                                break;
+                            
+                            case SignalBase.TipoSignalEnum.AUTOMATISMO:
+                                errorUpdateHistoricos = false;
+                                reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
+                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo = reportes.Reporte;
+                                HistoricoCout++;
+                                break;
+                            
+                            case SignalBase.TipoSignalEnum.ARRANQUEFALLIDO:
+                                errorUpdateHistoricos = false;
+                                reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
+                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                         }

@@ -31,7 +31,10 @@ public class SignalBase
         HUMEDAD,
         RADIACIONSOLAR,
         INTENSIDAD,
-        DIRECCION
+        DIRECCION,
+        COMPUERTA,
+        AUTOMATISMO,
+        ARRANQUEFALLIDO
     }
     
     [SerializeField] public int IdSignal;
