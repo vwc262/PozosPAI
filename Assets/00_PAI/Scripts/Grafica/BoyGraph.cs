@@ -17,22 +17,29 @@ public class BoyGraph : MonoBehaviour
         PRESION,
         TOTALIZADO,
         BOMBA,
-        NIVEL
+        NIVEL,
+        AUTOMATISMO,
+        FALLO_AUTOMATISMO
     }
 
     public WMG_Axis_Graph axisGraph;
     public UI.Dates.DatePicker datePicker;
 
-    public List<Reporte> SerieDataGasto;
-    public List<Reporte> SerieDataPresion;
-    public List<Reporte> SerieDataTotalizado;
-    public List<Reporte> SerieDataBomba;
-    public List<Reporte> SerieDataNivel;
-    public List<Vector2> subSerieDataGasto;
-    public List<Vector2> subSerieDataPresion;
-    public List<Vector2> subSerieDataTotalizado;
-    public List<Vector2> subSerieDataBomba;
-    public List<Vector2> subSerieDataNivel;
+    private List<Reporte> SerieDataGasto;
+    private List<Reporte> SerieDataPresion;
+    private List<Reporte> SerieDataTotalizado;
+    private List<Reporte> SerieDataBomba;
+    private List<Reporte> SerieDataNivel;
+    private List<Reporte> SerieDataAutomatismo;
+    private List<Reporte> SerieDataFalloAutomatismo;
+    private List<Vector2> subSerieDataGasto = new List<Vector2>();
+    private List<Vector2> subSerieDataPresion = new List<Vector2>();
+    private List<Vector2> subSerieDataTotalizado = new List<Vector2>();
+    private List<Vector2> subSerieDataBomba = new List<Vector2>();
+    private List<Vector2> subSerieDataNivel = new List<Vector2>();
+    private List<Vector2> subSerieDataAutomatismo = new List<Vector2>();
+    private List<Vector2> subSerieDataFalloAutomatismo = new List<Vector2>();
+    
     public List<string> LabelsEjeX;
     public string serieName = "Totalizado";
     public int maxDataValueGasto;
@@ -40,6 +47,8 @@ public class BoyGraph : MonoBehaviour
     public int maxDataValueTotalizado;
     public int maxDataValueBomba;
     public int maxDataValueNivel;
+    public int maxDataValueAutomatismo;
+    public int maxDataValueFalloAutomatismo;
     
     public SerializableDate date01;
     public SerializableDate date02;
@@ -55,6 +64,8 @@ public class BoyGraph : MonoBehaviour
     public WMG_Series seriePresion;
     public WMG_Series serieBomba;
     public WMG_Series serieNivel;
+    public WMG_Series serieAutomatismo;
+    public WMG_Series serieFalloAutomatismo;
 
     public TipoDatosGrafico graficoIzquierdo;
     public TipoDatosGrafico graficoDerecho;
@@ -64,6 +75,8 @@ public class BoyGraph : MonoBehaviour
     public GameObject UI_ActiveTotalizado;
     public GameObject UI_ActiveBomba;
     public GameObject UI_ActiveNivel;
+    public GameObject UI_ActiveAutomatismo;
+    public GameObject UI_ActiveFalloAutomatismo;
     
     public GameObject UI_Calendar;
     public GameObject UI_Graph;
@@ -82,6 +95,8 @@ public class BoyGraph : MonoBehaviour
     public GameObject ButtonGraficTotalizado;
     public GameObject ButtonGraficBomba;
     public GameObject ButtonGraficNivel;
+    public GameObject ButtonGraficAutomatismo;
+    public GameObject ButtonGraficFalloAutomatismo;
 
     public int numLabelsEjeX = 25;
 
@@ -202,12 +217,16 @@ public class BoyGraph : MonoBehaviour
         serieTotalizado.gameObject.SetActive(false);
         serieBomba.gameObject.SetActive(false);
         serieNivel.gameObject.SetActive(false);
+        serieAutomatismo.gameObject.SetActive(false);
+        serieFalloAutomatismo.gameObject.SetActive(false);
         
         if (UI_ActiveGasto != null) UI_ActiveGasto.SetActive(false);
         if (UI_ActivePresion != null) UI_ActivePresion.SetActive(false);
         if (UI_ActiveTotalizado != null) UI_ActiveTotalizado.SetActive(false);
         if (UI_ActiveBomba != null) UI_ActiveBomba.SetActive(false);
         if (UI_ActiveNivel != null) UI_ActiveNivel.SetActive(false);
+        if (UI_ActiveAutomatismo != null) UI_ActiveAutomatismo.SetActive(false);
+        if (UI_ActiveFalloAutomatismo != null) UI_ActiveFalloAutomatismo.SetActive(false);
 
         axisGraph.yAxis.hideLabels = true;
         axisGraph.yAxis2.hideLabels = true;
@@ -239,6 +258,16 @@ public class BoyGraph : MonoBehaviour
                 SetSerieDataIzquierda(serieNivel, subSerieDataNivel, maxDataValueNivel, 10);
                 SetDataLabelsEjeX(SerieDataNivel);
                 break;
+            case TipoDatosGrafico.AUTOMATISMO:
+                if (UI_ActiveAutomatismo != null) UI_ActiveAutomatismo.SetActive(true);
+                SetSerieDataIzquierda(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 4, false);
+                SetDataLabelsEjeX(SerieDataAutomatismo);
+                break;
+            case TipoDatosGrafico.FALLO_AUTOMATISMO:
+                if (UI_ActiveFalloAutomatismo != null) UI_ActiveFalloAutomatismo.SetActive(true);
+                SetSerieDataIzquierda(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 4, false);
+                SetDataLabelsEjeX(SerieDataFalloAutomatismo);
+                break;
         }
         
         switch (graficoDerecho)
@@ -263,6 +292,14 @@ public class BoyGraph : MonoBehaviour
                 if (UI_ActiveNivel != null) UI_ActiveNivel.SetActive(true);
                 SetSerieDataDerecha(serieNivel, subSerieDataNivel, maxDataValueNivel, 10);
                 break;
+            case TipoDatosGrafico.AUTOMATISMO:
+                if (UI_ActiveAutomatismo != null) UI_ActiveAutomatismo.SetActive(true);
+                SetSerieDataDerecha(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 4, false);
+                break;
+            case TipoDatosGrafico.FALLO_AUTOMATISMO:
+                if (UI_ActiveFalloAutomatismo != null) UI_ActiveFalloAutomatismo.SetActive(true);
+                SetSerieDataDerecha(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 4, false);
+                break;
         }
         
         if (LabelsEjeX.Count <= numLabelsEjeX)
@@ -280,7 +317,7 @@ public class BoyGraph : MonoBehaviour
             axisGraph.groups.SetList(auxList);
         }
 
-        if (tipoPromedio == RequestBoy.TipoPromedio.HORAS)
+        if (tipoPromedio == RequestBoy.TipoPromedio.HORAS || tipoPromedio == RequestBoy.TipoPromedio.MIN5)
             axisGraph.xAxis.AxisLabelSize = 30;
         else
             axisGraph.xAxis.AxisLabelSize = 40;
@@ -300,37 +337,12 @@ public class BoyGraph : MonoBehaviour
                 case RequestBoy.TipoPromedio.HORAS:
                     LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5) + "   " + serieDatos[i].Tiempo.Substring(11,2) + "h");
                     break;
-                case RequestBoy.TipoPromedio.Min5:
+                case RequestBoy.TipoPromedio.MIN5:
                     LabelsEjeX.Add(serieDatos[i].Tiempo.Substring(5,5) + "   " + serieDatos[i].Tiempo.Substring(11,5) + "h");
                     break;
             }
         }
     }
-    
-    // [Button]
-    // public void SetSerieData()
-    // {
-    //     axisGraph.yAxis.AxisMaxValue = maxDataValue;
-    //     axisGraph.yAxis2.AxisMaxValue = maxDataValue;
-    //     axisGraph.groups.SetList(LabelsEjeX);
-    //     
-    //     serieGasto = axisGraph.lineSeries[0].GetComponent<WMG_Series>();
-    //     serieGasto.pointValues.SetList(subSerieDataGasto);
-    //     serieGasto.extraXSpace = 35 - ((subSerieDataGasto.Count - 10f) * 1.8f);
-    //     if (serieGasto.extraXSpace < 10) serieGasto.extraXSpace = 10;
-    //     
-    //     seriePresion = axisGraph.lineSeries[1].GetComponent<WMG_Series>();
-    //     seriePresion.pointValues.SetList(subSerieDataPresion);
-    //     seriePresion.extraXSpace = 35 - ((subSerieDataPresion.Count - 10f) * 1.8f);
-    //     if (seriePresion.extraXSpace < 10) seriePresion.extraXSpace = 10;
-    //
-    //     serieTotalizado = axisGraph.lineSeries[2].GetComponent<WMG_Series>();
-    //     serieTotalizado.pointValues.SetList(subSerieDataTotalizado);
-    //     serieTotalizado.extraXSpace = 35 - ((subSerieDataTotalizado.Count - 10f) * 1.8f);
-    //     if (serieTotalizado.extraXSpace < 10) serieTotalizado.extraXSpace = 10;
-    //     
-    //     axisGraph.Refresh();
-    // }
 
     public void setSubSerieData()
     { 
@@ -339,58 +351,43 @@ public class BoyGraph : MonoBehaviour
         subSerieDataTotalizado.Clear();
         subSerieDataBomba.Clear();
         subSerieDataNivel.Clear();
+        subSerieDataAutomatismo.Clear();
+        subSerieDataFalloAutomatismo.Clear();
         maxDataValueGasto = 10;
         maxDataValuePresion = 1;
         maxDataValueTotalizado = 10;
         maxDataValueBomba = 3;
         maxDataValueNivel = 1;
-
-        // for (int i = 0; i < SerieDataGasto.Count; i++)
-        // {
-        //      subSerieDataGasto.Add(new Vector2(i, 
-        //          (SerieDataGasto[i].Valor >= 0? SerieDataGasto[i].Valor : 0)));
-        //     
-        //      if (maxDataValueGasto < subSerieDataGasto.Last().y)
-        //          maxDataValueGasto = (int)(subSerieDataGasto.Last().y + 1);
-        // }
+        maxDataValueAutomatismo = 2;
+        maxDataValueFalloAutomatismo = 1;
         
-        // for (int i = 0; i < SerieDataPresion.Count; i++)
-        // {
-        //     subSerieDataPresion.Add(new Vector2(i, 
-        //         (SerieDataPresion[i].Valor >= 0? SerieDataPresion[i].Valor : 0)));
-        //
-        //     if (maxDataValuePresion < subSerieDataPresion.Last().y)
-        //         maxDataValuePresion = (int)(subSerieDataPresion.Last().y + 1);
-        // }
-        
-        // for (int i = 0; i < SerieDataTotalizado.Count; i++)
-        // {
-        //     subSerieDataTotalizado.Add(new Vector2(i, 
-        //         (SerieDataTotalizado[i].Valor >= 0? SerieDataTotalizado[i].Valor : 0)));
-        //
-        //     if (maxDataValueTotalizado < subSerieDataTotalizado.Last().y)
-        //         maxDataValueTotalizado = (int)(subSerieDataTotalizado.Last().y + 1);
-        // }
-
         SetSubSerieData(SerieDataGasto, subSerieDataGasto, ref maxDataValueGasto);
         SetSubSerieData(SerieDataPresion, subSerieDataPresion, ref maxDataValuePresion);
         SetSubSerieData(SerieDataTotalizado, subSerieDataTotalizado, ref maxDataValueTotalizado);
         SetSubSerieData(SerieDataNivel, subSerieDataNivel, ref maxDataValueNivel);
         
-        SetSubSerieDataBomba(SerieDataBomba, subSerieDataBomba, ref maxDataValueBomba);
+        SetSubSerieDataBool(SerieDataBomba, subSerieDataBomba, ref maxDataValueBomba);
+        
+        SetSubSerieDataBool(SerieDataAutomatismo, subSerieDataAutomatismo, ref maxDataValueAutomatismo);
+        SetSubSerieDataBool(SerieDataFalloAutomatismo, subSerieDataFalloAutomatismo, ref maxDataValueFalloAutomatismo);
         
         if (ButtonGraficGasto != null) ButtonGraficGasto.SetActive(subSerieDataGasto.Count()>0);
         if (ButtonGraficPresion != null) ButtonGraficPresion.SetActive(subSerieDataPresion.Count()>0);
         if (ButtonGraficTotalizado != null) ButtonGraficTotalizado.SetActive(subSerieDataTotalizado.Count()>0);
         if (ButtonGraficBomba != null) ButtonGraficBomba.SetActive(subSerieDataBomba.Count()>0);
         if (ButtonGraficNivel != null) ButtonGraficNivel.SetActive(subSerieDataNivel.Count()>0);
+        
+        if (ButtonGraficAutomatismo != null) ButtonGraficAutomatismo.SetActive(subSerieDataAutomatismo.Count()>0);
+        if (ButtonGraficFalloAutomatismo != null) ButtonGraficFalloAutomatismo.SetActive(subSerieDataFalloAutomatismo.Count()>0);
 
         if (subSerieDataGasto.Count() == 0) DeactivateGrafica(TipoDatosGrafico.GASTO);
         if (subSerieDataPresion.Count() == 0) DeactivateGrafica(TipoDatosGrafico.PRESION);
         if (subSerieDataTotalizado.Count() == 0) DeactivateGrafica(TipoDatosGrafico.TOTALIZADO);
         if (subSerieDataBomba.Count() == 0) DeactivateGrafica(TipoDatosGrafico.BOMBA);
         if (subSerieDataNivel.Count() == 0) DeactivateGrafica(TipoDatosGrafico.NIVEL);
-
+        
+        if (subSerieDataAutomatismo.Count() == 0) DeactivateGrafica(TipoDatosGrafico.AUTOMATISMO);
+        if (subSerieDataFalloAutomatismo.Count() == 0) DeactivateGrafica(TipoDatosGrafico.FALLO_AUTOMATISMO);
     }
 
     public void SetSubSerieData(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
@@ -404,7 +401,7 @@ public class BoyGraph : MonoBehaviour
         }
     }
     
-    public void SetSubSerieDataBomba(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
+    public void SetSubSerieDataBool(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
     {
         for (int i = 0; i < serieData.Count; i++)
         {
@@ -466,23 +463,6 @@ public class BoyGraph : MonoBehaviour
 
         ChangeVisibleCalendar();
     }
-
-    // public void ReadTotalizados()
-    // {
-    //     if (RequestAPI.Instance != null)
-    //     {
-    //         SerieData.Clear();
-    //
-    //         for (int i = 0; i < RequestAPI.Instance.totalizadosPorFecha.ListaTotalizadoPorSitio.Count; i++)
-    //         {
-    //             SerieData.Add(RequestAPI.Instance.totalizadosPorFecha.ListaTotalizadoPorSitio[i]);
-    //         }
-    //         
-    //         SerieData = SerieData.OrderByDescending(x => x.Diferencia).ToList();
-    //
-    //         UpdateSerieData();
-    //     }
-    // }
     
     public void InitPanelsActuallizacion()
     {
@@ -510,6 +490,8 @@ public class BoyGraph : MonoBehaviour
             SerieDataTotalizado = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado;
             SerieDataBomba = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba;
             SerieDataNivel = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel;
+            SerieDataAutomatismo = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo;
+            SerieDataFalloAutomatismo = RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo;
             
             UpdateSerieData();
             
@@ -517,7 +499,9 @@ public class BoyGraph : MonoBehaviour
                 SerieDataPresion.Count > 0 ||
                 SerieDataTotalizado.Count > 0 ||
                 SerieDataBomba.Count > 0  ||
-                SerieDataNivel.Count > 0 )
+                SerieDataNivel.Count > 0 ||
+                SerieDataAutomatismo.Count > 0 ||
+                SerieDataFalloAutomatismo.Count > 0 )
             {
                 SetActivePanelActualizando(false);
                 SetActivePanelNoDatos(false);
@@ -603,11 +587,23 @@ public class BoyGraph : MonoBehaviour
         ActivateGrafica(TipoDatosGrafico.NIVEL);
         updateSeries();
     }
+    
+    public void ChangeActiveAutomatismo()
+    {
+        ActivateGrafica(TipoDatosGrafico.AUTOMATISMO);
+        updateSeries();
+    }
+    
+    public void ChangeActiveFalloAutomatismo()
+    {
+        ActivateGrafica(TipoDatosGrafico.FALLO_AUTOMATISMO);
+        updateSeries();
+    }
 
     public void setToggle5Min(bool isOn)
     {
         if (isOn)
-            tipoPromedio = RequestBoy.TipoPromedio.Min5;
+            tipoPromedio = RequestBoy.TipoPromedio.MIN5;
     }
 
     public void setToggleHora(bool isOn)

@@ -32,11 +32,6 @@ public class RequestAPI : Singleton<RequestAPI>
     
     [TabGroup("Comunication")] public bool versionInitialized = false;
 
-    // [TabGroup("Historicos")] private int idSitio;
-    // [TabGroup("Historicos")] private DateTime totalizadosTime1 = DateTime.Now.Subtract(TimeSpan.FromDays(2));
-    // [TabGroup("Historicos")] private DateTime totalizadosTime2 = DateTime.Now;
-    // [TabGroup("Historicos")] public RequestBoy.TipoPromedio tipoPromedio;
-
     public Action TotalizadosCallback;
     
     [TabGroup("Events")] public UnityEvent infraestructuraActualizada;

@@ -12,7 +12,7 @@ public class RequestBoy
         HORAS,
         DIAS,
         MES,
-        Min5
+        MIN5
     }
 
     public int IdSignal;
@@ -37,5 +37,7 @@ public class Historicos
     public List<Reporte> Totalizado = new List<Reporte>();
     public List<Reporte> Bomba = new List<Reporte>();
     public List<Reporte> Nivel = new List<Reporte>();
+    public List<Reporte> Automatismo = new List<Reporte>();
+    public List<Reporte> FalloAutomatismo = new List<Reporte>();
     public string RequestResult;
 }
