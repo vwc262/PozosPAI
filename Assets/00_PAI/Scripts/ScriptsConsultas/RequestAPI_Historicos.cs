@@ -53,7 +53,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
     private void GetHistoricosBySistema(int _sistema)
     {
         url = RequestAPI.singleton.GetAddressByMethod(Metodos.UpdateHistoricos, _sistema);
-        StartCoroutine(DoRequestHistoricosBySistema(Metodos.UpdateHistoricos));
+        StartCoroutine(DoRequestHistoricosBySistema(Metodos.UpdateHistoricos, _sistema));
     }
     
     private IEnumerator DoRequest(string method)
@@ -216,7 +216,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
         }
     }
     
-    private IEnumerator DoRequestHistoricosBySistema(string method)
+    private IEnumerator DoRequestHistoricosBySistema(string method, int sistema)
     {
         string address = $"{url}";
         
@@ -225,7 +225,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
         if (enableHistoricos)
         {
             SiteDescription sitio =
-                RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id % 100 == idSitio);
+                RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio + (sistema * 100));
             
             List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 

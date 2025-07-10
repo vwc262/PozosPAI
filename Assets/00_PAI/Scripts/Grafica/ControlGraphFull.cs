@@ -14,7 +14,7 @@ public class ControlGraphFull : Singleton<ControlGraphFull>
 
     public IEnumerator DisableGraphCoroutine()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         SetEnableGraph(false);
     }
 

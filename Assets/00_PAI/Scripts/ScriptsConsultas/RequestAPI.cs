@@ -135,11 +135,11 @@ public class RequestAPI : Singleton<RequestAPI>
     //     TotalizadosCallback = Callback;
     // }
 
-    private void GetTotalizados()
-    {
-        url = GetAddressByMethod(Metodos.UpdateTotalizados);
-        StartCoroutine(DoRequest(Metodos.UpdateTotalizados));
-    }
+    // private void GetTotalizados()
+    // {
+    //     url = GetAddressByMethod(Metodos.UpdateTotalizados);
+    //     StartCoroutine(DoRequest(Metodos.UpdateTotalizados));
+    // }
     
     public string GetAddressByMethod(string method)
     {
