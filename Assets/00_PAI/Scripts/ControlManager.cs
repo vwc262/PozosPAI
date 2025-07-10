@@ -111,6 +111,7 @@ public class ControlManager : Singleton<ControlManager>
     public void OpenGraficadorWeb()
     {
         //Application.OpenURL(url);
-        Process.Start("chrome.exe", "--kiosk " + url);
+        //Process.Start("chrome.exe", "--kiosk " + url);
+        Process.Start("chrome.exe", "--app=\"" + url + "\" --start-maximized ");
     }
 }
