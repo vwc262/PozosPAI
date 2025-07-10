@@ -358,7 +358,7 @@ public class BoyGraph : MonoBehaviour
         maxDataValueTotalizado = 10;
         maxDataValueBomba = 3;
         maxDataValueNivel = 1;
-        maxDataValueAutomatismo = 2;
+        maxDataValueAutomatismo = 3;
         maxDataValueFalloAutomatismo = 1;
         
         SetSubSerieData(SerieDataGasto, subSerieDataGasto, ref maxDataValueGasto);
@@ -366,9 +366,9 @@ public class BoyGraph : MonoBehaviour
         SetSubSerieData(SerieDataTotalizado, subSerieDataTotalizado, ref maxDataValueTotalizado);
         SetSubSerieData(SerieDataNivel, subSerieDataNivel, ref maxDataValueNivel);
         
-        SetSubSerieDataBool(SerieDataBomba, subSerieDataBomba, ref maxDataValueBomba);
+        SetSubSerieDataBomba(SerieDataBomba, subSerieDataBomba, ref maxDataValueBomba);
+        SetSubSerieDataBomba(SerieDataAutomatismo, subSerieDataAutomatismo, ref maxDataValueAutomatismo);
         
-        SetSubSerieDataBool(SerieDataAutomatismo, subSerieDataAutomatismo, ref maxDataValueAutomatismo);
         SetSubSerieDataBool(SerieDataFalloAutomatismo, subSerieDataFalloAutomatismo, ref maxDataValueFalloAutomatismo);
         
         if (ButtonGraficGasto != null) ButtonGraficGasto.SetActive(subSerieDataGasto.Count()>0);
@@ -401,11 +401,22 @@ public class BoyGraph : MonoBehaviour
         }
     }
     
-    public void SetSubSerieDataBool(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
+    public void SetSubSerieDataBomba(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
     {
         for (int i = 0; i < serieData.Count; i++)
         {
             subSerieData.Add(new Vector2(i, (serieData[i].Valor >= 0? Mathf.RoundToInt(serieData[i].Valor) : 0)));
+
+            if (maxData < subSerieData.Last().y)
+                maxData = (int)(subSerieData.Last().y + 1);
+        }
+    }
+    
+    public void SetSubSerieDataBool(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
+    {
+        for (int i = 0; i < serieData.Count; i++)
+        {
+            subSerieData.Add(new Vector2(i, (serieData[i].Valor >= 0? Mathf.RoundToInt(serieData[i].Valor + 2) : 0)));
 
             if (maxData < subSerieData.Last().y)
                 maxData = (int)(subSerieData.Last().y + 1);
