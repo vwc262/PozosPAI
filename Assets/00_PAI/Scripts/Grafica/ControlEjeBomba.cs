@@ -8,7 +8,7 @@ public class ControlEjeBomba : MonoBehaviour
     
     public List<WMG_Series> seriesEjeBomba; 
     
-    public Vector3 DeltaSerieEjeBomba = new Vector3(0,50,0);
+    //public Vector3 DeltaSerieEjeBomba = new Vector3(0,50,0);
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +30,7 @@ public class ControlEjeBomba : MonoBehaviour
                 rect.y = gridEjeBomba.gridNumNodesY * (gridEjeBomba.gridLinkLengthY + 1);
                 rectEjeBomba.sizeDelta = rect;
                 
-                rectEjeBomba.transform.position = serie.transform.position + DeltaSerieEjeBomba;
+                rectEjeBomba.transform.position = serie.transform.position;
             }
         }
     }
