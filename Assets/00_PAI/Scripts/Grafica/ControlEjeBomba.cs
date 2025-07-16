@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ControlEjeBomba : MonoBehaviour
@@ -6,7 +7,10 @@ public class ControlEjeBomba : MonoBehaviour
     public WMG_Grid gridEjeBomba;
     public RectTransform rectEjeBomba;
     
-    public List<WMG_Series> seriesEjeBomba; 
+    public List<WMG_Series> seriesEjeBomba;
+    public List<GameObject> marcasEjeBomba;
+
+    public float pos;
     
     //public Vector3 DeltaSerieEjeBomba = new Vector3(0,50,0);
     
@@ -27,8 +31,18 @@ public class ControlEjeBomba : MonoBehaviour
             {
                 rectEjeBomba.gameObject.SetActive(true);
                 Vector2 rect = rectEjeBomba.sizeDelta;
-                rect.y = gridEjeBomba.gridNumNodesY * (gridEjeBomba.gridLinkLengthY + 1);
+                rect.y = (gridEjeBomba.gridNumNodesY) * gridEjeBomba.gridLinkLengthY;
                 rectEjeBomba.sizeDelta = rect;
+
+                pos = (gridEjeBomba.gridNumNodesY - 1) * gridEjeBomba.gridLinkLengthY;
+                
+                for (int i = 0; i < marcasEjeBomba.Count; i++)
+                {
+                    marcasEjeBomba[i].transform.localPosition = new Vector3(
+                        marcasEjeBomba[i].transform.localPosition.x, 
+                        i * (pos / (marcasEjeBomba.Count - 1)), 
+                        0);
+                }
                 
                 rectEjeBomba.transform.position = serie.transform.position;
             }
