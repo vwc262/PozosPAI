@@ -57,7 +57,7 @@ public class Etiqueta_Manager : MonoBehaviour
             {
                 if (gasto[0].DentroRango)
                 {
-                    textGasto.text = "Gasto: " + $"{gasto[0].Valor}" + " LPS";
+                    textGasto.text = "Gasto: " + $"{gasto[0].Valor}" + " l/s";
                 }
                 else
                 {
@@ -75,16 +75,16 @@ public class Etiqueta_Manager : MonoBehaviour
             {
                 if (presion[0].DentroRango)
                 {
-                    textPresion.text = "Presíon: " + $"{presion[0].Valor}" + " Kg/cm2";
+                    textPresion.text = "Presión: " + $"{presion[0].Valor}" + " Kg/cm2";
                 }
                 else
                 {
-                    textPresion.text = "Presíon: -";
+                    textPresion.text = "Presión: -";
                 }
             }
             else
             {
-                textPresion.text = "Presíon: N/A";
+                textPresion.text = "Presión: N/A";
             }
             
         }

@@ -48,7 +48,7 @@ public class ControlDateTime_PAI : MonoBehaviour
 
         if (DateTime.TryParse(dateString, out parsedDate))
         {
-            return parsedDate.ToString("dd/MM/yyyy  hh:mm") + " hrs";
+            return parsedDate.ToString("dd/MM/yyyy  HH:mm") + " hrs";
         }
 
         return "00/00/0000  00:00 hrs";

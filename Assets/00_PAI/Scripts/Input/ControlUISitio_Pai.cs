@@ -169,7 +169,7 @@ public class ControlUISitio_Pai : ControlUISitio
             if (totalizado.Count > 0)
             {
                 textTotalizado.text = totalizado[0].DentroRango
-                    ? $"{totalizado[0].Valor:F0}"
+                    ? $"{totalizado[0].Valor:N0}"
                     : "-";
             }
             else
