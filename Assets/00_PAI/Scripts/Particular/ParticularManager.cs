@@ -276,7 +276,7 @@ public class ParticularManager : Singleton<ParticularManager>
             }
 
             if (textUltimaActualizacion != null)
-                textUltimaActualizacion.text = "Última actualización: " + sitio.dataSitio.fecha;
+                textUltimaActualizacion.text = "Última actualización: " + sitio.dataSitio.fecha.Replace("T", "  ");
         }
         
         

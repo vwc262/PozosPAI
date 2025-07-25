@@ -1660,11 +1660,13 @@ MonoBehaviour:
         windowTime: 0
         nominalVoltage: 0
         toleranceVoltage: 0
+        version: 0
         ConfIsActiveAutomation: 0
         ConfIndex: 0
         ConfStarupTime: 0
         ConfWindowTime: 0
         ConfNominalVoltage: 0
+        ConfVersion: 0
     dataAforo:
       isAforado: 0
       fecha: ---
@@ -1683,6 +1685,7 @@ MonoBehaviour:
   - {fileID: 2099773502385027223}
   - {fileID: 4360662549939887599}
   - {fileID: 6638799533209215305}
+  - {fileID: 8745815397922608451}
   - {fileID: 4091099901186227567}
   - {fileID: 3407208550796271271}
   - {fileID: 1066482274736709675}

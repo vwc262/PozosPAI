@@ -47,7 +47,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 if (gasto.Count > 0)
                 {
                     if (gasto[0].DentroRango)
-                        textGasto.text = GetString2decimals(gasto[0].Valor) + " L/s";
+                        textGasto.text = GetString2decimals(gasto[0].Valor) + " l/s";
                     else
                         textGasto.text = "-";
                 }
@@ -62,7 +62,7 @@ public class ControlUIPanelDataSitio_PAI : ControlUIPanelDataSitio
                 if (totalizado.Count > 0)
                 {
                     if (totalizado[0].DentroRango)
-                        textTotalizado.text = $"{totalizado[0].Valor:F0}" + " m3";
+                        textTotalizado.text = $"{totalizado[0].Valor:N0}" + " m3";
                     else
                         textTotalizado.text = "-";
                 }
