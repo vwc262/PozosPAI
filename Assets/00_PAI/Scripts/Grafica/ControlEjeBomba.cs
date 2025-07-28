@@ -27,13 +27,14 @@ public class ControlEjeBomba : MonoBehaviour
         
         foreach (var serie in seriesEjeBomba)
         {
+            Vector2 rect = rectEjeBomba.sizeDelta;
+            rect.y = (gridEjeBomba.gridNumNodesY - 1) * gridEjeBomba.gridLinkLengthY + 100;
+            rectEjeBomba.sizeDelta = rect;
+            
             if (serie.gameObject.activeSelf)
             {
                 rectEjeBomba.gameObject.SetActive(true);
-                Vector2 rect = rectEjeBomba.sizeDelta;
-                rect.y = (gridEjeBomba.gridNumNodesY) * gridEjeBomba.gridLinkLengthY;
-                rectEjeBomba.sizeDelta = rect;
-
+                
                 pos = (gridEjeBomba.gridNumNodesY - 1) * gridEjeBomba.gridLinkLengthY;
                 
                 for (int i = 0; i < marcasEjeBomba.Count; i++)
