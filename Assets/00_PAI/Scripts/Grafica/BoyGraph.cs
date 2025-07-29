@@ -45,6 +45,7 @@ public class BoyGraph : MonoBehaviour
     public int maxDataValueGasto;
     public int maxDataValuePresion;
     public int maxDataValueTotalizado;
+    public int minDataValueTotalizado;
     public int maxDataValueBomba;
     public int maxDataValueNivel;
     public int maxDataValueAutomatismo;
@@ -99,6 +100,9 @@ public class BoyGraph : MonoBehaviour
     public GameObject ButtonGraficFalloAutomatismo;
 
     public int numLabelsEjeX = 25;
+    
+    public TMPro.TMP_Text UnidadesLeft;
+    public TMPro.TMP_Text UnidadesRight;
 
     private void Start()
     {
@@ -178,9 +182,10 @@ public class BoyGraph : MonoBehaviour
         updateSeries();
     }
     
-    public void SetSerieDataIzquierda(WMG_Series _serie, List<Vector2> _datos, int _maxDataValue, int _numTicks, bool enableLabels = true)
+    public void SetSerieDataIzquierda(WMG_Series _serie, List<Vector2> _datos, int _maxDataValue, int _minDataValue, int _numTicks, bool enableLabels = true)
     {
         axisGraph.yAxis.AxisMaxValue = _maxDataValue;
+        axisGraph.yAxis.AxisMinValue = _minDataValue;
         axisGraph.yAxis.AxisNumTicks = _numTicks;
         axisGraph.yAxis.hideLabels = !enableLabels;
         
@@ -194,9 +199,10 @@ public class BoyGraph : MonoBehaviour
             axisGraph.Refresh();
     }
     
-    public void SetSerieDataDerecha(WMG_Series _serie, List<Vector2> _datos, int _maxDataValue, int _numTicks, bool enableLabels = true)
+    public void SetSerieDataDerecha(WMG_Series _serie, List<Vector2> _datos, int _maxDataValue, int _minDataValue, int _numTicks, bool enableLabels = true)
     {
         axisGraph.yAxis2.AxisMaxValue = _maxDataValue;
+        axisGraph.yAxis2.AxisMinValue = _minDataValue;
         axisGraph.yAxis2.AxisNumTicks = _numTicks;
         axisGraph.yAxis2.hideLabels = !enableLabels;
 
@@ -230,42 +236,49 @@ public class BoyGraph : MonoBehaviour
 
         axisGraph.yAxis.hideLabels = true;
         axisGraph.yAxis2.hideLabels = true;
+        
+        if (UnidadesLeft != null) UnidadesLeft.text = "";
+        if (UnidadesRight != null) UnidadesRight.text = "";
 
         switch (graficoIzquierdo)
         {
             case TipoDatosGrafico.GASTO:
                 if (UI_ActiveGasto != null) UI_ActiveGasto.SetActive(true);
-                SetSerieDataIzquierda(serieGasto, subSerieDataGasto, maxDataValueGasto, 8);
+                SetSerieDataIzquierda(serieGasto, subSerieDataGasto, maxDataValueGasto, 0, 8);
                 SetDataLabelsEjeX(SerieDataGasto);
+                if (UnidadesLeft != null) UnidadesLeft.text = "Litros por segundo";
                 break;
             case TipoDatosGrafico.PRESION:
                 if (UI_ActivePresion != null) UI_ActivePresion.SetActive(true);
-                SetSerieDataIzquierda(seriePresion, subSerieDataPresion, maxDataValuePresion, 8);
+                SetSerieDataIzquierda(seriePresion, subSerieDataPresion, maxDataValuePresion, 0, 8);
                 SetDataLabelsEjeX(SerieDataPresion);
+                if (UnidadesLeft != null) UnidadesLeft.text = "Kilogramos por centímetro cuadrad";
                 break;
             case TipoDatosGrafico.TOTALIZADO:
                 if (UI_ActiveTotalizado != null) UI_ActiveTotalizado.SetActive(true);
-                SetSerieDataIzquierda(serieTotalizado, subSerieDataTotalizado, maxDataValueTotalizado, 8);
+                SetSerieDataIzquierda(serieTotalizado, subSerieDataTotalizado, maxDataValueTotalizado, minDataValueTotalizado, 8);
                 SetDataLabelsEjeX(SerieDataTotalizado);
+                if (UnidadesLeft != null) UnidadesLeft.text = "Metros cúbicos";
                 break;
             case TipoDatosGrafico.BOMBA:
                 if (UI_ActiveBomba != null) UI_ActiveBomba.SetActive(true);
-                SetSerieDataIzquierda(serieBomba, subSerieDataBomba, maxDataValueBomba, 4, false);
+                SetSerieDataIzquierda(serieBomba, subSerieDataBomba, maxDataValueBomba, 0, 4, false);
                 SetDataLabelsEjeX(SerieDataBomba);
                 break;
             case TipoDatosGrafico.NIVEL:
                 if (UI_ActiveNivel != null) UI_ActiveNivel.SetActive(true);
-                SetSerieDataIzquierda(serieNivel, subSerieDataNivel, maxDataValueNivel, 10);
+                SetSerieDataIzquierda(serieNivel, subSerieDataNivel, maxDataValueNivel, 0, 10);
                 SetDataLabelsEjeX(SerieDataNivel);
+                if (UnidadesLeft != null) UnidadesLeft.text = "Metros";
                 break;
             case TipoDatosGrafico.AUTOMATISMO:
                 if (UI_ActiveAutomatismo != null) UI_ActiveAutomatismo.SetActive(true);
-                SetSerieDataIzquierda(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 4, false);
+                SetSerieDataIzquierda(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 0, 4, false);
                 SetDataLabelsEjeX(SerieDataAutomatismo);
                 break;
             case TipoDatosGrafico.FALLO_AUTOMATISMO:
                 if (UI_ActiveFalloAutomatismo != null) UI_ActiveFalloAutomatismo.SetActive(true);
-                SetSerieDataIzquierda(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 4, false);
+                SetSerieDataIzquierda(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 0, 4, false);
                 SetDataLabelsEjeX(SerieDataFalloAutomatismo);
                 break;
         }
@@ -274,31 +287,35 @@ public class BoyGraph : MonoBehaviour
         {
             case TipoDatosGrafico.GASTO:
                 if (UI_ActiveGasto != null) UI_ActiveGasto.SetActive(true);
-                SetSerieDataDerecha(serieGasto, subSerieDataGasto, maxDataValueGasto, 8);
+                SetSerieDataDerecha(serieGasto, subSerieDataGasto, maxDataValueGasto, 0, 8);
+                if (UnidadesRight != null) UnidadesRight.text = "Litros por segundo";
                 break;
             case TipoDatosGrafico.PRESION:
                 if (UI_ActivePresion != null) UI_ActivePresion.SetActive(true);
-                SetSerieDataDerecha(seriePresion, subSerieDataPresion, maxDataValuePresion, 8);
+                SetSerieDataDerecha(seriePresion, subSerieDataPresion, maxDataValuePresion, 0, 8);
+                if (UnidadesRight != null) UnidadesRight.text = "Kilogramos por centímetro cuadrado";
                 break;
             case TipoDatosGrafico.TOTALIZADO:
                 if (UI_ActiveTotalizado != null) UI_ActiveTotalizado.SetActive(true);
-                SetSerieDataDerecha(serieTotalizado, subSerieDataTotalizado, maxDataValueTotalizado, 8);
+                SetSerieDataDerecha(serieTotalizado, subSerieDataTotalizado, maxDataValueTotalizado, minDataValueTotalizado, 8);
+                if (UnidadesRight != null) UnidadesRight.text = "Metros cúbicos";
                 break;
             case TipoDatosGrafico.BOMBA:
                 if (UI_ActiveBomba != null) UI_ActiveBomba.SetActive(true);
-                SetSerieDataDerecha(serieBomba, subSerieDataBomba, maxDataValueBomba, 4, false);
+                SetSerieDataDerecha(serieBomba, subSerieDataBomba, maxDataValueBomba, 0, 4, false);
                 break;
             case TipoDatosGrafico.NIVEL:
                 if (UI_ActiveNivel != null) UI_ActiveNivel.SetActive(true);
-                SetSerieDataDerecha(serieNivel, subSerieDataNivel, maxDataValueNivel, 10);
+                SetSerieDataDerecha(serieNivel, subSerieDataNivel, maxDataValueNivel, 0, 10);
+                if (UnidadesRight != null) UnidadesRight.text = "Metros";
                 break;
             case TipoDatosGrafico.AUTOMATISMO:
                 if (UI_ActiveAutomatismo != null) UI_ActiveAutomatismo.SetActive(true);
-                SetSerieDataDerecha(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 4, false);
+                SetSerieDataDerecha(serieAutomatismo, subSerieDataAutomatismo, maxDataValueAutomatismo, 0, 4, false);
                 break;
             case TipoDatosGrafico.FALLO_AUTOMATISMO:
                 if (UI_ActiveFalloAutomatismo != null) UI_ActiveFalloAutomatismo.SetActive(true);
-                SetSerieDataDerecha(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 4, false);
+                SetSerieDataDerecha(serieFalloAutomatismo, subSerieDataFalloAutomatismo, maxDataValueFalloAutomatismo, 0, 4, false);
                 break;
         }
         
@@ -363,7 +380,7 @@ public class BoyGraph : MonoBehaviour
         
         SetSubSerieData(SerieDataGasto, subSerieDataGasto, ref maxDataValueGasto);
         SetSubSerieData(SerieDataPresion, subSerieDataPresion, ref maxDataValuePresion);
-        SetSubSerieData(SerieDataTotalizado, subSerieDataTotalizado, ref maxDataValueTotalizado);
+        SetSubSerieData(SerieDataTotalizado, subSerieDataTotalizado, ref maxDataValueTotalizado, ref minDataValueTotalizado);
         SetSubSerieData(SerieDataNivel, subSerieDataNivel, ref maxDataValueNivel);
         
         SetSubSerieDataBomba(SerieDataBomba, subSerieDataBomba, ref maxDataValueBomba);
@@ -399,6 +416,17 @@ public class BoyGraph : MonoBehaviour
             if (maxData < subSerieData.Last().y)
                 maxData = (int)(subSerieData.Last().y + 1);
         }
+    }
+    
+    public void SetSubSerieData(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData, ref int minData)
+    {
+        for (int i = 0; i < serieData.Count; i++)
+        {
+            subSerieData.Add(new Vector2(i, (serieData[i].Valor >= 0? serieData[i].Valor : 0)));
+        }
+
+        maxData = (int)subSerieData.Max(v => v.y);
+        minData = (int)subSerieData.Min(v => v.y);
     }
     
     public void SetSubSerieDataBomba(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
