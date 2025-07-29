@@ -29,8 +29,8 @@ public class DroneManager : Singleton<DroneManager>
     public KeyCode key_rot_counterclockwise;
     
     
-    public Vector3 insidePos;
-    public Vector3 insidePos_1;
+    public Vector3 insidePos_Act;
+    public Vector3 insidePos_Ant;
     public bool insideTrigger;
 
     public Vector2 deltaTouch;
@@ -67,7 +67,6 @@ public class DroneManager : Singleton<DroneManager>
         if (Joystick_stick != null)
             joystick_stick_Rect = Joystick_stick.GetComponent<RectTransform>();
     }
-
     
     void Update()
     {
@@ -75,13 +74,14 @@ public class DroneManager : Singleton<DroneManager>
             DroneInputHandle();
         else
             InsideTriggerHandle();
+        
         UpdateDroneRotation();
     }
 
     private void InsideTriggerHandle()
     {
-        _controller.Move(insideVectorFactor*( insidePos_1-insidePos));
-        velocity = Vector3.Lerp(velocity,Vector3.zero, Time.deltaTime * droneDrag);
+        _controller.Move(insideVectorFactor * (insidePos_Ant - insidePos_Act));
+        velocity = Vector3.Lerp(velocity * -0.2f,Vector3.zero, Time.deltaTime * droneDrag);
         //transform.position = Vector3.Lerp(transform.position ,insidePos +insideVectorFactor*( insidePos_1-insidePos), Time.deltaTime * droneSpeedIncrement);
     }
 
@@ -93,9 +93,6 @@ public class DroneManager : Singleton<DroneManager>
 
     private void DroneTouchInputHandle()
     {
-        // if(LeanTouch.Fingers.Count <= 0)
-        //     return;
-        
         if (LeanTouch.Fingers.Count == 1)
         {
             velocity.x = touchScaleFactor.x * deltaTouch.x;
@@ -228,14 +225,40 @@ public class DroneManager : Singleton<DroneManager>
     private void OnTriggerStay(Collider other)
     {
         insideTrigger = true;
-        insidePos_1 = insidePos;
-        insidePos = transform.position;
+        insidePos_Ant = insidePos_Act;
+        insidePos_Act = transform.position;
     }
     
     private void OnTriggerExit(Collider other)
     {
         insideTrigger = false;
+        insidePos_Act = transform.position;
     }
     
+    // Verifica si una posición está fuera del sphere collider
+    public bool IsPositionOutside(Vector3 worldPosition, SphereCollider sphere)
+    {
+        // Obtener el radio escalado
+        float scaledRadius = sphere.radius * GetMaxScale(sphere.transform);
     
+        // Obtener la posición mundial del centro
+        Vector3 worldCenter = sphere.transform.TransformPoint(sphere.center);
+    
+        // Verificar si hay colisiones en ese punto
+        Collider[] hits = Physics.OverlapSphere(worldPosition, 0.1f); // Pequeño radio de verificación
+    
+        foreach(Collider hit in hits)
+        {
+            if(hit == sphere)
+                return false; // Si encontramos el collider, está dentro
+        }
+        
+        return true;
+    }
+    
+    private float GetMaxScale(Transform t)
+    {
+        Vector3 scale = t.lossyScale;
+        return Mathf.Max(scale.x, Mathf.Max(scale.y, scale.z));
+    }
 }
