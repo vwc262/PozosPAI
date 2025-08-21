@@ -11,12 +11,17 @@ public class ResumenPozos : MonoBehaviour
 
     private int sumatoriaFalla;
     public TMPro.TMP_Text nameRegion;
+    public TMPro.TMP_Text total;
     public TMPro.TMP_Text noActRegion;
     public TMPro.TMP_Text actRegion;
     public TMPro.TMP_Text bombasEncendidas;
     public TMPro.TMP_Text bombasApagadas;
     public TMPro.TMP_Text bombasFalla;
-    
+
+    private void Start()
+    {
+        UpdateData();
+    }
 
     void Update()
     {
@@ -34,26 +39,43 @@ public class ResumenPozos : MonoBehaviour
         {
             //Nombre Ramal
             nameRegion.text = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion));
+            
+            //Total Pozos
+            total
+                .text = ControlDatos.singleton.listSitios.Where(x =>
+                x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count().ToString();
+            
             //Sitios En linea
             actRegion.text = ControlDatos.singleton.listSitios.Where(x =>
                 x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.dataInTime == true).ToString();
+            
             //Sitios Fuera de linea
             noActRegion.text = ControlDatos.singleton.listSitios.Where(x =>
                 x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.dataInTime == false).ToString();
             
             //Bomba Encendida
             bombasEncendidas.text = ControlDatos.singleton.listSitios.Where(x =>
-                x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.GetBomba() == 1).ToString();
+                x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.GetBomba() == 1 && y.dataInTime == true).ToString();
             
             //Bomba Apagada
             bombasApagadas.text = ControlDatos.singleton.listSitios.Where(x =>
-                x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.GetBomba() == 2).ToString();
-
+                x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.GetBomba() == 2 && y.dataInTime == true).ToString();
+            
+            
+            //Bomba Falla
+            
+            //Bomba 0 No disponible
             sumatoriaFalla = ControlDatos.singleton.listSitios.Where(x =>
-                    x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion])
-                .Count(y => y.GetBomba() == 0) + ControlDatos.singleton.listSitios.Where(x =>
-                    x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion])
-                .Count(y => y.GetBomba() == 3);
+                    x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y => y.GetBomba() == 0 && y.dataInTime == true) + 
+                             
+                    //Bomba 3 Fallo arrancador
+                    ControlDatos.singleton.listSitios.Where(x =>
+                         x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y => y.GetBomba() == 3 && y.dataInTime == true) +
+                             
+                        //Sitios Fuera de linea
+                        ControlDatos.singleton.listSitios.Where(x =>
+                             x.dataSitio.Estructura == ControlDatos.singleton.listIdRegiones[idRegion]).Count(y=>y.dataInTime == false) ;
+        
             
             //Bomba Falla
             bombasFalla.text = sumatoriaFalla.ToString();
