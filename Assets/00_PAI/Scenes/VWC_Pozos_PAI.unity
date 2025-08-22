@@ -108777,6 +108777,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2500433953214543917, guid: 2d4fd1440443f664183211449bc61ad8, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 1077380343
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777208909842265723, guid: 2d4fd1440443f664183211449bc61ad8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 102
+      objectReference: {fileID: 0}
     - target: {fileID: 3855281535995822756, guid: 2d4fd1440443f664183211449bc61ad8, type: 3}
       propertyPath: m_Name
       value: AnimacionSinConexion
