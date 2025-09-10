@@ -656,7 +656,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5471698, g: 0.53426486, b: 0.53426486, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 9057162709762011089}
   - component: {fileID: 4667976566342407717}
   - component: {fileID: 8206690151242585404}
+  - component: {fileID: 3591317222222929210}
   m_Layer: 5
   m_Name: Panel Login_1
   m_TagString: Untagged
@@ -1026,6 +1027,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3591317222222929210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184218036150189590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdec6a682b9142249973f7ef56f191da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectables:
+  - {fileID: 4147108128241149888}
+  - {fileID: 579724229505934742}
+  - {fileID: 4864012947143260119}
 --- !u!1 &3338341247975280477
 GameObject:
   m_ObjectHideFlags: 0
