@@ -38,6 +38,7 @@ public class RequestAPI : Singleton<RequestAPI>
     [TabGroup("Events")] public UnityEvent InitializeVersionEvent;
     [TabGroup("Events")] public UnityEvent UpdateVersionEvent;
     
+    public bool isInitPoleo = false;
     public bool usePoleo = true;
     public bool useDataFile;
 
@@ -68,6 +69,8 @@ public class RequestAPI : Singleton<RequestAPI>
             IniciarPeticionDatos();
         else if (useDataFile)
             IniciarReadDataFile();
+        
+        isInitPoleo = true;
     }
 
     public void IniciarPeticionDatos()
@@ -88,6 +91,15 @@ public class RequestAPI : Singleton<RequestAPI>
         dataRequestAPI.ReadJSON_DataFile();
         
         infraestructuraActualizada.Invoke();
+    }
+    
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus && isInitPoleo)
+        {
+            Debug.Log("OnApplicationFocus");
+            LanzarPoleo();
+        }
     }
 
     private void LanzarPoleo()
