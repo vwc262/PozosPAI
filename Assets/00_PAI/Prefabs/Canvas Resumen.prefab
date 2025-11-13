@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8399665461184772738}
   - component: {fileID: 6369413024484831421}
   - component: {fileID: 5195533018445431659}
+  - component: {fileID: 4627691310855886872}
   m_Layer: 5
   m_Name: Canvas Resumen
   m_TagString: Untagged
@@ -126,8 +127,8 @@ MonoBehaviour:
       colorIndex: 3
       position:
         serializedVersion: 2
-        x: 243
-        y: 103
+        x: 64
+        y: 196
         width: 115.95
         height: 16
       isBreakpoint: 0
@@ -205,8 +206,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 416
-        y: 103
+        x: 490
+        y: 225
         width: 111.94
         height: 16
       isBreakpoint: 0
@@ -284,30 +285,25 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 57
-        y: 105
+        x: 282
+        y: 102
         width: 100
-        height: 32
+        height: 16
       isBreakpoint: 0
-      isSequence: 0
+      isSequence: 1
       hideUnused: 0
-      transitions:
-      - fsmEvent:
-          name: FINISHED
-          isSystemEvent: 1
-          isGlobal: 0
-        toState: ON
-        linkStyle: 0
-        linkConstraint: 0
-        linkTarget: 0
-        colorIndex: 0
+      transitions: []
       actionData:
-        actionNames: []
-        customNames: []
-        actionEnabled: 
-        actionIsOpen: 
-        actionStartIndex: 
-        actionHashCodes: 
+        actionNames:
+        - HutongGames.PlayMaker.Actions.CallMethod
+        - HutongGames.PlayMaker.Actions.BoolTest
+        customNames:
+        - 
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000006000000
+        actionHashCodes: ca51e900a4c8bf00
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -317,29 +313,85 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
-        fsmObjectParams: []
-        fsmVarParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: GetShowResumen
+        fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: ControlPantallaResumen
+          value: {fileID: 4627691310855886872}
+        fsmVarParams:
+        - variableName: showResumen
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 2
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 1
+          name: showResumen
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
-        stringParams: []
-        byteData: 
-        arrayParamSizes: 
-        arrayParamTypes: []
+        stringParams:
+        - backResumen
+        - skipResumen
+        byteData: 000000
+        arrayParamSizes: 00000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 
-        paramName: []
-        paramDataPos: 
-        paramByteDataSize: 
+        paramDataType: 18000000120000000c00000027000000010000000100000011000000170000001700000001000000
+        paramName:
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
+        - boolVariable
+        - isTrue
+        - isFalse
+        - everyFrame
+        paramDataPos: 00000000000000000000000000000000000000000100000000000000000000000100000002000000
+        paramByteDataSize: 00000000000000000000000000000000010000000100000000000000000000000000000001000000
     events:
     - name: skipResumen
       isSystemEvent: 0
@@ -372,7 +424,13 @@ MonoBehaviour:
     variables:
       floatVariables: []
       intVariables: []
-      boolVariables: []
+      boolVariables:
+      - useVariable: 1
+        name: showResumen
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0
       stringVariables: []
       vector2Variables: []
       vector3Variables: []
@@ -387,7 +445,7 @@ MonoBehaviour:
       enumVariables: []
       categories:
       - 
-      variableCategoryIDs: 
+      variableCategoryIDs: 00000000
     description: 
     docUrl: 
     showStateLabel: 0
@@ -441,6 +499,18 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!114 &4627691310855886872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539104883082962804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeea3d8b12ba7584ba856d8a58a0a9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3621640008777914187
 GameObject:
   m_ObjectHideFlags: 0
