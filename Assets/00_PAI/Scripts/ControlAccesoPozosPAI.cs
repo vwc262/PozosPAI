@@ -68,6 +68,7 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
     [TabGroup("UI")] public Toggle toggleAIFA;
     [TabGroup("UI")] public Toggle toggleZumpango;
     [TabGroup("UI")] public Toggle toggleAplicationInFocus;
+    [TabGroup("UI")] public Toggle toggleShowResumen;
     [TabGroup("UI")] public KeyCode tecla1,tecla2,tecla3;
 
     protected override void Awake()
@@ -98,6 +99,9 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
 
         if (toggleAplicationInFocus != null)
             toggleAplicationInFocus.isOn = configuration.validaAplicationInFocus;
+        
+        if (toggleShowResumen != null)
+            toggleShowResumen.isOn = configuration.showResumenInit;
     }
 
     private void Update()
@@ -202,6 +206,12 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
             AplicationControl.singleton.validaAplicationInFocus = configuration.validaAplicationInFocus;
     }
     
+    public void SetActiveShowResumenInit(bool Value)
+    {
+        configuration.showResumenInit = Value;
+        SaveConfiguration();
+    }
+    
     [TabGroup("Configuracion")] [Button]
     public void SaveConfiguration()
     {
@@ -219,6 +229,7 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
 public class Configuration
 {
     public bool validaAplicationInFocus;
+    public bool showResumenInit;
     
     public string GetJsonString()
     {

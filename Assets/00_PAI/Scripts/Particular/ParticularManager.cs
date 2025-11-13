@@ -11,7 +11,18 @@ public class ParticularManager : Singleton<ParticularManager>
 {
     public ControlSitio sitio;
 
-    public GameObject loadedScreen;
+    //public GameObject loadedScreen;
+    public enum TypeScreenLoad
+    {
+        Default,
+        Animation,
+        FSM
+    }
+
+    public TypeScreenLoad typeScreenLoad;
+    public GameObject loadScreenAnimation;
+    public PlayMakerFSM loadedScreenFSM;
+    
     public float loadTime;
     public bool loading;
     public bool unloading;
@@ -69,7 +80,7 @@ public class ParticularManager : Singleton<ParticularManager>
         {
             CloseBombaControl();
             loading = false;
-            loadedScreen.SetActive(true);
+            SetActiveScreenLoad(true);
             StartCoroutine(waitLoading());
             currentParticularSceneName = sceneName;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
@@ -99,7 +110,7 @@ public class ParticularManager : Singleton<ParticularManager>
             yield return null;
         }
         
-        loadedScreen.SetActive(false);
+        SetActiveScreenLoad(false);
     }
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -155,7 +166,7 @@ public class ParticularManager : Singleton<ParticularManager>
         
         isParticularOpen = false;
         
-        loadedScreen.SetActive(true);
+        SetActiveScreenLoad(true);
         StartCoroutine(waitUnLoading());
         unloading = false;
     }
@@ -169,7 +180,7 @@ public class ParticularManager : Singleton<ParticularManager>
             yield return null;
         }
         
-        loadedScreen.SetActive(false);
+        SetActiveScreenLoad(false);
     }
     
     public void LoadParticularScene()
@@ -202,7 +213,7 @@ public class ParticularManager : Singleton<ParticularManager>
         if (sceneName != "" && currentParticularSceneName != sceneName)
         {
             loading = false;
-            loadedScreen.SetActive(true);
+            SetActiveScreenLoad(true);
             StartCoroutine(waitUnLoading());
             
             SceneManager.UnloadSceneAsync(currentParticularSceneName);
@@ -288,6 +299,22 @@ public class ParticularManager : Singleton<ParticularManager>
         //Debug.Log("Reset Dron");
         if (Particular_Reset_Pos._singletonExists)
             Particular_Reset_Pos.singleton.ResetPosition();
+    }
+    
+    public void SetActiveScreenLoad(bool active)
+    {
+        switch (typeScreenLoad)
+        {
+            case TypeScreenLoad.Animation:
+                loadScreenAnimation.SetActive(active);
+                break;
+            case TypeScreenLoad.FSM:
+                if (active)
+                    loadedScreenFSM.SendEvent("transitionFade_IN");
+                else
+                    loadedScreenFSM.SendEvent("transitionFade_OUT");
+                break;
+        }
     }
 }
 
