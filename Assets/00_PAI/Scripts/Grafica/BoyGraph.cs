@@ -148,7 +148,7 @@ public class BoyGraph : MonoBehaviour
     //Select sitio
     public void UpdateInfoSitio(DataSitio _DataSitio)
     {
-        if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+        if (ControlRequest.singleton.listRequestAPI[0].sistema == EstructurasAPI.Proyectos.PozosPAI)
         {
             idSitio = _DataSitio.idSitio % 100;
             EstructuraSitio = (int)_DataSitio.Estructura;
@@ -457,7 +457,7 @@ public class BoyGraph : MonoBehaviour
         {
             setFechas(datePicker.SelectedDates[0], datePicker.SelectedDates[0]);
             
-            if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+            if (ControlRequest.singleton.listRequestAPI[0].sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
                 RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
@@ -480,7 +480,7 @@ public class BoyGraph : MonoBehaviour
         {
             setFechas(datePicker.SelectedDates[0], datePicker.SelectedDates[1]);
             
-            if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+            if (ControlRequest.singleton.listRequestAPI[0].sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
                 RequestAPI_Historicos.singleton.GetHistricosByDates(
                     idSitio,EstructuraSitio,
@@ -522,15 +522,15 @@ public class BoyGraph : MonoBehaviour
     
     public void HistoricosCallBack()
     {
-        if (RequestAPI._singletonExists)
+        if (ControlRequest._singletonExists)
         {
-            SerieDataGasto = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto;
-            SerieDataPresion = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Presion;
-            SerieDataTotalizado = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado;
-            SerieDataBomba = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba;
-            SerieDataNivel = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel;
-            SerieDataAutomatismo = RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo;
-            SerieDataFalloAutomatismo = RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo;
+            SerieDataGasto = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto;
+            SerieDataPresion = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion;
+            SerieDataTotalizado = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado;
+            SerieDataBomba = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba;
+            SerieDataNivel = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel;
+            SerieDataAutomatismo = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo;
+            SerieDataFalloAutomatismo = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo;
             
             UpdateSerieData();
             

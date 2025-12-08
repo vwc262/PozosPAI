@@ -135,17 +135,21 @@ public class ControlDatos : Singleton<ControlDatos>
         listSitios.Clear();
 
         var cont = 0;
-        
-        foreach (SiteDescription sitio in RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.
-                     OrderByDescending(x=>x.Latitud))
+
+        for (int i = 0; i < ControlRequest.singleton.listRequestAPI.Count; i++)
         {
-            ControlSitio newSitio = new ControlSitio();
-            newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio);
-            newSitio.dataSitio.idSitioUnity = cont++;
+            foreach (SiteDescription sitio in ControlRequest.singleton.listRequestAPI[i].dataRequestAPI.infraestructura.Sites.
+                         OrderByDescending(x=>x.Latitud))
+            {
+                ControlSitio newSitio = new ControlSitio();
+                newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
+                newSitio.dataSitio.idSitioUnity = cont++;
+                newSitio.indexRequestAPI = i;
 
-            listSitios.Add(newSitio);
+                listSitios.Add(newSitio);
+            }
         }
-
+        
         listIdRegiones.Clear();
         
         foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
@@ -264,7 +268,7 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    public DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio)
+    public DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio, int indexRequest)
     {
         DataSitio newDataSitio = new DataSitio();
         
@@ -279,7 +283,7 @@ public class ControlDatos : Singleton<ControlDatos>
         newDataSitio.longitud = sitio.Longitud;
         newDataSitio.latitud = sitio.Latitud;
 
-        SiteBase sitebase = RequestAPI.singleton.dataRequestAPI.updateUnitySites.Sites.Find(
+        SiteBase sitebase = ControlRequest.singleton.listRequestAPI[indexRequest].dataRequestAPI.updateUnitySites.Sites.Find(
             item => item.Id == sitio.Id);
 
         if (sitebase != null)
@@ -309,12 +313,13 @@ public class ControlDatos : Singleton<ControlDatos>
         foreach (ControlSitio controlSitio in listSitios)
         {
             //DataSitio newDataSitio = new DataSitio();
-            SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
-                item => item.Id == controlSitio.dataSitio.idSitio);
+            SiteDescription sitio = ControlRequest.singleton.listRequestAPI[controlSitio.indexRequestAPI].
+                dataRequestAPI.infraestructura.Sites.Find(
+                    item => item.Id == controlSitio.dataSitio.idSitio);
 
             if (sitio != null)
             {
-                controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
+                controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio, controlSitio.indexRequestAPI));
                 controlSitio.dataSitio.idSitioUnity = cont;
                 controlSitio.GetStatusConexionSitio();
             }
@@ -333,9 +338,9 @@ public class ControlDatos : Singleton<ControlDatos>
     //         ReadTotalizados);
     // }
     
-    private void ReadTotalizados()
+    private void ReadTotalizados(int indexRequest)
     {
-        totalizadosPorFecha = RequestAPI.singleton.dataRequestAPI.totalizadosPorFecha.ListaTotalizadoPorSitio;
+        totalizadosPorFecha = ControlRequest.singleton.listRequestAPI[indexRequest].dataRequestAPI.totalizadosPorFecha.ListaTotalizadoPorSitio;
 
         totalizadosPorFecha = totalizadosPorFecha.OrderByDescending(
             x => x.Diferencia).ToList();
@@ -404,16 +409,17 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    public string GetNameRegionByIndex(int index)
+    public string GetNameRegionByIndex(int index, int indexRequest)
     {
-        return GetNameRegionByID(GetIDRegionByIndex(index));
+        return GetNameRegionByID(GetIDRegionByIndex(index), indexRequest);
     }
     
-    public string GetNameRegionByID(int idRegion)
+    public string GetNameRegionByID(int idRegion, int indexRequest)
     {
-        if (RequestAPI._singletonExists)
+        if (ControlRequest._singletonExists)
         {
-            Region regionAux = (RequestAPI.singleton.dataRequestAPI.regiones.Find(item => item.idRegion == idRegion));
+            Region regionAux = (ControlRequest.singleton.listRequestAPI[indexRequest].dataRequestAPI.regiones.
+                Find(item => item.idRegion == idRegion));
             if (regionAux != null)    
                 return regionAux.nombre;
         }

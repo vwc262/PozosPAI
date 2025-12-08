@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
-public class RequestAPI : Singleton<RequestAPI>
+public class RequestAPI : MonoBehaviour
 {
     public int delay = 10;
     
@@ -33,10 +33,10 @@ public class RequestAPI : Singleton<RequestAPI>
     [TabGroup("Comunication")] public bool versionInitialized = false;
 
     public Action TotalizadosCallback;
-    
-    [TabGroup("Events")] public UnityEvent infraestructuraActualizada;
-    [TabGroup("Events")] public UnityEvent InitializeVersionEvent;
-    [TabGroup("Events")] public UnityEvent UpdateVersionEvent;
+    //
+    // [TabGroup("Events")] public UnityEvent infraestructuraActualizada;
+    // [TabGroup("Events")] public UnityEvent InitializeVersionEvent;
+    // [TabGroup("Events")] public UnityEvent UpdateVersionEvent;
     
     public bool isInitPoleo = false;
     public bool usePoleo = true;
@@ -58,7 +58,7 @@ public class RequestAPI : Singleton<RequestAPI>
     
     private void Awake()
     {
-        base.Awake();
+        // base.Awake();
         
         MyConectionData.ReadConnectionData();
     }
@@ -90,7 +90,7 @@ public class RequestAPI : Singleton<RequestAPI>
 
         dataRequestAPI.ReadJSON_DataFile();
         
-        infraestructuraActualizada.Invoke();
+        respInfraestructura = true;
     }
     
     void OnApplicationFocus(bool hasFocus)
@@ -137,21 +137,6 @@ public class RequestAPI : Singleton<RequestAPI>
         yield return new WaitForSeconds(delay);
         LanzarPoleo();
     }
-    
-    // public void GetTotalizadosByDates(DateTime time1, DateTime time2, Action Callback)
-    // {
-    //     totalizadosTime1 = time1;
-    //     totalizadosTime2 = time2;
-    //     GetTotalizados();
-    //
-    //     TotalizadosCallback = Callback;
-    // }
-
-    // private void GetTotalizados()
-    // {
-    //     url = GetAddressByMethod(Metodos.UpdateTotalizados);
-    //     StartCoroutine(DoRequest(Metodos.UpdateTotalizados));
-    // }
     
     public string GetAddressByMethod(string method)
     {
@@ -243,125 +228,6 @@ public class RequestAPI : Singleton<RequestAPI>
                 yield return unityWebRequest.SendWebRequest();
                 CallBack(unityWebRequest, method);
                 break;
-            // case Metodos.UpdateTotalizados:
-            //     WWWForm formData = new WWWForm();
-            //     formData.AddField("fechaInicial", totalizadosTime1.ToString());
-            //     formData.AddField("fechaFinal", totalizadosTime2.ToString());
-            //     unityWebRequest = UnityWebRequest.Post(address, formData);
-            //     
-            //     yield return unityWebRequest.SendWebRequest();
-            //     CallBack(unityWebRequest, method);
-            //     break;
-            // case Metodos.UpdateHistoricos:
-            // {
-            //     if (enableHistoricos)
-            //     {
-            //         SiteDescription sitio =
-            //             RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio);
-            //         List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
-            //
-            //         dataRequestAPI.historicosBySitio.Gasto.Clear();
-            //         dataRequestAPI.historicosBySitio.Presion.Clear();
-            //         dataRequestAPI.historicosBySitio.Totalizado.Clear();
-            //         dataRequestAPI.historicosBySitio.Bomba.Clear();
-            //         dataRequestAPI.historicosBySitio.Nivel.Clear();
-            //
-            //         SignalsDescriptionContainerC signalDescriptionC_G =
-            //             signalsDescriptionContainer.Find(
-            //                 item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
-            //         SignalsDescriptionContainerC signalDescriptionC_P =
-            //             signalsDescriptionContainer.Find(item =>
-            //                 item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);
-            //         SignalsDescriptionContainerC signalDescriptionC_T =
-            //             signalsDescriptionContainer.Find(item =>
-            //                 item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);
-            //         SignalsDescriptionContainerC signalDescriptionC_B =
-            //             signalsDescriptionContainer.Find(
-            //                 item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
-            //         SignalsDescriptionContainerC signalDescriptionC_N =
-            //             signalsDescriptionContainer.Find(
-            //                 item => item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
-            //
-            //         if (signalDescriptionC_G != null)
-            //         {
-            //             RequestBoy DataH_G = new RequestBoy();
-            //             DataH_G.IdSignal = signalDescriptionC_G.SignalsDescription.First().IdSignal;
-            //             DataH_G.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-            //             DataH_G.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
-            //
-            //             unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-            //                 JsonUtility.ToJson(DataH_G), "application/json");
-            //
-            //             yield return unityWebRequest.SendWebRequest();
-            //             SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.GASTO);
-            //         }
-            //
-            //         if (signalDescriptionC_P != null)
-            //         {
-            //             RequestBoy DataH_P = new RequestBoy();
-            //             DataH_P.IdSignal = signalDescriptionC_P.SignalsDescription.First().IdSignal;
-            //             DataH_P.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-            //             DataH_P.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
-            //
-            //             unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-            //                 JsonUtility.ToJson(DataH_P), "application/json");
-            //
-            //             yield return unityWebRequest.SendWebRequest();
-            //             SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.PRESION);
-            //         }
-            //
-            //         if (signalDescriptionC_T != null)
-            //         {
-            //             RequestBoy DataH_T = new RequestBoy();
-            //             DataH_T.IdSignal = signalDescriptionC_T.SignalsDescription.First().IdSignal;
-            //             DataH_T.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-            //             DataH_T.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
-            //
-            //             unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-            //                 JsonUtility.ToJson(DataH_T), "application/json");
-            //
-            //             yield return unityWebRequest.SendWebRequest();
-            //             SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.TOTALIZADO);
-            //         }
-            //
-            //         if (signalDescriptionC_B != null)
-            //         {
-            //             RequestBoy DataH_B = new RequestBoy();
-            //             DataH_B.IdSignal = signalDescriptionC_B.SignalsDescription.First().IdSignal;
-            //             DataH_B.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-            //             DataH_B.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
-            //
-            //             unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-            //                 JsonUtility.ToJson(DataH_B), "application/json");
-            //
-            //             yield return unityWebRequest.SendWebRequest();
-            //             SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.BOMBA);
-            //         }
-            //
-            //         if (signalDescriptionC_N != null)
-            //         {
-            //             RequestBoy DataH_N = new RequestBoy();
-            //             DataH_N.IdSignal = signalDescriptionC_N.SignalsDescription.First().IdSignal;
-            //             DataH_N.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-            //             DataH_N.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
-            //
-            //             unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-            //                 JsonUtility.ToJson(DataH_N), "application/json");
-            //
-            //             yield return unityWebRequest.SendWebRequest();
-            //             SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.NIVEL);
-            //         }
-            //
-            //         //Llamada a funcion de callback
-            //         CallBackHistoricos();
-            //     }
-            //     else if (simulaCallBackHistoricos)
-            //     {
-            //         yield return new WaitForSeconds(2);
-            //         CallBackHistoricos();
-            //     }
-            // }
-            // break;
             default:
                 break;
         }
@@ -386,10 +252,6 @@ public class RequestAPI : Singleton<RequestAPI>
                 case Metodos.UpdateTotalizados:
                     errorUpdateTotalizados = true;
                     break;
-                
-                // case Metodos.UpdateHistoricos:
-                //     errorUpdateHistoricos = true;
-                //     break;
             }
         }
         else
@@ -403,7 +265,6 @@ public class RequestAPI : Singleton<RequestAPI>
                         respInfraestructura = true;
                         dataRequestAPI.infraestructura = JsonUtility.FromJson<Infraestructura>(unityWebRequest.downloadHandler.text);
                         InfraestructuraCout++;
-                        infraestructuraActualizada.Invoke();
                         break;
                     case Metodos.UpdateData:
                         errorUpdateHTML = false;
@@ -414,11 +275,14 @@ public class RequestAPI : Singleton<RequestAPI>
                         {
                             _ServiceVersion = ServiceVersion;
                             versionInitialized = true;
-                            InitializeVersionEvent.Invoke();
+                            
+                            if (ControlRequest._singletonExists)
+                                ControlRequest.singleton.InitializeVersionEvent.Invoke();
                         }
                         else if(_ServiceVersion != ServiceVersion)
                         {
-                            UpdateVersionEvent.Invoke();
+                            if (ControlRequest._singletonExists)
+                                ControlRequest.singleton.UpdateVersionEvent.Invoke();
                         }
                         break;
                     case Metodos.UpdateTotalizados:

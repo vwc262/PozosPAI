@@ -38,7 +38,7 @@ public class ResumenPozos : MonoBehaviour
         if (ControlDatos._singletonExists)
         {
             //Nombre Ramal
-            nameRegion.text = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion));
+            nameRegion.text = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion), 0);
             
             //Total Pozos
             total

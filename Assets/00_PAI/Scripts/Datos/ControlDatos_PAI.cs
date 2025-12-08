@@ -30,7 +30,8 @@ public class ControlDatos_PAI : ControlDatos
         
         foreach (ControlSitio controlSitio in listSitios)
         {
-            SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
+            SiteDescription sitio = ControlRequest.singleton.listRequestAPI[controlSitio.indexRequestAPI].
+                dataRequestAPI.infraestructura.Sites.Find(
                 item => item.Id == controlSitio.dataSitio.idSitio);
 
             if (sitio != null)
@@ -45,7 +46,8 @@ public class ControlDatos_PAI : ControlDatos
                 controlSitio.dataSitio.latitud = sitio.Latitud;
                 
                 //controlSitio.dataSitio.SetDataSitio(GetDataSitioFromSiteDescription(sitio));
-                SiteBase siteBaseUpdate = RequestAPI.singleton.dataRequestAPI.updateUnitySites.Sites.Find(
+                SiteBase siteBaseUpdate = ControlRequest.singleton.listRequestAPI[controlSitio.indexRequestAPI].
+                    dataRequestAPI.updateUnitySites.Sites.Find(
                     item => item.Id == sitio.Id);
 
                 if (siteBaseUpdate != null)
@@ -87,9 +89,9 @@ public class ControlDatos_PAI : ControlDatos
 
     public void UpdateDataAutomatismo()
     {
-        if (RequestAPI_Auto._singletonExists && RequestAPI._singletonExists)
+        if (RequestAPI_Auto._singletonExists && ControlRequest._singletonExists)
         {
-            if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+            if (ControlRequest.singleton.listRequestAPI[0].sistema == EstructurasAPI.Proyectos.PozosPAI)
             {
                 foreach (var sistema in RequestAPI_Auto.singleton.estacionesSistemaAutomatismo)
                 {

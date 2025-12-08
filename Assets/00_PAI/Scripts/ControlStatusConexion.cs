@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class ControlStatusConexion : MonoBehaviour
@@ -21,10 +22,10 @@ public class ControlStatusConexion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (RequestAPI.singleton != null)
+        if (ControlRequest._singletonExists)
         {
-            if (RequestAPI.singleton.errorInfraestructuraHTML ||
-                RequestAPI.singleton.errorUpdateHTML)
+            if (ControlRequest.singleton.errorInfreastructuraHTML() ||
+                ControlRequest.singleton.errorUpdateHTML())
             {
                 //Error en las comunicaciones
                 if (statusConectado != null) statusConectado.SetActive(false);
@@ -34,9 +35,9 @@ public class ControlStatusConexion : MonoBehaviour
                 if (ControlAnimSinConexion._singletonExists)
                     ControlAnimSinConexion.singleton.SetEnableAnimSinConexion(true);
             }
-            else if (RequestAPI.singleton.respInfraestructura)
+            else if (ControlRequest.singleton.respInfraestructura)
             {
-                if (RequestAPI.singleton.respUpdateSites)
+                if (ControlRequest.singleton.GetUpdateStatus())
                 {
                     //Datos actualizados
                     if (statusConectado != null) statusConectado.SetActive(true);
@@ -55,7 +56,7 @@ public class ControlStatusConexion : MonoBehaviour
                     ControlAnimSinConexion.singleton.SetEnableAnimSinConexion(false);
             }
 
-            if (RequestAPI.singleton.MyConectionData.useLocalHost)
+            if (ControlRequest.singleton.listRequestAPI[0].MyConectionData.useLocalHost)
             {
                 if (connectioLocal != null) connectioLocal.SetActive(true);
                 if (connectioInternet != null) connectioInternet.SetActive(false);

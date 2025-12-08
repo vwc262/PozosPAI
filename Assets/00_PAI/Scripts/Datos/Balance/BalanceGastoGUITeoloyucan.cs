@@ -15,12 +15,12 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
 
     public void ChangeUIText()
     {
-        if (RequestAPI._singletonExists)
+        if (ControlRequest._singletonExists)
         {
             for (int i = 0; i < ListBalances.Count; i++)
             {
-                if (RequestAPI.singleton.dataRequestAPI.regiones.Count > i)
-                    ListBalances[i].SetLabel("Balance gasto " + ControlDatos.singleton.GetNameRegionByIndex(i));
+                if (ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.regiones.Count > i)
+                    ListBalances[i].SetLabel("Balance gasto " + ControlDatos.singleton.GetNameRegionByIndex(i, 0));
             }
         }
         
