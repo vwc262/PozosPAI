@@ -24,7 +24,7 @@ public class ControlBoyGraph : Singleton<ControlBoyGraph>
                     graph.InitPanelsActuallizacion();
                 }
 
-                if (RequestAPI.singleton.sistema == EstructurasAPI.Proyectos.PozosPAI)
+                if (ControlRequest.singleton.listRequestAPI[0].sistema == EstructurasAPI.Proyectos.PozosPAI)
                 {
                     BoyGraph.idSitio = sitio.dataSitio.idSitio % 100;
                     BoyGraph.EstructuraSitio = (int)sitio.dataSitio.Estructura;

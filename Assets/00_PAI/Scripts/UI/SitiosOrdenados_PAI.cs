@@ -139,7 +139,7 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
                 instanceLabel.sitiosOrdenados = this;
                 instanceLabel.region = (i + 1);
                 instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
-                string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i));
+                string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i),0);
                 instanceLabel.SetNameRegional(nameRegion);
                 if (selectedColors.Length > i)
                     instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);

@@ -29,11 +29,11 @@ public class ControlBombas_PAI : ControlBombas
     {
         if (!simulaSendCommand)
         {
-            if (RequestAPI._singletonExists)
+            if (ControlRequest._singletonExists)
             {
                 UnityWebRequest unityWebRequest = null;
-                Debug.Log(RequestAPI.singleton.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
-                unityWebRequest = UnityWebRequest.Post(RequestAPI.singleton.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura),
+                //Debug.Log(ControlRequest.singleton.listRequestAPI[0].GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
+                unityWebRequest = UnityWebRequest.Post(ControlRequest.singleton.listRequestAPI[0].GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura),
                     JsonUtility.ToJson(commandVWC), "application/json");
 
                 yield return unityWebRequest.SendWebRequest();
@@ -45,7 +45,7 @@ public class ControlBombas_PAI : ControlBombas
         {
             CommandResponse.ResponseBln = true;
             CommandResponse.ResponseText = "Simulated command send";
-            Debug.Log(RequestAPI.singleton.GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
+            Debug.Log(ControlRequest.singleton.listRequestAPI[0].GetAddressByMethod(Metodos.SendCommand, sitio.dataSitio.Estructura));
             Debug.Log(CommandResponse);
         }
     }

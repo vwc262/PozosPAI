@@ -14,13 +14,13 @@ public class VersionGUI : MonoBehaviour
 
     void Start()
     {
-        RequestAPI.singleton.UpdateVersionEvent.AddListener(UpdateVersion);
-        RequestAPI.singleton.InitializeVersionEvent.AddListener(UpdateVersionText);
+        ControlRequest.singleton.UpdateVersionEvent.AddListener(UpdateVersion);
+        ControlRequest.singleton.InitializeVersionEvent.AddListener(UpdateVersionText);
     }
 
     private void UpdateVersionText()
     {
-        versionText.text = "" + RequestAPI.singleton.ServiceVersion;
+        versionText.text = "" + ControlRequest.singleton.listRequestAPI[0].ServiceVersion;
     }
 
     private void UpdateVersion()

@@ -21,6 +21,8 @@ public class ControlSitio
     public bool SelectedForAnalitics;
     public float timeLastCommand;
 
+    public int indexRequestAPI;
+
     public bool GetStatusConexionSitio()
     {
         dataInTime = false;

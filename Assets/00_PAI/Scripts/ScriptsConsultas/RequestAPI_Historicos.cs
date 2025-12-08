@@ -46,13 +46,13 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
     
     private void GetHistoricos()
     {
-        url = RequestAPI.singleton.GetAddressByMethod(Metodos.UpdateHistoricos);
+        url = ControlRequest.singleton.listRequestAPI[0].GetAddressByMethod(Metodos.UpdateHistoricos);
         StartCoroutine(DoRequest(Metodos.UpdateHistoricos));
     }
     
     private void GetHistoricosBySistema(int _sistema)
     {
-        url = RequestAPI.singleton.GetAddressByMethod(Metodos.UpdateHistoricos, _sistema);
+        url = ControlRequest.singleton.listRequestAPI[0].GetAddressByMethod(Metodos.UpdateHistoricos, _sistema);
         StartCoroutine(DoRequestHistoricosBySistema(Metodos.UpdateHistoricos, _sistema));
     }
     
@@ -68,18 +68,18 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
             {
                 if (enableHistoricos)
                 {
-                    SiteDescription sitio = RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(
+                    SiteDescription sitio = ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.infraestructura.Sites.Find(
                         item => item.Id == idSitio);
                     
                     List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Presion.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo.Clear();
-                    RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo.Clear();
+                    ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
 
                     SignalsDescriptionContainerC signalDescriptionC_G =
                         signalsDescriptionContainer.Find(item => 
@@ -225,18 +225,17 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
         if (enableHistoricos)
         {
             SiteDescription sitio =
-                RequestAPI.singleton.dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio + (sistema * 100));
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio + (sistema * 100));
             
             List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto.Clear();
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Presion.Clear();
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado.Clear();
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba.Clear();
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel.Clear();
-            
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo.Clear();
-            RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo.Clear();
+            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
 
             SignalsDescriptionContainerC signalDescriptionC_G =
                 signalsDescriptionContainer.Find(item => 
@@ -442,7 +441,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 //Debug.Log("Data: " + unityWebRequest.downloadHandler.text);
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Gasto = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
@@ -450,7 +449,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 //Debug.Log("Data: " + unityWebRequest.downloadHandler.text);
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Presion = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
@@ -458,7 +457,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 //Debug.Log("Data: " + unityWebRequest.downloadHandler.text);
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Totalizado = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
@@ -466,7 +465,7 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 //Debug.Log("Data: " + unityWebRequest.downloadHandler.text);
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Bomba = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
@@ -474,21 +473,21 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
                                 //Debug.Log("Data: " + unityWebRequest.downloadHandler.text);
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Nivel = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
                             case SignalBase.TipoSignalEnum.AUTOMATISMO:
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.Automatismo = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                             
                             case SignalBase.TipoSignalEnum.ARRANQUEFALLIDO:
                                 errorUpdateHistoricos = false;
                                 reportes = JsonUtility.FromJson<Reportes>(unityWebRequest.downloadHandler.text);
-                                RequestAPI.singleton.dataRequestAPI.historicosBySitio.FalloAutomatismo = reportes.Reporte;
+                                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo = reportes.Reporte;
                                 HistoricoCout++;
                                 break;
                         }
