@@ -141,12 +141,15 @@ public class ControlDatos : Singleton<ControlDatos>
             foreach (SiteDescription sitio in ControlRequest.singleton.listRequestAPI[i].dataRequestAPI.infraestructura.Sites.
                          OrderByDescending(x=>x.Latitud))
             {
-                ControlSitio newSitio = new ControlSitio();
-                newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
-                newSitio.dataSitio.idSitioUnity = cont++;
-                newSitio.indexRequestAPI = i;
+                if (!(sitio.Grupo == 14 && sitio.Id == 1421))
+                {
+                    ControlSitio newSitio = new ControlSitio();
+                    newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
+                    newSitio.dataSitio.idSitioUnity = cont++;
+                    newSitio.indexRequestAPI = i;
 
-                listSitios.Add(newSitio);
+                    listSitios.Add(newSitio);
+                }
             }
         }
         
