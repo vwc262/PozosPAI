@@ -425,8 +425,8 @@ public class BoyGraph : MonoBehaviour
             subSerieData.Add(new Vector2(i, (serieData[i].Valor >= 0? serieData[i].Valor : 0)));
         }
 
-        maxData = (int)subSerieData.Max(v => v.y);
-        minData = (int)subSerieData.Min(v => v.y);
+        maxData = subSerieData.Count > 0 ? (int)subSerieData.Max(v => v.y) : 0;
+        minData = subSerieData.Count > 0 ? (int)subSerieData.Min(v => v.y) : 0;
     }
     
     public void SetSubSerieDataBomba(List<Reporte> serieData, List<Vector2> subSerieData, ref int maxData)
