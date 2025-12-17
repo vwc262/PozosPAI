@@ -20,9 +20,9 @@ public class ControlDatos : Singleton<ControlDatos>
     [SerializeField][TabGroup("Sitios")]
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "smallDescription")]
     public List<ControlSitio> listSitios = new List<ControlSitio>();
-    [TabGroup("Sitios")] public List<int> listIdRegiones = new List<int>();
+    //[TabGroup("Sitios")] public List<int> listIdRegiones = new List<int>();
 
-    [TabGroup("Sitios")] public int regiones;
+    //[TabGroup("Sitios")] public int regiones;
 
     //[TabGroup("Marcadores")]public List<GameObject> listMarcadoresSitios = new List<GameObject>();
 
@@ -61,7 +61,9 @@ public class ControlDatos : Singleton<ControlDatos>
     
     public float maxLongitud;
     public float minLongitud;
-
+    
+    public List<Region> regiones;
+    
     public virtual void Start()
     {
     }
@@ -130,7 +132,7 @@ public class ControlDatos : Singleton<ControlDatos>
     }
 
     [Button]
-    [TabGroup("Sitios")]public void InitDataPozos()
+    [TabGroup("Sitios")]public virtual void InitDataPozos()
     {
         listSitios.Clear();
 
@@ -141,37 +143,34 @@ public class ControlDatos : Singleton<ControlDatos>
             foreach (SiteDescription sitio in ControlRequest.singleton.listRequestAPI[i].dataRequestAPI.infraestructura.Sites.
                          OrderByDescending(x=>x.Latitud))
             {
-                if (!(sitio.Grupo == 14 && sitio.Id == 1421))
-                {
-                    ControlSitio newSitio = new ControlSitio();
-                    newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
-                    newSitio.dataSitio.idSitioUnity = cont++;
-                    newSitio.indexRequestAPI = i;
+                ControlSitio newSitio = new ControlSitio();
+                newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
+                newSitio.dataSitio.idSitioUnity = cont++;
+                newSitio.indexRequestAPI = i;
 
-                    listSitios.Add(newSitio);
-                }
+                listSitios.Add(newSitio);
             }
         }
         
-        listIdRegiones.Clear();
-        
-        foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
-        {
-            listIdRegiones.Add(sitio.dataSitio.Estructura);
-        }
-
-        regiones = listIdRegiones.Count();
+        // listIdRegiones.Clear();
+        //
+        // foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
+        // {
+        //     listIdRegiones.Add(sitio.dataSitio.Estructura);
+        // }
+        //
+        // regiones = listIdRegiones.Count();
     }
 
     public int GetIndexRegionByID(int idRegion)
     {
-        return listIdRegiones.FindIndex(Item => Item == idRegion);
+        return regiones.FindIndex(Item => Item.idRegion == idRegion);
     }
 
     public int GetIDRegionByIndex(int index)
     {
-        if (index < listIdRegiones.Count)
-            return listIdRegiones[index];
+        if (index < regiones.Count)
+            return regiones[index].idRegion;
 
         return 0;
     }
@@ -271,7 +270,7 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    public DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio, int indexRequest)
+    public virtual DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio, int indexRequest)
     {
         DataSitio newDataSitio = new DataSitio();
         
@@ -330,16 +329,6 @@ public class ControlDatos : Singleton<ControlDatos>
             cont++;
         }
     }
-
-    // [TabGroup("Totalizados")]
-    // [Button]
-    // public void GetTotalizadosByDates()
-    // {
-    //     RequestAPI.singleton.GetTotalizadosByDates(
-    //         totalizadosTime1.dateTime, 
-    //         totalizadosTime2.dateTime,
-    //         ReadTotalizados);
-    // }
     
     private void ReadTotalizados(int indexRequest)
     {
@@ -419,13 +408,9 @@ public class ControlDatos : Singleton<ControlDatos>
     
     public string GetNameRegionByID(int idRegion, int indexRequest)
     {
-        if (ControlRequest._singletonExists)
-        {
-            Region regionAux = (ControlRequest.singleton.listRequestAPI[indexRequest].dataRequestAPI.regiones.
-                Find(item => item.idRegion == idRegion));
-            if (regionAux != null)    
-                return regionAux.nombre;
-        }
+        Region regionAux = regiones.Find(item => item.idRegion == idRegion);
+        if (regionAux != null)    
+            return regionAux.nombre;
 
         return "Region " + (idRegion);
     }
@@ -459,4 +444,16 @@ public class ControlDatos : Singleton<ControlDatos>
             minLatitud = listSitios.Min(item => item.dataSitio.latitud);
         }
     }
+
+    public virtual int GetContRegiones()
+    {
+        return regiones.Count;
+    }
+}
+
+[Serializable]
+public class Region
+{
+    public string nombre;
+    public int idRegion;
 }

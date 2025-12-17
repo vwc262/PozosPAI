@@ -160,8 +160,8 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         {
             for (int i = 0; i < RegionesLabelUILabel.Count; i++)
             {
-                switch ((EstructurasAPI.Proyectos)ControlDatos_PAI.singleton.listIdRegiones[
-                            RegionesLabelUILabel[i].region - 1])
+                switch ((EstructurasAPI.Proyectos)ControlDatos.singleton.regiones[
+                            RegionesLabelUILabel[i].region - 1].idRegion)
                 {
                     case EstructurasAPI.Proyectos.Teoloyucan:
                         RegionesLabelUIList[i].gameObject.SetActive(ControlAccesoPozosPAI.singleton.proyectos.HasFlag(

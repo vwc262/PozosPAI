@@ -40,7 +40,7 @@ public class ControlDatos_PAI : ControlDatos
                 controlSitio.dataSitio.abreviacion = sitio.Abreviacion;
                 controlSitio.dataSitio.fecha = sitio.Tiempo;
                 controlSitio.dataSitio.voltaje = sitio.Voltaje;
-                controlSitio.dataSitio.Estructura = sitio.Grupo;
+                //controlSitio.dataSitio.Estructura = sitio.Grupo;
                 controlSitio.dataSitio.tipoSitio = (TipoSitio)sitio.TipoEstacion;
                 controlSitio.dataSitio.longitud = sitio.Longitud;
                 controlSitio.dataSitio.latitud = sitio.Latitud;
@@ -157,5 +157,95 @@ public class ControlDatos_PAI : ControlDatos
                 }
             }
         }
+    }
+
+    public bool habilitarBarrientos;
+    
+    [Button]
+    [TabGroup("Sitios")]public override void InitDataPozos()
+    {
+        listSitios.Clear();
+
+        var cont = 0;
+
+        for (int i = 0; i < ControlRequest.singleton.listRequestAPI.Count; i++)
+        {
+            foreach (SiteDescription sitio in ControlRequest.singleton.listRequestAPI[i].dataRequestAPI.infraestructura.Sites.
+                         OrderByDescending(x=>x.Latitud))
+            {
+                if (!(sitio.Id == 1421)) //Diferente de Barrientos
+                {
+                    ControlSitio newSitio = new ControlSitio();
+                    newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
+                    newSitio.dataSitio.idSitioUnity = cont++;
+                    newSitio.indexRequestAPI = i;
+
+                    listSitios.Add(newSitio);
+                }
+                else
+                {
+                    if (habilitarBarrientos)
+                    {
+                        ControlSitio newSitio = new ControlSitio();
+                        newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);
+                        newSitio.dataSitio.idSitioUnity = cont++;
+                        newSitio.indexRequestAPI = i;
+
+                        listSitios.Add(newSitio);
+                    }
+                }
+            }
+        }
+        
+        // listIdRegiones.Clear();
+        //
+        // foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
+        // {
+        //     listIdRegiones.Add(sitio.dataSitio.Estructura);
+        // }
+        //
+        // regiones = listIdRegiones.Count();
+    }
+    
+    public override DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio, int indexRequest)
+    {
+        DataSitio newDataSitio = new DataSitio();
+        
+        newDataSitio.idSitio = sitio.Id;
+        newDataSitio.nombre = sitio.Nombre;
+        newDataSitio.abreviacion = sitio.Abreviacion;
+        newDataSitio.fecha = sitio.Tiempo;
+        newDataSitio.voltaje = sitio.Voltaje;
+        
+        if (!(sitio.Id == 1421)) //Diferente de Barrientos
+            newDataSitio.Estructura = sitio.Grupo;
+        else
+            newDataSitio.Estructura = 0;
+        
+        newDataSitio.tipoSitio = (TipoSitio)sitio.TipoEstacion;
+        
+        newDataSitio.longitud = sitio.Longitud;
+        newDataSitio.latitud = sitio.Latitud;
+
+        SiteBase sitebase = ControlRequest.singleton.listRequestAPI[indexRequest].dataRequestAPI.updateUnitySites.Sites.Find(
+            item => item.Id == sitio.Id);
+
+        if (sitebase != null)
+        {
+            newDataSitio.fecha = sitebase.Tiempo;
+            newDataSitio.enlace = sitebase.Enlace;
+            newDataSitio.fallaAC = sitebase.FallaAC;
+
+            foreach (var signalAux in sitebase.SignalsContainer)
+            {
+                Signal signal = new Signal();
+                signal.tipoSignal = (SignalBase.TipoSignalEnum)signalAux.TipoSignal;
+                signal.signals.AddRange(signalAux.Signals); 
+                
+                newDataSitio.listSignals.Add(signal);
+            }
+        }
+
+        return newDataSitio;
     }
 }

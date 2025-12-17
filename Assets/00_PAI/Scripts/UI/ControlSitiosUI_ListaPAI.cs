@@ -1,4 +1,5 @@
 using System;
+using HutongGames.PlayMaker.Actions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,13 +51,19 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
     
     public override void SetSitioSelectUI_GO(ControlSitio sitio)
     {
-        GameObject instancePrefab = ControlPrefabs.singleton.GetPrefabUIListSitio(sitio.dataSitio.tipoSitio);
-        
+        GameObject instancePrefab;
+
+        if (!(sitio.dataSitio.idSitio == 1421)) //Diferente de Barrientos
+            instancePrefab = ControlPrefabs.singleton.GetPrefabUIListSitio(sitio.dataSitio.tipoSitio);
+        else
+            instancePrefab = ControlPrefabs.singleton.prefabUISitioBarrientos;
+                
         if (instancePrefab != null)
         {
             GameObject instance = Instantiate(instancePrefab,
                 ((SitiosOrdenados_PAI)sitiosOrdenados)
-                .RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)].rootRegion
+                .RegionesLabelUIList[ControlDatos.singleton.GetIndexRegionByID(sitio.dataSitio.Estructura)]
+                .rootRegion
                 .transform);
 
             RectTransform m_RectTransform = instance.GetComponent<RectTransform>();

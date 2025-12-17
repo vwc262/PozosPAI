@@ -19,7 +19,7 @@ public class SitiosOrdenados : MonoBehaviour
     [TabGroup("UI")] public float AlphaNoSelected = 0.5f;
     [TabGroup("UI")] public Color[] selectedColors;
     
-    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatos._singletonExists? ControlDatos.singleton.regiones : 0;
+    [ShowInInspector] [TabGroup("Sitios")] public int totalRegiones => ControlDatos._singletonExists ? ControlDatos.singleton.GetContRegiones() : 0;
     [TabGroup("Sitios")] public SpriteRenderer[] colorRegiones;
     
     [ShowInInspector]
