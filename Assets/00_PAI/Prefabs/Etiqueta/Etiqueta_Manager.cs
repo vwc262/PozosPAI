@@ -9,11 +9,14 @@ public class Etiqueta_Manager : MonoBehaviour
     private float _countdown;
 
     //public GameObject panel;
+
+    public int indexGasto = 0;
     
     public SpriteRenderer imageState;
     
     public TMPro.TMP_Text textGasto;
     public TMPro.TMP_Text textPresion;
+    public TMPro.TMP_Text textNivel;
 
     public LineRenderer line;
     
@@ -55,9 +58,9 @@ public class Etiqueta_Manager : MonoBehaviour
 
             if (gasto.Count > 0)
             {
-                if (gasto[0].DentroRango)
+                if (gasto[indexGasto].DentroRango)
                 {
-                    textGasto.text = "Gasto: " + $"{gasto[0].Valor}" + " l/s";
+                    textGasto.text = "Gasto: " + $"{gasto[indexGasto].Valor}" + " l/s";
                 }
                 else
                 {
@@ -85,6 +88,24 @@ public class Etiqueta_Manager : MonoBehaviour
             else
             {
                 textPresion.text = "Presión: N/A";
+            }
+            
+            List<SignalBase> nivel = ParticularManager.singleton.sitio.dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+            
+            if (presion.Count > 0)
+            {
+                if (nivel[0].DentroRango)
+                {
+                    textNivel.text = "Nivel: " + $"{nivel[0].Valor}" + " m";
+                }
+                else
+                {
+                    textNivel.text = "Nivel: -";
+                }
+            }
+            else
+            {
+                textNivel.text = "Nivel: N/A";
             }
             
         }
