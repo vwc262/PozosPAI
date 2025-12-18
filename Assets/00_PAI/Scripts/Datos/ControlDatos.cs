@@ -50,19 +50,16 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Totalizados")] public UDateTime totalizadosTime2;
     [TabGroup("Totalizados")] public List<TotalizadoPorSitio> totalizadosPorFecha;
     
-    public UnityEvent DatosInicializados;
-
-    public Coroutine UpdateDataCoroutine;
-    //public Coroutine UpdateDataGPSCoroutine;
-    public Coroutine ActualizarInfraestructuraCoroutine;
+    [TabGroup("Sitios")] public UnityEvent DatosInicializados;
+    [TabGroup("Sitios")] public Coroutine UpdateDataCoroutine;
+    [TabGroup("Sitios")] public Coroutine ActualizarInfraestructuraCoroutine;
     
-    public float maxLatitud;
-    public float minLatitud;
+    [TabGroup("Mapa")] public float maxLatitud;
+    [TabGroup("Mapa")] public float minLatitud;
+    [TabGroup("Mapa")] public float maxLongitud;
+    [TabGroup("Mapa")] public float minLongitud;
     
-    public float maxLongitud;
-    public float minLongitud;
-    
-    public List<Region> regiones;
+    [TabGroup("Regiones")] public List<Region> regiones;
     
     public virtual void Start()
     {
