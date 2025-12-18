@@ -69,6 +69,7 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
     [TabGroup("UI")] public Toggle toggleZumpango;
     [TabGroup("UI")] public Toggle toggleAplicationInFocus;
     [TabGroup("UI")] public Toggle toggleShowResumen;
+    [TabGroup("UI")] public Toggle toggleHabilitaBarrientos;
     [TabGroup("UI")] public KeyCode tecla1,tecla2,tecla3;
 
     protected override void Awake()
@@ -102,6 +103,9 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
         
         if (toggleShowResumen != null)
             toggleShowResumen.isOn = configuration.showResumenInit;
+        
+        if (toggleHabilitaBarrientos != null)
+            toggleHabilitaBarrientos.isOn = configuration.habilitarBarrientos;
     }
 
     private void Update()
@@ -212,6 +216,12 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
         SaveConfiguration();
     }
     
+    public void SetActiveBarrientos(bool Value)
+    {
+        configuration.habilitarBarrientos = Value;
+        SaveConfiguration();
+    }
+    
     [TabGroup("Configuracion")] [Button]
     public void SaveConfiguration()
     {
@@ -230,6 +240,7 @@ public class Configuration
 {
     public bool validaAplicationInFocus;
     public bool showResumenInit;
+    public bool habilitarBarrientos;
     
     public string GetJsonString()
     {
