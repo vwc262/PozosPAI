@@ -157,8 +157,6 @@ public class ControlDatos_PAI : ControlDatos
             }
         }
     }
-
-    public bool habilitarBarrientos;
     
     [Button]
     [TabGroup("Sitios")]public override void InitDataPozos()
@@ -183,7 +181,7 @@ public class ControlDatos_PAI : ControlDatos
                 }
                 else
                 {
-                    if (habilitarBarrientos)
+                    if (ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos)
                     {
                         ControlSitio newSitio = new ControlSitio();
                         newSitio.dataSitio = GetDataSitioFromSiteDescription(sitio, i);

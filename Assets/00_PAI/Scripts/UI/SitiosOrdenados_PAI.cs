@@ -133,24 +133,13 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         {
             for (int i = 0; i < totalRegiones; i++)
             {
-                ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
-                    GetComponent<ControlRegionUILabel>();
-                
-                instanceLabel.sitiosOrdenados = this;
-                instanceLabel.region = (i + 1);
-                instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
-                string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i),0);
-                instanceLabel.SetNameRegional(nameRegion);
-                if (selectedColors.Length > i)
-                    instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
-                instanceLabel.gameObject.name = "Label " + nameRegion;
-                RegionesLabelUILabel.Add(instanceLabel);
-                
-                ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentSitiosList.transform).
-                    GetComponent<ControlRegionUIList>();
-                
-                instanceList.gameObject.name = "List " + instanceLabel.region.ToString();
-                RegionesLabelUIList.Add(instanceList);
+                if (ControlDatos.singleton.GetIDRegionByIndex(i) != 0)
+                    CreateUIRegion(i);
+                else
+                {
+                    if (ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos)
+                        CreateUIRegion(i);
+                }
             }
 
             SetListenersRegiones();
@@ -188,6 +177,28 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
             RegionesLabelUILabel[0].foldButtonRegion.sprite = noFoldRegion;
             RegionesLabelUILabel[0].RegionButtonCollapse.SetActive(false);
         }
+    }
+
+    public void CreateUIRegion(int i)
+    {
+        ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
+            GetComponent<ControlRegionUILabel>();
+                
+        instanceLabel.sitiosOrdenados = this;
+        instanceLabel.region = (i + 1);
+        instanceLabel.regionID = ControlDatos.singleton.GetIDRegionByIndex(i);
+        string nameRegion = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(i),0);
+        instanceLabel.SetNameRegional(nameRegion);
+        if (selectedColors.Length > i)
+            instanceLabel.foldButtonRegion.color = new Color(selectedColors[i].r,selectedColors[i].g,selectedColors[i].b);
+        instanceLabel.gameObject.name = "Label " + nameRegion;
+        RegionesLabelUILabel.Add(instanceLabel);
+                
+        ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentSitiosList.transform).
+            GetComponent<ControlRegionUIList>();
+                
+        instanceList.gameObject.name = "List " + instanceLabel.region.ToString();
+        RegionesLabelUIList.Add(instanceList);
     }
 
     public void SetEnableZonaByID(int ID_zona, bool enable)
