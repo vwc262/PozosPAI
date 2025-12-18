@@ -19,7 +19,6 @@ public class ControlDatos_PAI : ControlDatos
     {
         print("FORZAR UPDATE");
         UpdateDataPozos();
-        //UpdateDataSitios_Marcadores();
     }
 
     [Button][GUIColor(0.25f,0.25f,1)]
@@ -196,15 +195,6 @@ public class ControlDatos_PAI : ControlDatos
                 }
             }
         }
-        
-        // listIdRegiones.Clear();
-        //
-        // foreach (var sitio in listSitios.DistinctBy(item => item.dataSitio.Estructura))
-        // {
-        //     listIdRegiones.Add(sitio.dataSitio.Estructura);
-        // }
-        //
-        // regiones = listIdRegiones.Count();
     }
     
     public override DataSitio GetDataSitioFromSiteDescription(SiteDescription sitio, int indexRequest)

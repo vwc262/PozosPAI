@@ -70,13 +70,24 @@ public class ControlSitio
             controlMarcadorMap.DeseleccionarSitio();
     }
 
-    public float GetGasto()
+    public float GetGasto(int index = 0)
     {
         List<SignalBase> gasto = dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
         
-        if (gasto.Count>0)
-            if (gasto[0].DentroRango)
-                return gasto[0].Valor;
+        if (gasto.Count > index)
+            if (gasto[index].DentroRango)
+                return gasto[index].Valor;
+
+        return 0;
+    }
+    
+    public float GetNivel(int index = 0)
+    {
+        List<SignalBase> signal = dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+        
+        if (signal.Count > index)
+            if (signal[index].DentroRango)
+                return signal[index].Valor;
 
         return 0;
     }
