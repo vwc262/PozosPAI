@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
@@ -10,15 +11,24 @@ public class ControlPanelBarrientos :  MonoBehaviour
     private float _countdown;
 
     public TMPro.TMP_Text textNivel;
+    public TMPro.TMP_Text textAlerta;
     
     public int indexNivel;
     public Image imageNivel;
     
     public List<Sprite> SprteNivelSitio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+ 
+    }
+
     void Start()
     {
-        
+        if (!ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +59,26 @@ public class ControlPanelBarrientos :  MonoBehaviour
                     textNivel.text = $"Nivel: N/A m";
                 }
                 
+                if (textAlerta != null)
+                {
+                    if (nivel <= 0f)
+                    {
+                        textAlerta.text = $"N/A";
+                    }
+                    if (nivel > 0f && nivel < 1.8f)
+                    {
+                        textAlerta.text = $"Bajo";
+                    }
+                    if (nivel > 1.8f && nivel < 4.0f)
+                    {
+                        textAlerta.text = $"Medio";
+                    }
+                    if (nivel > 4.0f)
+                    {
+                        textAlerta.text = $"Alto";
+                    }
+                }
+                
             }
             
             if (imageNivel != null)
@@ -56,7 +86,6 @@ public class ControlPanelBarrientos :  MonoBehaviour
                 indexNivel = ControlDatos.singleton.listSitios[i].GetIndiceNivel(0);
 
                 imageNivel.sprite = SprteNivelSitio[indexNivel];
-                
                 
             }
         }

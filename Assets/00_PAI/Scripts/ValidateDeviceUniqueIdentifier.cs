@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ValidateDeviceUniqueIdentifier : MonoBehaviour
@@ -7,8 +8,10 @@ public class ValidateDeviceUniqueIdentifier : MonoBehaviour
     
     public TMPro.TMP_Text DeviceIdentifier;
     
+    [Button]
     private string GetdeviceUniqueIdentifier()
     {
+        serialIdentifier =  SystemInfo.deviceUniqueIdentifier;
         return SystemInfo.deviceUniqueIdentifier;
     }
 
