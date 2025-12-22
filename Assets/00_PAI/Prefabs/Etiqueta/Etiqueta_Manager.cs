@@ -12,6 +12,7 @@ public class Etiqueta_Manager : MonoBehaviour
 
     public int indexGasto = 0;
     
+    
     public SpriteRenderer imageState;
     
     public TMPro.TMP_Text textGasto;
