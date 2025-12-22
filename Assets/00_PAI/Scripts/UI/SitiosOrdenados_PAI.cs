@@ -58,13 +58,18 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
     {
         int contRegionesActivas = 0;
         
+        
         if (header != null)
             HeigtHeader = header.GetComponent<RectTransform>().rect.height;
         if (contentSitiosList != null)
             HeigtContenedor = contentSitiosList.GetComponent<RectTransform>().rect.height;
         if (RegionesLabelUILabel.Count > 0)
-            HeigtLabelRegiones = (RegionesLabelUILabel[0].GetComponent<RectTransform>().rect.height + HeigtAuxSpacing) * 
-                                 RegionesLabelUILabel.Count;
+        {
+            int activeAndEnabledregions = RegionesLabelUILabel.Where(x => x.gameObject.activeSelf).Count();
+            
+            HeigtLabelRegiones = (RegionesLabelUILabel[0].GetComponent<RectTransform>().rect.height + HeigtAuxSpacing) *
+                                 activeAndEnabledregions;
+        }
         
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
@@ -133,12 +138,19 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         {
             for (int i = 0; i < totalRegiones; i++)
             {
+                // bool activation = true;
+                // for (int j = 0; j < ControlAccesoPozosPAI.singleton.configuration.regionesDeshabilitadas.Count; j++)
+                //     if(ControlAccesoPozosPAI.singleton.configuration.regionesDeshabilitadas.Contains(i))
+                //         activation = false;
+                //
+                // CreateUIRegion(i,activation);
+                
+                
                 if (ControlDatos.singleton.GetIDRegionByIndex(i) != 0)
                     CreateUIRegion(i);
                 else
                 {
-                    if (ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos)
-                        CreateUIRegion(i);
+                    CreateUIRegion(i, ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos);
                 }
             }
 
@@ -179,7 +191,7 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         }
     }
 
-    public void CreateUIRegion(int i)
+    public void CreateUIRegion(int i, bool defaultActive = true)
     {
         ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
             GetComponent<ControlRegionUILabel>();
@@ -199,6 +211,9 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
                 
         instanceList.gameObject.name = "List " + instanceLabel.region.ToString();
         RegionesLabelUIList.Add(instanceList);
+        
+        instanceLabel.gameObject.SetActive(defaultActive);
+        instanceList.gameObject.SetActive(defaultActive);
     }
 
     public void SetEnableZonaByID(int ID_zona, bool enable)

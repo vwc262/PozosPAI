@@ -219,8 +219,17 @@ public class ControlAccesoPozosPAI : Singleton<ControlAccesoPozosPAI>
     public void SetActiveBarrientos(bool Value)
     {
         configuration.habilitarBarrientos = Value;
+        //SetActiveRegion(0, Value);
         SaveConfiguration();
     }
+
+    // public void SetActiveRegion(int index, bool Value)
+    // {
+    //     if(Value)
+    //         configuration.regionesDeshabilitadas.Add(index);
+    //     else
+    //         configuration.regionesDeshabilitadas.Remove(index);
+    // }
     
     [TabGroup("Configuracion")] [Button]
     public void SaveConfiguration()
@@ -241,6 +250,8 @@ public class Configuration
     public bool validaAplicationInFocus;
     public bool showResumenInit;
     public bool habilitarBarrientos;
+
+    //public HashSet<int> regionesDeshabilitadas = new HashSet<int>();
     
     public string GetJsonString()
     {
