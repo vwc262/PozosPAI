@@ -92,6 +92,17 @@ public class ControlSitio
         return 0;
     }
     
+    public int GetIndiceNivel(int index = 0)
+    {
+        List<SignalBase> signal = dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
+        
+        if (signal.Count > index)
+            if (signal[index].DentroRango)
+                return signal[index].IndiceImagen;
+
+        return 0;
+    }
+    
     public float GetPresion()
     {
         List<SignalBase> presion = dataSitio.GetSignal(SignalBase.TipoSignalEnum.PRESION);
