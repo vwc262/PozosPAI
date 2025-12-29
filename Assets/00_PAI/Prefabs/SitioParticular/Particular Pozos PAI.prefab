@@ -526,8 +526,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297906062359311707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 7.105428e-15, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 50000, z: 32}
+  m_LocalRotation: {x: -0.047443204, y: 0.38960692, z: -0.02010163, w: -0.91953874}
+  m_LocalPosition: {x: 3.8995414, y: 8.209125, z: -3.8160424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -564,11 +564,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 200000
-  field of view: 65
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 12400
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2517,8 +2517,8 @@ MonoBehaviour:
   key_down: 113
   key_rot_clockwise: 275
   key_rot_counterclockwise: 276
-  insidePos: {x: 0, y: 0, z: 0}
-  insidePos_1: {x: 0, y: 0, z: 0}
+  insidePos_Act: {x: 0, y: 0, z: 0}
+  insidePos_Ant: {x: 0, y: 0, z: 0}
   insideTrigger: 1
   deltaTouch: {x: 0, y: 0}
   touchScaleFactor: {x: 0.3, y: 200, z: 0.3}
@@ -3328,7 +3328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4860884733252827142, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5287530355983067770, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
       propertyPath: m_IsActive
@@ -3338,10 +3338,32 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5771777307196346449}
     - targetCorrespondingSourceObject: {fileID: 4860884733252827142, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3948146635134201521}
   m_SourcePrefab: {fileID: 100100000, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
+--- !u!1 &3905947503784335024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
+  m_PrefabInstance: {fileID: 4248547420569250785}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5771777307196346449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3905947503784335024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee961602a45d84e4daebceb6e2a52146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drone: {fileID: 7051165577113418407}
+  radius: 45
 --- !u!4 &4431372863040375818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8764f449a5c2c504cb1a8ece91c2ac2f, type: 3}
