@@ -23,6 +23,7 @@ public class ControlSitio
 
     public int indexRequestAPI;
 
+    
     public bool GetStatusConexionSitio()
     {
         dataInTime = false;
@@ -114,13 +115,13 @@ public class ControlSitio
         return 0;
     }
     
-    public float GetTotalizado()
+    public float GetTotalizado(int index = 0)
     {
         List<SignalBase> totalizado = dataSitio.GetSignal(SignalBase.TipoSignalEnum.TOTALIZADO);
         
-        if (totalizado.Count>0)
-            if (totalizado[0].DentroRango)
-                return totalizado[0].Valor;
+        if (totalizado.Count > index)
+            if (totalizado[index].DentroRango)
+                return totalizado[index].Valor;
 
         return 0;
     }

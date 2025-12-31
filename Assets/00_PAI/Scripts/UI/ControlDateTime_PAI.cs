@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ControlDateTime_PAI : MonoBehaviour
+public class   ControlDateTime_PAI : MonoBehaviour
 {
     private Coroutine corrutinaTime;
     public DateTime currentDate;
