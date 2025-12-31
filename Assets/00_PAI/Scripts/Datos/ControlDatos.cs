@@ -191,7 +191,7 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    public void CreateMarcadoresSitios_GO()
+    public virtual void CreateMarcadoresSitios_GO()
     {
         var cont = 1;
 

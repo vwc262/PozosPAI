@@ -66,7 +66,7 @@ Material:
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _MaxDistance: 20
-    - _Metalic: 0
+    - _Metalic: 1
     - _MinDistance: 10
     - _OpaqueCullMode: 1
     - _PerPixelSorting: 0
@@ -102,10 +102,10 @@ Material:
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _offset_y: 0
-    - _smooth: 1
+    - _offset_y: 2
+    - _smooth: 0.01
     m_Colors:
-    - _ColorGlass: {r: 0, g: 0.44858575, b: 1, a: 1}
+    - _ColorGlass: {r: 0.12246348, g: 0.16418985, b: 0.3018868, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

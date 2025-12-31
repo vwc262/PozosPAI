@@ -236,4 +236,68 @@ public class ControlDatos_PAI : ControlDatos
 
         return newDataSitio;
     }
+    
+    public override void CreateMarcadoresSitios_GO()
+    {
+        var cont = 1;
+
+        foreach (var sitio in listSitios)
+        {
+            position = this.transform.position + Gps2UnityConverter.GPS2Unity(sitio.dataSitio.latitud, sitio.dataSitio.longitud);
+
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(position, transform.TransformDirection(Vector3.down), out hit, maxAltitude,
+                    groundedLayerMaskayer))
+            {
+                position.y = hit.point.y + alturaMarcador;
+            }
+            
+            GameObject instancePrefab = ControlPrefabs.singleton.GetPrefabMarcadorSitio(sitio.dataSitio.tipoSitio);
+            GameObject intancePlanta = ControlPrefabs.singleton.prefabMarcadorSitioBarrientos;
+
+            if (instancePrefab != null)
+            {
+                GameObject instance;
+
+                if (ControlMap._singletonExists && ControlMap.singleton.contenedorMarcadores != null)
+                {
+                    if (sitio.dataSitio.idSitio == 1421) 
+                    {
+                        instance = Instantiate(intancePlanta, ControlMap.singleton.contenedorMarcadores.transform);
+                    }
+                    else
+                    {
+                        instance = Instantiate(instancePrefab, ControlMap.singleton.contenedorMarcadores.transform);
+                    }
+                    
+                }
+                else
+                {
+                    if (sitio.dataSitio.idSitio == 1421)
+                    {
+                        instance = Instantiate(intancePlanta, this.transform);
+                    }
+                    else
+                    {
+                        instance = Instantiate(instancePrefab, this.transform);
+                    }
+                }
+                
+                instance.transform.position = position;
+                instance.name = $"Sitio_{sitio.dataSitio.nombre}_{sitio.dataSitio.Estructura}";
+
+                ControlMarcadorSitio myControlMarcadorSitio = instance.GetComponent<ControlMarcadorSitio>();
+                if (myControlMarcadorSitio != null)
+                {
+                    myControlMarcadorSitio.SetDataSitio(sitio);
+                }
+
+                if (sitio.controlMarcadorMap != null)
+                    Destroy(sitio.controlMarcadorMap.gameObject);
+
+                sitio.controlMarcadorMap = myControlMarcadorSitio;
+            }
+        }
+    }
 }
