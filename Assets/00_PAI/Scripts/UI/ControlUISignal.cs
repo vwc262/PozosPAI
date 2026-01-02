@@ -56,7 +56,7 @@ public class ControlUISignal : MonoBehaviour
             switch (signal)
             {
                 case SignalBase.TipoSignalEnum.NIVEL:
-                    if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetNivel(index)}";
+                    if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetNivel(index) + " m"}";
                     break;
                 
                 case SignalBase.TipoSignalEnum.GASTO:
