@@ -35,6 +35,10 @@ public class ControlNivelParticular_Barrientos : MonoBehaviour
             {
                 if (ParticularManager.singleton.sitio.dataInTime)
                 {
+                    if (nivel > 5)
+                    {
+                        
+                    }
                     Vector3 pos = offsetNivel.transform.localPosition;
                     pos.y = nivel;
                     
