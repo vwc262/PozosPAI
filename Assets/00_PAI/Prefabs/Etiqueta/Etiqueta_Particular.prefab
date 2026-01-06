@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 554019007026427868}
   - component: {fileID: 900302069280252026}
-  - component: {fileID: 4638891280800061901}
   m_Layer: 0
   m_Name: SpriteResplandorRenderEtiqueta
   m_TagString: Untagged
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3bcee86aadb616b419a48f8a04fd1f77, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.8938141, a: 1}
+  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1183024399 &4638891280800061901
-LookAtConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585636867066536681}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_Roll: 0
-  m_WorldUpObject: {fileID: 0}
-  m_UseUpObject: 0
-  m_Active: 1
-  m_IsLocked: 0
-  m_Sources: []
 --- !u!1 &626444104419290024
 GameObject:
   m_ObjectHideFlags: 0

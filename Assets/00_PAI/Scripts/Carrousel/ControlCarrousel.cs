@@ -22,8 +22,16 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
     {
         if (sitio != null)
         {
-            SendEventFSM("show");
-            SetSelectedSitioGPS(sitio);
+            if (!(sitio.dataSitio.idSitio == 1421)) //Diferente de Barrientos
+            {
+                SendEventFSM("show");
+                SetSelectedSitioGPS(sitio);
+            }
+            else
+            {
+                SendEventFSM("hide");
+            }
+            
         }
     }
 
@@ -57,6 +65,7 @@ public class ControlCarrousel : Singleton<ControlCarrousel>
 
     public void CloseControlCarrousel()
     {
+        
         if (ControlBombas_PAI._singletonExists)
             ((ControlBombas_PAI)ControlBombas_PAI.singleton).SendEventFSM("hide");
         
