@@ -227,134 +227,137 @@ public class RequestAPI_Historicos : Singleton<RequestAPI_Historicos>
             SiteDescription sitio =
                 ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.infraestructura.Sites.Find(item => item.Id == idSitio + (sistema * 100));
             
-            List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
-
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo.Clear();
-            ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
-
-            SignalsDescriptionContainerC signalDescriptionC_G =
-                signalsDescriptionContainer.Find(item => 
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
-            SignalsDescriptionContainerC signalDescriptionC_P =
-                signalsDescriptionContainer.Find(item =>
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);
-            SignalsDescriptionContainerC signalDescriptionC_T =
-                signalsDescriptionContainer.Find(item =>
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);
-            SignalsDescriptionContainerC signalDescriptionC_B =
-                signalsDescriptionContainer.Find(item => 
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
-            SignalsDescriptionContainerC signalDescriptionC_N =
-                signalsDescriptionContainer.Find(item => 
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
-            SignalsDescriptionContainerC signalDescriptionC_A =
-                signalsDescriptionContainer.Find(item => 
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.AUTOMATISMO);
-            SignalsDescriptionContainerC signalDescriptionC_FA =
-                signalsDescriptionContainer.Find(item => 
-                    item.TipoSignal == (int)SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
-
-            if (signalDescriptionC_G != null)
+            if (sitio != null)
             {
-                RequestBoy DataH_G = new RequestBoy();
-                DataH_G.IdSignal = signalDescriptionC_G.SignalsDescription.First().IdSignal;
-                DataH_G.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH_G.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                List<SignalsDescriptionContainerC> signalsDescriptionContainer = sitio.SignalsDescriptionContainer;
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH_G), "application/json");
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Gasto.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Presion.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Totalizado.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Bomba.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Nivel.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.Automatismo.Clear();
+                ControlRequest.singleton.listRequestAPI[0].dataRequestAPI.historicosBySitio.FalloAutomatismo.Clear();
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.GASTO);
-            }
+                SignalsDescriptionContainerC signalDescriptionC_G =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.GASTO);
+                SignalsDescriptionContainerC signalDescriptionC_P =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.PRESION);
+                SignalsDescriptionContainerC signalDescriptionC_T =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.TOTALIZADO);
+                SignalsDescriptionContainerC signalDescriptionC_B =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.BOMBA);
+                SignalsDescriptionContainerC signalDescriptionC_N =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.NIVEL);
+                SignalsDescriptionContainerC signalDescriptionC_A =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.AUTOMATISMO);
+                SignalsDescriptionContainerC signalDescriptionC_FA =
+                    signalsDescriptionContainer.Find(item =>
+                        item.TipoSignal == (int)SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
 
-            if (signalDescriptionC_P != null)
-            {
-                RequestBoy DataH_P = new RequestBoy();
-                DataH_P.IdSignal = signalDescriptionC_P.SignalsDescription.First().IdSignal;
-                DataH_P.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH_P.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                if (signalDescriptionC_G != null)
+                {
+                    RequestBoy DataH_G = new RequestBoy();
+                    DataH_G.IdSignal = signalDescriptionC_G.SignalsDescription.First().IdSignal;
+                    DataH_G.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH_G.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH_P), "application/json");
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH_G), "application/json");
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.PRESION);
-            }
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.GASTO);
+                }
 
-            if (signalDescriptionC_T != null)
-            {
-                RequestBoy DataH_T = new RequestBoy();
-                DataH_T.IdSignal = signalDescriptionC_T.SignalsDescription.First().IdSignal;
-                DataH_T.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH_T.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                if (signalDescriptionC_P != null)
+                {
+                    RequestBoy DataH_P = new RequestBoy();
+                    DataH_P.IdSignal = signalDescriptionC_P.SignalsDescription.First().IdSignal;
+                    DataH_P.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH_P.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH_T), "application/json");
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH_P), "application/json");
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.TOTALIZADO);
-            }
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.PRESION);
+                }
 
-            if (signalDescriptionC_B != null)
-            {
-                RequestBoy DataH_B = new RequestBoy();
-                DataH_B.IdSignal = signalDescriptionC_B.SignalsDescription.First().IdSignal;
-                DataH_B.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH_B.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                if (signalDescriptionC_T != null)
+                {
+                    RequestBoy DataH_T = new RequestBoy();
+                    DataH_T.IdSignal = signalDescriptionC_T.SignalsDescription.First().IdSignal;
+                    DataH_T.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH_T.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH_B), "application/json");
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH_T), "application/json");
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.BOMBA);
-            }
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.TOTALIZADO);
+                }
 
-            if (signalDescriptionC_N != null)
-            {
-                RequestBoy DataH_N = new RequestBoy();
-                DataH_N.IdSignal = signalDescriptionC_N.SignalsDescription.First().IdSignal;
-                DataH_N.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH_N.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                if (signalDescriptionC_B != null)
+                {
+                    RequestBoy DataH_B = new RequestBoy();
+                    DataH_B.IdSignal = signalDescriptionC_B.SignalsDescription.First().IdSignal;
+                    DataH_B.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH_B.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH_N), "application/json");
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH_B), "application/json");
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.NIVEL);
-            }
-            
-            if (signalDescriptionC_A != null)
-            {
-                RequestBoy DataH = new RequestBoy();
-                DataH.IdSignal = signalDescriptionC_A.SignalsDescription.First().IdSignal;
-                DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.BOMBA);
+                }
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH), "application/json");
+                if (signalDescriptionC_N != null)
+                {
+                    RequestBoy DataH_N = new RequestBoy();
+                    DataH_N.IdSignal = signalDescriptionC_N.SignalsDescription.First().IdSignal;
+                    DataH_N.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH_N.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.AUTOMATISMO);
-            }
-                    
-            if (signalDescriptionC_FA != null)
-            {
-                RequestBoy DataH = new RequestBoy();
-                DataH.IdSignal = signalDescriptionC_FA.SignalsDescription.First().IdSignal;
-                DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
-                DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH_N), "application/json");
 
-                unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
-                    JsonUtility.ToJson(DataH), "application/json");
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.NIVEL);
+                }
 
-                yield return unityWebRequest.SendWebRequest();
-                SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
+                if (signalDescriptionC_A != null)
+                {
+                    RequestBoy DataH = new RequestBoy();
+                    DataH.IdSignal = signalDescriptionC_A.SignalsDescription.First().IdSignal;
+                    DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH), "application/json");
+
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.AUTOMATISMO);
+                }
+
+                if (signalDescriptionC_FA != null)
+                {
+                    RequestBoy DataH = new RequestBoy();
+                    DataH.IdSignal = signalDescriptionC_FA.SignalsDescription.First().IdSignal;
+                    DataH.FechaInicial = GetFechaFormatConsulta(totalizadosTime1);
+                    DataH.FechaFinal = GetFechaFormatConsulta(totalizadosTime2);
+
+                    unityWebRequest = UnityWebRequest.Post(address + "&tipoPromedio=" + (int)tipoPromedio,
+                        JsonUtility.ToJson(DataH), "application/json");
+
+                    yield return unityWebRequest.SendWebRequest();
+                    SetDataHistoricos(unityWebRequest, method, SignalBase.TipoSignalEnum.ARRANQUEFALLIDO);
+                }
             }
 
             //Llamada a funcion de callback
