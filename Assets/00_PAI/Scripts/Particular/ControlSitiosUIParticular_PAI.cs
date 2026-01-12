@@ -16,6 +16,7 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
     public int contFueraDeLinea;
 
     public GameObject prefabSitioUI;
+    public GameObject prefabSitioUIBarrientos;
     public GameObject contentSitios;
 
     public List<GameObject> sitiosUIParticular = new List<GameObject>();
@@ -95,13 +96,27 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
                         // {
                         if (sitio.dataSitio.Estructura == regional)
                         {
-                            GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
+                            if (sitio.dataSitio.idSitio == 1421 )
+                            {
+                                GameObject instance = Instantiate(prefabSitioUIBarrientos, contentSitios.transform);
+                                
+                                ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
+                                if (controlSitioUI != null)
+                                    controlSitioUI.SetSitio(sitio);
 
-                            ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
-                            if (controlSitioUI != null)
-                                controlSitioUI.SetSitio(sitio);
+                                sitiosUIParticular.Add(instance);
+                            }
+                            else
+                            {
+                                GameObject instance = Instantiate(prefabSitioUI, contentSitios.transform);
 
-                            sitiosUIParticular.Add(instance);
+                                ControlUISitio controlSitioUI = instance.GetComponent<ControlUISitio>();
+                                if (controlSitioUI != null)
+                                    controlSitioUI.SetSitio(sitio);
+
+                                sitiosUIParticular.Add(instance);
+                            }
+                            
                         }
                         // }
                     }

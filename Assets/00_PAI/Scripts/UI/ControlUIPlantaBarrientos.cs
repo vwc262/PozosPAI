@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class ControlButtonsUIParticular : MonoBehaviour
+public class ControlUIPlantaBarrientos : MonoBehaviour
 {
 
     public GameObject buttonsUIPozo;
     public GameObject buttonsUIPlanta;
+    public GameObject PanelDatosParticular;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,11 +27,13 @@ public class ControlButtonsUIParticular : MonoBehaviour
             {
                 buttonsUIPozo.SetActive(true);
                 buttonsUIPlanta.SetActive(false);
+                PanelDatosParticular.SetActive(true);
             }
             else
             {
                 buttonsUIPozo.SetActive(false);
                 buttonsUIPlanta.SetActive(true);
+                PanelDatosParticular.SetActive(false);
             }
         }
     }
