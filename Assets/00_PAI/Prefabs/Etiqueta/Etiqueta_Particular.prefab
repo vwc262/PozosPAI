@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3bcee86aadb616b419a48f8a04fd1f77, type: 3}
   m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
   m_FlipX: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
-  m_RendererPriority: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 6300274112041115328, guid: e87be2e8caf480f4f99520eda9ccf3d9, type: 2}
   m_StaticBatchInfo:
@@ -511,7 +511,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
-  m_RendererPriority: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 6300274112041115328, guid: e87be2e8caf480f4f99520eda9ccf3d9, type: 2}
   m_StaticBatchInfo:
@@ -762,7 +762,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
-  m_RendererPriority: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 6300274112041115328, guid: e87be2e8caf480f4f99520eda9ccf3d9, type: 2}
   m_StaticBatchInfo:
@@ -1061,7 +1061,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
-  m_RendererPriority: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 6300274112041115328, guid: e87be2e8caf480f4f99520eda9ccf3d9, type: 2}
   m_StaticBatchInfo:
@@ -1504,7 +1504,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8b830901b9c6d85469639fb5eca68882, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
