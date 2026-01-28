@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SitiosOrdenados_PAI : SitiosOrdenados
 { 
+    [TabGroup("Contenedor")] public GameObject contentSitiosListBarrientos;
+    
     public override void Init()
     {
     }
@@ -58,14 +61,16 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
     {
         int contRegionesActivas = 0;
         
-        
         if (header != null)
             HeigtHeader = header.GetComponent<RectTransform>().rect.height;
         if (contentSitiosList != null)
             HeigtContenedor = contentSitiosList.GetComponent<RectTransform>().rect.height;
+        
         if (RegionesLabelUILabel.Count > 0)
         {
             int activeAndEnabledregions = RegionesLabelUILabel.Where(x => x.gameObject.activeSelf).Count();
+            
+            if (ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos) activeAndEnabledregions--;
             
             HeigtLabelRegiones = (RegionesLabelUILabel[0].GetComponent<RectTransform>().rect.height + HeigtAuxSpacing) *
                                  activeAndEnabledregions;
@@ -80,11 +85,19 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
                 contRegionesActivas++;
         }
         
+        if (ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos) contRegionesActivas--;
+        
         for (int i = 0; i < RegionesLabelUIList.Count; i++)
         {
             RegionesLabelUILabel[i].SetIsOn(RegionesLabelUIList[i].gameObject.activeSelf);
-            
-            if(RegionesLabelUIList[i].gameObject.activeSelf)
+
+            if (RegionesLabelUILabel[i].regionID == 0)
+            {
+                var rect1 = RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().rect;
+                RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().sizeDelta =
+                    new Vector2(rect1.width, 800f);
+            }
+            else if(RegionesLabelUIList[i].gameObject.activeSelf)
             {
                 var rect1 = RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().rect;
                 RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().sizeDelta =
@@ -145,12 +158,11 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
                 //
                 // CreateUIRegion(i,activation);
                 
-                
                 if (ControlDatos.singleton.GetIDRegionByIndex(i) != 0)
-                    CreateUIRegion(i);
+                    CreateUIRegion(i, contentSitiosList);
                 else
                 {
-                    CreateUIRegion(i, ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos);
+                    CreateUIRegion(i, contentSitiosListBarrientos, ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos);
                 }
             }
 
@@ -191,9 +203,9 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         }
     }
 
-    public void CreateUIRegion(int i, bool defaultActive = true)
+    public void CreateUIRegion(int i, GameObject contentRegion, bool defaultActive = true)
     {
-        ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentSitiosList.transform).
+        ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentRegion.transform).
             GetComponent<ControlRegionUILabel>();
                 
         instanceLabel.sitiosOrdenados = this;
@@ -206,7 +218,7 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         instanceLabel.gameObject.name = "Label " + nameRegion;
         RegionesLabelUILabel.Add(instanceLabel);
                 
-        ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentSitiosList.transform).
+        ControlRegionUIList instanceList = Instantiate(ControlPrefabs.singleton.prefabUIRegionaList, contentRegion.transform).
             GetComponent<ControlRegionUIList>();
                 
         instanceList.gameObject.name = "List " + instanceLabel.region.ToString();

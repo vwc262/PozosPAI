@@ -42,6 +42,14 @@ public class ControlSitiosUI_Lista : Singleton<ControlSitiosUI_Lista>
         }
     }
     
+    public void SendEventFSMControlList(string eventName)
+    {
+        if (controlPanelSitios != null)
+        {
+            controlPanelSitios.SendEvent(eventName);
+        }
+    }
+    
     public virtual void UpdateData() { }
 
     public virtual void SetSitioSelectUI_GO(ControlSitio sitio) { }
