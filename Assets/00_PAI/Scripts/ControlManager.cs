@@ -114,4 +114,13 @@ public class ControlManager : Singleton<ControlManager>
         //Process.Start("chrome.exe", "--kiosk " + url);
         Process.Start("chrome.exe", "--app=\"" + url + "\" --start-maximized ");
     }
+
+    public void InicioResumen()
+    {
+        if (ResumenTanques._singletonExists)
+        {
+            ResumenTanques.singleton.InitResumen();
+        }
+        
+    }
 }

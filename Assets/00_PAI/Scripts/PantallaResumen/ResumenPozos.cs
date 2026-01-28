@@ -11,7 +11,7 @@ public class ResumenPozos : MonoBehaviour
 
     private int sumatoriaFalla;
     public TMPro.TMP_Text nameRegion;
-    public TMPro.TMP_Text total;
+    //public TMPro.TMP_Text total;
     public TMPro.TMP_Text noActRegion;
     public TMPro.TMP_Text actRegion;
     public TMPro.TMP_Text bombasEncendidas;
@@ -41,9 +41,9 @@ public class ResumenPozos : MonoBehaviour
             nameRegion.text = ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion), 0);
             
             //Total Pozos
-            total
-                .text = ControlDatos.singleton.listSitios.Where(x =>
-                x.dataSitio.Estructura == ControlDatos.singleton.regiones[idRegion].idRegion).Count().ToString();
+            // total
+            //     .text = ControlDatos.singleton.listSitios.Where(x =>
+            //     x.dataSitio.Estructura == ControlDatos.singleton.regiones[idRegion].idRegion).Count().ToString();
             
             //Sitios En linea
             actRegion.text = ControlDatos.singleton.listSitios.Where(x =>
