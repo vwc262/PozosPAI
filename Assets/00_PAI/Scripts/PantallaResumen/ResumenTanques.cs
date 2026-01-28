@@ -58,45 +58,45 @@ public class ResumenTanques : Singleton<ResumenTanques>
             //Gastos Salida
             if (gasto1 != null)
             {
-                gasto1.text = ControlDatosBarrientos.GetGastoBarrientos(2).ToString() + " m³/s";
+                gasto1.text = ControlDatosBarrientos.GetGastoBarrientos(2).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             if (gasto2 != null)
             {
-                gasto2.text = ControlDatosBarrientos.GetGastoBarrientos(3).ToString() + " m³/s";
+                gasto2.text = ControlDatosBarrientos.GetGastoBarrientos(3).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             if (gasto3 != null)
             {
-                gasto3.text = ControlDatosBarrientos.GetGastoBarrientos(4).ToString() + " m³/s";
+                gasto3.text = ControlDatosBarrientos.GetGastoBarrientos(4).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             if (gasto4 != null)
             {
-                gasto4.text = ControlDatosBarrientos.GetGastoBarrientos(5).ToString() + " m³/s";
+                gasto4.text = ControlDatosBarrientos.GetGastoBarrientos(5).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             if (gasto5 != null)
             {
-                gasto5.text = ControlDatosBarrientos.GetGastoBarrientos(6).ToString() + " m³/s";
+                gasto5.text = ControlDatosBarrientos.GetGastoBarrientos(6).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             //Gastos instantaneos
             if (gastoInstantaneoChalmita != null)
             {
-                gastoInstantaneoChalmita.text = tempInstantaneoChalmita.ToString() + " m³/s";
+                gastoInstantaneoChalmita.text = tempInstantaneoChalmita.ToString() + "<color=yellow> [m³/s]</color>";
                 
             }
 
             if (gastoInstantaneoNzt != null)
             {
-                gastoInstantaneoNzt.text = temInstantaneoNzt.ToString() + " m³/s";
+                gastoInstantaneoNzt.text = temInstantaneoNzt.ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             //Totales
             if (totalInstantaneo != null)
             {
-                totalInstantaneo.text = tempTotalInstantaneo.ToString() + " m³/s";
+                totalInstantaneo.text = tempTotalInstantaneo.ToString() + "<color=yellow> [m³/s]</color>";
             }
             
             
