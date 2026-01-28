@@ -574,8 +574,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tanque Barrientos
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -653,7 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8882521000579620523}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &512190996035317652
 GameObject:
@@ -2060,7 +2060,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1
@@ -2243,8 +2243,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salida L5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4251,7 +4251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579150435379126181}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4277,7 +4277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2111433658742734020
 GameObject:
@@ -5019,7 +5019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2499701551156542792}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5045,7 +5045,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2280253346644774403
 GameObject:
@@ -5823,7 +5823,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1
@@ -6475,7 +6475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5476790089552925975}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6501,7 +6501,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2866386907771848741
 GameObject:
@@ -7304,8 +7304,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gastos de entrada
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7568,8 +7568,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salida L3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7993,8 +7993,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Entrada F.F.C.C.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9598,8 +9598,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nivel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9813,8 +9813,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gastos de salida
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9990,7 +9990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228681244813269099}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10016,7 +10016,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5029825921264701836
 GameObject:
@@ -10028,7 +10028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6405623685491454620}
   m_Layer: 20
-  m_Name: Datos
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10054,7 +10054,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5098128999017364112
 GameObject:
@@ -11499,7 +11499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7252937343069862011}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11525,7 +11525,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5905279353010268200
 GameObject:
@@ -11594,8 +11594,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salida L1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12935,8 +12935,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salida L2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14089,8 +14089,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salida L4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14938,8 +14938,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Entrada Teoloyucan
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
-  m_sharedMaterial: {fileID: 2630698913039819843, guid: 3a008cbab75c3e84db61f3711d9f4e9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
+  m_sharedMaterial: {fileID: -2054668582747955958, guid: c4c21598cdb93b94f8022aaf03f92060, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15521,7 +15521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6123470532989076886}
   m_Layer: 20
-  m_Name: GameObject
+  m_Name: DatosSitio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15547,7 +15547,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8564542323723060900
 GameObject:

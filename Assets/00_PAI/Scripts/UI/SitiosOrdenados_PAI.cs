@@ -151,13 +151,6 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
         {
             for (int i = 0; i < totalRegiones; i++)
             {
-                // bool activation = true;
-                // for (int j = 0; j < ControlAccesoPozosPAI.singleton.configuration.regionesDeshabilitadas.Count; j++)
-                //     if(ControlAccesoPozosPAI.singleton.configuration.regionesDeshabilitadas.Contains(i))
-                //         activation = false;
-                //
-                // CreateUIRegion(i,activation);
-                
                 if (ControlDatos.singleton.GetIDRegionByIndex(i) != 0)
                     CreateUIRegion(i, contentSitiosList);
                 else
@@ -205,8 +198,14 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
 
     public void CreateUIRegion(int i, GameObject contentRegion, bool defaultActive = true)
     {
-        ControlRegionUILabel instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentRegion.transform).
-            GetComponent<ControlRegionUILabel>();
+        ControlRegionUILabel instanceLabel;
+            
+        if (ControlDatos.singleton.GetIDRegionByIndex(i) != 0)
+            instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabel, contentRegion.transform).
+                GetComponent<ControlRegionUILabel>();
+        else
+            instanceLabel = Instantiate(ControlPrefabs.singleton.prefabUIRegionaLabelBarrientos, contentRegion.transform).
+                GetComponent<ControlRegionUILabel>();
                 
         instanceLabel.sitiosOrdenados = this;
         instanceLabel.region = (i + 1);
