@@ -33,7 +33,7 @@ public class   ControlDateTime_PAI : MonoBehaviour
                 textFecha.text = dateString;
 
             timeString = $"{currentDate.Hour.ToString("00")}:" +
-                         $"{currentDate.Minute.ToString("00")} hrs";
+                         $"{currentDate.Minute.ToString("00")} hrs.";
 
             if (textHora != null)
                 textHora.text = timeString;
@@ -48,7 +48,7 @@ public class   ControlDateTime_PAI : MonoBehaviour
 
         if (DateTime.TryParse(dateString, out parsedDate))
         {
-            return parsedDate.ToString("dd/MM/yyyy  HH:mm") + " hrs";
+            return parsedDate.ToString("dd/MM/yyyy  HH:mm") + " hrs.";
         }
 
         return "00/00/0000  00:00 hrs";
