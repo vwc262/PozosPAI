@@ -20,6 +20,7 @@ public class ControlPrefabs : Singleton<ControlPrefabs>
     [TabGroup("Prefabs")]public GameObject prefabUIRegionaList;
     [TabGroup("Prefabs")]public GameObject prefabUISitioBarrientos;
     [TabGroup("Prefabs")]public GameObject prefabMarcadorSitioBarrientos;
+    [TabGroup("Prefabs")]public GameObject prefabUIRegionaLabelBarrientos;
     
     public GameObject GetPrefabMarcadorSitio(TipoSitio tipoSitio)
     {
