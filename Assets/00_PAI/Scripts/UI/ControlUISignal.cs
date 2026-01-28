@@ -61,12 +61,12 @@ public class ControlUISignal : MonoBehaviour
                 
                 case SignalBase.TipoSignalEnum.GASTO:
                     {
-                        if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetGasto(index)}";
+                        if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetGastoBarrientos(index)}" + " m³/s ";
                     }
                     break;
                 case SignalBase.TipoSignalEnum.TOTALIZADO:
                 {
-                      if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetTotalizado(index)}";
+                      if (textDataSignal != null) textDataSignal.text = $"{UISitio.sitio.GetTotalizado(index)}" + " m³";
                 }
                     break;
             }

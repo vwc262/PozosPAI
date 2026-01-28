@@ -61,7 +61,7 @@ public class Etiqueta_Manager : MonoBehaviour
             {
                 if (gasto[indexGasto].DentroRango)
                 {
-                    textGasto.text = "Gasto: " + $"{gasto[indexGasto].Valor}" + " l/s";
+                    textGasto.text = "Gasto: " + $"{gasto[indexGasto].Valor/1000f}" + " m³/s";
                 }
                 else
                 {

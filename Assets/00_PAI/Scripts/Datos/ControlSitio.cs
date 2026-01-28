@@ -82,6 +82,17 @@ public class ControlSitio
         return 0;
     }
     
+    public float GetGastoBarrientos(int index = 0)
+    {
+        List<SignalBase> gasto = dataSitio.GetSignal(SignalBase.TipoSignalEnum.GASTO);
+        
+        if (gasto.Count > index)
+            if (gasto[index].DentroRango)
+                return gasto[index].Valor/1000f;
+
+        return 0;
+    }
+    
     public float GetNivel(int index = 0)
     {
         List<SignalBase> signal = dataSitio.GetSignal(SignalBase.TipoSignalEnum.NIVEL);
