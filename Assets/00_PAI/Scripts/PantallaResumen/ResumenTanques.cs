@@ -44,7 +44,13 @@ public class ResumenTanques : Singleton<ResumenTanques>
             float tempInstantaneoChalmita = 0;
             float temInstantaneoNzt = 0;
             float tempTotalInstantaneo = 0;
-
+            
+            float tempPromedioGastoChalmita = 0;
+            float tempPromedioGastoNzt = 0;
+            float tempTotalPromedio = 0;
+            
+            
+            //Calculos
             tempInstantaneoChalmita = ControlDatosBarrientos.GetGastoBarrientos(2) +
                                       ControlDatosBarrientos.GetGastoBarrientos(3) +
                                       ControlDatosBarrientos.GetGastoBarrientos(4);
@@ -53,7 +59,17 @@ public class ResumenTanques : Singleton<ResumenTanques>
                                 ControlDatosBarrientos.GetGastoBarrientos(6);
             
             tempTotalInstantaneo = tempInstantaneoChalmita + temInstantaneoNzt;
+
+            tempPromedioGastoChalmita =
+                ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Promedio +
+                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 4).Promedio +
+                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 5).Promedio)/1000);
+
+            tempPromedioGastoNzt =
+                ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Promedio +
+                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 7).Promedio)/1000);
             
+            tempTotalPromedio = tempPromedioGastoChalmita + tempPromedioGastoNzt;
             
             //Gastos Salida
             if (gasto1 != null)
@@ -81,6 +97,30 @@ public class ResumenTanques : Singleton<ResumenTanques>
                 gasto5.text = ControlDatosBarrientos.GetGastoBarrientos(6).ToString() + "<color=yellow> [m³/s]</color>";
             }
             
+            //Promedios
+            if (promedioGastoChalmita != null)
+            {
+                promedioGastoChalmita.text = tempPromedioGastoChalmita.ToString() + "<color=yellow> [m³/s]</color>";
+            }
+            
+            if (promedioGastoNzt != null)
+            {
+                promedioGastoNzt.text = tempPromedioGastoNzt.ToString() + "<color=yellow> [m³/s]</color>";
+            }
+            
+            //Estampa de tiempo
+            if (estampaTiempoChalmita != null)
+            {
+                estampaTiempoChalmita.text =
+                    ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Fecha;
+            }
+            
+            if (estampaTiempoNzt != null)
+            {
+                estampaTiempoNzt.text =
+                    ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Fecha;
+            }
+            
             //Gastos instantaneos
             if (gastoInstantaneoChalmita != null)
             {
@@ -98,8 +138,11 @@ public class ResumenTanques : Singleton<ResumenTanques>
             {
                 totalInstantaneo.text = tempTotalInstantaneo.ToString() + "<color=yellow> [m³/s]</color>";
             }
-            
-            
+
+            if (totalPromedio != null)
+            {
+                totalPromedio.text = tempTotalPromedio.ToString() + "<color=yellow> [m³/s]</color>";
+            }
             
         }
 
