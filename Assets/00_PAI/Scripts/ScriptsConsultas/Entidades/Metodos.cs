@@ -16,4 +16,6 @@ public static class Metodos
     
     public const string ConfiguracionAutomatismoSegmentos = "ConfiguracionAutomatismoSegmentos";
     public const string ConfiguracionAutomatismoEstaciones = "ConfiguracionAutomatismoEstaciones";
+    
+    public const string AverageBarrientos =  "AverageBarrientos";
 }

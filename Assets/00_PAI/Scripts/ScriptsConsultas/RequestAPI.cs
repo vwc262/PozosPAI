@@ -8,15 +8,15 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
-public class RequestAPI : MonoBehaviour
+public class RequestAPI : Singleton<RequestAPI>
 {
     public int delay = 10;
     
     private float _ServiceVersion;
 
-    private string url, urlCompleta;
+    //private string urlCompleta;
     
-    Coroutine corrutinaPoleo, corrutinaInfraestructura, corrutinaSignals;
+    Coroutine corrutinaPoleo, corrutinaInfraestructura, corrutinaSignals, corrutinaAverageBarr;
     
     [TabGroup("Comunication")] public ConnectionData MyConectionData;
 
@@ -58,7 +58,7 @@ public class RequestAPI : MonoBehaviour
     
     private void Awake()
     {
-        // base.Awake();
+        base.Awake();
         
         MyConectionData.ReadConnectionData();
     }
@@ -119,9 +119,8 @@ public class RequestAPI : MonoBehaviour
     private IEnumerator GetInfraestructura()
     {
         if (corrutinaInfraestructura != null) StopCoroutine(corrutinaInfraestructura);
-
-        url = GetAddressByMethod(Metodos.Infraestructura);
-        corrutinaInfraestructura = StartCoroutine(DoRequest(Metodos.Infraestructura));
+        
+        corrutinaInfraestructura = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.Infraestructura), Metodos.Infraestructura));
       
         yield return new WaitForSeconds(delay);
         LanzarPoleo();
@@ -131,8 +130,7 @@ public class RequestAPI : MonoBehaviour
     {
         if (corrutinaSignals != null) StopCoroutine(corrutinaSignals);
         
-        url = GetAddressByMethod(Metodos.UpdateData);
-        corrutinaSignals = StartCoroutine(DoRequest(Metodos.UpdateData));
+        corrutinaSignals = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.UpdateData),Metodos.UpdateData));
         
         yield return new WaitForSeconds(delay);
         LanzarPoleo();
@@ -187,6 +185,13 @@ public class RequestAPI : MonoBehaviour
                 else
                     return $"{MyConectionData.external}/api24/VWC/app2024/insertComando?idProyecto={(int)sistema}";
                 break;
+            
+            case Metodos.AverageBarrientos:
+                if (MyConectionData.useLocalHost)
+                    return $"{MyConectionData.local}/api24/VWC/app2024/GetAveragePozosPai";
+                else
+                    return $"{MyConectionData.external}/api24/VWC/app2024/GetAveragePozosPai";
+                break;
         }
 
         return "";
@@ -213,9 +218,9 @@ public class RequestAPI : MonoBehaviour
         return "";
     }
 
-    private IEnumerator DoRequest(string method)
+    private IEnumerator DoRequest(string _url, string method)
     {
-        string address = $"{url}";
+        string address = $"{_url}";
         
         UnityWebRequest unityWebRequest = null;
         
@@ -227,6 +232,24 @@ public class RequestAPI : MonoBehaviour
                 
                 yield return unityWebRequest.SendWebRequest();
                 CallBack(unityWebRequest, method);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    private IEnumerator DoRequest(string _url, string method, Action<bool, ListAverages> callback)
+    {
+        string address = $"{_url}";
+        
+        UnityWebRequest unityWebRequest = null;
+        
+        switch (method)
+        {
+            case Metodos.AverageBarrientos:
+                unityWebRequest = UnityWebRequest.Get(address);
+                yield return unityWebRequest.SendWebRequest();
+                CallBack(unityWebRequest, method, callback);
                 break;
             default:
                 break;
@@ -299,11 +322,42 @@ public class RequestAPI : MonoBehaviour
         }
     }
     
+    private void CallBack(UnityWebRequest unityWebRequest, string method, Action<bool, ListAverages> callback)
+    {
+        if (unityWebRequest.result == UnityWebRequest.Result.ConnectionError || unityWebRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log(unityWebRequest.error + "\n" + unityWebRequest.url);
+            callback(true, null);
+        }
+        else
+        {
+            if (unityWebRequest.isDone)
+            {
+                switch (method)
+                {
+                    case Metodos.AverageBarrientos:
+                        ListAverages responce = JsonUtility.FromJson<ListAverages>(unityWebRequest.downloadHandler.text);
+                        callback(false, responce);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    
     public string GetAdressServ()
     {
         if (MyConectionData.useLocalHost)
             return MyConectionData.local;
         else
             return MyConectionData.external;
+    }
+    
+    public void GetAverageBarrientos(Action<bool, ListAverages> callback)
+    {
+        if (corrutinaAverageBarr != null) StopCoroutine(corrutinaSignals);
+            
+        corrutinaAverageBarr = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.AverageBarrientos), Metodos.AverageBarrientos, callback));
     }
 }
