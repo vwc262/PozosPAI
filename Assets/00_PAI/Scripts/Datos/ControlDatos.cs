@@ -20,11 +20,8 @@ public class ControlDatos : Singleton<ControlDatos>
     [SerializeField][TabGroup("Sitios")]
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "smallDescription")]
     public List<ControlSitio> listSitios = new List<ControlSitio>();
-    //[TabGroup("Sitios")] public List<int> listIdRegiones = new List<int>();
-
-    //[TabGroup("Sitios")] public int regiones;
-
-    //[TabGroup("Marcadores")]public List<GameObject> listMarcadoresSitios = new List<GameObject>();
+    public ListAverages listAverages = new ListAverages();
+    public int AverageDay;
 
     [TabGroup("Marcadores")]public float longitud0;
     [TabGroup("Marcadores")]public float latitud0;
@@ -38,7 +35,6 @@ public class ControlDatos : Singleton<ControlDatos>
     [TabGroup("Marcadores")]public Vector3 position;
 
     [TabGroup("Marcadores")]public LayerMask groundedLayerMaskayer;
-    //[TabGroup("Marcadores")]public ControlSitioUI controlSitioUI;
     
     [TabGroup("Overlap")]public bool useOverlapingDesp = true;
     [TabGroup("Overlap")]public float overlapMoveDistance = 100;
@@ -61,8 +57,22 @@ public class ControlDatos : Singleton<ControlDatos>
     
     [TabGroup("Regiones")] public List<Region> regiones;
     
+    public float updateRate = 600;
+    private float countdown;
+    
     public virtual void Start()
     {
+        //GetAverageBarrientos();
+    }
+
+    private void Update()
+    {
+        countdown -= Time.deltaTime;
+        if(countdown <= 0)
+        {
+            GetAverageBarrientos();
+            countdown = updateRate;
+        } 
     }
 
     public void IniciarUpdateData()
@@ -445,6 +455,39 @@ public class ControlDatos : Singleton<ControlDatos>
     public virtual int GetContRegiones()
     {
         return regiones.Count;
+    }
+
+    public void GetAverageBarrientos()
+    {
+        Debug.Log("UpdateAverage");
+        
+        if (AverageDay != DateTime.Now.Day-1)
+            RequestAPI.singleton.GetAverageBarrientos(CallBackAverage);
+    }
+
+    public void CallBackAverage(bool isRequestError, ListAverages responce)
+    {
+        Debug.Log("CallBackAverage");
+        
+        if (!isRequestError)
+        {
+            listAverages = responce;
+
+            if (listAverages.Items.Count > 0)
+                AverageDay = GetDayStringTime(listAverages.Items[0].Fecha);
+        }
+    }
+    
+    public static int GetDayStringTime(string dateString)
+    {
+        DateTime parsedDate;
+
+        if (DateTime.TryParse(dateString, out parsedDate))
+        {
+            return parsedDate.Day;
+        }
+
+        return 0;
     }
 }
 
