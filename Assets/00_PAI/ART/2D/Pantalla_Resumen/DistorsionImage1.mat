@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: aa34725b1a84d8441a54c23906f9883a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6591ab6d3a4dbba4782941785604394a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -59,7 +59,7 @@ Material:
     - _ColorMask: 15
     - _RippleCount: 20
     - _RippleSpeed: 1
-    - _RippleStregth: 50
+    - _RippleStregth: 30
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0

@@ -53,6 +53,7 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _AmplitudH: 0.7
     - _BlendMode: 0
     - _ColorMask: 15
     - _ConservativeDepthOffsetEnable: 0
@@ -67,6 +68,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
+    - _FrecuenciaH: -15.65
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _OpaqueCullMode: 2
@@ -80,6 +82,7 @@ Material:
     - _RippleDensity: 8.04
     - _RippleSlimness: 5
     - _RippleSpeed: 1.83
+    - _SpeedH: 1
     - _SrcBlend: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -97,7 +100,7 @@ Material:
     - _StencilWriteMaskMV: 41
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _TopAlpha: 650
+    - _TopAlpha: 425.02
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
