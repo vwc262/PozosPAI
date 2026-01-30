@@ -69,7 +69,7 @@ public class ControlUISitio_Pai : ControlUISitio
                 }
             }
 
-            textFecha.text = ControlDateTime_PAI.GetDateFormat_DMAH(sitio.dataSitio.fecha);
+            textFecha.text = FuncAuxDateTime.GetDateFormat_DMAH(sitio.dataSitio.fecha);
 
             if (textoVoltaje != null)
                 textoVoltaje.text = $"{sitio.dataSitio.voltaje:F2} V";

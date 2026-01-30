@@ -39,7 +39,7 @@ public class ControlUpdateDatosBarrientos : MonoBehaviour
         {
             foreach (var date in textUpdateFecha)
             {
-                date.text = ControlDateTime_PAI.GetDateFormat_DMAH(UISitio.sitio.dataSitio.fecha);
+                date.text = FuncAuxDateTime.GetDateFormat_DMAH(UISitio.sitio.dataSitio.fecha);
             }
         }
 

@@ -60,14 +60,22 @@ public class ResumenTanques : Singleton<ResumenTanques>
             
             tempTotalInstantaneo = tempInstantaneoChalmita + temInstantaneoNzt;
 
-            tempPromedioGastoChalmita =
-                ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Promedio +
-                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 4).Promedio +
-                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 5).Promedio)/1000);
+            if (ControlDatos_PAI.singleton.listAverages.Items.Count > 0)
+            {
+                tempPromedioGastoChalmita =
+                    ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Promedio +
+                      ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 4).Promedio +
+                      ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 5).Promedio) / 1000);
 
-            tempPromedioGastoNzt =
-                ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Promedio +
-                ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 7).Promedio)/1000);
+                tempPromedioGastoNzt =
+                    ((ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Promedio +
+                      ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 7).Promedio) / 1000);
+            }
+            else
+            {
+                tempPromedioGastoChalmita = 0;
+                tempPromedioGastoNzt = 0;
+            }
             
             tempTotalPromedio = tempPromedioGastoChalmita + tempPromedioGastoNzt;
             
@@ -111,14 +119,16 @@ public class ResumenTanques : Singleton<ResumenTanques>
             //Estampa de tiempo
             if (estampaTiempoChalmita != null)
             {
-                estampaTiempoChalmita.text =
-                    ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Fecha;
+                if (ControlDatos_PAI.singleton.listAverages.Items.Count > 0)
+                    estampaTiempoChalmita.text = FuncAuxDateTime.GetDateFormat_DMA(
+                        ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 3).Fecha);
             }
             
             if (estampaTiempoNzt != null)
             {
-                estampaTiempoNzt.text =
-                    ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Fecha;
+                if (ControlDatos_PAI.singleton.listAverages.Items.Count > 0)
+                    estampaTiempoNzt.text = FuncAuxDateTime.GetDateFormat_DMA(
+                        ControlDatos_PAI.singleton.listAverages.Items.Find(x => x.IndexSignal == 6).Fecha);
             }
             
             //Gastos instantaneos
