@@ -8,13 +8,12 @@ public class ControlUISignal : MonoBehaviour
     public SignalBase.TipoSignalEnum signal;
     public int index;
 
-    public Image imageConexion;
-    public Sprite online;
-    public Sprite offline;
+   //public Image imageConexion;
+   // public Sprite online;
+   // public Sprite offline;
     
     //public TMPro.TMP_Text textSignal;
     public TMPro.TMP_Text textDataSignal;
-    public Text textUpdateFecha;
     
     public float updateRate = 1;
     private float countdown;
@@ -43,13 +42,13 @@ public class ControlUISignal : MonoBehaviour
         //     textUpdateFecha.text = UISitio.sitio.dataInTime;
         // }
 
-        if (imageConexion != null)
-        {
-            if (UISitio.sitio.GetStatusConexionSitio())
-                imageConexion.sprite = online;
-            else
-                imageConexion.sprite = offline;
-        }
+        // if (imageConexion != null)
+        // {
+        //     if (UISitio.sitio.GetStatusConexionSitio())
+        //         imageConexion.sprite = online;
+        //     else
+        //         imageConexion.sprite = offline;
+        // }
         
         if (textDataSignal != null && UISitio != null)
         {
