@@ -95,7 +95,7 @@ public class SitiosOrdenados_PAI : SitiosOrdenados
             {
                 var rect1 = RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().rect;
                 RegionesLabelUIList[i].gameObject.GetComponent<RectTransform>().sizeDelta =
-                    new Vector2(rect1.width, 800f);
+                    new Vector2(rect1.width, 900f);
             }
             else if(RegionesLabelUIList[i].gameObject.activeSelf)
             {
