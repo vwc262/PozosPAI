@@ -4618,7 +4618,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 190}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1844251345253558091
 CanvasRenderer:
@@ -12461,6 +12461,12 @@ MonoBehaviour:
   gasto5: {fileID: 7876503641070732460}
   totalPromedio: {fileID: 5781724575855149114}
   totalInstantaneo: {fileID: 1748576235912035463}
+  tempInstantaneoChalmita: 0
+  temInstantaneoNzt: 0
+  tempTotalInstantaneo: 0
+  tempPromedioGastoChalmita: 0
+  tempPromedioGastoNzt: 0
+  tempTotalPromedio: 0
 --- !u!1 &5909477663491418168
 GameObject:
   m_ObjectHideFlags: 0
@@ -16500,7 +16506,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 190}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5399430989466537307
 CanvasRenderer:
