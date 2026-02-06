@@ -20,6 +20,14 @@ public class ResumenTanques : Singleton<ResumenTanques>
     public TMPro.TMP_Text gasto5;
     public TMPro.TMP_Text totalPromedio;
     public TMPro.TMP_Text totalInstantaneo;
+
+    public float tempInstantaneoChalmita = 0;
+    public float temInstantaneoNzt = 0;
+    public float tempTotalInstantaneo = 0;
+            
+    public float tempPromedioGastoChalmita = 0;
+    public float tempPromedioGastoNzt = 0;
+    public float tempTotalPromedio = 0;
     
     void Start()
     {
@@ -41,16 +49,7 @@ public class ResumenTanques : Singleton<ResumenTanques>
     {
         if (ControlDatosBarrientos != null)
         {
-            float tempInstantaneoChalmita = 0;
-            float temInstantaneoNzt = 0;
-            float tempTotalInstantaneo = 0;
-            
-            float tempPromedioGastoChalmita = 0;
-            float tempPromedioGastoNzt = 0;
-            float tempTotalPromedio = 0;
-            
-            
-            //Calculos
+            //Calculos Instantaneo
             tempInstantaneoChalmita = ControlDatosBarrientos.GetGastoBarrientos(2) +
                                       ControlDatosBarrientos.GetGastoBarrientos(3) +
                                       ControlDatosBarrientos.GetGastoBarrientos(4);
@@ -59,7 +58,9 @@ public class ResumenTanques : Singleton<ResumenTanques>
                                 ControlDatosBarrientos.GetGastoBarrientos(6);
             
             tempTotalInstantaneo = tempInstantaneoChalmita + temInstantaneoNzt;
-
+            
+            
+            //Calculos Promedio
             if (ControlDatos_PAI.singleton.listAverages.Items.Count > 0)
             {
                 tempPromedioGastoChalmita =
