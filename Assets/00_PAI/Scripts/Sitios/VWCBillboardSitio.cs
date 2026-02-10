@@ -20,8 +20,8 @@ public class VWCBillboardSitio : MonoBehaviour
     [TabGroup("Height")] public float minHeight;
     [TabGroup("Height")] public float maxHeight;
     
-    [TabGroup("Scale")][ShowInInspector] public static Vector3 minScale = new Vector3(3,3,3);
-    [TabGroup("Scale")][ShowInInspector] public static Vector3 maxScale = new Vector3(1,1,1);
+    [TabGroup("Scale")] public Vector3 minScale = new Vector3(3,3,3);
+    [TabGroup("Scale")] public Vector3 maxScale = new Vector3(1,1,1);
 
     [TabGroup("Position")] public float interpolationValuePos;
     [TabGroup("Position")] public float interpolationValuePosMax = 0.8f;
