@@ -1021,6 +1021,8 @@ MonoBehaviour:
   maxHeightDistance: 10500
   minHeight: 2
   maxHeight: 20
+  minScale: {x: 3, y: 3, z: 3}
+  maxScale: {x: 2, y: 2, z: 2}
   interpolationValuePos: 0
   interpolationValuePosMax: 0.6
   positionFinalMarcador: {x: 0, y: 0, z: 0}
@@ -1337,11 +1339,13 @@ MonoBehaviour:
         windowTime: 0
         nominalVoltage: 0
         toleranceVoltage: 0
+        version: 0
         ConfIsActiveAutomation: 0
         ConfIndex: 0
         ConfStarupTime: 0
         ConfWindowTime: 0
         ConfNominalVoltage: 0
+        ConfVersion: 0
     dataAforo:
       isAforado: 0
       fecha: ---
@@ -1354,6 +1358,7 @@ MonoBehaviour:
     isSelected: 0
     SelectedForAnalitics: 0
     timeLastCommand: 0
+    indexRequestAPI: 0
   rootOverlaping: {fileID: 4054589078919785683}
   billboardObj: {fileID: 1982969556873642843}
   debugSphere: 0
