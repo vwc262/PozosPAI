@@ -147,12 +147,12 @@ public class ResumenTanques : Singleton<ResumenTanques>
             //Totales
             if (totalInstantaneo != null)
             {
-                totalInstantaneo.text = tempTotalInstantaneo.ToString() + "<color=yellow> [m³/s]</color>";
+                totalInstantaneo.text = tempTotalInstantaneo.ToString() +  " [m³/s]";
             }
 
             if (totalPromedio != null)
             {
-                totalPromedio.text = tempTotalPromedio.ToString() + "<color=yellow> [m³/s]</color>";
+                totalPromedio.text = tempTotalPromedio.ToString() + " [m³/s]";
             }
             
         }
