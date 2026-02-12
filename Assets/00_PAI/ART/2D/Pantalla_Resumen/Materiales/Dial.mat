@@ -53,7 +53,7 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _AmplitudH: 0.7
+    - _AmplitudH: 152.6
     - _BlendMode: 0
     - _ColorMask: 15
     - _ConservativeDepthOffsetEnable: 0
@@ -68,7 +68,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _FrecuenciaH: -15.65
+    - _FrecuenciaH: -16.9
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _OpaqueCullMode: 2
@@ -79,9 +79,9 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _RippleDensity: 8.04
+    - _RippleDensity: 8
     - _RippleSlimness: 5
-    - _RippleSpeed: 1.83
+    - _RippleSpeed: 2
     - _SpeedH: 1
     - _SrcBlend: 1
     - _Stencil: 0
@@ -100,7 +100,7 @@ Material:
     - _StencilWriteMaskMV: 41
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _TopAlpha: 425.02
+    - _TopAlpha: 300
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -119,11 +119,11 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.7123506, b: 1, a: 0}
+    - _BaseColor: {r: 0, g: 0.5207054, b: 0.72955966, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RippleColor: {r: 0, g: 0.89565706, b: 1, a: 0}
+    - _RippleColor: {r: 0.3050313, g: 0.92641485, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &704327877213290417
