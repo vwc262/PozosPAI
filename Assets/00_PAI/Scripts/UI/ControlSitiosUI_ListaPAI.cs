@@ -11,7 +11,17 @@ public class ControlSitiosUI_ListaPAI : ControlSitiosUI_Lista
     
     public int coutNoActTotal;
     public int coutActTotal;
-    
+
+    public GameObject ButtonListaCaudales;
+
+    public void Start()
+    {
+        if (ButtonListaCaudales != null)
+        {
+            ButtonListaCaudales.SetActive(ControlAccesoPozosPAI.singleton.configuration.habilitarBarrientos);
+        }
+    }
+
     public override void UpdateData()
     {
         coutNoActTotal = 0;
