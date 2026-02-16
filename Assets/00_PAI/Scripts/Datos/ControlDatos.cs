@@ -460,9 +460,12 @@ public class ControlDatos : Singleton<ControlDatos>
     public void GetAverageBarrientos()
     {
         Debug.Log("UpdateAverage");
-        
-        if (AverageDay != DateTime.Now.Day-1)
+
+        if (AverageDay != DateTime.Now.Day - 1)
+        {
+            Debug.Log("UpdateAverage: Consulta API");
             RequestAPI.singleton.GetAverageBarrientos(CallBackAverage);
+        }
     }
 
     public void CallBackAverage(bool isRequestError, ListAverages responce)
