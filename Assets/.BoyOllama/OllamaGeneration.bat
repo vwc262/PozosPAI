@@ -1,0 +1,1 @@
+ollama create BoyOllamaUnity -f Ollama_ModelFile.intent

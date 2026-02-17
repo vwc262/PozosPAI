@@ -518,12 +518,6 @@ public class ControlDatos : Singleton<ControlDatos>
             ControlSelectedSitio.singleton.SetSelectedSitio(sitio);
         }
     }
-    
-    [Button]
-    public ControlSitio GetSitioByID(int idSitio)
-    {
-        return listSitios.Find(x => x.dataSitio.idSitio == idSitio);
-    }
 }
 
 [Serializable]
