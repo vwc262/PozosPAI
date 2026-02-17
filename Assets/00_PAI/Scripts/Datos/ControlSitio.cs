@@ -22,7 +22,6 @@ public class ControlSitio
     public float timeLastCommand;
 
     public int indexRequestAPI;
-
     
     public bool GetStatusConexionSitio()
     {

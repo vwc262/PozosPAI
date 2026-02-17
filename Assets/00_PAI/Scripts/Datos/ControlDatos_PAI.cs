@@ -300,4 +300,22 @@ public class ControlDatos_PAI : ControlDatos
             }
         }
     }
+    
+    [Button]
+    public override string GetStringDataSitios()
+    {
+        string result = "";
+
+        foreach (var sitio in listSitios.OrderBy(x => x.dataSitio.idSitio))
+        {
+            if (sitio.dataSitio.idSitio == 1421)
+                result += sitio.dataSitio.idSitio + ", " + sitio.dataSitio.nombre + ", " + GetNameRegionByID(0) + "\n";
+            else
+                result += sitio.dataSitio.idSitio + ", " + sitio.dataSitio.nombre + ", " + GetNameRegionByID(sitio.dataSitio.Estructura) + "\n";
+        }
+        
+        Debug.Log(result);
+        
+        return result;
+    }
 }

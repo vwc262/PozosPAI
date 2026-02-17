@@ -20,7 +20,7 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
             for (int i = 0; i < ListBalances.Count; i++)
             {
                 if (ControlDatos.singleton.regiones.Count > i)
-                    ListBalances[i].SetLabel("Balance gasto " + ControlDatos.singleton.GetNameRegionByIndex(i, 0));
+                    ListBalances[i].SetLabel("Balance gasto " + ControlDatos.singleton.GetNameRegionByIndex(i));
             }
         }
         
