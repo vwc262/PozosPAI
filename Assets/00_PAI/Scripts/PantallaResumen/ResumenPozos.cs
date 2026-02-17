@@ -41,7 +41,7 @@ public class ResumenPozos : MonoBehaviour
             {
                 //Nombre Ramal
                 nameRegion.text =
-                    ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion), 0);
+                    ControlDatos.singleton.GetNameRegionByID(ControlDatos.singleton.GetIDRegionByIndex(idRegion));
 
                 //Sitios En linea
                 actRegion.text = ControlDatos.singleton.listSitios.Where(x =>

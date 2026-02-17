@@ -77,7 +77,7 @@ public class ControlSitiosUIParticular_PAI : MonoBehaviour
                 regionalAnt = regional;
 
                 if (TextRegionalNombre != null)
-                    TextRegionalNombre.text = ControlDatos.singleton.GetNameRegionByID(regional, sitio.indexRequestAPI);
+                    TextRegionalNombre.text = ControlDatos.singleton.GetNameRegionByID(regional);
 
                 foreach (var uiSitio in sitiosUIParticular)
                 {

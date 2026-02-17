@@ -408,12 +408,12 @@ public class ControlDatos : Singleton<ControlDatos>
         }
     }
     
-    public string GetNameRegionByIndex(int index, int indexRequest)
+    public string GetNameRegionByIndex(int index)
     {
-        return GetNameRegionByID(GetIDRegionByIndex(index), indexRequest);
+        return GetNameRegionByID(GetIDRegionByIndex(index));
     }
     
-    public string GetNameRegionByID(int idRegion, int indexRequest)
+    public string GetNameRegionByID(int idRegion)
     {
         Region regionAux = regiones.Find(item => item.idRegion == idRegion);
         if (regionAux != null)    
@@ -491,6 +491,32 @@ public class ControlDatos : Singleton<ControlDatos>
         }
 
         return 0;
+    }
+
+    [Button]
+    public virtual string GetStringDataSitios()
+    {
+        string result = "";
+
+        foreach (var sitio in listSitios)
+        {
+            result += sitio.dataSitio.idSitio + ", " + sitio.dataSitio.nombre + ", " + GetNameRegionByID(sitio.dataSitio.Estructura) + "\n";
+        }
+        
+        Debug.Log(result);
+        
+        return result;
+    }
+
+    [Button]
+    public void SelectSitioByID(int idSitio)
+    {
+        ControlSitio sitio = listSitios.Find(x => x.dataSitio.idSitio == idSitio);
+
+        if (sitio != null && ControlSelectedSitio._singletonExists)
+        {
+            ControlSelectedSitio.singleton.SetSelectedSitio(sitio);
+        }
     }
 }
 
