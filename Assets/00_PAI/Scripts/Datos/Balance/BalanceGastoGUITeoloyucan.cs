@@ -43,8 +43,13 @@ public class BalanceGastoGUITeoloyucan : BalanceGastoGUI
 
                 ListBalances[i].SetValue(ListBalances[i].Balance.ToString());
             }
-
-            BalanceTotal = ListBalances.Sum(item => item.Balance);
+            
+            //BalanceTotal = ListBalances.Sum(item => item.Balance);
+            BalanceTotal = 0;
+            for (int i = 1; i < ListBalances.Count; i++)
+            {
+                BalanceTotal += ListBalances[i].Balance;
+            }
 
             if (ControlBalanceTotal != null)
                 ControlBalanceTotal.SetValue(BalanceTotal.ToString());
