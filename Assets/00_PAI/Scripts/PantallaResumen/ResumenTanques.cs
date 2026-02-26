@@ -109,12 +109,12 @@ public class ResumenTanques : Singleton<ResumenTanques>
             //Promedios
             if (promedioGastoChalmita != null)
             {
-                promedioGastoChalmita.text = tempPromedioGastoChalmita.ToString() + "<color=yellow> [m³/s]</color>";
+                promedioGastoChalmita.text = tempPromedioGastoChalmita.ToString("F3") + "<color=yellow> [m³/s]</color>";
             }
             
             if (promedioGastoNzt != null)
             {
-                promedioGastoNzt.text = tempPromedioGastoNzt.ToString() + "<color=yellow> [m³/s]</color>";
+                promedioGastoNzt.text = tempPromedioGastoNzt.ToString("F3") + "<color=yellow> [m³/s]</color>";
             }
             
             //Estampa de tiempo
