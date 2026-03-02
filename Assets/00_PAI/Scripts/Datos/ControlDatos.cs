@@ -22,6 +22,7 @@ public class ControlDatos : Singleton<ControlDatos>
     public List<ControlSitio> listSitios = new List<ControlSitio>();
     public ListAverages listAverages = new ListAverages();
     public int AverageDay;
+    public bool isAverageInit, isInitOver6am;
 
     [TabGroup("Marcadores")]public float longitud0;
     [TabGroup("Marcadores")]public float latitud0;
@@ -461,13 +462,13 @@ public class ControlDatos : Singleton<ControlDatos>
     {
         Debug.Log("UpdateAverage");
 
-        if (AverageDay != DateTime.Now.Day - 1)
+        if (!isAverageInit || (AverageDay != DateTime.Now.Day - 1) || (!isInitOver6am && DateTime.Now.Hour >= 6))
         {
             Debug.Log("UpdateAverage: Consulta API");
             RequestAPI.singleton.GetAverageBarrientos(CallBackAverage);
         }
     }
-
+    
     public void CallBackAverage(bool isRequestError, ListAverages responce)
     {
         Debug.Log("CallBackAverage");
@@ -475,9 +476,10 @@ public class ControlDatos : Singleton<ControlDatos>
         if (!isRequestError)
         {
             listAverages = responce;
-
-            if (listAverages.Items.Count > 0)
-                AverageDay = GetDayStringTime(listAverages.Items[0].Fecha);
+            
+            isAverageInit = true;
+            isInitOver6am = DateTime.Now.Hour >= 6;
+            if (listAverages.Items.Count > 0) AverageDay = GetDayStringTime(listAverages.Items[0].Fecha);
         }
     }
     
