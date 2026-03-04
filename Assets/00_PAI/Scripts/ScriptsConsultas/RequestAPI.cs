@@ -356,7 +356,7 @@ public class RequestAPI : Singleton<RequestAPI>
     
     public void GetAverageBarrientos(Action<bool, ListAverages> callback)
     {
-        if (corrutinaAverageBarr != null) StopCoroutine(corrutinaSignals);
+        if (corrutinaAverageBarr != null) StopCoroutine(corrutinaAverageBarr);
             
         corrutinaAverageBarr = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.AverageBarrientos), Metodos.AverageBarrientos, callback));
     }
