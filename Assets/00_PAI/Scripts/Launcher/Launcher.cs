@@ -1,28 +1,54 @@
 using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using System;
 
 public class Launcher : MonoBehaviour
 {
-    public string relativePathCutzamala;
+    public string variableEntornoPAI = "pathVWC_PAI";
+    public string variableEntornoCutzamala = "pathVWC_Cutzamala";
+    public string variableEntornoHidrometricas = "pathVWC_Hidrometricas";
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+#if !UNITY_EDITOR
+        //Environment.SetEnvironmentVariable(variableEntornoPAI, GetParentPath(Application.dataPath) + "/PozosPaiNorte.exe", EnvironmentVariableTarget.User);
+        Environment.SetEnvironmentVariable(variableEntornoPAI,  Process.GetCurrentProcess().MainModule.FileName, EnvironmentVariableTarget.User);
+#endif
     }
 
     public void LaunchCutzamala()
     {
-        LaunchAPP(relativePathCutzamala);
-
-        AplicactionQuit();
+        string file = Environment.GetEnvironmentVariable(variableEntornoCutzamala, EnvironmentVariableTarget.User);
+        
+        if (file != null)
+        {
+            LaunchAPP_Path(file);
+            AplicactionQuit();
+        }
+    }
+    
+    public void LaunchPAI()
+    {
+        string file = Environment.GetEnvironmentVariable(variableEntornoPAI, EnvironmentVariableTarget.User);
+        
+        if (file != null)
+        {
+            LaunchAPP_Path(file);
+            AplicactionQuit();
+        }
+    }
+    
+    public void LaunchHidrometricas()
+    {
+        string file = Environment.GetEnvironmentVariable(variableEntornoHidrometricas, EnvironmentVariableTarget.User);
+        
+        if (file != null)
+        {
+            LaunchAPP_Path(file);
+            AplicactionQuit();
+        }
     }
     
     public void AplicactionQuit()
@@ -36,7 +62,7 @@ public class Launcher : MonoBehaviour
 #endif
     }
 
-    public void LaunchAPP(string relativePath)
+    public void LaunchAPP_RelativePath(string relativePath)
     {
         string file = GetParentPath(Application.dataPath) + relativePath;
         
@@ -49,6 +75,20 @@ public class Launcher : MonoBehaviour
             UseShellExecute = false
         };
         
+        Process.Start(startInfo);
+    }
+    
+    public void LaunchAPP_Path(string path)
+    {
+        Debug.Log($"OpenAPP: {path}");
+
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = path,
+            CreateNoWindow = true,
+            UseShellExecute = false
+        };
+
         Process.Start(startInfo);
     }
     
