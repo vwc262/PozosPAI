@@ -123,4 +123,11 @@ public class ControlManager : Singleton<ControlManager>
         }
         
     }
+
+    public void SeleccionBarrientos()
+    {
+        ControlSitio barrientos =  ControlDatos.singleton.listSitios.Find(x => x.dataSitio.idSitio == 1421);
+        
+        ControlSelectedSitio.singleton.SetSelectedSitio(barrientos);
+    }
 }
