@@ -10,6 +10,24 @@ public class ControlJSON
     private string jsonString;
     public string path;
     public string fileName = "DataFile.vwc";
+    public string playePrefName = "DataVWC";
+    
+    public void SaveJSON_playePrefs()
+    {
+        jsonString = GetJsonString();
+        
+        PlayerPrefs.SetString(playePrefName, jsonString);
+    }
+
+    public void LoadJSON_playePrefs()
+    {
+        jsonString = PlayerPrefs.GetString(playePrefName);
+        
+        //Debug.Log("LoadJSON_playePrefs: " + jsonString);
+        
+        if (jsonString != "")
+            SetDataFromJson(jsonString);
+    }
     
     [Button]
     public void SaveJSON_DataFile()

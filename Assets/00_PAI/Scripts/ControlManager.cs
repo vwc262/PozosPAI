@@ -34,6 +34,17 @@ public class ControlManager : Singleton<ControlManager>
         if (mainFSM != null)
             mainFSM.SendEvent(eventName);
     }
+    
+    public void InitInfraestructura()
+    {
+        if (RequestAPI._singletonExists) RequestAPI.singleton.dataRequestAPI.LoadJSON_playePrefs();
+        if (ControlDatos._singletonExists) ControlDatos.singleton.ActualizarInfraestructura();
+    }
+    
+    public void SaveDataDefault()
+    {
+        if (RequestAPI._singletonExists) RequestAPI.singleton.dataRequestAPI.SaveJSON_playePrefs();;
+    }
 
     public IEnumerator ActualizarInfraestructura()
     {
