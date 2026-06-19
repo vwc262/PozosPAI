@@ -3440,6 +3440,7 @@ MonoBehaviour:
   dataLogin:
     path: 
     fileName: LoginDataFile.vwc
+    playePrefName: DataVWC
     user: omar
     password: omar24
     idProyect: 0
@@ -4336,7 +4337,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1

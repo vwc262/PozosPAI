@@ -123,6 +123,7 @@ public class RequestAPI : Singleton<RequestAPI>
         corrutinaInfraestructura = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.Infraestructura), Metodos.Infraestructura));
       
         yield return new WaitForSeconds(delay);
+        
         LanzarPoleo();
     }
 
@@ -133,6 +134,7 @@ public class RequestAPI : Singleton<RequestAPI>
         corrutinaSignals = StartCoroutine(DoRequest(GetAddressByMethod(Metodos.UpdateData),Metodos.UpdateData));
         
         yield return new WaitForSeconds(delay);
+        
         LanzarPoleo();
     }
     

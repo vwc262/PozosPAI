@@ -460,7 +460,7 @@ public class ControlDatos : Singleton<ControlDatos>
 
     public void GetAverageBarrientos()
     {
-        Debug.Log("UpdateAverage");
+        //Debug.Log("UpdateAverage");
 
         if (!isAverageInit || (AverageDay != DateTime.Now.Day - 1) || (!isInitOver6am && DateTime.Now.Hour >= 6))
         {
